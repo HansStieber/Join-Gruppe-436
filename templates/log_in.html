@@ -1,7 +1,20 @@
-<div class="login-container">
+<div class="login-container fade-in-login">
     <h1>Log in</h1>
+    <img src="./img/blue_underline.png" id="blue_underline">
     <div class="credentials">
-        <input type="text" placeholder="Email">
-        <input type="text" placeholder="Password">
+        <input type="text" name="email" type="email" placeholder="Email" required="">
+        <input type="text" name="password" type="password" placeholder="Password" required="">
     </div>
+    <div class="remember_me_forgotten">
+        <div class="remember_me">
+            <input class="checkbox" type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Remember me</label>
+        </div>
+        <a class="password_forgotten" href="forgot_password.html">Forgot my password</a>
+    </div>
+    <div class="login_form_buttons">
+        <button type="submit" class="login_button">Log in</button>
+        <div class="guest_button">Guest Log in</div>
+    </div>
+    <div id="error-login" class="error-login"></div>
 </div>
