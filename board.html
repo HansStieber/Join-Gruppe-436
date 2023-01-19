@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Inter';
+            font-style: normal;
+            margin: 0px;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .main-div {
+
+            display: flex;
+        }
+
+        .dummy-header {
+            height: 100px;
+            width: auto;
+            background-color: lightgrey;
+        }
+
+        .dummy-sidebar {
+            width: 300px;
+            height: 100vh;
+            background-color: grey;
+        }
+
+        .board-outer-div {
+            background-color: #F6F7F8;
+        }
+
+        .board {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 30%;
+            padding-right: 30px;
+            padding-left: 30px;
+        }
+
+        .transition-125 {
+            transition: all 125ms ease-in-out;
+        }
+
+        .board-outer-div {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+        }
+
+        .board-head-div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .board-head-div h1 {
+            font-weight: 700;
+            font-size: 61px;
+            line-height: 120%;
+        }
+
+        .board-input-div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            gap: 10px;
+            width: 251px;
+            height: 51px;
+        }
+
+        .board-input {
+            padding: 13px 21px;
+            border: 1px solid #A8A8A8;
+            border-radius: 10px;
+        }
+
+        .input-img {
+            transition: all 125ms ease-in-out;
+            cursor: pointer;
+            position: absolute;
+            right: 50px;
+            top: 13px;
+            border-left: solid 1px grey;
+            padding-left: 12px !important;
+            padding: 3px;
+        }
+
+        .input-img:hover {
+            transition: all 125ms ease-in-out;
+            filter: invert(0.6);
+        }
+
+        .input-img-inner {
+            height: 20px;
+            width: 20px;
+        }
+
+        .add-task-btn {
+            transition: all 125ms ease-in-out;
+            cursor: pointer;
+            width: 137px;
+            height: 51px;
+        }
+
+        .add-task-btn:hover {
+            transition: all 125ms ease-in-out;
+            filter: invert(0.6);
+        }
+
+        .board-links {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .board-link {
+            width: 21%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .board-link span {
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 120%;
+        }
+
+        .board-link img {
+            transition: all 125ms ease-in-out;
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .board-link img:hover {
+            transition: all 125ms ease-in-out;
+            filter: invert(0.6);
+        }
+
+        .cards-div {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 18px 19px;
+            width: 250px;
+        }
+
+        .card-name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            background-color: #FF7A00;
+            color: white;
+            padding: 4px 25px;
+            width: 103px;
+            height: 27px;
+            font-size: 16px;
+            line-height: 120%;
+        }
+
+        .card-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-headline {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 120%;
+        }
+
+        .card-info {
+            color: #A8A8A8;
+        }
+
+        .progress-div {
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-bar {
+            background: rgba(93, 93, 93, 0.1);
+            justify-content: flex-start;
+            border-radius: 100px;
+            align-items: center;
+            position: relative;
+            padding: 0 5px;
+            display: flex;
+            height: 10px;
+            width: 140px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main-div">
+        <div>
+            <aside class="dummy-sidebar">
+            </aside>
+        </div>
+
+        <div class="board-outer-div">
+            <header class="dummy-header"></header>
+            <div class="board">
+
+                <div class="board-head-div">
+                    <h1>Board</h1>
+                    <div class="d-flex">
+                        <div class="board-input-div">
+                            <div class="input-img">
+                                <div class="input-img-inner">
+                                    <img src="img/loup.png">
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Find Task" class="board-input">
+                        </div>
+                        <div class="add-task-btn">
+                            <img src=img/add-task-btn.png>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-links">
+                    <div class="board-link">
+                        <span>To do</span>
+                        <div><img src="img/plus-btn.png"></div>
+                    </div>
+                    <div class="board-link">
+                        <span>In progress</span>
+                        <div><img src="img/plus-btn.png"></div>
+                    </div>
+                    <div class="board-link">
+                        <span>Awaiting Feedback</span>
+                        <div><img src="img/plus-btn.png"></div>
+                    </div>
+                    <div class="board-link">
+                        <span>Done</span>
+                        <div><img src="img/plus-btn.png"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-div"></div>
+            <div>
+                <div class="card-column">
+                    <div class="card">
+                        <div class="card-name">Designs</div>
+                        <div class="card-text">
+                            <span class="card-headline">Website redesign</span>
+                            <span class="card-info">Modify the Content of the Main Website</span>
+                            <div class="progress-div">
+                                <div class="progress-bar">
+
+                                </div>
+                                <span>1/2 Done</span>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+
+                            <div><img src="img/arrow-down.png"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-column"></div>
+                <div class="card-column"></div>
+                <div class="card-column"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
