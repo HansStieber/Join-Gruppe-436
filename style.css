@@ -6,7 +6,9 @@ body {
 .main-login-container {
     width: 100vw;
     height: 100vh;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
@@ -36,6 +38,24 @@ body {
     100% { 
         left: 80px; top: 77px;; }
     
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .credentials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .credentials input {
+    margin-bottom: 10px;
   }
 
   
