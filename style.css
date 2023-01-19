@@ -1,0 +1,47 @@
+body {
+    background-color: #f6f7f8;
+    font-family: 'Inter', sans-serif;
+}
+
+.main-login-container {
+    width: 100vw;
+    height: 100vh;
+    
+    
+}
+
+#join-logo {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 100px;
+}
+
+.fade-in {
+	-webkit-animation: fade-in 3s cubic-bezier(0, 0, 0.565, 1.000) both;
+	        animation: fade-in 3s cubic-bezier(0, 0, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes fade-in {
+    
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+    50% { 
+        left: 49%; top: 49%; }
+    100% { 
+        left: 80px; top: 77px;; }
+    
+  }
+
+  
+
+  
+  
+
+
+
