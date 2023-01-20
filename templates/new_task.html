@@ -1,6 +1,8 @@
 <div class="content-new-task">
     <h1>Add Task</h1>
     <form class="new-task-form">
+
+        <!-- LEFT COLUMN -->
         <div class="column">
 
             <!-- TITLE -->
@@ -25,9 +27,9 @@
                     <input type="text" id="new-category" name="new-category" class="d-none"
                         placeholder="New category name" required>
                 </div>
-                <div id="options-container" class="options-container">
+                <div id="category-options-container" class="options-container">
                     <div class="option">
-                        <div id="select-container" class="select-container" onclick="openDropdownCategory()">
+                        <div id="select-category-container" class="select-container" onclick="openDropdownCategory()">
                             <span>Select task category</span><img class="dropdown-arrow"
                                 src="assets/img/arrow-select-dropdown.png">
                         </div>
@@ -42,18 +44,79 @@
             <!-- ASSIGN TO -->
             <div class="field-container">
                 <span class="label">Assign to</span>
-                <div id="options-container" class="options-container">
+                <div id="contact-options-container" class="options-container">
                     <div class="option">
-                        <div id="select-container" class="select-container" onclick="openDropdownAssignment()">
+                        <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
                             <span>Select contacts to assign</span><img class="dropdown-arrow"
                                 src="assets/img/arrow-select-dropdown.png">
                         </div>
+                    </div>
+                    <div id="contacts-dropdown-container">
+
+                    </div>
+                    <div id="invite-new-contact" class="option d-none selectable last-option"
+                        onclick="inviteNewContact()">
+                        <span>Invite new contact</span>
                     </div>
                 </div>
                 <span class="alert-required" id="category-required">This field is required</span>
             </div>
         </div>
+
+        <!-- BORDER -->
         <div class="border"></div>
-        <div class="column"></div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="column">
+
+            <!-- DUE DATE -->
+            <div class="field-container">
+                <span class="label">Due date</span>
+                <div id="due-date-container" class="options-container">
+                    <div class="option">
+                        <div id="select-date-container" class="select-container" onclick="openDateInput()">
+                            <span class="placeholder">dd/mm/yyyy</span><img class="calender-icon" src="assets/img/calender.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRIO -->
+            <div class="field-container">
+                <span class="label">Prio</span>
+                <div class="prio-box">
+                    <div id="prio-container" class="prio-container">
+                        <div class="option">
+                            <div id="select-prio-container" class="select-container">
+                                <div class="prio">
+                                    <span>Urgent</span>
+                                    <img src="assets/img/arrow-up.png" alt="arrow-up">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="prio-container" class="prio-container">
+                        <div class="option">
+                            <div id="select-prio-container" class="select-container">
+                                <div class="prio">
+                                    <span>Medium</span>
+                                    <img src="assets/img/bars.png" alt="bars">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="prio-container" class="prio-container">
+                        <div class="option">
+                            <div id="select-prio-container" class="select-container">
+                                <div class="prio">
+                                    <span>Low</span>
+                                    <img src="assets/img/arrow-down.png" alt="arrow down">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>

@@ -71,7 +71,7 @@ h1 {
     cursor: pointer;
 }
 
-::placeholder {
+::placeholder, .placeholder {
     color: #d1d1d1c2;
 }
 
@@ -122,4 +122,27 @@ h1 {
 .last-option {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.prio-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prio-container {
+    width: 136px;
+    border-radius: 10px;
+    margin: 8px 0 8px 0;
+    border: 1px solid #D1D1D1;
+    font-size: 21px;
+    line-height: 120%;
+    background-color: white;
+}
+
+.prio {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

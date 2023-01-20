@@ -51,26 +51,28 @@ function loadAssignmentOptions() {
 /*----------- OPEN DROPDOWN MENU FOR CATEGORY SELECTION -----------*/
 function openDropdownCategory() {
     for (let i = 0; i < categoryOptions.length; i++) {
-        const option = categoryOptions[i];
         document.getElementById('c-option' + i).classList.remove('d-none');
     }
+
     let createNewCategory = document.getElementById('create-new-category');
     createNewCategory.classList.remove('d-none');
-    let selectContainer = document.getElementById('select-container');
-    selectContainer.setAttribute('onclick', 'closeDropdownCategory()');
+
+    let selectCategoryContainer = document.getElementById('select-category-container');
+    selectCategoryContainer.setAttribute('onclick', 'closeDropdownCategory()');
 }
 
 
 /*----------- CLOSE DROPDOWN MENU FOR CATEGORY SELECTION -----------*/
 function closeDropdownCategory() {
     for (let i = 0; i < categoryOptions.length; i++) {
-        const option = categoryOptions[i];
         document.getElementById('c-option' + i).classList.add('d-none');
     }
+
     let createNewCategory = document.getElementById('create-new-category');
     createNewCategory.classList.add('d-none');
-    let selectContainer = document.getElementById('select-container');
-    selectContainer.setAttribute('onclick', 'openDropdownCategory()');
+
+    let selectCategoryContainer = document.getElementById('select-category-container');
+    selectCategoryContainer.setAttribute('onclick', 'openDropdownCategory()');
 }
 
 
@@ -88,13 +90,37 @@ function openInputField() {
     let newCategoryContainer = document.getElementById('new-category-container');
     newCategoryContainer.classList.remove('d-none');
 
-    let optionsContainer = document.getElementById('options-container');
-    optionsContainer.classList.add('d-none');
+    let categoryOptionsContainer = document.getElementById('category-options-container');
+    categoryOptionsContainer.classList.add('d-none');
 }
 
 
-/*----------- OPEN DROPDOWN MENU FOR CATEGORY SELECTION -----------*/
+/*----------- OPEN DROPDOWN MENU FOR ASSIGNMENT -----------*/
+function openDropdownAssignment() {
+    for (let i = 0; i < contacts.length; i++) {
+        document.getElementById('a-option' + i).classList.remove('d-none');
+    }
 
+    let inviteNewContact = document.getElementById('invite-new-contact');
+    inviteNewContact.classList.remove('d-none');
+
+    let selectContactContainer = document.getElementById('select-contact-container');
+    selectContactContainer.setAttribute('onclick', 'closeDropdownAssignment()');
+}
+
+
+/*----------- CLOSE DROPDOWN MENU FOR ASSIGNMENT -----------*/
+function closeDropdownAssignment() {
+    for (let i = 0; i < contacts.length; i++) {
+        document.getElementById('a-option' + i).classList.add('d-none');
+    }
+
+    let inviteNewContact = document.getElementById('invite-new-contact');
+    inviteNewContact.classList.add('d-none');
+
+    let selectContactContainer = document.getElementById('select-contact-container');
+    selectContactContainer.setAttribute('onclick', 'openDropdownAssignment()');
+}
 
 
 
@@ -103,8 +129,8 @@ function openInputField() {
 
 /*----------- TEMPLATES FOR CATEGORY SELECTION -----------*/
 function renderCategoryOptions(option, i) {
-    let optionsContainer = document.getElementById('options-container');
-    optionsContainer.innerHTML += `
+    let categoriesContainer = document.getElementById('category-options-container');
+    categoriesContainer.innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable">
         <span>${option['name']}</span>
     </div>
@@ -113,8 +139,8 @@ function renderCategoryOptions(option, i) {
 
 
 function renderLastCategoryOption(option, i) {
-    let optionsContainer = document.getElementById('options-container');
-    optionsContainer.innerHTML += `
+    let categoriesContainer = document.getElementById('category-options-container');
+    categoriesContainer.innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable last-option">
         <span>${option['name']}</span>
     </div>
@@ -124,9 +150,9 @@ function renderLastCategoryOption(option, i) {
 
 /*----------- TEMPLATES FOR ASSIGNING CONTACT -----------*/
 function renderAssignmentOptions(option, i) {
-    let optionsContainer = document.getElementById('options-container');
-    optionsContainer.innerHTML += `
-    <div id="${'c-option' + i}" class="option d-none selectable">
+    let contactsContainer = document.getElementById('contacts-dropdown-container');
+    contactsContainer.innerHTML += `
+    <div id="${'a-option' + i}" class="option d-none selectable">
         <span>${option['name']}</span>
     </div>
 `;
