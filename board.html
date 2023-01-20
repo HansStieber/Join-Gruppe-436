@@ -3,6 +3,11 @@
 
 <head>
 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_board.css">
+    <script src="script.js"></script>
+    <script src="include.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -13,222 +18,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <style>
-        body {
-            font-family: 'Inter';
-            font-style: normal;
-            margin: 0px;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .main-div {
-
-            display: flex;
-        }
-
-        .dummy-header {
-            height: 100px;
-            width: auto;
-            background-color: lightgrey;
-        }
-
-        .dummy-sidebar {
-            width: 300px;
-            height: 100vh;
-            background-color: grey;
-        }
-
-        .board-outer-div {
-            background-color: #F6F7F8;
-        }
-
-        .board {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 30%;
-            padding-right: 30px;
-            padding-left: 30px;
-        }
-
-        .transition-125 {
-            transition: all 125ms ease-in-out;
-        }
-
-        .board-outer-div {
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-        }
-
-        .board-head-div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-        }
-
-        .board-head-div h1 {
-            font-weight: 700;
-            font-size: 61px;
-            line-height: 120%;
-        }
-
-        .board-input-div {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            position: relative;
-            gap: 10px;
-            width: 251px;
-            height: 51px;
-        }
-
-        .board-input {
-            padding: 13px 21px;
-            border: 1px solid #A8A8A8;
-            border-radius: 10px;
-        }
-
-        .input-img {
-            transition: all 125ms ease-in-out;
-            cursor: pointer;
-            position: absolute;
-            right: 50px;
-            top: 13px;
-            border-left: solid 1px grey;
-            padding-left: 12px !important;
-            padding: 3px;
-        }
-
-        .input-img:hover {
-            transition: all 125ms ease-in-out;
-            filter: invert(0.6);
-        }
-
-        .input-img-inner {
-            height: 20px;
-            width: 20px;
-        }
-
-        .add-task-btn {
-            transition: all 125ms ease-in-out;
-            cursor: pointer;
-            width: 137px;
-            height: 51px;
-        }
-
-        .add-task-btn:hover {
-            transition: all 125ms ease-in-out;
-            filter: invert(0.6);
-        }
-
-        .board-links {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .board-link {
-            width: 21%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .board-link span {
-            font-weight: 700;
-            font-size: 21px;
-            line-height: 120%;
-        }
-
-        .board-link img {
-            transition: all 125ms ease-in-out;
-            cursor: pointer;
-            width: 30px;
-        }
-
-        .board-link img:hover {
-            transition: all 125ms ease-in-out;
-            filter: invert(0.6);
-        }
-
-        .cards-div {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 18px 19px;
-            width: 250px;
-        }
-
-        .card-name {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            background-color: #FF7A00;
-            color: white;
-            padding: 4px 25px;
-            width: 103px;
-            height: 27px;
-            font-size: 16px;
-            line-height: 120%;
-        }
-
-        .card-column {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-headline {
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 120%;
-        }
-
-        .card-info {
-            color: #A8A8A8;
-        }
-
-        .progress-div {
-            display: flex;
-            align-items: center;
-        }
-
-        .progress-bar {
-            background: rgba(93, 93, 93, 0.1);
-            justify-content: flex-start;
-            border-radius: 100px;
-            align-items: center;
-            position: relative;
-            padding: 0 5px;
-            display: flex;
-            height: 10px;
-            width: 140px;
-        }
-
-        .d-flex {
-            display: flex;
-        }
-    </style>
-
 </head>
 
-<body>
-    <div class="main-div">
-        <div>
-            <aside class="dummy-sidebar">
-            </aside>
-        </div>
+<body onload="init()">
+    <div class="body2">
+        <!-- NAVBAR -->
+        <div w3-include-html="./templates/sidebar.html"></div>
 
-        <div class="board-outer-div">
-            <header class="dummy-header"></header>
+        <div class="content">
+            <!-- HEADER -->
+            <div w3-include-html="./templates/header.html"></div>
+
+            <!-- MAIN CONTENT -->
             <div class="board">
 
                 <div class="board-head-div">
@@ -243,7 +44,6 @@
                             <input type="text" placeholder="Find Task" class="board-input">
                         </div>
                         <div class="add-task-btn">
-                            <img src=img/add-task-btn.png>
                         </div>
                     </div>
                 </div>
@@ -251,31 +51,30 @@
                 <div class="board-links">
                     <div class="board-link">
                         <span>To do</span>
-                        <div><img src="img/plus-btn.png"></div>
+                        <div class="plus-btn"></div>
                     </div>
                     <div class="board-link">
                         <span>In progress</span>
-                        <div><img src="img/plus-btn.png"></div>
+                        <div class="plus-btn"></div>
                     </div>
                     <div class="board-link">
                         <span>Awaiting Feedback</span>
-                        <div><img src="img/plus-btn.png"></div>
+                        <div class="plus-btn"></div>
                     </div>
                     <div class="board-link">
                         <span>Done</span>
-                        <div><img src="img/plus-btn.png"></div>
+                        <div class="plus-btn"></div>
                     </div>
                 </div>
             </div>
 
-            <div class="cards-div"></div>
-            <div>
+            <div class="cards-div">
                 <div class="card-column">
                     <div class="card">
-                        <div class="card-name">Designs</div>
+                        <div class="card-name" style="background-color:#FF7A00;;">Designs</div>
                         <div class="card-text">
                             <span class="card-headline">Website redesign</span>
-                            <span class="card-info">Modify the Content of the Main Website</span>
+                            <span class="card-info">Modify the Content of the main Website...</span>
                             <div class="progress-div">
                                 <div class="progress-bar">
 
@@ -284,18 +83,105 @@
                             </div>
                         </div>
                         <div class="card-bottom">
-
+                            <div class="user-icons">
+                                <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                </div>
+                                <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                            </div>
                             <div><img src="img/arrow-down.png"></div>
 
                         </div>
                     </div>
                 </div>
-                <div class="card-column"></div>
-                <div class="card-column"></div>
-                <div class="card-column"></div>
-            </div>
-        </div>
+                <div class="card-column">
+                    <div class="card">
+                        <div class="card-name" style="background-color: #FC71FF;">Sales</div>
+                        <div class="card-text">
+                            <span class="card-headline">Call potencial clients</span>
+                            <span class="card-info">Make the product presentation to prospective buyers</span>
 
+                        </div>
+                        <div class="card-bottom">
+                            <div class="user-icons">
+                                <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                </div>
+                                <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                            </div>
+                            <div><img src="img/arrow-up.png"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-column">
+                    <div class="card">
+                        <div class="card-name" style="background-color: #1FD7C1;">Backoffice</div>
+                        <div class="card-text">
+                            <span class="card-headline">Accounting invoices</span>
+                            <span class="card-info">Write open invoices for customer</span>
+
+                        </div>
+                        <div class="card-bottom">
+                            <div class="user-icons">
+                                <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                </div>
+                                <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                            </div>
+                            <div><img src="img/bars.png"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-name" style="background-color: #FFC701;">Media</div>
+                        <div class="card-text">
+                            <span class="card-headline">Video cut</span>
+                            <span class="card-info">Edit the new company video</span>
+
+                        </div>
+                        <div class="card-bottom">
+                            <div class="user-icons">
+                                <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                </div>
+                                <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                            </div>
+                            <div><img src="img/bars.png"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-column">
+                    <div class="card">
+                        <div class="card-name" style="background-color: #0037F8;">Marketing</div>
+                        <div class="card-text">
+                            <span class="card-headline">Social media strategy</span>
+                            <span class="card-info">Develop an ad campaign for brand positioning</span>
+                            <div class="progress-div">
+                                <div class="progress-bar " style="background-color: #29ABE2;">
+
+                                </div>
+                                <span>3/3 Done</span>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="user-icons">
+                                <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                </div>
+                                <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                            </div>
+                            <div><img src="img/arrow-down.png"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 </body>
 
