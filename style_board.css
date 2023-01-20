@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30%;
     padding-right: 65px;
     padding-left: 65px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .transition-125 {
@@ -17,16 +18,19 @@
     width: 100vw;
 }
 
+.kanban-mobile-span {
+    display: none;
+}
+
 .board-head-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
 }
 
 .board-head-div h1 {
     font-weight: 700;
-    font-size: 61px;
+    font-size: 70px;
     line-height: 120%;
 }
 
@@ -87,20 +91,15 @@
     background-repeat: no-repeat;
 }
 
-.board-links {
-    display: flex;
-    justify-content: space-around;
-}
-
-.board-link {
+.cards-category {
     cursor: pointer;
-    width: 21%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 40px;
 }
 
-.board-link span {
+.cards-category span {
     font-weight: 700;
     font-size: 22px;
     line-height: 120%;
@@ -151,10 +150,15 @@
     margin-bottom: 15px;
 }
 
-.card-column {
+.cards-column-main {
     display: flex;
     flex-direction: column;
     width: 22.5%;
+}
+
+.card-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .card-headline {
@@ -227,4 +231,90 @@
 
 .d-flex {
     display: flex;
+}
+
+.add-task-btn-mobile {
+    background-image: none;
+    width: 0px;
+    height: 0px;
+}
+
+@media(max-width:400px) {
+
+    .mobile-d-none {
+        display: none;
+    }
+
+    .content {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .add-task-btn-mobile {
+        cursor: pointer;
+        background-image: url(img/add-task-btn-mobile.png);
+        background-repeat: no-repeat;
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .add-task-btn-mobile:hover {
+        background-image: url(img/add-task-btn-mobile-blue.png);
+        background-repeat: no-repeat;
+
+    }
+
+    .add-task-btn {
+        background-image: none;
+        width: 0em;
+        height: 0em;
+    }
+
+    .board {
+        padding-right: 2em;
+        padding-left: 2em;
+    }
+
+    .kanban-mobile-span {
+        display: block;
+    }
+
+    .board-head-div {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .board-head-div h1 {
+        font-size: 3em;
+    }
+
+    .mobile-headline-div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .board-input {
+        padding: 0.6em 1em;
+        width: 15em;
+    }
+
+    .cards-div {
+        flex-direction: column;
+        align-items: center;
+        padding: 0em;
+    }
+
+    .cards-column-main {
+        width: 80%;
+    }
+
+    .cards-category {
+        margin-bottom: 1em;
+    }
+
+    .card {
+        margin-bottom: 1.2em;
+    }
 }
