@@ -11,7 +11,7 @@
 /* === Styling for template new_task.html === */
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 h1 {
@@ -115,7 +115,11 @@ h1 {
     padding: 13px 21px 13px 21px;
 }
 
-.option:hover {
+.selectable:hover {
     background-color: lightgray;
 }
 
+.last-option {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
