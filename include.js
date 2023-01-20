@@ -1,6 +1,7 @@
 
 async function init() {
     await includeHTML();
+    render();
 }
 
 async function includeHTML() {

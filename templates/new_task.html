@@ -3,14 +3,33 @@
     <form class="new-task-form">
         <div class="column">
             <div class="field-container">
-                <label for="title">Title</label>
+                <label class="label" for="title">Title</label>
                 <input type="text" id="title" name="title" placeholder="Enter a title" required>
-                <span>This field is required</span>
+                <span class="alert-required" id="title-required">This field is required</span>
             </div>
             <div class="field-container">
-                <label for="description">Description</label>
-                <textarea type="text" id="description" name="description" placeholder="Enter a Description" required></textarea>
-                <span id="title-required">This field is required</span>
+                <label class="label" for="description">Description</label>
+                <textarea type="text" id="description" name="description" placeholder="Enter a Description"
+                    required></textarea>
+                <span class="alert-required" id="description-required">This field is required</span>
+            </div>
+            <div class="field-container">
+                <div></div>
+                <span class="label" for="category">Category</span>
+                <div id="options-container" class="options-container">
+                    <div class="option">
+                        <div id="select-container" class="select-container" onclick="openDropdownCategory()">
+                            <span>Select task category</span><img class="dropdown-arrow" src="assets/img/arrow-select-dropdown.png">
+                        </div>
+                    </div>
+                    <!--<div id="option1" class="option d-none">
+                        <span>New Category</span>
+                    </div>
+                    <div id="option2" class="option d-none">
+                        <span>General Topic</span>
+                    </div>-->
+                </div>
+                <span class="alert-required" id="category-required">This field is required</span>
             </div>
         </div>
         <div class="border"></div>
