@@ -396,6 +396,10 @@ header {
     flex-direction: column;
  }
 
+ .col-3{
+    flex-direction: row;
+ }
+
 .bold{
     font-size: 64px;
     font-weight: bold;
@@ -408,6 +412,12 @@ header {
 
 .col-2 >img{
     margin-right: 32px;
+}
+
+.urgent-tasks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
   
