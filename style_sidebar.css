@@ -1,0 +1,44 @@
+/* === Sidebar === */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    width: 232px;
+    background-color: #2A3647;
+}
+
+.navigation-container {width: 100%;}
+
+.navigation-point {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.center-icons{
+    height: auto;
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigation-point:hover {background-color: #091931;}
+
+.main-logo {
+    height: 121.97px;
+    width: 100.03px;
+    cursor: pointer;
+}
+
+.icon-sidebar {
+    height: auto;
+    width: 28px;
+}
