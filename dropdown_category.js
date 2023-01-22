@@ -28,7 +28,6 @@ let contacts = [
 
 
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
-
 function loadAllOptions() {
     loadCategoryOptions();
     loadAssignmentOptions();

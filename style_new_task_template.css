@@ -19,8 +19,10 @@
 
 /* === Styling for smartphones === */
 
-.container-new-task {
-    font-size: 16px;
+@media (max-width: 768px) {
+    .container-new-task {
+        font-size: 16px;
+    }
 }
 
 /* === Styling for template new_task.html === */
