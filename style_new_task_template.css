@@ -5,6 +5,22 @@
     height: calc(100vh - 89px);
     padding: 17px 41px 0 41px;
     overflow: auto;
+    font-size: 21px;
+}
+
+
+/* === Styling for smaller screens/tablets === */
+
+@media (max-width: 992px) {
+    .container-new-task {
+        padding: 0;
+    }
+}
+
+/* === Styling for smartphones === */
+
+.container-new-task {
+    font-size: 16px;
 }
 
 /* === Styling for template new_task.html === */
@@ -12,6 +28,11 @@
 .d-none {
     display: none !important;
 }
+
+.mobile-description {
+    display: none;
+}
+
 h1 {
     font-size: 61px;
     margin: 0;
@@ -58,10 +79,6 @@ h1 {
     margin-bottom: 14px;
 }
 
-.label {
-    font-size: 21px;
-}
-
 .alert-required {
     font-size: 12px;
     color: transparent;
@@ -105,24 +122,27 @@ h1 {
 }
 
 textarea::-webkit-scrollbar {
-    width: 4px;               /* width of the entire scrollbar */
-  }
+    width: 4px;
+    /* width of the entire scrollbar */
+}
 
 textarea::-webkit-scrollbar-track {
-    background: rgb(255, 255, 255);        /* color of the tracking area */
-  }
-  
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+}
+
 textarea::-webkit-scrollbar-thumb {
-    background-color: #2A3647;    /* color of the scroll thumb */
-    border-radius: 2px;       /* roundness of the scroll thumb */
-  }
+    background-color: #2A3647;
+    /* color of the scroll thumb */
+    border-radius: 2px;
+    /* roundness of the scroll thumb */
+}
 
 .options-container {
     width: 100%;
     border-radius: 10px;
     margin: 8px 0 8px 0;
     border: 1px solid #D1D1D1;
-    font-size: 21px;
     line-height: 120%;
     background-color: white;
 }
@@ -150,17 +170,21 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .options::-webkit-scrollbar {
-    width: 4px;               /* width of the entire scrollbar */
-  }
+    width: 4px;
+    /* width of the entire scrollbar */
+}
 
 .options::-webkit-scrollbar-track {
-    background: rgb(255, 255, 255);        /* color of the tracking area */
-  }
-  
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+}
+
 .options::-webkit-scrollbar-thumb {
-    background-color: #2A3647;    /* color of the scroll thumb */
-    border-radius: 2px;       /* roundness of the scroll thumb */
-  }
+    background-color: #2A3647;
+    /* color of the scroll thumb */
+    border-radius: 2px;
+    /* roundness of the scroll thumb */
+}
 
 .selectable:hover {
     background-color: lightgray;
@@ -181,7 +205,6 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     margin: 8px 0 8px 0;
     border: 1px solid #D1D1D1;
-    font-size: 21px;
     line-height: 120%;
     background-color: white;
 }
@@ -201,7 +224,7 @@ textarea::-webkit-scrollbar-thumb {
 
 /* === Styling for smaller Screens === */
 
-@media (max-width: 1350px) {
+@media (max-width: 1450px) {
     h1 {
         margin-bottom: 41px;
     }
@@ -222,5 +245,39 @@ textarea::-webkit-scrollbar-thumb {
         width: 100%;
         max-width: 700px;
         height: 100%;
+    }
+}
+
+/* === Styling for smaller screens/tablets === */
+
+@media (max-width: 992px) {
+    .content-new-task {
+        padding: 40px;
+    }
+}
+
+
+/* === Styling for smartphones === */
+
+@media (max-width: 992px) {
+    .mobile-description {
+        display: unset;
+    }
+
+    h1 {
+        font-size: 47px;
+        margin: 20px 0;
+    }
+
+    .content-new-task {
+        padding: 30px;
+    }
+
+    .field-container input, .field-container textarea {
+        font-size: 16px;
+    }
+
+    .alert-required {
+        display: none;
     }
 }
