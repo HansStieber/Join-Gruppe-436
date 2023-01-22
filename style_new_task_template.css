@@ -3,7 +3,7 @@
 .container-new-task {
     width: 100%;
     height: calc(100vh - 89px);
-    padding: 17px 0 0 41px;
+    padding: 17px 41px 0 41px;
     overflow: auto;
 }
 
@@ -200,3 +200,27 @@ textarea::-webkit-scrollbar-thumb {
 
 
 /* === Styling for smaller Screens === */
+
+@media (max-width: 1350px) {
+    h1 {
+        margin-bottom: 41px;
+    }
+
+    .new-task-form {
+        display: unset;
+    }
+
+    .border {
+        display: none;
+    }
+
+    .content-new-task {
+        width: 100%;
+    }
+
+    .column {
+        width: 100%;
+        max-width: 700px;
+        height: 100%;
+    }
+}
