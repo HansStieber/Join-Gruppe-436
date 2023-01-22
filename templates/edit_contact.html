@@ -1,0 +1,61 @@
+<!-- OVERLAY EDIT CONTACT -->
+<div class="overlay-contact" class="overlay-show">
+    <div class="add-contact-container">
+
+        <!--Left static design-->
+        <div class="static-design">
+            <img src="./assets/img/join_small.svg" alt="main logo">
+            <h1>Edit contact</h1>
+            <div class="grafic-line"></div>
+        </div>
+
+        <!--Right dynamic design-->
+        <div class="contact-input-container">
+            <div class="closing-icon">
+                <img src="./assets/img/close.svg" alt="x-icon">
+            </div>
+            <div class="contact-input-area">
+                                                                                                    <!-- muss ersetzt werden -->
+                <img src="./assets/img/avatar.svg" alt="icon of an avatar">
+
+                <!--Add contact Formular-->
+                <form class="add-contact-formular" action="#" onsubmit="return false">
+                    <div class="contact-input-box">
+                        <div class="contact-input-field">
+                            <label for="name" class="screenreader">Name:</label>
+                            <input id="name" class="input-styling" type="text" name="name" placeholder="Name" required>
+                            <img src="./assets/img/avatar-small.svg" alt="icon of a small avatar"> 
+                        </div>
+                        <div class="field-required">This field is required</div>
+                    </div>
+                    <div class="contact-input-box">
+                        <div class="contact-input-field">
+                            <label for="eMail" class="screenreader">E-Mail:</label>
+                            <input id="eMail" class="input-styling" type="email" name="email" placeholder="E-Mail"
+                                pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
+                                title="Gib eine gültige E-Mail-Adresse ein!">
+                            <img src="./assets/img/email.svg" alt="icon of a small letter">
+                        </div>
+                        <div class="field-required">This field is required</div>
+                    </div>
+                    <div class="contact-input-box">
+                        <div class="contact-input-field">
+                            <label for="phonenumber" class="screenreader">Phonenumber:</label>
+                            <input id="phonenumber" class="input-styling" type="tel" name="phonenumber"
+                                placeholder="Phone" required>
+                            <img src="./assets/img/phone.svg" alt="icon of a small phone">
+                        </div>
+                        <div class="field-required">This field is required</div>
+                    </div>
+
+                    <!--Button-->
+                    <button class="btn-dark" type="submit">
+                        <div class="btn-settings">
+                            <span>Save</span>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
