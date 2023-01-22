@@ -1,9 +1,7 @@
-
 /* === General Settings === */
 
-
 body {
-    margin:0;
+    margin: 0;
     background-color: #f5f5f5;
     font-family: 'Inter', sans-serif;
 }
@@ -22,6 +20,15 @@ body {
     width: 100%;
 }
 
+/* Universal-classes */
+.screenreader {
+    display: none;
+}
+
+.overlay-show {
+    opacity: 1;
+}
+
 /*=== Colors ===*/
 /* 
 DUNKELBLAU: #2A3647
@@ -31,13 +38,14 @@ HELLGRAU (BACKGROUND): #F5F5F5
 
 */
 
+/*=== Login ===*/
+
 .main-login-container {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 #join-logo {
@@ -46,29 +54,38 @@ HELLGRAU (BACKGROUND): #F5F5F5
     top: 30%;
     width: 100px;
 }
+
 /* slide in Logo-Keyframe Start*/
+
 .fade-in {
-	-webkit-animation: fade-in 3s cubic-bezier(0, 0, 0.565, 1.000) both;
-	        animation: fade-in 3s cubic-bezier(0, 0, 0.565, 1.000) both;
+    -webkit-animation: fade-in 3s cubic-bezier(0, 0, 0.565, 1.000) both;
+    animation: fade-in 3s cubic-bezier(0, 0, 0.565, 1.000) both;
 }
 
- @keyframes fade-in {
-    
+@keyframes fade-in {
+
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
 
-    50% { 
-        left: 49%; top: 49%; }
-    100% { 
-        left: 80px; top: 77px;; }
-    
-  }
+    50% {
+        left: 49%;
+        top: 49%;
+    }
 
-  /* slide in Logo-Keyframe End*/
+    100% {
+        left: 80px;
+        top: 77px;
+        ;
+    }
+
+}
+
+/* slide in Logo-Keyframe End*/
 
 .login-container {
     display: flex;
@@ -89,7 +106,6 @@ HELLGRAU (BACKGROUND): #F5F5F5
 
 .login-container h1 {
     font-size: 60px;
-    
     padding-top: 30px;
 }
 
@@ -123,29 +139,33 @@ HELLGRAU (BACKGROUND): #F5F5F5
     margin-right: 20px;
 }
 
-.remember-me, input{
+.remember-me,
+input {
     margin-right: 20px;
 }
 
 
 .fade-in-login {
     -webkit-animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
-        animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
+    animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
 }
 
-  
+
 @-webkit-keyframes fade-in-login {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
-    }
-    @keyframes fade-in-login {
+}
+
+@keyframes fade-in-login {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -156,9 +176,9 @@ HELLGRAU (BACKGROUND): #F5F5F5
     justify-content: space-around;
     align-items: center;
     width: 300px;
-  }
+}
 
-  .login_button {
+.login_button {
     background-color: #2A3647;
     border: none;
     color: #fff;
@@ -167,15 +187,15 @@ HELLGRAU (BACKGROUND): #F5F5F5
     font-size: 18px;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-  }
+}
 
-  .login_button:hover {
+.login_button:hover {
     background: #29ABE2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: background 225ms ease-in-out;
 }
 
-  .guest_button {
+.guest_button {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -194,21 +214,21 @@ HELLGRAU (BACKGROUND): #F5F5F5
     border-radius: 10px;
     flex: none;
     cursor: pointer;
-  }
+}
 
-  .remember_me_forgotten a {
+.remember_me_forgotten a {
     text-decoration: none;
-  }
+}
 
 
 
-  .guest_button:hover {
+.guest_button:hover {
     color: #29ABE2;
     border-color: #29ABE2;
     transition: color 225ms ease-in-out;
-  }
+}
 
-  .signup {
+.signup {
     position: absolute;
     top: 67px;
     right: 114px;
@@ -216,13 +236,13 @@ HELLGRAU (BACKGROUND): #F5F5F5
     justify-content: flex-end;
     align-items: center;
     gap: 35px;
-  }
+}
 
-  .signup p {
+.signup p {
     font-size: 25px;
-  }
+}
 
-  .signup_button {
+.signup_button {
     background-color: #2A3647;
     border: none;
     color: #fff;
@@ -230,37 +250,26 @@ HELLGRAU (BACKGROUND): #F5F5F5
     border-radius: 10px;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-  }
+}
 
-  .signup_button:hover {
+.signup_button:hover {
     background: #29ABE2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: background 225ms ease-in-out;
 }
 
 /* === MAIN CONTENT === */
-.main{
+.main {
     padding: 82px 116px 0 116px;
 }
 
-.main-container h1{
+.main-container h1 {
     font-size: 61px;
     font-weight: bold;
     margin: 0;
 }
 
-.main-container h2{
+.main-container h2 {
     font-size: 27px;
     font-weight: bold;
 }
-
-
-
-
-
-  
-  
-  
-
-
-
