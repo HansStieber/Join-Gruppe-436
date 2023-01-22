@@ -1,5 +1,6 @@
-<div class="content-new-task">
+<div id="content-new-task" class="content-new-task">
     <h1>Add Task</h1>
+    <img class="close-new-task d-none" src="assets/img/close_new_task_button.svg" alt="close">
     <form class="new-task-form">
 
         <!-- LEFT COLUMN -->
@@ -31,14 +32,16 @@
                     <div class="option">
                         <div id="select-category-container" class="select-container" onclick="openDropdownCategory()">
                             <span>Select task category</span><img class="dropdown-arrow"
-                                src="assets/img/arrow-select-dropdown.png">
+                                src="assets/img/arrow_select_dropdown.svg">
                         </div>
                     </div>
-                    <div id="create-new-category" class="option d-none selectable" onclick="createNewCategory()">
-                        <span>New Category</span>
+                    <div id="options" class="options">
+                        <div id="create-new-category" class="option d-none selectable" onclick="createNewCategory()">
+                            <span>New Category</span>
+                        </div>
                     </div>
                 </div>
-                <span class="alert-required" id="category-required">This field is required</span>
+                <span class="alert-required" id="category-required">Please enter a new category name first/span>
             </div>
 
             <!-- ASSIGN TO -->
@@ -48,15 +51,16 @@
                     <div class="option">
                         <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
                             <span>Select contacts to assign</span><img class="dropdown-arrow"
-                                src="assets/img/arrow-select-dropdown.png">
+                                src="assets/img/arrow_select_dropdown.svg">
                         </div>
                     </div>
-                    <div id="contacts-dropdown-container">
-
-                    </div>
-                    <div id="invite-new-contact" class="option d-none selectable last-option"
-                        onclick="inviteNewContact()">
-                        <span>Invite new contact</span>
+                    <div class="options">
+                        <div id="contacts-dropdown-container">
+                        </div>
+                        <div id="invite-new-contact" class="option d-none selectable last-option"
+                            onclick="inviteNewContact()">
+                            <span>Invite new contact</span>
+                        </div>
                     </div>
                 </div>
                 <span class="alert-required" id="category-required">This field is required</span>
@@ -75,7 +79,8 @@
                 <div id="due-date-container" class="options-container">
                     <div class="option">
                         <div id="select-date-container" class="select-container" onclick="openDateInput()">
-                            <span class="placeholder">dd/mm/yyyy</span><img class="calender-icon" src="assets/img/calender.png">
+                            <span class="placeholder">dd/mm/yyyy</span><img class="calender-icon"
+                                src="assets/img/calender.svg">
                         </div>
                     </div>
                 </div>
@@ -90,7 +95,7 @@
                             <div id="select-prio-container" class="select-container">
                                 <div class="prio">
                                     <span>Urgent</span>
-                                    <img src="assets/img/arrow-up.png" alt="arrow-up">
+                                    <img src="assets/img/arrow_up.svg" alt="arrow-up">
                                 </div>
                             </div>
                         </div>
@@ -100,7 +105,7 @@
                             <div id="select-prio-container" class="select-container">
                                 <div class="prio">
                                     <span>Medium</span>
-                                    <img src="assets/img/bars.png" alt="bars">
+                                    <img src="assets/img/bars.svg" alt="bars">
                                 </div>
                             </div>
                         </div>
@@ -110,7 +115,7 @@
                             <div id="select-prio-container" class="select-container">
                                 <div class="prio">
                                     <span>Low</span>
-                                    <img src="assets/img/arrow-down.png" alt="arrow down">
+                                    <img src="assets/img/arrow_down.svg" alt="arrow down">
                                 </div>
                             </div>
                         </div>

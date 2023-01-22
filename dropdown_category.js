@@ -17,26 +17,36 @@ let contacts = [
     },
     {
         'name': 'Sasha'
+    },
+    {
+        'name': 'Hans'
+    },
+    {
+        'name': 'Sasha'
     }
 ]
 
 
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
-function render() {
+
+function loadAllOptions() {
     loadCategoryOptions();
     loadAssignmentOptions();
 }
 
-
 function loadCategoryOptions() {
     for (let i = 0; i < categoryOptions.length; i++) {
         const option = categoryOptions[i];
-        if (i == categoryOptions.length - 1) {
+        if (lastCategoryOption(i)) {
             renderLastCategoryOption(option, i);
         } else {
             renderCategoryOptions(option, i);
         }
     }
+}
+
+function lastCategoryOption(i) {
+    return i == categoryOptions.length - 1;
 }
 
 
@@ -50,87 +60,103 @@ function loadAssignmentOptions() {
 
 /*----------- OPEN DROPDOWN MENU FOR CATEGORY SELECTION -----------*/
 function openDropdownCategory() {
+    loadAllOptions();
+    closeDropdownAssignment();
+    showCategoryOptions();
+    addCloseCategoriesFunction();
+}
+
+function showCategoryOptions() {
     for (let i = 0; i < categoryOptions.length; i++) {
         document.getElementById('c-option' + i).classList.remove('d-none');
     }
+    document.getElementById('create-new-category').classList.remove('d-none');
+}
 
-    let createNewCategory = document.getElementById('create-new-category');
-    createNewCategory.classList.remove('d-none');
-
-    let selectCategoryContainer = document.getElementById('select-category-container');
-    selectCategoryContainer.setAttribute('onclick', 'closeDropdownCategory()');
+function addCloseCategoriesFunction() {
+    document.getElementById('select-category-container').setAttribute('onclick', 'closeDropdownCategory()');
 }
 
 
 /*----------- CLOSE DROPDOWN MENU FOR CATEGORY SELECTION -----------*/
 function closeDropdownCategory() {
+    hideCategoryOptions();
+    addOpenCategoriesFunction();
+}
+
+function hideCategoryOptions() {
     for (let i = 0; i < categoryOptions.length; i++) {
         document.getElementById('c-option' + i).classList.add('d-none');
     }
+    document.getElementById('create-new-category').classList.add('d-none');
+}
 
-    let createNewCategory = document.getElementById('create-new-category');
-    createNewCategory.classList.add('d-none');
-
-    let selectCategoryContainer = document.getElementById('select-category-container');
-    selectCategoryContainer.setAttribute('onclick', 'openDropdownCategory()');
+function addOpenCategoriesFunction() {
+    document.getElementById('select-category-container').setAttribute('onclick', 'openDropdownCategory()');
 }
 
 
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
 function createNewCategory() {
-    openInputField();
+    showInputField();
+    hideCategories();
     closeDropdownCategory();
 }
 
 
-function openInputField() {
-    let newCategoryInput = document.getElementById('new-category');
-    newCategoryInput.classList.remove('d-none');
+function showInputField() {
+    document.getElementById('new-category').classList.remove('d-none');
+    document.getElementById('new-category-container').classList.remove('d-none');
+}
 
-    let newCategoryContainer = document.getElementById('new-category-container');
-    newCategoryContainer.classList.remove('d-none');
-
-    let categoryOptionsContainer = document.getElementById('category-options-container');
-    categoryOptionsContainer.classList.add('d-none');
+function hideCategories() {
+    document.getElementById('category-options-container').classList.add('d-none');
 }
 
 
 /*----------- OPEN DROPDOWN MENU FOR ASSIGNMENT -----------*/
 function openDropdownAssignment() {
+    loadAllOptions();
+    closeDropdownCategory();
+    showAssignmentOptions();
+    addCloseContactsFunction();
+}
+
+function showAssignmentOptions() {
     for (let i = 0; i < contacts.length; i++) {
         document.getElementById('a-option' + i).classList.remove('d-none');
     }
-
-    let inviteNewContact = document.getElementById('invite-new-contact');
-    inviteNewContact.classList.remove('d-none');
-
-    let selectContactContainer = document.getElementById('select-contact-container');
-    selectContactContainer.setAttribute('onclick', 'closeDropdownAssignment()');
+    document.getElementById('invite-new-contact').classList.remove('d-none');
 }
+
+function addCloseContactsFunction() {
+    document.getElementById('select-contact-container').setAttribute('onclick', 'closeDropdownAssignment()');
+} 
 
 
 /*----------- CLOSE DROPDOWN MENU FOR ASSIGNMENT -----------*/
 function closeDropdownAssignment() {
+    hideAssignmentOptions();
+    addOpenContactsFunktion();
+}
+
+function hideAssignmentOptions() {
     for (let i = 0; i < contacts.length; i++) {
         document.getElementById('a-option' + i).classList.add('d-none');
     }
-
-    let inviteNewContact = document.getElementById('invite-new-contact');
-    inviteNewContact.classList.add('d-none');
-
-    let selectContactContainer = document.getElementById('select-contact-container');
-    selectContactContainer.setAttribute('onclick', 'openDropdownAssignment()');
+    document.getElementById('invite-new-contact').classList.add('d-none');
 }
 
-
+function addOpenContactsFunktion() {
+    document.getElementById('select-contact-container').setAttribute('onclick', 'openDropdownAssignment()');
+}
 
 
 /*----------- TEMPLATES -----------*/
 
 /*----------- TEMPLATES FOR CATEGORY SELECTION -----------*/
 function renderCategoryOptions(option, i) {
-    let categoriesContainer = document.getElementById('category-options-container');
-    categoriesContainer.innerHTML += `
+    document.getElementById('options').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable">
         <span>${option['name']}</span>
     </div>
@@ -139,8 +165,7 @@ function renderCategoryOptions(option, i) {
 
 
 function renderLastCategoryOption(option, i) {
-    let categoriesContainer = document.getElementById('category-options-container');
-    categoriesContainer.innerHTML += `
+    document.getElementById('options').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable last-option">
         <span>${option['name']}</span>
     </div>
@@ -150,8 +175,7 @@ function renderLastCategoryOption(option, i) {
 
 /*----------- TEMPLATES FOR ASSIGNING CONTACT -----------*/
 function renderAssignmentOptions(option, i) {
-    let contactsContainer = document.getElementById('contacts-dropdown-container');
-    contactsContainer.innerHTML += `
+    document.getElementById('contacts-dropdown-container').innerHTML += `
     <div id="${'a-option' + i}" class="option d-none selectable">
         <span>${option['name']}</span>
     </div>
