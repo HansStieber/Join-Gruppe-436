@@ -46,11 +46,23 @@
     background-color: white;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+
  }
 
  [class*="col-" ]:hover{
     background-color:#2A3647;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: white;
+    transition: 100ms ease-in-out;
+ }
+
+ [class*="col-" ]:active{
+    background-color:white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: black;
+    transition: 100ms ease-in-out;
  }
 
 .col-1{
@@ -79,23 +91,38 @@
 .pencil-image{
     height: 70px;
     width: 70px;
-    background-image: url(../img/pencil.png);
+    background-image: url(../assets/img/pencil.svg);
     margin-right: 32px;
+    transition: 100ms ease-in-out;
 }
 
 .col-2:hover .pencil-image{
-    background-image: url(../img/lightpencil.png);
+    background-image: url(../assets/img/lightpencil.svg);
+    transition: 100ms ease-in-out;
+}
+
+.col-2:active .pencil-image{
+    background-image: url(../assets/img/pencil.svg);
+    transition: 100ms ease-in-out;
 }
 
 .tick-image{
     height: 70px;
     width: 70px;
-    background-image: url(../img/tick.png);
+    background-image: url(../assets/img/tick.svg);
     margin-right: 32px;
+    transition: 100ms ease-in-out;
 }
 
 .col-2:hover .tick-image{
-    background-image: url(../img/lighttick.png);
+    background-image: url(../assets/img/lighttick.svg);
+    transition: 100ms ease-in-out;
+
+}
+
+.col-2:active .tick-image{
+    background-image: url(../assets/img/tick.svg);
+    transition: 100ms ease-in-out;
 }
 
 .bold{

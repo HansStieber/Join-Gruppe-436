@@ -23,6 +23,7 @@ header {
 }
 
 .icons-header>img {
+    height: 51px;
     border-radius: 100%;
     border: 3px solid #2A3647;
 }
