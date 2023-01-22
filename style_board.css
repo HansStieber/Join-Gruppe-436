@@ -153,7 +153,7 @@
 .cards-column-main {
     display: flex;
     flex-direction: column;
-    width: 22.5%;
+    width: 250px;
 }
 
 .card-column {
@@ -239,7 +239,7 @@
     height: 0px;
 }
 
-@media(max-width:400px) {
+@media(max-width:1000px) {
 
     .mobile-d-none {
         display: none;
@@ -258,7 +258,7 @@
         height: 2.5em;
     }
 
-    .add-task-btn-mobile:hover {
+    .add-task-btn-mobile:active {
         background-image: url(img/add-task-btn-mobile-blue.png);
         background-repeat: no-repeat;
 
@@ -307,7 +307,7 @@
     }
 
     .cards-column-main {
-        width: 80%;
+        width: 24em;
     }
 
     .cards-category {
