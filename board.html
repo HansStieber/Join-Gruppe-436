@@ -4,6 +4,7 @@
 <head>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_new_task_template.css">
     <link rel="stylesheet" href="style_sidebar.css">
     <link rel="stylesheet" href="style_header.css">
     <link rel="stylesheet" href="style_board.css">
@@ -22,8 +23,31 @@
 
 </head>
 
+<script>
+    function showNewTaskCard() {
+        let shadowScreen = document.getElementById('shadow-screen');
+        shadowScreen.classList.remove('d-none');
+        let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+        newTaskCloseBtn.classList.remove('d-none');
+        let newTask = document.getElementById('content-new-task');
+        newTask.classList.add('new-task-slide-in');
+    }
+
+    function hideNewTaskCard() {
+        let shadowScreen = document.getElementById('shadow-screen');
+        shadowScreen.classList.add('d-none');
+        let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+        newTaskCloseBtn.classList.add('d-none');
+        let newTask = document.getElementById('content-new-task');
+        newTask.classList.remove('new-task-slide-in');
+    }
+</script>
+
 <body onload="init()">
     <div class="body2">
+        <div id="shadow-screen" class="shadow-screen d-none">
+            <div w3-include-html="./templates/new_task.html"></div>
+        </div>
         <!-- NAVBAR -->
         <div class="mobile-d-none" w3-include-html="./templates/sidebar.html"></div>
 
@@ -38,7 +62,7 @@
                     <span class="kanban-mobile-span d-none">Kanban Project Management Tool</span>
                     <div class="mobile-headline-div">
                         <h1>Board</h1>
-                        <div class="add-task-btn-mobile">
+                        <div onclick="showNewTaskCard()" class="add-task-btn-mobile">
                         </div>
                     </div>
                     <div class="d-flex">
@@ -50,7 +74,7 @@
                             </div>
                             <input type="text" placeholder="Find Task" class="board-input">
                         </div>
-                        <div class="add-task-btn">
+                        <div onclick="showNewTaskCard()" class="add-task-btn">
                         </div>
                     </div>
                 </div>

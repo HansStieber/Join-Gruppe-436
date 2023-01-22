@@ -239,6 +239,29 @@
     height: 0px;
 }
 
+.shadow-screen {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+    background-color: #b8b9ba9c;
+}
+
+.new-task-card {
+    background-color: white;
+    width: 1116px;
+    border: solid 1px lightgrey;
+    position: absolute;
+    top: 20%;
+    left: 101%;
+}
+
+.new-task-slide-in {
+    left: 30%;
+}
+
 @media(max-width:1000px) {
 
     .mobile-d-none {
