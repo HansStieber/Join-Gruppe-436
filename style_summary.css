@@ -48,8 +48,12 @@
     border-radius: 30px;
     cursor: pointer;
     transition: 100ms ease-in-out;
-
+    text-decoration: none;
  }
+
+ [class*="col-" ]:visited{
+    color: black;
+}
 
  [class*="col-" ]:hover{
     background-color:#2A3647;
