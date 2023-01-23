@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +17,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_sidebar.css">
     <link rel="stylesheet" href="style_header.css">
+    <link rel="stylesheet" href="style_contacts.css">
     <link rel="stylesheet" href="style_add_contact.css">
 
     <link rel="icon" type="image/x-icon" href="./img/join-logo.png">
@@ -25,21 +32,70 @@
         <div class="content">
             <!-- HEADER -->
             <div w3-include-html="./templates/header.html"></div>
-            
+
             <!-- MAIN CONTENT -->
-            <main class="main">
-   
+
+
+
+            <div class="contacts-outer-div">
+
+                <div class="contacts-slide-bar">
+                </div>
+
+                <div class="contacts-right-div">
+                    <div class="contacts-head">
+                        <h1>Contacts</h1>
+                        <div class="contacts-bar-img"><img src="img/blue-bar.svg"></div><span>Better with a team</span>
+                    </div>
+
+                    <div class="contacts-big-card">
+                        <div>
+                            <div class="big-card-head">
+                                <div class="contact-initials-big"><span>AM</span></div>
+                                <div class="big-card-name-div">
+                                    <span>Anton Mayer</span>
+
+                                    <div class="big-card-add-task">
+                                        <div class="big-card-plus-img">
+                                            <img src="img/plus-blue-no-border.svg">
+                                        </div>
+                                        <span>Add Task</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="big-card-info">
+                            <span>Contact Information</span>
+                            <div class="edit-contact">
+                                <div class="pencil-img"></div><span>Edit Contact</span>
+                            </div>
+                        </div>
+                        <div class="big-card-mail-phone">
+                            <div class="mail-phone">
+                                <span>Email</span>
+                                <a style="text-decoration-line: none;" href="#">antom@gmail.com</a>
+                            </div>
+                            <div class="mail-phone">
+                                <span>Phone</span>
+                                <span>+49 8569 455 85 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
 
 
 
-            </main>
+
+
         </div>
-    </div>
 
-    <!-- TEMPLATE ADD/EDIT CONTACT -->
-    <div w3-include-html="./templates/add_contact.html"></div>
-    <div w3-include-html="./templates/edit_contact.html"></div>
+        <!-- TEMPLATE ADD/EDIT CONTACT -->
+        <!-- <div w3-include-html="./templates/add_contact.html"></div>
+        <div w3-include-html="./templates/edit_contact.html"></div>-->
 
 
 </body>

@@ -1,0 +1,133 @@
+.contacts-outer-div {
+    display: flex;
+    height: calc(100vh - 89px);
+    overflow: auto;
+}
+
+.contacts-slide-bar {
+    width: 453px;
+    background-color: grey;
+}
+
+.contacts-right-div {
+    padding-left: 60px;
+    padding-top: 80px;
+}
+
+.contacts-head {
+    display: flex;
+    align-items: center;
+}
+
+.contacts-head h1 {
+    margin: 0px;
+    font-size: 70px;
+}
+
+.contacts-head span {
+    font-size: 27px;
+}
+
+.contacts-bar-img {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.contacts-big-card {
+    margin-top: 80px;
+}
+
+.contact-initials-big {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    background-color: #FF7A00;
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px 2px rgba(188, 188, 188, 0.496);
+}
+
+.contact-initials-big span {
+    color: white;
+    font-weight: 500;
+    font-size: 47px;
+
+}
+
+.big-card-head {
+    display: flex;
+    align-items: center;
+}
+
+.big-card-name-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 55px;
+}
+
+.big-card-name-div span:nth-child(1) {
+    font-weight: 500;
+    font-size: 47px;
+}
+
+.big-card-add-task {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: #29ABE2;
+    font-size: 17px;
+}
+
+.big-card-add-task span {
+    margin-left: 15px;
+}
+
+.big-card-plus-img {
+    width: 15px;
+}
+
+.big-card-info {
+    display: flex;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.big-card-info span:nth-child(1) {
+    font-size: 21px;
+}
+
+.edit-contact {
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    margin-left: 60px;
+}
+
+.pencil-img {
+    width: 30px;
+    height: 30px;
+    background-image: url(img/pencil.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.big-card-mail-phone {
+    margin-top: 43px;
+}
+
+.big-card-mail-phone:nth-child(4) {
+    font-weight: 700;
+}
+
+.mail-phone {
+    margin-bottom: 22px;
+}
+
+.mail-phone span:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    margin-bottom: 15px;
+}

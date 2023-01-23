@@ -1,3 +1,9 @@
+.board-outer-div {
+    max-width: 1260px;
+    height: calc(100vh - 89px);
+    overflow: auto;
+}
+
 .board {
     display: flex;
     flex-direction: column;
@@ -10,10 +16,6 @@
 
 .transition-125 {
     transition: all 125ms ease-in-out;
-}
-
-.board-outer-div {
-    max-width: 1260px;
 }
 
 .kanban-mobile-span {
@@ -238,7 +240,7 @@
 }
 
 .shadow-screen {
-    overflow: hidden;
+    overflow: auto;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -365,6 +367,12 @@
 }
 
 
+@media(max-height:985px) {
+    .center-new-task-card {
+        align-items: start;
+    }
+}
+
 @media(max-width:1000px) {
 
     .mobile-d-none {
@@ -378,14 +386,14 @@
 
     .add-task-btn-mobile {
         cursor: pointer;
-        background-image: url(img/add-task-btn-mobile.png);
+        background-image: url(img/add-task-btn-mobile.svg);
         background-repeat: no-repeat;
         width: 2.5em;
         height: 2.5em;
     }
 
     .add-task-btn-mobile:active {
-        background-image: url(img/add-task-btn-mobile-blue.png);
+        background-image: url(img/add-task-btn-mobile-blue.svg);
         background-repeat: no-repeat;
 
     }
