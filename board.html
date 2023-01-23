@@ -85,154 +85,161 @@
             <div class="mobile-d-none" w3-include-html="./templates/header.html"></div>
 
             <!-- MAIN CONTENT -->
-            <div class="board">
+            <div class="board-outer-div">
+                <div class="board">
 
-                <div class="board-head-div">
-                    <span class="kanban-mobile-span d-none">Kanban Project Management Tool</span>
-                    <div class="mobile-headline-div">
-                        <h1>Board</h1>
-                        <div onclick="showNewTaskCard()" class="add-task-btn-mobile">
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="board-input-div">
-                            <div class="input-img">
-                                <div class="input-img-inner">
-                                    <img src="img/loup.svg">
-                                </div>
+                    <div class="board-head-div">
+                        <span class="kanban-mobile-span d-none">Kanban Project Management Tool</span>
+                        <div class="mobile-headline-div">
+                            <h1>Board</h1>
+                            <div onclick="showNewTaskCard()" class="add-task-btn-mobile">
                             </div>
-                            <input type="text" placeholder="Find Task" class="board-input">
                         </div>
-                        <div onclick="showNewTaskCard()" class="add-task-btn">
+                        <div class="d-flex">
+                            <div class="board-input-div">
+                                <div class="input-img">
+                                    <div class="input-img-inner">
+                                        <img src="img/loup.svg">
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="Find Task" class="board-input">
+                            </div>
+                            <div onclick="showNewTaskCard()" class="add-task-btn">
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-            </div>
+                <div class="cards-div">
+                    <div class="cards-column-main">
 
-            <div class="cards-div">
-                <div class="cards-column-main">
-
-                    <div class="cards-category">
-                        <span>To do</span>
-                        <div class="plus-btn"></div>
-                    </div>
-                    <div class="card-column">
-                        <div class="card">
-                            <div class="card-name" style="background-color:#FF7A00;;">Designs</div>
-                            <div class="card-text">
-                                <span class="card-headline">Website redesign</span>
-                                <span class="card-info">Modify the Content of the main Website...</span>
-                                <div class="progress-div">
-                                    <div class="progress-bar">
+                        <div class="cards-category">
+                            <span>To do</span>
+                            <div class="plus-btn"></div>
+                        </div>
+                        <div class="card-column">
+                            <div class="card">
+                                <div class="card-name" style="background-color:#FF7A00;;">Designs</div>
+                                <div class="card-text">
+                                    <span class="card-headline">Website redesign</span>
+                                    <span class="card-info">Modify the Content of the main Website...</span>
+                                    <div class="progress-div">
+                                        <div class="progress-bar">
+                                        </div>
+                                        <span>1/2 Done</span>
                                     </div>
-                                    <span>1/2 Done</span>
                                 </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="user-icons">
-                                    <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                    <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                <div class="card-bottom">
+                                    <div class="user-icons">
+                                        <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                        <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                        </div>
+                                        <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
+                                        </div>
                                     </div>
-                                    <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                                    <div><img src="img/arrow-down.svg"></div>
                                 </div>
-                                <div><img src="img/arrow-down.svg"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="cards-column-main">
-                    <div class="cards-category">
-                        <span>In progress</span>
-                        <div class="plus-btn"></div>
-                    </div>
-                    <div class="card-column">
-                        <div class="card">
-                            <div class="card-name" style="background-color: #FC71FF;">Sales</div>
-                            <div class="card-text">
-                                <span class="card-headline">Call potencial clients</span>
-                                <span class="card-info">Make the product presentation to prospective buyers</span>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="user-icons">
-                                    <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                    <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                    </div>
-                                    <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                    <div class="cards-column-main">
+                        <div class="cards-category">
+                            <span>In progress</span>
+                            <div class="plus-btn"></div>
+                        </div>
+                        <div class="card-column">
+                            <div class="card">
+                                <div class="card-name" style="background-color: #FC71FF;">Sales</div>
+                                <div class="card-text">
+                                    <span class="card-headline">Call potencial clients</span>
+                                    <span class="card-info">Make the product presentation to prospective buyers</span>
                                 </div>
-                                <div><img src="img/arrow-up.svg"></div>
+                                <div class="card-bottom">
+                                    <div class="user-icons">
+                                        <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                        <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                        </div>
+                                        <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
+                                        </div>
+                                    </div>
+                                    <div><img src="img/arrow-up.svg"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="cards-column-main">
-                    <div class="cards-category">
-                        <span>Awaiting Feedback</span>
-                        <div class="plus-btn"></div>
-                    </div>
-                    <div class="card-column">
-                        <div class="card">
-                            <div class="card-name" style="background-color: #1FD7C1;">Backoffice</div>
-                            <div class="card-text">
-                                <span class="card-headline">Accounting invoices</span>
-                                <span class="card-info">Write open invoices for customer</span>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="user-icons">
-                                    <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                    <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                    </div>
-                                    <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
+                    <div class="cards-column-main">
+                        <div class="cards-category">
+                            <span>Awaiting Feedback</span>
+                            <div class="plus-btn"></div>
+                        </div>
+                        <div class="card-column">
+                            <div class="card">
+                                <div class="card-name" style="background-color: #1FD7C1;">Backoffice</div>
+                                <div class="card-text">
+                                    <span class="card-headline">Accounting invoices</span>
+                                    <span class="card-info">Write open invoices for customer</span>
                                 </div>
-                                <div><img src="img/bars.svg"></div>
+                                <div class="card-bottom">
+                                    <div class="user-icons">
+                                        <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                        <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                        </div>
+                                        <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
+                                        </div>
+                                    </div>
+                                    <div><img src="img/bars.svg"></div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-name" style="background-color: #FFC701;">Media</div>
+                                <div class="card-text">
+                                    <span class="card-headline">Video cut</span>
+                                    <span class="card-info">Edit the new company video</span>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="user-icons">
+                                        <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                        <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                        </div>
+                                        <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
+                                        </div>
+                                    </div>
+                                    <div><img src="img/bars.svg"></div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="card">
-                            <div class="card-name" style="background-color: #FFC701;">Media</div>
-                            <div class="card-text">
-                                <span class="card-headline">Video cut</span>
-                                <span class="card-info">Edit the new company video</span>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="user-icons">
-                                    <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                    <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                    </div>
-                                    <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
-                                </div>
-                                <div><img src="img/bars.svg"></div>
-                            </div>
+                    </div>
+                    <div class="cards-column-main">
+                        <div class="cards-category">
+                            <span>Done</span>
+                            <div class="plus-btn"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="cards-column-main">
-                    <div class="cards-category">
-                        <span>Done</span>
-                        <div class="plus-btn"></div>
-                    </div>
-                    <div class="card-column">
-                        <div class="card">
-                            <div class="card-name" style="background-color: #0037F8;">Marketing</div>
-                            <div class="card-text">
-                                <span class="card-headline">Social media strategy</span>
-                                <span class="card-info">Develop an ad campaign for brand positioning</span>
-                                <div class="progress-div">
-                                    <div class="progress-bar " style="background-color: #29ABE2;">
+                        <div class="card-column">
+                            <div class="card">
+                                <div class="card-name" style="background-color: #0037F8;">Marketing</div>
+                                <div class="card-text">
+                                    <span class="card-headline">Social media strategy</span>
+                                    <span class="card-info">Develop an ad campaign for brand positioning</span>
+                                    <div class="progress-div">
+                                        <div class="progress-bar " style="background-color: #29ABE2;">
+                                        </div>
+                                        <span>3/3 Done</span>
                                     </div>
-                                    <span>3/3 Done</span>
                                 </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="user-icons">
-                                    <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                    <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                <div class="card-bottom">
+                                    <div class="user-icons">
+                                        <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
+                                        <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
+                                        </div>
+                                        <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
+                                        </div>
                                     </div>
-                                    <div class="user-icon" style="background:#000000;left:60px"><span>+2</span></div>
-                                </div>
-                                <div><img src="img/arrow-down.svg"></div>
+                                    <div><img src="img/arrow-down.svg"></div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
