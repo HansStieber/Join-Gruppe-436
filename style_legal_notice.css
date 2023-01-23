@@ -1,0 +1,7 @@
+/* === Styling for smartphones === */
+
+@media (max-width: 768px) {
+    .main {
+        font-size: 16px;
+    }
+}
