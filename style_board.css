@@ -79,7 +79,7 @@
 }
 
 .add-task-btn {
-    background-image: url(img/add-task-btn.png);
+    background-image: url(img/add-task-btn.svg);
     background-repeat: no-repeat;
     cursor: pointer;
     width: 143px;
@@ -87,7 +87,7 @@
 }
 
 .add-task-btn:hover {
-    background-image: url(img/add-task-btn-blue.png);
+    background-image: url(img/add-task-btn-blue.svg);
     background-repeat: no-repeat;
 }
 
@@ -106,14 +106,14 @@
 }
 
 .plus-btn {
-    background-image: url(/img/plus-btn-default.png);
+    background-image: url(/img/plus-btn-default.svg);
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
 }
 
 .plus-btn:hover {
-    background-image: url(/img/plus-btn-blue.png);
+    background-image: url(/img/plus-btn-blue.svg);
     background-repeat: no-repeat;
 }
 
@@ -295,8 +295,6 @@
     justify-content: center;
     align-items: center;
 }
-
-
 
 .new-task-card {
     transition: all 225ms ease-in-out;
