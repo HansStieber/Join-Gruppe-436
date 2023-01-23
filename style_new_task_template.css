@@ -56,6 +56,7 @@ h1 {
 .content-new-task {
     position: relative;
     width: 1116px;
+    height: 914px;
     padding: 65px 75px 75px 75px;
     border-radius: 30px;
 }
@@ -257,6 +258,45 @@ input[type='date']:hover {
     padding-right: 10px;
 }
 
+/* === Styling of submit/clear button === */
+
+.clear-form {
+    position: absolute;
+    top: 781px;
+    left: 703px;
+    width: 136px;
+    height: 61px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 21px;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+}
+
+.clear-form:hover {
+    cursor: pointer;
+    padding: 14px;
+    border: 2px solid #69a8ff;
+    color: #69a8ff;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.5);;
+}
+
+#cancel-icon {
+    background-image: url('assets/img/close_new_task_button.svg');
+    background-position: center;
+    width: 22px;
+    height: 22px;
+}
+
+input[type='submit'] {
+    position: absolute;
+    top: 781px;
+    left: 864px;
+    width: 177px;
+    height: 61px;
+}
 
 /* === Styling for smaller Screens === */
 

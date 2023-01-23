@@ -26,6 +26,17 @@ let contacts = [
     }
 ]
 
+/*----------- BUTTON HOVER EFFECTS -----------*/
+function turnIconLightblue() {
+    let icon = document.getElementById('cancel-icon');
+    icon.setAttribute("style", "background-image: url('assets/img/close_new_task_button_lightblue.svg');");
+}
+
+function turnIconDarkblue() {
+    let icon = document.getElementById('cancel-icon');
+    icon.setAttribute("style", "background-image: url('assets/img/close_new_task_button.svg');");
+}
+
 
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
 function loadAllOptions() {
@@ -130,7 +141,7 @@ function showAssignmentOptions() {
 
 function addCloseContactsFunction() {
     document.getElementById('select-contact-container').setAttribute('onclick', 'closeDropdownAssignment()');
-} 
+}
 
 
 /*----------- CLOSE DROPDOWN MENU FOR ASSIGNMENT -----------*/
