@@ -84,6 +84,7 @@ h1 {
     display: flex;
     flex-direction: column;
     margin-bottom: 14px;
+    position: relative;
 }
 
 .alert-required {
@@ -177,6 +178,42 @@ textarea::-webkit-scrollbar-thumb {
 .options {
     max-height: 100px;
     overflow: auto;
+}
+
+/* === Styling of new category input === */
+.new-category-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 25px;
+}
+
+.left-pos {
+    right: 55px;
+}
+
+.border-small {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 30px;
+    border: 1px solid #2A3647;
+}
+
+.mid-pos {
+    right: 45px;
+}
+
+.right-pos {
+    right: 15px;
+    filter: invert(1);
+}
+
+.new-category-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 /* === Styling of scrollbars for dropdown selection input fields === */
@@ -370,19 +407,6 @@ input[type='date']:hover {
 /* === Styling for smaller screens/tablets === */
 
 @media (max-width: 992px) {
-    .content-new-task {
-        padding: 40px;
-    }
-
-    .button-container {
-        padding: 20px 0 42px 0;
-    }
-}
-
-
-/* === Styling for smartphones === */
-
-@media (max-width: 992px) {
     .mobile-description {
         display: unset;
     }
@@ -402,6 +426,10 @@ input[type='date']:hover {
 
     .alert-required {
         display: none;
+    }
+
+    .button-container {
+        padding: 20px 0 42px 0;
     }
 }
 

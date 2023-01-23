@@ -10,23 +10,6 @@ let categoryOptions = [
     }
 ];
 
-
-let contacts = [
-    {
-        'name': 'Hans'
-    },
-    {
-        'name': 'Sasha'
-    },
-    {
-        'name': 'Hans'
-    },
-    {
-        'name': 'Sasha'
-    }
-]
-
-
 let tasks = [];
 
 
@@ -68,7 +51,9 @@ function lastCategoryOption(i) {
 function loadAssignmentOptions() {
     for (let i = 0; i < contacts.length; i++) {
         const option = contacts[i];
-        renderAssignmentOptions(option, i);
+        if (option.phone) {
+            renderAssignmentOptions(option, i);
+        }
     }
 }
 
@@ -118,7 +103,6 @@ function createNewCategory() {
     closeDropdownCategory();
 }
 
-
 function showInputField() {
     document.getElementById('new-category').classList.remove('d-none');
     document.getElementById('new-category-container').classList.remove('d-none');
@@ -126,6 +110,20 @@ function showInputField() {
 
 function hideCategories() {
     document.getElementById('category-options-container').classList.add('d-none');
+}
+
+function closeNewCategory() {
+    hideInputField();
+    showCategorySelection();
+}
+
+function hideInputField() {
+    document.getElementById('new-category').classList.add('d-none');
+    document.getElementById('new-category-container').classList.add('d-none');
+}
+
+function showCategorySelection() {
+    document.getElementById('category-options-container').classList.remove('d-none');
 }
 
 
@@ -213,7 +211,7 @@ function renderLastCategoryOption(option, i) {
 function renderAssignmentOptions(option, i) {
     document.getElementById('contacts-dropdown-container').innerHTML += `
     <div id="${'a-option' + i}" class="option d-none selectable">
-        <span>${option['name']}</span>
+        <span>${option.firstName + ' ' + option.lastName}</span>
     </div>
 `;
 }
