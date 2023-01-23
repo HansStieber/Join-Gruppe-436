@@ -26,6 +26,10 @@ let contacts = [
     }
 ]
 
+
+let tasks = [];
+
+
 /*----------- BUTTON HOVER EFFECTS -----------*/
 function turnIconLightblue() {
     let icon = document.getElementById('cancel-icon');
@@ -54,6 +58,7 @@ function loadCategoryOptions() {
         }
     }
 }
+
 
 function lastCategoryOption(i) {
     return i == categoryOptions.length - 1;
@@ -150,6 +155,7 @@ function closeDropdownAssignment() {
     addOpenContactsFunktion();
 }
 
+
 function hideAssignmentOptions() {
     for (let i = 0; i < contacts.length; i++) {
         document.getElementById('a-option' + i).classList.add('d-none');
@@ -160,6 +166,26 @@ function hideAssignmentOptions() {
 function addOpenContactsFunktion() {
     document.getElementById('select-contact-container').setAttribute('onclick', 'openDropdownAssignment()');
 }
+
+
+
+
+
+
+/*----------- FUNCTIONS TO ADD TASK -----------*/
+function addToTasks() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+
+    let task = {
+        'title': title.value,
+        'description': description.value
+    };
+
+    tasks.push(task);
+    console.log(tasks);
+}
+
 
 
 /*----------- TEMPLATES -----------*/

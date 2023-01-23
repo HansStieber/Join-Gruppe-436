@@ -3,7 +3,7 @@
     <h1>Add Task</h1>
     <img onclick="hideNewTaskCard()" id="new-task-close-btn" class="close-new-task d-none"
         src="assets/img/close_new_task_button.svg" alt="close">
-    <form class="new-task-form">
+    <form class="new-task-form" onsubmit="addToTasks()">
 
         <!-- LEFT COLUMN -->
         <div class="column">
@@ -28,7 +28,7 @@
                 <span class="label">Category</span>
                 <div id="new-category-container" class="field-container d-none">
                     <input type="text" id="new-category" name="new-category" class="d-none"
-                        placeholder="New category name" required>
+                        placeholder="New category name">
                 </div>
                 <div id="category-options-container" class="options-container">
                     <div class="option">
@@ -125,7 +125,12 @@
             </div>
 
         </div>
-        <div id="clear-form" class="clear-form" onmouseover="turnIconLightblue()" onmouseout="turnIconDarkblue()"><span>Cancel</span><div id="cancel-icon"></div></div>
-        <input id="submit" type="submit"></input>
+        <div class="button-container">
+            <div id="clear-form" class="clear-form" onmouseover="turnIconLightblue()" onmouseout="turnIconDarkblue()">
+                <span>Cancel</span>
+                <div id="cancel-icon"></div>
+            </div>
+            <input id="submit" type="submit"></input>
+        </div>
     </form>
 </div>

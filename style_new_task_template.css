@@ -64,6 +64,7 @@ h1 {
 .new-task-form {
     display: flex;
     margin-top: 41px;
+    width: 100%;
 }
 
 .border {
@@ -259,11 +260,15 @@ input[type='date']:hover {
 }
 
 /* === Styling of submit/clear button === */
+.button-container {
+    display: flex;
+    justify-content: right;
+}
 
 .clear-form {
     position: absolute;
-    top: 781px;
-    left: 703px;
+    right: 280px;
+    bottom: 71px;
     width: 136px;
     height: 61px;
     padding: 15px;
@@ -292,10 +297,11 @@ input[type='date']:hover {
 
 input[type='submit'] {
     position: absolute;
-    top: 781px;
-    left: 864px;
+    right: 75px;
+    bottom: 71px;
     width: 177px;
     height: 61px;
+    margin: 0;
 }
 
 /* === Styling for smaller Screens === */
@@ -303,6 +309,10 @@ input[type='submit'] {
 @media (max-width: 1450px) {
     h1 {
         margin-bottom: 41px;
+    }
+
+    .content-new-task {
+        max-width: 900px;
     }
 
     .new-task-form {
@@ -319,8 +329,16 @@ input[type='submit'] {
 
     .column {
         width: 100%;
-        max-width: 700px;
-        height: 100%;
+        height: unset;
+    }
+
+    .button-container {
+        padding: 20px 0 82px 0;
+    }
+
+    .clear-form, input[type='submit'] {
+        position: unset;
+        margin-left: 30px;
     }
 }
 
