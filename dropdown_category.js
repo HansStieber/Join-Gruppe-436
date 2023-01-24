@@ -1,22 +1,12 @@
-let categoryOptions = [
-    {
-        'name': 'General Topic'
-    },
-    {
-        'name': 'example'
-    },
-    {
-        'name': 'example'
-    }
-];
-
 let tasks = [];
+let categories = [];
 
 
 /*----------- FUNCTION CREATE NEW TASK -----------*/
 function createNewTask() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
+    let category = document.get
 
     let date = document.getElementById('date').value;
 
@@ -25,9 +15,17 @@ function createNewTask() {
     tasks.push(newTask);
 
     console.log(tasks);
+    clearAllInputFields();
+}
+
+function clearAllInputFields() {
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('date').value = '';
 }
 
 
+/*----------- HOVER EFFECTS PRIORITY BUTTONS -----------*/
 function hover(id, path) {
     document.getElementById('prio-' + id).src = `assets/img/${path}_hover.svg`;
 }
@@ -44,8 +42,8 @@ function loadAllOptions() {
 }
 
 function loadCategoryOptions() {
-    for (let i = 0; i < categoryOptions.length; i++) {
-        const option = categoryOptions[i];
+    for (let i = 0; i < categories.length; i++) {
+        const option = categories[i];
         if (lastCategoryOption(i)) {
             renderLastCategoryOption(option, i);
         } else {
@@ -56,7 +54,7 @@ function loadCategoryOptions() {
 
 
 function lastCategoryOption(i) {
-    return i == categoryOptions.length - 1;
+    return i == categories.length - 1;
 }
 
 
@@ -79,7 +77,7 @@ function openDropdownCategory() {
 }
 
 function showCategoryOptions() {
-    for (let i = 0; i < categoryOptions.length; i++) {
+    for (let i = 0; i < categories.length; i++) {
         document.getElementById('c-option' + i).classList.remove('d-none');
     }
     document.getElementById('create-new-category').classList.remove('d-none');
@@ -97,7 +95,7 @@ function closeDropdownCategory() {
 }
 
 function hideCategoryOptions() {
-    for (let i = 0; i < categoryOptions.length; i++) {
+    for (let i = 0; i < categories.length; i++) {
         document.getElementById('c-option' + i).classList.add('d-none');
     }
     document.getElementById('create-new-category').classList.add('d-none');
@@ -111,6 +109,7 @@ function addOpenCategoriesFunction() {
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
 function createNewCategory() {
     showInputField();
+    showColorSelection();
     hideCategories();
     closeDropdownCategory();
 }
@@ -118,6 +117,10 @@ function createNewCategory() {
 function showInputField() {
     document.getElementById('new-category').classList.remove('d-none');
     document.getElementById('new-category-container').classList.remove('d-none');
+}
+
+function showColorSelection() {
+    document.getElementById('color-selection-container').classList.remove('d-none');
 }
 
 function hideCategories() {
@@ -130,12 +133,24 @@ function closeNewCategory() {
 }
 
 function hideInputField() {
+    document.getElementById('new-category').value = '';
     document.getElementById('new-category').classList.add('d-none');
     document.getElementById('new-category-container').classList.add('d-none');
 }
 
 function showCategorySelection() {
     document.getElementById('category-options-container').classList.remove('d-none');
+}
+
+/*----------- ADD NEW CATEGORY -----------*/
+function addNewCategory() {
+    let title = document.getElementById('new-category').value;
+
+    let newCategory = new Category(title);
+
+    categories.push(newCategory);
+
+    console.log(categories);
 }
 
 
@@ -204,7 +219,7 @@ function addToTasks() {
 function renderCategoryOptions(option, i) {
     document.getElementById('options').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable">
-        <span>${option['name']}</span>
+        <span>${option['title']}</span>
     </div>
 `;
 }
@@ -213,7 +228,7 @@ function renderCategoryOptions(option, i) {
 function renderLastCategoryOption(option, i) {
     document.getElementById('options').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable last-option">
-        <span>${option['name']}</span>
+        <span>${option['title']}</span>
     </div>
     `;
 }

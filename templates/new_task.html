@@ -31,7 +31,15 @@
                         placeholder="New category name">
                     <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg" onclick="closeNewCategory()">
                     <div class="border-small mid-pos"></div>
-                    <img class="new-category-icon right-pos" src="assets/img/confirm.svg">
+                    <img id="create-category-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg" onclick="addNewCategory()">
+                </div>
+                <div id="color-selection-container" class="color-selection-container d-none">
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
                 </div>
                 <div id="category-options-container" class="options-container">
                     <div class="option">

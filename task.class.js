@@ -7,9 +7,10 @@ class Task {
     priority;
     subtasks;
 
-    constructor(title, description, date) {
+    constructor(title, description, category, date) {
         this.title = title;
         this.description = description;
+        this.category = category;
 
         this.date = date;
     }
