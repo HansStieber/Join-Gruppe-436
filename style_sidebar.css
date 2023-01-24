@@ -1,5 +1,7 @@
 /* === Sidebar === */
 .sidebar {
+    position: fixed;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,4 +43,43 @@
 .icon-sidebar {
     height: auto;
     width: 28px;
+}
+
+
+@media (max-width: 992px) {
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        flex-direction: row;
+        height: 80px;
+        width: 100%;
+    }
+
+    .main-logo {
+        display: none;
+    }
+
+    .navigation-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .navigation-point {
+        flex-direction: column;
+        padding: 0px 12px 0px 12px;
+    }
+
+    .legal-notice {
+        display: none;
+    }
+
+    .center-icons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+
 }

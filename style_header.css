@@ -1,6 +1,8 @@
 
 /* === Header === */
 header {
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,7 +10,7 @@ header {
     height: 89px;
     background-color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px 36px 20px 116px;
+    padding: 20px 36px 20px 348px;
 }
 
 .header-heading {
@@ -28,4 +30,19 @@ header {
     border: 3px solid #2A3647;
 }
 
+@media (max-width: 992px) {
+    header{
+        padding: 20px 36px 20px 116px;
 
+    }
+}
+
+@media (max-width: 820px) {
+.header-heading{
+    display: none;
+}
+
+header{
+    justify-content: flex-end;
+}
+}
