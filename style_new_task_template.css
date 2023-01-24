@@ -70,12 +70,12 @@ h1 {
 .border {
     width: 0px;
     height: 662px;
-    margin: 0 59px;
+    margin: 0 49px;
     border-right: 1px solid #D1D1D1;
 }
 
 .column {
-    width: 422px;
+    width: 432px;
     height: 506px;
 }
 
@@ -269,36 +269,23 @@ input[type='date']:hover {
     cursor: pointer;
 }
 
+/* === Styling of priority container === */
+
 .prio-box {
     display: flex;
     justify-content: space-between;
+    height: 70px;
 }
 
-/* === Styling of priority container === */
-.prio-container {
-    width: 136px;
-    border-radius: 10px;
-    margin: 8px 0 8px 0;
-    border: 1px solid #D1D1D1;
-    line-height: 120%;
-    background-color: white;
+.prio-urgent:hover {
+    cursor: pointer;
 }
 
-.prio {
-    width: 100%;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.prio-medium:hover {
+    cursor: pointer;
 }
-
-.prio span {
-    padding-right: 10px;
-}
-
-.prio-hover:hover {
-    transform: scale(1.1);
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.5);
+.prio-low:hover {
+    cursor: pointer;
 }
 
 /* === Styling of submit/clear button === */
@@ -372,7 +359,7 @@ input[type='date']:hover {
     }
 
     .column {
-        width: 100%;
+        width: 50%;
         height: unset;
     }
 

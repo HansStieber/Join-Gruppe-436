@@ -13,6 +13,30 @@ let categoryOptions = [
 let tasks = [];
 
 
+/*----------- FUNCTION CREATE NEW TASK -----------*/
+function createNewTask() {
+    let title = document.getElementById('title').value;
+    let description = document.getElementById('description').value;
+
+    let date = document.getElementById('date').value;
+
+    let newTask = new Task(title, description, date);
+
+    tasks.push(newTask);
+
+    console.log(tasks);
+}
+
+
+function hover(id, path) {
+    document.getElementById('prio-' + id).src = `assets/img/${path}_hover.svg`;
+}
+
+function leave(id, path) {
+    document.getElementById('prio-' + id).src = `assets/img/${path}.svg`;
+}
+
+
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
 function loadAllOptions() {
     loadCategoryOptions();
