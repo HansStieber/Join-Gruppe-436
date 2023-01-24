@@ -13,18 +13,6 @@ let categoryOptions = [
 let tasks = [];
 
 
-/*----------- BUTTON HOVER EFFECTS -----------*/
-function turnIconLightblue() {
-    let icon = document.getElementById('cancel-icon');
-    icon.setAttribute("style", "background-image: url('assets/img/close_new_task_button_lightblue.svg');");
-}
-
-function turnIconDarkblue() {
-    let icon = document.getElementById('cancel-icon');
-    icon.setAttribute("style", "background-image: url('assets/img/close_new_task_button.svg');");
-}
-
-
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
 function loadAllOptions() {
     loadCategoryOptions();

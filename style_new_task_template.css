@@ -311,59 +311,41 @@ input[type='date']:hover {
     position: absolute;
     right: 280px;
     bottom: 71px;
-    width: 136px;
-    height: 61px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 21px;
-    border-radius: 10px;
-    border: 1px solid #2A3647;
+    width: 144px;
+    height: 69px;
+    background-image: url('assets/img/cancel_new_task.svg');
+    background-position: top;
+    background-repeat: no-repeat;
 }
 
 .clear-form:hover {
     cursor: pointer;
-    padding: 14px;
-    border: 2px solid #69a8ff;
-    color: #69a8ff;
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.5);
+    background-image: url('assets/img/cancel_new_task_hover.svg');
+    transform: scale(1.05);
 }
 
-#cancel-icon {
-    background-image: url('assets/img/close_new_task_button.svg');
-    background-position: center;
-    width: 22px;
-    height: 22px;
+.clear-form:active {
+    background-image: url('assets/img/cancel_new_task_click.svg');
 }
 
 .submit-button {
     position: absolute;
     right: 75px;
     bottom: 71px;
-    width: 177px;
-    height: 61px;
-    margin: 0;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    background-color: #2A3647;
-    color: white;
+    width: 185px;
+    height: 69px;
+    background-image: url('assets/img/create_task.svg');
+    background-repeat: no-repeat;
 }
 
 .submit-button:hover {
     cursor: pointer;
-    background-color: #69a8ff;
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.5);
+    background-image: url('assets/img/create_task_hover.svg');
+    transform: scale(1.05);
 }
 
-#tick-icon {
-    background-image: url('assets/img/confirm.svg');
-    background-position: center;
-    width: 22px;
-    height: 22px;
+.submit-button:active {
+    background-image: url('assets/img/create_task_click.svg');
 }
 
 /* === Styling for smaller Screens === */
