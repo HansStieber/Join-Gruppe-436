@@ -165,6 +165,7 @@
     background-image: url(img/pencil.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    cursor: pointer;
 }
 
 .big-card-mail-phone {
@@ -222,4 +223,8 @@
 
 .d-none {
     display: none;
+}
+
+.new-contact{
+    padding: 10px 10px !important;
 }

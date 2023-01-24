@@ -21,7 +21,6 @@ class Person {
 
 
 class Contact extends Person {
-
     phone;
 
     constructor(firstName, lastName, phone, email, password, color) {
@@ -165,4 +164,20 @@ function upperCaseFirstLetter(name) {
 
 function generateRandomColor() {
     return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
+}
+
+function openEditOverlay() {
+    document.getElementById('editContactOverlay').classList.remove('d-none');
+}
+
+function closeEditOverlay() {
+    document.getElementById('editContactOverlay').classList.add('d-none');
+}
+
+function openAddOverlay() {
+    document.getElementById('addContactOverlay').classList.remove('d-none');
+}
+
+function closeAddOverlay() {
+    document.getElementById('addContactOverlay').classList.add('d-none');
 }

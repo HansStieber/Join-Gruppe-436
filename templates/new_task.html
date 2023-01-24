@@ -27,8 +27,19 @@
             <div class="field-container">
                 <span class="label">Category</span>
                 <div id="new-category-container" class="field-container d-none">
-                    <input type="text" id="new-category" name="new-category" class="d-none"
+                    <input type="text" id="category" name="new-category" class="d-none"
                         placeholder="New category name">
+                    <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg" onclick="closeNewCategory()">
+                    <div class="border-small mid-pos"></div>
+                    <img id="create-category-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg" onclick="addNewCategory()">
+                </div>
+                <div id="color-selection-container" class="color-selection-container d-none">
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
+                    <div class="color" onclick="addNewCategory()"></div>
                 </div>
                 <div id="category-options-container" class="options-container">
                     <div class="option">
@@ -43,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="alert-required" id="category-required">Please enter a new category name first/span>
+                <span class="alert-required" id="category-required">Please enter a new category name first</span>
             </div>
 
             <!-- ASSIGN TO -->
@@ -78,43 +89,20 @@
             <!-- DUE DATE -->
             <div class="field-container">
                 <span class="label">Due date</span>
-                <input type="date">
+                <input id="date" type="date">
+                <span class="alert-required" id="date-required">Please select date first</span>
             </div>
 
             <!-- PRIO -->
             <div class="field-container">
                 <span class="label">Prio</span>
                 <div class="prio-box">
-                    <div id="prio-container" class="prio-container prio-hover">
-                        <div class="option">
-                            <div id="select-prio-container" class="select-container">
-                                <div class="prio">
-                                    <span>Urgent</span>
-                                    <img src="assets/img/arrow_up.svg" alt="arrow-up">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="prio-container" class="prio-container prio-hover">
-                        <div class="option">
-                            <div id="select-prio-container" class="select-container">
-                                <div class="prio">
-                                    <span>Medium</span>
-                                    <img src="assets/img/bars.svg" alt="bars">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="prio-container" class="prio-container prio-hover">
-                        <div class="option">
-                            <div id="select-prio-container" class="select-container">
-                                <div class="prio">
-                                    <span>Low</span>
-                                    <img src="assets/img/arrow_down.svg" alt="arrow down">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img id="prio-urgent" class="prio-urgent" src="assets/img/urgent_big.svg" onmouseover="hover('urgent', 'urgent_big')" onmouseout="leave('urgent', 'urgent_big')">
+                    <img id="prio-medium" class="prio-medium" src="assets/img/medium_big.svg" onmouseover="hover('medium', 'medium_big')" onmouseout="leave('medium', 'medium_big')">
+                    <img id="prio-low" class="prio-low" src="assets/img/low_big.svg" onmouseover="hover('low', 'low_big')" onmouseout="leave('low', 'low_big')">
+                    <!--<div class="urgent-img-container"></div>
+                    <div class="medium-img-container"></div>
+                    <div class="low-img-container"></div>-->
                 </div>
             </div>
 
@@ -126,13 +114,9 @@
 
         </div>
         <div class="button-container">
-            <div id="clear-form" class="clear-form" onmouseover="turnIconLightblue()" onmouseout="turnIconDarkblue()">
-                <span>Cancel</span>
-                <div id="cancel-icon"></div>
+            <div id="clear-form" class="clear-form">
             </div>
-            <div id="submit-button" class="submit-button" onmouseover="" onmouseout="">
-                <span>Create Task</span>
-                <div id="tick-icon"></div>
+            <div id="submit-button" class="submit-button" onclick="createNewTask()">
             </div>
         </div>
     </form>
