@@ -157,6 +157,22 @@ function getCardInnerHTML(contact, i) {
 }
 
 
+function addContact() {
+    const inputName = document.getElementById('name');
+    const inputEmail = document.getElementById('eMail');
+    const inputPhone = document.getElementById('phonenumber');
+    let nameArray = inputName.value.split(" ");
+    if (nameArray.length == 2) {
+        contacts.push(new Contact(nameArray[0], nameArray[1], inputPhone.value, inputEmail.value));
+        closeAddOverlay();
+        renderContacts();
+    } else {
+        console.log('Bitte Vorname und Nachname eingeben,(es wird nur ein Vorname aktzeptiert).')
+    }
+
+}
+
+
 function upperCaseFirstLetter(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -166,17 +182,21 @@ function generateRandomColor() {
     return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
 }
 
+
 function openEditOverlay() {
     document.getElementById('editContactOverlay').classList.remove('d-none');
 }
+
 
 function closeEditOverlay() {
     document.getElementById('editContactOverlay').classList.add('d-none');
 }
 
+
 function openAddOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
 }
+
 
 function closeAddOverlay() {
     document.getElementById('addContactOverlay').classList.add('d-none');
