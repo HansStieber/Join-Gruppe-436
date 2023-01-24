@@ -1,6 +1,10 @@
 /* === ADD CONTACT OVERLAY === */
+
+.d-none{
+    display: none !important;
+}
+
 .overlay-contact {
-    opacity: 0;
     position: fixed;
     top: 182px;
     right: 161px;

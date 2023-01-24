@@ -95,3 +95,19 @@ function renderContacts() {
         }
     }, 200)
 }
+
+function openEditOverlay(){
+    document.getElementById('editContactOverlay').classList.remove('d-none');
+}
+
+function closeEditOverlay(){
+    document.getElementById('editContactOverlay').classList.add('d-none');
+}
+
+function openAddOverlay(){
+    document.getElementById('addContactOverlay').classList.remove('d-none');
+}
+
+function closeAddOverlay(){
+    document.getElementById('addContactOverlay').classList.add('d-none');
+}
