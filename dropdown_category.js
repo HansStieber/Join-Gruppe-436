@@ -4,18 +4,38 @@ let categories = [];
 
 /*----------- FUNCTION CREATE NEW TASK -----------*/
 function createNewTask() {
+    checkIfEmptyField();
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let category = document.get
 
     let date = document.getElementById('date').value;
 
-    let newTask = new Task(title, description, date);
-
+    if (!title == '' | !description == '' | !date == '') {
+let newTask = new Task(title, description, date);
     tasks.push(newTask);
+    }
+
+    
+
 
     console.log(tasks);
     clearAllInputFields();
+}
+
+function checkIfEmptyField() {
+    checkIfEmpty('title');
+    checkIfEmpty('description');
+    checkIfEmpty('category');
+    checkIfEmpty('date');
+}
+
+function checkIfEmpty(id) {
+    if (document.getElementById(id).value == '') {
+        document.getElementById(`${id}` + '-required').classList.add('alert-color');
+    } else {
+        document.getElementById(`${id}` + '-required').classList.remove('alert-color');
+    }
 }
 
 function clearAllInputFields() {
@@ -115,7 +135,7 @@ function createNewCategory() {
 }
 
 function showInputField() {
-    document.getElementById('new-category').classList.remove('d-none');
+    document.getElementById('category').classList.remove('d-none');
     document.getElementById('new-category-container').classList.remove('d-none');
 }
 
@@ -133,8 +153,8 @@ function closeNewCategory() {
 }
 
 function hideInputField() {
-    document.getElementById('new-category').value = '';
-    document.getElementById('new-category').classList.add('d-none');
+    document.getElementById('category').value = '';
+    document.getElementById('category').classList.add('d-none');
     document.getElementById('new-category-container').classList.add('d-none');
 }
 
@@ -144,7 +164,7 @@ function showCategorySelection() {
 
 /*----------- ADD NEW CATEGORY -----------*/
 function addNewCategory() {
-    let title = document.getElementById('new-category').value;
+    let title = document.getElementById('category').value;
 
     let newCategory = new Category(title);
 

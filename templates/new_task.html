@@ -27,7 +27,7 @@
             <div class="field-container">
                 <span class="label">Category</span>
                 <div id="new-category-container" class="field-container d-none">
-                    <input type="text" id="new-category" name="new-category" class="d-none"
+                    <input type="text" id="category" name="new-category" class="d-none"
                         placeholder="New category name">
                     <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg" onclick="closeNewCategory()">
                     <div class="border-small mid-pos"></div>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="alert-required" id="category-required">Please enter a new category name first/span>
+                <span class="alert-required" id="category-required">Please enter a new category name first</span>
             </div>
 
             <!-- ASSIGN TO -->
@@ -90,6 +90,7 @@
             <div class="field-container">
                 <span class="label">Due date</span>
                 <input id="date" type="date">
+                <span class="alert-required" id="date-required">Please select date first</span>
             </div>
 
             <!-- PRIO -->
