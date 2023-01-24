@@ -240,7 +240,8 @@
 }
 
 .shadow-screen {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: absolute;
     top: 0px;
     left: 0px;

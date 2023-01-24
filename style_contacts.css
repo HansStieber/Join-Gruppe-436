@@ -9,8 +9,48 @@
     padding-right: 65px;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     background-color: white;
-    width: 453px;
+    width: 490px;
     overflow: auto;
+}
+
+.contacts-slide-bar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.contacts-slide-bar::-webkit-scrollbar-track {
+    background: white;
+
+}
+
+.contacts-slide-bar::-webkit-scrollbar-thumb {
+
+    background-color: #A8A8A8;
+    border-radius: 10px;
+
+}
+
+/* Buttons */
+.contacts-slide-bar::-webkit-scrollbar-button:single-button {
+    display: block;
+    background-size: 10px;
+    background-repeat: no-repeat;
+}
+
+/* Up */
+.contacts-slide-bar::-webkit-scrollbar-button:single-button:vertical:decrement {
+    cursor: pointer;
+    height: 12px;
+    width: 16px;
+    background-position: center 7px;
+    background-image: url(img/scroll-arrow-up.svg);
+}
+
+/* Down */
+.contacts-slide-bar::-webkit-scrollbar-button:single-button:vertical:increment {
+    height: 12px;
+    width: 16px;
+    background-position: center 2px;
+    background-image: url(img/scroll-arrow-down.svg);
 }
 
 .contacts-right-div {
@@ -47,7 +87,6 @@
     align-items: center;
     width: 120px;
     height: 120px;
-    background-color: #FF7A00;
     border: 4px solid white;
     border-radius: 50%;
     box-shadow: 0px 0px 2px 2px rgba(188, 188, 188, 0.496);
@@ -59,7 +98,6 @@
     align-items: center;
     width: 42px;
     height: 42px;
-    background-color: #FF7A00;
     border: 1px solid white;
     border-radius: 50%;
     box-shadow: 0px 0px 1px 1px rgba(188, 188, 188, 0.496);
@@ -83,7 +121,7 @@
     margin-left: 55px;
 }
 
-.big-card-name-div span:nth-child(1) {
+.big-card-name {
     font-weight: 500;
     font-size: 47px;
 }
@@ -155,14 +193,22 @@
 
 .cards-div-letter {
     display: flex;
-    padding: 15px 25px;
+    padding: 20px 25px;
     border-bottom: 2px solid lightgrey;
     font-size: 21px;
+    margin-bottom: 5px;
 }
 
 .contact-card {
+    cursor: pointer;
     display: flex;
     padding: 15px 25px;
+}
+
+.contact-card:hover {
+    background: #2A3647;
+    border-radius: 10px;
+    color: white;
 }
 
 .contact-card-info {
