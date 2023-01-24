@@ -44,6 +44,34 @@ h1 {
     color: rgba(255, 0, 0, 0.44) !important;
 }
 
+.orange {
+    background-color: #ff7a00;
+}
+
+.violet {
+    background-color: #fc71ff;
+}
+
+.cyan {
+    background-color: #1fd7c1;
+}
+
+.gold {
+    background-color: #ffc701;
+}
+
+.blue {
+    background-color: #0038ff;
+}
+
+.light-blue {
+    background-color: #8aa4ff;
+}
+
+.highlight {
+    box-shadow: 1px 1px 6px 1px #000000;
+}
+
 /* === Close new_task.html template === */
 .close-new-task {
     position: absolute;
@@ -226,7 +254,6 @@ textarea::-webkit-scrollbar-thumb {
 .color {
     width: 20px;
     height: 20px;
-    background-color: orange;
     border-radius: 10px;
     border: 3px solid white;
     margin-left: 15px;
@@ -234,7 +261,11 @@ textarea::-webkit-scrollbar-thumb {
 
 .color:hover {
     cursor: pointer;
-    transform: scale(1.05);
+}
+
+.selected-category {
+    display: flex;
+    align-items: center;
 }
 
 /* === Styling of scrollbars for dropdown selection input fields === */
@@ -253,6 +284,11 @@ textarea::-webkit-scrollbar-thumb {
     /* color of the scroll thumb */
     border-radius: 2px;
     /* roundness of the scroll thumb */
+}
+
+.selectable {
+    display: flex;
+    align-items: center;
 }
 
 .selectable:hover {

@@ -34,17 +34,11 @@
                     <img id="create-category-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg" onclick="addNewCategory()">
                 </div>
                 <div id="color-selection-container" class="color-selection-container d-none">
-                    <div class="color" onclick="addNewCategory()"></div>
-                    <div class="color" onclick="addNewCategory()"></div>
-                    <div class="color" onclick="addNewCategory()"></div>
-                    <div class="color" onclick="addNewCategory()"></div>
-                    <div class="color" onclick="addNewCategory()"></div>
-                    <div class="color" onclick="addNewCategory()"></div>
                 </div>
                 <div id="category-options-container" class="options-container">
                     <div class="option">
                         <div id="select-category-container" class="select-container" onclick="openDropdownCategory()">
-                            <span>Select task category</span><img class="dropdown-arrow"
+                            <div id="selected-category" class="selected-category"><span>Select task category</span></div><img class="dropdown-arrow"
                                 src="assets/img/arrow_select_dropdown.svg">
                         </div>
                     </div>

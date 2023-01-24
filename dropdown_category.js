@@ -1,5 +1,25 @@
 let tasks = [];
-let categories = [];
+let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue'];
+let categories = [
+    new Category('Design', 'orange'),
+    new Category('Sales', 'violet'),
+    new Category('Backoffice', 'cyan'),
+    new Category('Media', 'gold'),
+    new Category('Marketing', 'blue')
+];
+let currentColor;
+
+
+
+function setCurrentColor(color, i) {
+    currentColor = color;
+    
+    highlightCurrentColor(i);
+}
+
+function highlightCurrentColor(i) {
+    document.getElementById('color' + i).classList.add('highlight');
+}
 
 
 /*----------- FUNCTION CREATE NEW TASK -----------*/
@@ -7,34 +27,31 @@ function createNewTask() {
     checkIfEmptyField();
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
-    let category = document.get
+    let categoryTitle = document.getElementById('new-category-title').innerHTML;
+    let color = currentColor;
 
     let date = document.getElementById('date').value;
 
-    if (!title == '' | !description == '' | !date == '') {
-let newTask = new Task(title, description, date);
-    tasks.push(newTask);
+    if (!title == '' && !description == '' && !date == '') {
+        let newTask = new Task(title, description, categoryTitle, color, date);
+        tasks.push(newTask);
+        clearAllInputFields();
     }
 
-    
-
-
     console.log(tasks);
-    clearAllInputFields();
 }
 
 function checkIfEmptyField() {
     checkIfEmpty('title');
     checkIfEmpty('description');
-    checkIfEmpty('category');
     checkIfEmpty('date');
 }
 
 function checkIfEmpty(id) {
     if (document.getElementById(id).value == '') {
-        document.getElementById(`${id}` + '-required').classList.add('alert-color');
+        document.getElementById(id + '-required').classList.add('alert-color');
     } else {
-        document.getElementById(`${id}` + '-required').classList.remove('alert-color');
+        document.getElementById(id + '-required').classList.remove('alert-color');
     }
 }
 
@@ -42,6 +59,7 @@ function clearAllInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('date').value = '';
+    renderDefaultCategory();
 }
 
 
@@ -57,6 +75,8 @@ function leave(id, path) {
 
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
 function loadAllOptions() {
+
+    loadCategoryColors();
     loadCategoryOptions();
     loadAssignmentOptions();
 }
@@ -72,6 +92,13 @@ function loadCategoryOptions() {
     }
 }
 
+function loadCategoryColors() {
+    document.getElementById('color-selection-container').innerHTML = '';
+    for (let i = 0; i < colors.length; i++) {
+        const color = colors[i];
+        renderCategoryColors(color, i)
+    }
+}
 
 function lastCategoryOption(i) {
     return i == categories.length - 1;
@@ -149,6 +176,7 @@ function hideCategories() {
 
 function closeNewCategory() {
     hideInputField();
+    hideColorSelection();
     showCategorySelection();
 }
 
@@ -156,6 +184,10 @@ function hideInputField() {
     document.getElementById('category').value = '';
     document.getElementById('category').classList.add('d-none');
     document.getElementById('new-category-container').classList.add('d-none');
+}
+
+function hideColorSelection() {
+    document.getElementById('color-selection-container').classList.add('d-none');
 }
 
 function showCategorySelection() {
@@ -166,11 +198,32 @@ function showCategorySelection() {
 function addNewCategory() {
     let title = document.getElementById('category').value;
 
-    let newCategory = new Category(title);
+    if (!title == '' && !currentColor == '') {
+        let newCategory = new Category(title, currentColor);
+        categories.push(newCategory);
 
-    categories.push(newCategory);
-
+        document.getElementById('category').value = '';
+        
+        showCategories();
+        hideInputField();
+        hideColorSelection();
+        renderSelectedCategory(title, currentColor);
+    }
     console.log(categories);
+
+
+}
+
+function showCategories() {
+    document.getElementById('category-options-container').classList.remove('d-none');
+}
+
+
+/*----------- ADD NEW CATEGORY -----------*/
+function selectCategory(title, color) {
+    currentColor = color;
+    renderSelectedCategory(title, color);
+    closeDropdownCategory();
 }
 
 
@@ -213,33 +266,13 @@ function addOpenContactsFunktion() {
 }
 
 
-
-
-
-
-/*----------- FUNCTIONS TO ADD TASK -----------*/
-function addToTasks() {
-    let title = document.getElementById('title');
-    let description = document.getElementById('description');
-
-    let task = {
-        'title': title.value,
-        'description': description.value
-    };
-
-    tasks.push(task);
-    console.log(tasks);
-}
-
-
-
 /*----------- TEMPLATES -----------*/
 
 /*----------- TEMPLATES FOR CATEGORY SELECTION -----------*/
 function renderCategoryOptions(option, i) {
     document.getElementById('options').innerHTML += `
-    <div id="${'c-option' + i}" class="option d-none selectable">
-        <span>${option['title']}</span>
+    <div id="${'c-option' + i}" class="option d-none selectable" onclick="selectCategory('${option.title}', '${option.color}')">
+        <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
 `;
 }
@@ -247,10 +280,30 @@ function renderCategoryOptions(option, i) {
 
 function renderLastCategoryOption(option, i) {
     document.getElementById('options').innerHTML += `
-    <div id="${'c-option' + i}" class="option d-none selectable last-option">
-        <span>${option['title']}</span>
+    <div id="${'c-option' + i}" class="option d-none selectable last-option" onclick="selectCategory('${option.title}', '${option.color}')">
+        <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
     `;
+}
+
+
+function renderSelectedCategory(title, color) {
+    document.getElementById('selected-category').innerHTML = `
+    <span id="new-category-title">${title}</span><div class="color ${color}"></div>
+    `;
+}
+
+function renderDefaultCategory() {
+    document.getElementById('selected-category').innerHTML = `
+    <span id="new-category-title">Select task category</span><div class="color"></div>
+    `;
+}
+
+/*----------- TEMPLATES FOR CATEGORY COLOR SELECTION CONTAINER -----------*/
+function renderCategoryColors(color, i) {
+    document.getElementById('color-selection-container').innerHTML += `
+    <div id="${'color' + i}" class="color ${color}" onclick="setCurrentColor('${color}', '${i}')"></div>
+`;
 }
 
 
