@@ -5,7 +5,9 @@ class Person {
     color;
     password;
     constructor(firstName, lastName, email, password, color) {
-        this.firstName = upperCaseFirstLetter(firstName);
+        if (firstName) {
+            this.firstName = upperCaseFirstLetter(firstName);
+        }
         this.lastName = upperCaseFirstLetter(lastName);
         this.email = email;
         if (color) {
@@ -119,7 +121,7 @@ function renderBigCard(indexNum) {
     emailLink.innerHTML = email;
     phoneSpan.innerHTML = phone;
 
-    addOnclickEvent(indexNum);
+    addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
 
     initialsDiv.style = `background-color:${bgColor}`;
     bigCardDiv.classList.remove('d-none');
@@ -160,9 +162,9 @@ function getCardInnerHTML(contact, i) {
 
 
 function addContact() {
-    const inputName = document.getElementById('name');
-    const inputEmail = document.getElementById('eMail');
-    const inputPhone = document.getElementById('phonenumber');
+    const inputName = document.getElementById('add-name-input');
+    const inputEmail = document.getElementById('add-eMail-input');
+    const inputPhone = document.getElementById('add-phonenumber-input');
     let nameArray = inputName.value.split(" ");
     if (nameArray.length == 2) {
         contacts.push(new Contact(nameArray[0], nameArray[1], inputPhone.value, inputEmail.value));
@@ -171,6 +173,36 @@ function addContact() {
     } else {
         alert('Bitte Vorname und Nachname eingeben.');
     }
+}
+
+
+function saveContactChanges(indexNum) {
+    const contact = contacts[indexNum]
+    const newName = document.getElementById('edit-name-input');
+    const newEmail = document.getElementById('edit-eMail-input');
+    const newPhone = document.getElementById('edit-phonenumber-input');
+    if (newName.value == '' && newEmail.value == '' && newPhone.value == '')
+        return;
+
+    let nameArray = newName.value.split(" ");
+    if (newEmail.value) {
+        contact.email = newEmail.value;
+    }
+
+    if (newPhone.value) {
+        contact.phone = newPhone.value;
+    }
+
+    if (nameArray[0] && nameArray[1]) {
+        contact.firstName = nameArray[0];
+        contact.lastName = nameArray[1];
+    } else {
+        alert('Bitte Vorname und Nachname eingeben.');
+    }
+
+    closeEditOverlay();
+    renderContacts();
+    renderBigCard(indexNum);
 }
 
 
@@ -184,9 +216,9 @@ function setEditContactInitials(indexNum) {
 }
 
 
-function addOnclickEvent(indexNum) {
-    let editContactBtn = document.getElementById('edit-contact');
-    editContactBtn.setAttribute("onclick", `openEditOverlay(${indexNum})`);
+function addOnclickEvent(element, functionName, indexNum) {
+    let editContactBtn = document.getElementById(`${element}`);
+    editContactBtn.setAttribute("onclick", `${functionName}(${indexNum})`);
 }
 
 
@@ -203,6 +235,7 @@ function generateRandomColor() {
 function openEditOverlay(indexNum) {
     document.getElementById('editContactOverlay').classList.remove('d-none');
     setEditContactInitials(indexNum);
+    addOnclickEvent('edit-save-btn', 'saveContactChanges', indexNum)
 }
 
 
