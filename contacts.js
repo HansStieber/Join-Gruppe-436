@@ -170,6 +170,8 @@ function addContact() {
         contacts.push(new Contact(nameArray[0], nameArray[1], inputPhone.value, inputEmail.value));
         closeAddOverlay();
         renderContacts();
+        popInConfirmationMessage();
+        setTimeout(popOutConfirmationMessage, 1500);
     } else {
         alert('Bitte Vorname und Nachname eingeben.');
     }
@@ -213,6 +215,20 @@ function setEditContactInitials(indexNum) {
     const { initials1, initials2, bgColor } = getContactInfo(contact);
     initialsDiv.style = `background-color:${bgColor}`;
     initialsSpan.innerHTML = initials1 + initials2;
+}
+
+
+function popInConfirmationMessage() {
+    let message = document.getElementById('contact-created-message');
+    message.classList.remove('slide-down');
+    message.classList.add('slide-up');
+}
+
+
+function popOutConfirmationMessage() {
+    let message = document.getElementById('contact-created-message');
+    message.classList.remove('slide-up')
+    message.classList.add('slide-down')
 }
 
 
