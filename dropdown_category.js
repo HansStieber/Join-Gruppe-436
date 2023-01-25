@@ -224,43 +224,43 @@ function playCloseDropdownAnimation(id) {
 
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
 function createNewCategory() {
-    showInputField();
+    showInputField('category');
     showColorSelection();
-    hideCategories();
+    hideDefaultInput('category');
     closeDropdownCategory();
 }
 
-function showInputField() {
-    document.getElementById('new-category').classList.remove('d-none');
-    document.getElementById('new-category-container').classList.remove('d-none');
+function showInputField(id) {
+    document.getElementById('new-' + id).classList.remove('d-none');
+    document.getElementById('new-' + id + '-container').classList.remove('d-none');
 }
 
 function showColorSelection() {
     document.getElementById('color-selection-container').classList.remove('d-none');
 }
 
-function hideCategories() {
-    document.getElementById('category-options-container').classList.add('d-none');
+function hideDefaultInput(id) {
+    document.getElementById(id + '-options-container').classList.add('d-none');
 }
 
 function closeNewCategory() {
-    hideInputField();
+    hideInputField('category');
     hideColorSelection();
-    showCategorySelection();
+    showDefaultInput('category');
 }
 
-function hideInputField() {
-    document.getElementById('new-category').value = '';
-    document.getElementById('new-category').classList.add('d-none');
-    document.getElementById('new-category-container').classList.add('d-none');
+function hideInputField(id) {
+    document.getElementById('new-' + id).value = '';
+    document.getElementById('new-' + id).classList.add('d-none');
+    document.getElementById('new-' + id + '-container').classList.add('d-none');
 }
 
 function hideColorSelection() {
     document.getElementById('color-selection-container').classList.add('d-none');
 }
 
-function showCategorySelection() {
-    document.getElementById('category-options-container').classList.remove('d-none');
+function showDefaultInput(id) {
+    document.getElementById(id + '-options-container').classList.remove('d-none');
 }
 
 /*----------- ADD NEW CATEGORY -----------*/
@@ -362,6 +362,19 @@ function removeAssignment(i, index) {
     assignedContacts.splice(index, 1);
     console.log(assignedContacts);
 }
+
+/*----------- ASSIGN CONTACT FOR TASK -----------*/
+function inviteNewContact() {
+    closeDropdownAssignment();
+    showInputField('contact');
+    hideDefaultInput('contact');
+}
+
+function closeInviteContact() {
+    hideInputField('contact');
+    showDefaultInput('contact');
+}
+
 
 /*----------- TEMPLATES -----------*/
 

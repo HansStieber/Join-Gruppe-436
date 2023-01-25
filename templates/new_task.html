@@ -54,6 +54,13 @@
             <!-- ASSIGN TO -->
             <div class="field-container">
                 <span class="label">Assign to</span>
+                <div id="new-contact-container" class="field-container d-none">
+                    <input type="text" id="new-contact" name="new-contact" class="d-none"
+                        placeholder="Contact email">
+                    <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg" onclick="closeInviteContact()">
+                    <div class="border-small mid-pos"></div>
+                    <img id="invite-contact-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg" onclick="sendInvitation()">
+                </div>
                 <div id="contact-options-container" class="options-container">
                     <div class="option">
                         <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
@@ -64,9 +71,9 @@
                     <div id="options-contacts" class="options">
                         <div id="contacts-dropdown-container">
                         </div>
-                        <div id="invite-new-contact" class="option d-none selectable last-option"
+                        <div id="invite-new-contact" class="option d-none selectable last-option checkbox-container"
                             onclick="inviteNewContact()">
-                            <span>Invite new contact</span>
+                            <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
                         </div>
                     </div>
                 </div>
