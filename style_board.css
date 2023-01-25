@@ -2,8 +2,6 @@
     max-width: 1260px;
     height: calc(100vh - 89px);
     overflow: auto;
-    margin-top: 80px;
-    margin-left: 225px;
 }
 
 .board {
