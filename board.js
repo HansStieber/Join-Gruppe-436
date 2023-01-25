@@ -138,23 +138,23 @@ function generateTodoHTML(element) {
                                     <div><img src="img/arrow-down.svg"></div>
                                 </div>
                             </div>
-                                
-`
+    `;
 }
 
-function startDragging(id){
-currentDraggedElement = id;
+
+function startDragging(id) {
+    currentDraggedElement = id;
 }
 
 
 function allowDrop(ev) {
-ev.preventDefault();
+    ev.preventDefault();
 }
 
 
-function moveTo(status){
-todos[currentDraggedElement]['status'] = status;
-updateBoard();
-} 
+function moveTo(status) {
+    todos[currentDraggedElement]['status'] = status;
+    updateBoard();
+}
 
 
