@@ -8,8 +8,11 @@ let categories = [
     new Category('Marketing', 'blue')
 ];
 let currentColor;
-let categoryOpen;
-let contactsOpen;
+let categoryOpen = false;
+let categorySelected = false;
+let contactsOpen = false;
+let assignedContacts = [];
+let inputMissing;
 
 
 
@@ -27,41 +30,72 @@ function highlightCurrentColor(i) {
 /*----------- FUNCTION CREATE NEW TASK -----------*/
 function createNewTask() {
     checkIfEmptyField();
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    let categoryTitle = document.getElementById('new-category-title').innerHTML;
-    let color = currentColor;
+    //closeAllDropdowns();
+    if (inputMissing == false) {
+        pushNewTask();
+    } console.log(tasks);
 
-    let date = document.getElementById('date').value;
 
-    if (!title == '' && !description == '' && !date == '') {
-        let newTask = new Task(title, description, categoryTitle, color, date);
-        tasks.push(newTask);
-        clearAllInputFields();
-    }
-
-    console.log(tasks);
 }
 
 function checkIfEmptyField() {
+    inputMissing = false;
     checkIfEmpty('title');
     checkIfEmpty('description');
     checkIfEmpty('date');
+    checkIfCategoryEmpty();
 }
 
 function checkIfEmpty(id) {
     if (document.getElementById(id).value == '') {
         document.getElementById(id + '-required').classList.add('alert-color');
+        inputMissing = true;
     } else {
         document.getElementById(id + '-required').classList.remove('alert-color');
     }
+}
+
+function checkIfCategoryEmpty() {
+    if (categorySelected == false) {
+        document.getElementById('category-required').classList.add('alert-color');
+        inputMissing = true;
+    } else {
+        document.getElementById('category-required').classList.remove('alert-color');
+    }
+}
+
+function pushNewTask() {
+    let title = document.getElementById('title').value;
+    let description = document.getElementById('description').value;
+    let categoryTitle = document.getElementById('new-category-title').innerHTML;
+    let date = document.getElementById('date').value;
+
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date);
+    tasks.push(newTask);
+    clearAllInputFields();
 }
 
 function clearAllInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('date').value = '';
+    removeSelectedCategory();
+    removeAllAssignments();
+}
+
+function removeSelectedCategory() {
+    categorySelected = false;
     renderDefaultCategory();
+}
+
+function removeAllAssignments() {
+    assignedContacts = [];
+    loadAllOptions();
+}
+
+function closeAllDropdowns() {
+    closeDropdownCategory();
+    closeDropdownAssignment();
 }
 
 
@@ -108,6 +142,7 @@ function lastCategoryOption(i) {
 
 
 function loadAssignmentOptions() {
+    document.getElementById('contacts-dropdown-container').innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
         const option = contacts[i];
         if (option.phone) {
@@ -153,12 +188,18 @@ function closeDropdownCategory() {
 
 function hideCategoryOptions() {
     for (let i = 0; i < categories.length; i++) {
-        document.getElementById('c-option' + i).classList.add('d-none');
+        if (containerWithTargetedIdsExists(i)) {
+            document.getElementById('c-option' + i).classList.add('d-none');
+        }
     }
     document.getElementById('create-new-category').classList.add('d-none');
     if (categoryOpen == true) {
         playCloseDropdownAnimation('options');
     }
+}
+
+function containerWithTargetedIdsExists(i) {
+    return typeof (document.getElementById('c-option' + i)) != 'undefined' && document.getElementById('c-option' + i) != null
 }
 
 function addOpenCategoriesFunction() {
@@ -180,7 +221,7 @@ function createNewCategory() {
 }
 
 function showInputField() {
-    document.getElementById('category').classList.remove('d-none');
+    document.getElementById('new-category').classList.remove('d-none');
     document.getElementById('new-category-container').classList.remove('d-none');
 }
 
@@ -199,8 +240,8 @@ function closeNewCategory() {
 }
 
 function hideInputField() {
-    document.getElementById('category').value = '';
-    document.getElementById('category').classList.add('d-none');
+    document.getElementById('new-category').value = '';
+    document.getElementById('new-category').classList.add('d-none');
     document.getElementById('new-category-container').classList.add('d-none');
 }
 
@@ -214,13 +255,14 @@ function showCategorySelection() {
 
 /*----------- ADD NEW CATEGORY -----------*/
 function addNewCategory() {
-    let title = document.getElementById('category').value;
+    let title = document.getElementById('new-category').value;
 
     if (!title == '' && !currentColor == '') {
+        categorySelected = true;
         let newCategory = new Category(title, currentColor);
         categories.push(newCategory);
 
-        document.getElementById('category').value = '';
+        document.getElementById('new-category').value = '';
 
         showCategories();
         hideInputField();
@@ -239,6 +281,7 @@ function showCategories() {
 
 /*----------- ADD NEW CATEGORY -----------*/
 function selectCategory(title, color) {
+    categorySelected = true;
     currentColor = color;
     renderSelectedCategory(title, color);
     closeDropdownCategory();
@@ -289,6 +332,21 @@ function addOpenContactsFunktion() {
     document.getElementById('select-contact-container').setAttribute('onclick', 'openDropdownAssignment()');
 }
 
+/*----------- ASSIGN CONTACT FOR TASK -----------*/
+function assignContact(i) {
+    document.getElementById('checkbox' + i).classList.remove('d-none');
+    assignedContacts.push(contacts[i]);
+    let indexOfPushedContact = assignedContacts.length - 1;
+    console.log(assignedContacts);
+    document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, ${indexOfPushedContact})`);
+}
+
+function removeAssignment(i, index) {
+    document.getElementById('checkbox' + i).classList.add('d-none');
+    document.getElementById('a-option' + i).setAttribute('onclick', `assignContact(${i})`);
+    assignedContacts.splice(index, 1);
+    console.log(assignedContacts);
+}
 
 /*----------- TEMPLATES -----------*/
 
@@ -312,13 +370,13 @@ function renderLastCategoryOption(option, i) {
 
 
 function renderSelectedCategory(title, color) {
-    document.getElementById('selected-category').innerHTML = `
+    document.getElementById('category').innerHTML = `
     <span id="new-category-title">${title}</span><div class="color ${color}"></div>
     `;
 }
 
 function renderDefaultCategory() {
-    document.getElementById('selected-category').innerHTML = `
+    document.getElementById('category').innerHTML = `
     <span id="new-category-title">Select task category</span><div class="color"></div>
     `;
 }
@@ -334,8 +392,11 @@ function renderCategoryColors(color, i) {
 /*----------- TEMPLATES FOR ASSIGNING CONTACT -----------*/
 function renderAssignmentOptions(option, i) {
     document.getElementById('contacts-dropdown-container').innerHTML += `
-    <div id="${'a-option' + i}" class="option d-none selectable">
+    <div id="${'a-option' + i}" class="option d-none selectable checkbox-container" onclick="assignContact(${i})">
         <span>${option.firstName + ' ' + option.lastName}</span>
+        <div class="checkbox-unchecked">
+            <div id="${'checkbox' + i}" class="checkbox-checked d-none"></div>
+        </div>
     </div>
 `;
 }

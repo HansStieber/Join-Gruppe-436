@@ -243,6 +243,24 @@ textarea::-webkit-scrollbar-thumb {
     overflow: auto;
 }
 
+/* === Styling of scrollbars for dropdown selection input fields === */
+.options::-webkit-scrollbar {
+    width: 4px;
+    /* width of the entire scrollbar */
+}
+
+.options::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+}
+
+.options::-webkit-scrollbar-thumb {
+    background-color: #2A3647;
+    /* color of the scroll thumb */
+    border-radius: 2px;
+    /* roundness of the scroll thumb */
+}
+
 /* === Styling of new category input === */
 .new-category-icon {
     position: absolute;
@@ -300,24 +318,6 @@ textarea::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
-/* === Styling of scrollbars for dropdown selection input fields === */
-.options::-webkit-scrollbar {
-    width: 4px;
-    /* width of the entire scrollbar */
-}
-
-.options::-webkit-scrollbar-track {
-    background: rgb(255, 255, 255);
-    /* color of the tracking area */
-}
-
-.options::-webkit-scrollbar-thumb {
-    background-color: #2A3647;
-    /* color of the scroll thumb */
-    border-radius: 2px;
-    /* roundness of the scroll thumb */
-}
-
 .selectable {
     display: flex;
     align-items: center;
@@ -330,6 +330,34 @@ textarea::-webkit-scrollbar-thumb {
 .last-option {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+/* === Styling checkboxes for assignment === */
+.checkbox-container {
+    justify-content: space-between;
+}
+
+.checkbox-unchecked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12px;
+    height: 12px;
+    background-color: lightgray;
+    border: 2px solid #6e6e6e;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0px 0px rgb(0 0 0 / 75%);
+}
+
+.checkbox-unchecked:hover {
+    transform: scale(1.05);
+}
+
+.checkbox-checked {
+    width: 7px;
+    height: 7px;
+    background-color: #2A3647;
+    border-radius: 2px;
 }
 
 /* === Styling of Input type='date' field === */
