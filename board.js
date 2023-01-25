@@ -124,7 +124,7 @@ function generateTodoHTML(element) {
                                     <div class="progress-div">
                                         <div class="progress-bar">
                                         </div>
-                                        <span>${element['side-bar']}</span>
+                                        <span>${element['progress-bar']}</span>
                                     </div>
                                 </div>
                                 <div class="card-bottom">

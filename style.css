@@ -261,6 +261,7 @@ input {
     padding: 172px 116px 0 348px;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 .main-container h1 {
@@ -282,21 +283,20 @@ input {
     }
 
     .main{
-        padding: 82px 116px 0 116px;
-
+        padding: 90px 116px 90px 116px;
     }
 }
 
 @media (max-width: 820px) {
     .main{
-        padding: 55px 70px 0 70px;
+        padding: 90px 70px 90px 70px;
 
     }
 }
 
 @media (max-width: 700px) {
     .main{
-        padding: 33px 33px 0 33px;
+        padding: 90px 33px 90px 33px;
 
     }
 }

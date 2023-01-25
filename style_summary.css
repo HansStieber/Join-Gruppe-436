@@ -244,7 +244,7 @@
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
 
     .heading-container::before{
         content: "Kanban Project Management Tool";
