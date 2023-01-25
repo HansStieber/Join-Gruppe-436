@@ -1,7 +1,9 @@
 .contacts-outer-div {
     display: flex;
-    height: calc(100vh - 89px);
+    height: calc(100vh - 91px);
     overflow: auto;
+    margin-left: 225px;
+    margin-top: 91px;
 }
 
 .contacts-slide-bar {
@@ -225,6 +227,6 @@
     display: none;
 }
 
-.new-contact{
+.new-contact {
     padding: 10px 10px !important;
 }

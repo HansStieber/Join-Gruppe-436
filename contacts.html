@@ -32,7 +32,7 @@
 
         <div class="content">
             <!-- HEADER -->
-            <div style="z-index:1" w3-include-html="./templates/header.html"></div>
+            <div w3-include-html="./templates/header.html"></div>
 
             <!-- MAIN CONTENT -->
             <div class="contacts-outer-div">
@@ -175,8 +175,8 @@
 
                         <div class="big-card-info">
                             <span>Contact Information</span>
-                            <div class="edit-contact" onclick="openEditOverlay()">
-                                <div class="pencil-img" ></div><span>Edit Contact</span>
+                            <div id="edit-contact" class="edit-contact" onclick="openEditOverlay()">
+                                <div class="pencil-img"></div><span>Edit Contact</span>
                             </div>
                         </div>
                         <div class="big-card-mail-phone">

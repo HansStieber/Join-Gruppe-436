@@ -167,7 +167,7 @@ function addContact() {
         closeAddOverlay();
         renderContacts();
     } else {
-        console.log('Bitte Vorname und Nachname eingeben,(es wird nur ein Vorname aktzeptiert).')
+        alert('Bitte Vorname und Nachname eingeben.');
     }
 
 }
