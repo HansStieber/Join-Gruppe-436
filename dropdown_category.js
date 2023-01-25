@@ -1,5 +1,5 @@
 let tasks = [];
-let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue'];
+let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
 let categories = [
     new Category('Design', 'orange'),
     new Category('Sales', 'violet'),
@@ -30,7 +30,7 @@ function highlightCurrentColor(i) {
 /*----------- FUNCTION CREATE NEW TASK -----------*/
 function createNewTask() {
     checkIfEmptyField();
-    //closeAllDropdowns();
+    closeAllDropdowns();
     if (inputMissing == false) {
         pushNewTask();
     } console.log(tasks);
@@ -44,6 +44,7 @@ function checkIfEmptyField() {
     checkIfEmpty('description');
     checkIfEmpty('date');
     checkIfCategoryEmpty();
+    checkIfNotAssigned();
 }
 
 function checkIfEmpty(id) {
@@ -61,6 +62,15 @@ function checkIfCategoryEmpty() {
         inputMissing = true;
     } else {
         document.getElementById('category-required').classList.remove('alert-color');
+    }
+}
+
+function checkIfNotAssigned() {
+    if (assignedContacts.length == 0) {
+        document.getElementById('assignment-required').classList.add('alert-color');
+        inputMissing = true;
+    } else {
+        document.getElementById('assignment-required').classList.remove('alert-color');
     }
 }
 
@@ -188,7 +198,7 @@ function closeDropdownCategory() {
 
 function hideCategoryOptions() {
     for (let i = 0; i < categories.length; i++) {
-        if (containerWithTargetedIdsExists(i)) {
+        if (containerWithTargetedIdsExists('c', i)) {
             document.getElementById('c-option' + i).classList.add('d-none');
         }
     }
@@ -198,8 +208,8 @@ function hideCategoryOptions() {
     }
 }
 
-function containerWithTargetedIdsExists(i) {
-    return typeof (document.getElementById('c-option' + i)) != 'undefined' && document.getElementById('c-option' + i) != null
+function containerWithTargetedIdsExists(x, i) {
+    return typeof (document.getElementById(x + '-option' + i)) != 'undefined' && document.getElementById(x + '-option' + i) != null
 }
 
 function addOpenCategoriesFunction() {
@@ -290,7 +300,6 @@ function selectCategory(title, color) {
 
 /*----------- OPEN DROPDOWN MENU FOR ASSIGNMENT -----------*/
 function openDropdownAssignment() {
-    loadAllOptions();
     closeDropdownCategory();
     showAssignmentOptions();
     addCloseContactsFunction();
@@ -320,12 +329,18 @@ function closeDropdownAssignment() {
 
 function hideAssignmentOptions() {
     for (let i = 0; i < contacts.length; i++) {
-        document.getElementById('a-option' + i).classList.add('d-none');
+        if (containerWithTargetedIdsExists('a', i)) {
+            document.getElementById('a-option' + i).classList.add('d-none');
+        }
     }
     document.getElementById('invite-new-contact').classList.add('d-none');
     if (contactsOpen == true) {
         playCloseDropdownAnimation('options-contacts');
     }
+}
+
+function containerWithTargetedIdsExists(x, i) {
+    return typeof (document.getElementById(x + '-option' + i)) != 'undefined' && document.getElementById(x + '-option' + i) != null
 }
 
 function addOpenContactsFunktion() {
