@@ -56,8 +56,10 @@
 }
 
 .contacts-right-div {
+    position: relative;
     padding-left: 60px;
     padding-top: 80px;
+    flex: 1;
 }
 
 .contacts-head {
@@ -229,4 +231,7 @@
 
 .new-contact {
     padding: 10px 10px !important;
+    position: absolute;
+    right: 30px;
+    bottom: 60px;
 }
