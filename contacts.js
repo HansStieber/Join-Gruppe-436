@@ -119,6 +119,8 @@ function renderBigCard(indexNum) {
     emailLink.innerHTML = email;
     phoneSpan.innerHTML = phone;
 
+    addOnclickEvent(indexNum);
+
     initialsDiv.style = `background-color:${bgColor}`;
     bigCardDiv.classList.remove('d-none');
 }
@@ -169,7 +171,22 @@ function addContact() {
     } else {
         alert('Bitte Vorname und Nachname eingeben.');
     }
+}
 
+
+function setEditContactInitials(indexNum) {
+    let initialsDiv = document.getElementById('edit-initials-div');
+    let initialsSpan = document.getElementById('edit-initials-span');
+    let contact = contacts[indexNum];
+    const { initials1, initials2, bgColor } = getContactInfo(contact);
+    initialsDiv.style = `background-color:${bgColor}`;
+    initialsSpan.innerHTML = initials1 + initials2;
+}
+
+
+function addOnclickEvent(indexNum) {
+    let editContactBtn = document.getElementById('edit-contact');
+    editContactBtn.setAttribute("onclick", `openEditOverlay(${indexNum})`);
 }
 
 
@@ -183,8 +200,9 @@ function generateRandomColor() {
 }
 
 
-function openEditOverlay() {
+function openEditOverlay(indexNum) {
     document.getElementById('editContactOverlay').classList.remove('d-none');
+    setEditContactInitials(indexNum);
 }
 
 
