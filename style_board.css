@@ -1,7 +1,6 @@
 .board-outer-div {
     max-width: 1260px;
     height: calc(100vh - 89px);
-    overflow: auto;
 }
 
 .board {
@@ -432,10 +431,6 @@
         flex-direction: column;
         align-items: center;
         padding: 0em;
-    }
-
-    .cards-column-main {
-        width: 24em;
     }
 
     .cards-category {

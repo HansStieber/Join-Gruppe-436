@@ -199,7 +199,7 @@
 .cards-div-letter {
     display: flex;
     padding: 20px 25px;
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid #D1D1D1;
     font-size: 21px;
     margin-bottom: 5px;
 }
@@ -313,3 +313,74 @@
     right: 30px;
     bottom: 60px;
 }
+
+@media(max-width:992px) {
+    .contacts-right-div {
+        display: none;
+    }
+
+    .contacts-slide-bar {
+        box-shadow: 4px 0 9px -6px rgba(0, 0, 0, 0.103), -4px 0 9px -6px rgba(0, 0, 0, 0.148);
+    }
+
+    .contacts-outer-div {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0em;
+        background-color: white;
+        overflow: auto;
+    }
+}
+
+@media(max-width:640px) {
+    .contacts-slide-bar {
+        width: 20em;
+        box-shadow: none;
+        padding-top: 5em;
+        padding-left: 0em;
+        padding-right: 0em;
+        overflow: visible;
+    }
+
+    .contacts-outer-div::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    .contacts-outer-div::-webkit-scrollbar-track {
+        background: white;
+
+    }
+
+    .contacts-outer-div::-webkit-scrollbar-thumb {
+        background-color: #A8A8A8;
+        border-radius: 10px;
+
+    }
+
+    /* Buttons */
+    .contacts-outer-div::-webkit-scrollbar-button:single-button {
+        display: block;
+        background-size: 10px;
+        background-repeat: no-repeat;
+    }
+
+    /* Up */
+    .contacts-outer-div::-webkit-scrollbar-button:single-button:vertical:decrement {
+        cursor: pointer;
+        height: 12px;
+        width: 16px;
+        background-position: center 7px;
+        background-image: url(img/scroll-arrow-up.svg);
+    }
+
+    /* Down */
+    .contacts-outer-div::-webkit-scrollbar-button:single-button:vertical:increment {
+        height: 12px;
+        width: 16px;
+        background-position: center 2px;
+        background-image: url(img/scroll-arrow-downouter-div);
+
+    }
+}
+
+@media(max-width:420px) {}

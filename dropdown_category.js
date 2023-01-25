@@ -1,5 +1,5 @@
 let tasks = [];
-let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue'];
+let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
 let categories = [
     new Category('Design', 'orange'),
     new Category('Sales', 'violet'),
@@ -30,7 +30,7 @@ function highlightCurrentColor(i) {
 /*----------- FUNCTION CREATE NEW TASK -----------*/
 function createNewTask() {
     checkIfEmptyField();
-    //closeAllDropdowns();
+    closeAllDropdowns();
     if (inputMissing == false) {
         pushNewTask();
     } console.log(tasks);
@@ -44,6 +44,7 @@ function checkIfEmptyField() {
     checkIfEmpty('description');
     checkIfEmpty('date');
     checkIfCategoryEmpty();
+    checkIfNotAssigned();
 }
 
 function checkIfEmpty(id) {
@@ -61,6 +62,15 @@ function checkIfCategoryEmpty() {
         inputMissing = true;
     } else {
         document.getElementById('category-required').classList.remove('alert-color');
+    }
+}
+
+function checkIfNotAssigned() {
+    if (assignedContacts.length == 0) {
+        document.getElementById('assignment-required').classList.add('alert-color');
+        inputMissing = true;
+    } else {
+        document.getElementById('assignment-required').classList.remove('alert-color');
     }
 }
 
@@ -166,7 +176,7 @@ function showCategoryOptions() {
         document.getElementById('c-option' + i).classList.remove('d-none');
     }
     document.getElementById('create-new-category').classList.remove('d-none');
-    playOpenDropdownAnimation('options');
+    playOpenDropdownAnimation('options-category');
 }
 
 function addCloseCategoriesFunction() {
@@ -188,18 +198,18 @@ function closeDropdownCategory() {
 
 function hideCategoryOptions() {
     for (let i = 0; i < categories.length; i++) {
-        if (containerWithTargetedIdsExists(i)) {
+        if (containerWithTargetedIdsExists('c', i)) {
             document.getElementById('c-option' + i).classList.add('d-none');
         }
     }
     document.getElementById('create-new-category').classList.add('d-none');
     if (categoryOpen == true) {
-        playCloseDropdownAnimation('options');
+        playCloseDropdownAnimation('options-category');
     }
 }
 
-function containerWithTargetedIdsExists(i) {
-    return typeof (document.getElementById('c-option' + i)) != 'undefined' && document.getElementById('c-option' + i) != null
+function containerWithTargetedIdsExists(x, i) {
+    return typeof (document.getElementById(x + '-option' + i)) != 'undefined' && document.getElementById(x + '-option' + i) != null
 }
 
 function addOpenCategoriesFunction() {
@@ -214,43 +224,44 @@ function playCloseDropdownAnimation(id) {
 
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
 function createNewCategory() {
-    showInputField();
+    showInputField('category');
     showColorSelection();
-    hideCategories();
+    hideDefaultInput('category');
     closeDropdownCategory();
 }
 
-function showInputField() {
-    document.getElementById('new-category').classList.remove('d-none');
-    document.getElementById('new-category-container').classList.remove('d-none');
+function showInputField(id) {
+    document.getElementById('new-' + id).classList.remove('d-none');
+    document.getElementById('new-' + id + '-container').classList.remove('d-none');
 }
 
 function showColorSelection() {
     document.getElementById('color-selection-container').classList.remove('d-none');
 }
 
-function hideCategories() {
-    document.getElementById('category-options-container').classList.add('d-none');
+function hideDefaultInput(id) {
+    document.getElementById(id + '-options-container').classList.add('d-none');
 }
 
 function closeNewCategory() {
-    hideInputField();
+    hideInputField('category');
     hideColorSelection();
-    showCategorySelection();
+    showDefaultInput('category');
 }
 
-function hideInputField() {
-    document.getElementById('new-category').value = '';
-    document.getElementById('new-category').classList.add('d-none');
-    document.getElementById('new-category-container').classList.add('d-none');
+function hideInputField(id) {
+    document.getElementById('new-' + id).value = '';
+    document.getElementById('new-' + id).classList.add('d-none');
+    document.getElementById('new-' + id + '-container').classList.add('d-none');
 }
 
 function hideColorSelection() {
     document.getElementById('color-selection-container').classList.add('d-none');
 }
 
-function showCategorySelection() {
-    document.getElementById('category-options-container').classList.remove('d-none');
+function showDefaultInput(id) {
+    document.getElementById('options-' + id).classList.remove('scale-down-ver-top');
+    document.getElementById(id + '-options-container').classList.remove('d-none');
 }
 
 /*----------- ADD NEW CATEGORY -----------*/
@@ -265,7 +276,7 @@ function addNewCategory() {
         document.getElementById('new-category').value = '';
 
         showCategories();
-        hideInputField();
+        hideInputField('category');
         hideColorSelection();
         renderSelectedCategory(title, currentColor);
     }
@@ -290,7 +301,6 @@ function selectCategory(title, color) {
 
 /*----------- OPEN DROPDOWN MENU FOR ASSIGNMENT -----------*/
 function openDropdownAssignment() {
-    loadAllOptions();
     closeDropdownCategory();
     showAssignmentOptions();
     addCloseContactsFunction();
@@ -302,7 +312,7 @@ function showAssignmentOptions() {
         document.getElementById('a-option' + i).classList.remove('d-none');
     }
     document.getElementById('invite-new-contact').classList.remove('d-none');
-    playOpenDropdownAnimation('options-contacts');
+    playOpenDropdownAnimation('options-contact');
 }
 
 function addCloseContactsFunction() {
@@ -320,12 +330,18 @@ function closeDropdownAssignment() {
 
 function hideAssignmentOptions() {
     for (let i = 0; i < contacts.length; i++) {
-        document.getElementById('a-option' + i).classList.add('d-none');
+        if (containerWithTargetedIdsExists('a', i)) {
+            document.getElementById('a-option' + i).classList.add('d-none');
+        }
     }
     document.getElementById('invite-new-contact').classList.add('d-none');
     if (contactsOpen == true) {
-        playCloseDropdownAnimation('options-contacts');
+        playCloseDropdownAnimation('options-contact');
     }
+}
+
+function containerWithTargetedIdsExists(x, i) {
+    return typeof (document.getElementById(x + '-option' + i)) != 'undefined' && document.getElementById(x + '-option' + i) != null
 }
 
 function addOpenContactsFunktion() {
@@ -348,11 +364,25 @@ function removeAssignment(i, index) {
     console.log(assignedContacts);
 }
 
+/*----------- ASSIGN CONTACT FOR TASK -----------*/
+function inviteNewContact() {
+    document.getElementById('new-contact-container').classList.add('margin-bottom-zero');
+    closeDropdownAssignment();
+    showInputField('contact');
+    hideDefaultInput('contact');
+}
+
+function closeInviteContact() {
+    hideInputField('contact');
+    showDefaultInput('contact');
+}
+
+
 /*----------- TEMPLATES -----------*/
 
 /*----------- TEMPLATES FOR CATEGORY SELECTION -----------*/
 function renderCategoryOptions(option, i) {
-    document.getElementById('options').innerHTML += `
+    document.getElementById('options-category').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable" onclick="selectCategory('${option.title}', '${option.color}')">
         <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
@@ -361,7 +391,7 @@ function renderCategoryOptions(option, i) {
 
 
 function renderLastCategoryOption(option, i) {
-    document.getElementById('options').innerHTML += `
+    document.getElementById('options-category').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable last-option" onclick="selectCategory('${option.title}', '${option.color}')">
         <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
