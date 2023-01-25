@@ -12,6 +12,9 @@ let categoryOpen = false;
 let categorySelected = false;
 let contactsOpen = false;
 let assignedContacts = [];
+let urgent = false;
+let medium = false;
+let low = false;
 let inputMissing;
 
 
@@ -45,6 +48,7 @@ function checkIfEmptyField() {
     checkIfEmpty('date');
     checkIfCategoryEmpty();
     checkIfNotAssigned();
+    checkIfNoPriority();
 }
 
 function checkIfEmpty(id) {
@@ -74,13 +78,19 @@ function checkIfNotAssigned() {
     }
 }
 
+function checkIfNoPriority() {
+    if (urgent == false && medium == false && low == false) {
+        inputMissing = true;
+    }
+}
+
 function pushNewTask() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let categoryTitle = document.getElementById('new-category-title').innerHTML;
     let date = document.getElementById('date').value;
 
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date);
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low);
     tasks.push(newTask);
     clearAllInputFields();
 }
@@ -375,6 +385,47 @@ function inviteNewContact() {
 function closeInviteContact() {
     hideInputField('contact');
     showDefaultInput('contact');
+}
+
+
+/*----------- SET PRIORITY -----------*/
+function taskIsUrgent(id, path, id2, id3) {
+    urgent = true;
+    medium = false;
+    low = false;
+    setImgSelected(id, path, id2, id3);
+}
+
+function setImgSelected(id, path, id2, id3) {
+    document.getElementById('prio-' + id).src = `assets/img/${path}_selected.svg`;
+        focusPrio(id);
+        unfocusPrio(id2, id, id3);
+        unfocusPrio(id3, id, id2);
+}
+
+function focusPrio(id) {
+    document.getElementById('prio-' + id).setAttribute('onmouseover', '');
+    document.getElementById('prio-' + id).setAttribute('onmouseout', '');
+}
+
+function unfocusPrio(id, id2, id3) {
+    document.getElementById('prio-' + id).setAttribute('onmouseover', `hover('${id}', '${id}_big', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).setAttribute('onmouseout', `leave('${id}', '${id}_big', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).src = `assets/img/${id}_big.svg`;
+}
+
+function taskIsMediumPrio(id, path, id2, id3) {
+    urgent = false;
+    medium = true;
+    low = false;
+    setImgSelected(id, path, id2, id3);
+}
+
+function taskIsLowPrio(id, path, id2, id3) {
+    urgent = false;
+    medium = false;
+    low = true;
+    setImgSelected(id, path, id2, id3);
 }
 
 
