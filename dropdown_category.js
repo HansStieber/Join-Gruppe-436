@@ -8,12 +8,14 @@ let categories = [
     new Category('Marketing', 'blue')
 ];
 let currentColor;
+let categoryOpen;
+let contactsOpen;
 
 
 
 function setCurrentColor(color, i) {
     currentColor = color;
-    
+
     highlightCurrentColor(i);
 }
 
@@ -121,6 +123,7 @@ function openDropdownCategory() {
     closeDropdownAssignment();
     showCategoryOptions();
     addCloseCategoriesFunction();
+    categoryOpen = true;
 }
 
 function showCategoryOptions() {
@@ -128,10 +131,16 @@ function showCategoryOptions() {
         document.getElementById('c-option' + i).classList.remove('d-none');
     }
     document.getElementById('create-new-category').classList.remove('d-none');
+    playOpenDropdownAnimation('options');
 }
 
 function addCloseCategoriesFunction() {
     document.getElementById('select-category-container').setAttribute('onclick', 'closeDropdownCategory()');
+}
+
+function playOpenDropdownAnimation(id) {
+    document.getElementById(id).classList.add('scale-up-ver-top');
+    document.getElementById(id).classList.remove('scale-down-ver-top');
 }
 
 
@@ -139,6 +148,7 @@ function addCloseCategoriesFunction() {
 function closeDropdownCategory() {
     hideCategoryOptions();
     addOpenCategoriesFunction();
+    categoryOpen = false;
 }
 
 function hideCategoryOptions() {
@@ -146,10 +156,18 @@ function hideCategoryOptions() {
         document.getElementById('c-option' + i).classList.add('d-none');
     }
     document.getElementById('create-new-category').classList.add('d-none');
+    if (categoryOpen == true) {
+        playCloseDropdownAnimation('options');
+    }
 }
 
 function addOpenCategoriesFunction() {
     document.getElementById('select-category-container').setAttribute('onclick', 'openDropdownCategory()');
+}
+
+function playCloseDropdownAnimation(id) {
+    document.getElementById(id).classList.remove('scale-up-ver-top');
+    document.getElementById(id).classList.add('scale-down-ver-top');
 }
 
 
@@ -203,7 +221,7 @@ function addNewCategory() {
         categories.push(newCategory);
 
         document.getElementById('category').value = '';
-        
+
         showCategories();
         hideInputField();
         hideColorSelection();
@@ -233,6 +251,7 @@ function openDropdownAssignment() {
     closeDropdownCategory();
     showAssignmentOptions();
     addCloseContactsFunction();
+    contactsOpen = true;
 }
 
 function showAssignmentOptions() {
@@ -240,6 +259,7 @@ function showAssignmentOptions() {
         document.getElementById('a-option' + i).classList.remove('d-none');
     }
     document.getElementById('invite-new-contact').classList.remove('d-none');
+    playOpenDropdownAnimation('options-contacts');
 }
 
 function addCloseContactsFunction() {
@@ -251,6 +271,7 @@ function addCloseContactsFunction() {
 function closeDropdownAssignment() {
     hideAssignmentOptions();
     addOpenContactsFunktion();
+    contactsOpen = false;
 }
 
 
@@ -259,6 +280,9 @@ function hideAssignmentOptions() {
         document.getElementById('a-option' + i).classList.add('d-none');
     }
     document.getElementById('invite-new-contact').classList.add('d-none');
+    if (contactsOpen == true) {
+        playCloseDropdownAnimation('options-contacts');
+    }
 }
 
 function addOpenContactsFunktion() {
