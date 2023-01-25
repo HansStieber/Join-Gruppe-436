@@ -161,6 +161,8 @@
 .card-column {
     display: flex;
     flex-direction: column;
+    height: 500px;
+    width: 240px;
 }
 
 .card-headline {
