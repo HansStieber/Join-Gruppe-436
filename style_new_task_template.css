@@ -67,6 +67,10 @@
     display: none;
 }
 
+.margin-bottom-zero {
+    margin-bottom: 0 !important;
+}
+
 h1 {
     font-size: 61px;
     margin: 0;

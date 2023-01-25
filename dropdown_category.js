@@ -176,7 +176,7 @@ function showCategoryOptions() {
         document.getElementById('c-option' + i).classList.remove('d-none');
     }
     document.getElementById('create-new-category').classList.remove('d-none');
-    playOpenDropdownAnimation('options');
+    playOpenDropdownAnimation('options-category');
 }
 
 function addCloseCategoriesFunction() {
@@ -204,7 +204,7 @@ function hideCategoryOptions() {
     }
     document.getElementById('create-new-category').classList.add('d-none');
     if (categoryOpen == true) {
-        playCloseDropdownAnimation('options');
+        playCloseDropdownAnimation('options-category');
     }
 }
 
@@ -260,6 +260,7 @@ function hideColorSelection() {
 }
 
 function showDefaultInput(id) {
+    document.getElementById('options-' + id).classList.remove('scale-down-ver-top');
     document.getElementById(id + '-options-container').classList.remove('d-none');
 }
 
@@ -275,7 +276,7 @@ function addNewCategory() {
         document.getElementById('new-category').value = '';
 
         showCategories();
-        hideInputField();
+        hideInputField('category');
         hideColorSelection();
         renderSelectedCategory(title, currentColor);
     }
@@ -311,7 +312,7 @@ function showAssignmentOptions() {
         document.getElementById('a-option' + i).classList.remove('d-none');
     }
     document.getElementById('invite-new-contact').classList.remove('d-none');
-    playOpenDropdownAnimation('options-contacts');
+    playOpenDropdownAnimation('options-contact');
 }
 
 function addCloseContactsFunction() {
@@ -335,7 +336,7 @@ function hideAssignmentOptions() {
     }
     document.getElementById('invite-new-contact').classList.add('d-none');
     if (contactsOpen == true) {
-        playCloseDropdownAnimation('options-contacts');
+        playCloseDropdownAnimation('options-contact');
     }
 }
 
@@ -365,6 +366,7 @@ function removeAssignment(i, index) {
 
 /*----------- ASSIGN CONTACT FOR TASK -----------*/
 function inviteNewContact() {
+    document.getElementById('new-contact-container').classList.add('margin-bottom-zero');
     closeDropdownAssignment();
     showInputField('contact');
     hideDefaultInput('contact');
@@ -380,7 +382,7 @@ function closeInviteContact() {
 
 /*----------- TEMPLATES FOR CATEGORY SELECTION -----------*/
 function renderCategoryOptions(option, i) {
-    document.getElementById('options').innerHTML += `
+    document.getElementById('options-category').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable" onclick="selectCategory('${option.title}', '${option.color}')">
         <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
@@ -389,7 +391,7 @@ function renderCategoryOptions(option, i) {
 
 
 function renderLastCategoryOption(option, i) {
-    document.getElementById('options').innerHTML += `
+    document.getElementById('options-category').innerHTML += `
     <div id="${'c-option' + i}" class="option d-none selectable last-option" onclick="selectCategory('${option.title}', '${option.color}')">
         <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
