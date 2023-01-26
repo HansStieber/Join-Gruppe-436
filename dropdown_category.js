@@ -1,5 +1,6 @@
 let tasks = [];
 let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
+let newCategories = [];
 let categories = [
     new Category('Design', 'orange'),
     new Category('Sales', 'violet'),
@@ -93,6 +94,7 @@ function pushNewTask() {
 
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low);
     tasks.push(newTask);
+    categories.push(new Category(categoryTitle, currentColor));
     clearAllInputFields();
     showConfirmation();
 }
@@ -108,6 +110,7 @@ function clearAllInputFields() {
 
 function removeSelectedCategory() {
     categorySelected = false;
+    newCategories = [];
     renderDefaultCategory();
 }
 
@@ -302,7 +305,7 @@ function addNewCategory() {
     if (!title == '' && !currentColor == '') {
         categorySelected = true;
         let newCategory = new Category(title, currentColor);
-        categories.push(newCategory);
+        newCategories.push(newCategory);
 
         document.getElementById('new-category').value = '';
 
@@ -311,7 +314,7 @@ function addNewCategory() {
         hideColorSelection();
         renderSelectedCategory(title, currentColor);
     }
-    console.log(categories);
+    console.log(newCategories);
 
 
 }
@@ -382,16 +385,22 @@ function addOpenContactsFunktion() {
 /*----------- ASSIGN CONTACT FOR TASK -----------*/
 function assignContact(i) {
     document.getElementById('checkbox' + i).classList.remove('d-none');
+    let fN = contacts[i].firstName.toLowerCase();
+    let lN = contacts[i].lastName.toLowerCase();
     assignedContacts.push(contacts[i]);
-    let indexOfPushedContact = assignedContacts.length - 1;
     console.log(assignedContacts);
-    document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, ${indexOfPushedContact})`);
+    document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
 }
 
-function removeAssignment(i, index) {
+function removeAssignment(i, fN, lN) {
     document.getElementById('checkbox' + i).classList.add('d-none');
     document.getElementById('a-option' + i).setAttribute('onclick', `assignContact(${i})`);
-    assignedContacts.splice(index, 1);
+    for (let i = 0; i < assignedContacts.length; i++) {
+        const contact = assignedContacts[i];
+        if (contact.firstName.toLowerCase().includes(fN) && contact.lastName.toLowerCase().includes(lN)) {
+            assignedContacts.splice(i, 1);
+        }
+    }
     console.log(assignedContacts);
 }
 
@@ -419,10 +428,10 @@ function taskIsUrgent(id, path, id2, id3) {
 
 function setImgSelected(id, path, id2, id3) {
     document.getElementById('prio-' + id).src = `assets/img/${path}_selected.svg`;
-        focusPrio(id, id2, id3);
-        unfocusPrio(id2, id, id3);
-        unfocusPrio(id3, id, id2);
-        console.log(urgent, medium, low)
+    focusPrio(id, id2, id3);
+    unfocusPrio(id2, id, id3);
+    unfocusPrio(id3, id, id2);
+    console.log(urgent, medium, low)
 }
 
 function focusPrio(id, id2, id3) {
