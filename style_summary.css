@@ -22,16 +22,17 @@
     gap: 30px;
 }
 
-.grafic-line{
+.grafic-line {
     height: 59px;
     border: 3px solid #29ABE2;
 }
 
-.heading-container >h1{
+.heading-container>h1 {
     margin: 0;
-    font-size: 61px ;
+    font-size: 61px;
 }
-.heading-container > div {
+
+.heading-container>div {
     font-size: 43px;
     color: #29ABE2;
 }
@@ -117,6 +118,7 @@
     height: 70px;
     width: 70px;
     background-image: url(../assets/img/pencil.svg);
+    background-repeat: no-repeat;
     margin-right: 32px;
     transition: 100ms ease-in-out;
 }
@@ -135,6 +137,7 @@
     height: 70px;
     width: 70px;
     background-image: url(../assets/img/tick.svg);
+    background-repeat: no-repeat;
     margin-right: 32px;
     transition: 100ms ease-in-out;
 }
@@ -167,6 +170,13 @@
     align-items: center;
 }
 
+.urgent-icon {
+    height: 70px;
+    width: 70px;
+    background-image: url(../assets/img/urgent.svg);
+    background-repeat: no-repeat;
+}
+
 .col-3>.urgent-tasks>img {
     margin-right: 19px;
 }
@@ -189,73 +199,76 @@
 
 
 @media (max-width: 1320px) {
-    .user-greeting{
+    .user-greeting {
         display: inline;
     }
 
-    .main-container{
+    .main-container {
         flex-direction: column;
         align-items: unset;
     }
 
-    .side-container{
+    .side-container {
         padding-left: unset;
         padding-top: 30px;
     }
-    
+
 }
 
 @media (max-width: 992px) {
-    .side-container{
+    .side-container {
         display: none;
     }
 }
 
 @media (max-width: 820px) {
-.heading-container::before{
-    content: "Kanban Project Management Tool";
-    font-size: 21px;
-}
+    .heading-container::before {
+        content: "Kanban Project Management Tool";
+        font-size: 21px;
+    }
 
-.heading-container{
-    flex-direction: column;
-    align-items: unset;
-    gap: 20px;
-}
+    .heading-container {
+        flex-direction: column;
+        align-items: unset;
+        gap: 20px;
+    }
 
 
-.grafic-line{
-    width: 90px;
-    height: 0px;
-    border: 3px solid #29ABE2;
-}
+    .grafic-line {
+        width: 90px;
+        height: 0px;
+        border: 3px solid #29ABE2;
+    }
 
-.main-container{
-    flex-direction: row;
-}
+    .main-container {
+        flex-direction: row;
+    }
 
-.side-container {
-    display: none;
-}
+    .side-container {
+        display: none;
+    }
 
-.summary-container{
-    margin-top:40px;
-}
+    .summary-container {
+        margin-top: 40px;
+    }
 
 }
 
 @media (max-width: 650px) {
 
-    .heading-container::before{
+    .heading-container::before {
         content: "Kanban Project Management Tool";
         font-size: 16px;
+        gap: 10px;
+        margin-top: 10px;
     }
 
-    .heading-container > h1, .bold{
+    .heading-container>h1,
+    .bold {
         font-size: 47px;
     }
 
-    .subheading{
+    .subheading {
         font-size: 21px;
     }
 
@@ -268,16 +281,18 @@
         width: 110px;
         height: 110px;
     }
-    
-    .col-1>span, .col-2 .bold ~ span, .col-3 .bold ~ span {
+
+    .col-1 > span,
+    .col-2 .bold ~ span,
+    .col-3 .bold ~ span {
         font-size: 14px;
     }
-    
+
     .col-2 {
         width: 175px;
         height: 110px;
     }
-    
+
     .col-3 {
         width: 360px;
         height: 110px;
@@ -288,14 +303,34 @@
         height: 68px;
     }
 
-    .tick-image, .pencil-image {
-        height: 40px;
-        width: 40px;
-}
-.urgentDate {
-    font-size: 16px;
-}
+    .urgentDate {
+        font-size: 16px;
+    }
 
+    .tick-image, .pencil-image, .urgent-icon {
+        height: 41px;
+        width: 41px;
+        margin-right: 18px;
+    }
 
+    .tick-image {
+        background-image: url(../assets/img/tickdarkmobil.svg);
+    }
+
+    .tick-image:hover {
+        background-image: unset;
+    }
+
+    .pencil-image {
+        background-image: url(../assets/img/pencildarkmobil.svg);
+    }
+
+    .pencil-image:hover {
+        background-image: unset;
+    }
+
+    .urgent-icon {
+        background-image: url(../assets/img/urgentmobil.svg);
+    }
 
 }

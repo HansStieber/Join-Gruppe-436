@@ -17,6 +17,10 @@ header {
     font-size: 21px;
 }
 
+.header-mobile-logo{
+    display: none;
+}
+
 .icons-header {
     display: flex;
     align-items: center;
@@ -38,11 +42,17 @@ header {
 }
 
 @media (max-width: 820px) {
-    .header-heading {
+    .header-heading > span {
         display: none;
     }
 
+    .header-mobile-logo{
+        display: block;
+    }
+
     header {
-        justify-content: flex-end;
+        justify-content: space-between;
+        padding: 20px 33px 20px 33px;
+
     }
 }
