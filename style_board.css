@@ -368,6 +368,11 @@
     }
 }
 
+@media(max-width:820px) {
+    .kanban-mobile-span {
+        display: block;
+    }
+}
 
 @media(max-height:985px) {
     .center-new-task-card {
@@ -400,10 +405,6 @@
     .board {
         padding-right: 2em;
         padding-left: 2em;
-    }
-
-    .kanban-mobile-span {
-        display: block;
     }
 
     .board-head-div {

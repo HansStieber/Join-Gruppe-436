@@ -189,6 +189,7 @@
     flex-direction: column;
     font-weight: 700;
     margin-bottom: 15px;
+    font-size: 18px;
 }
 
 .cards-div-main {
@@ -314,8 +315,79 @@
     bottom: 60px;
 }
 
+.mobile-button-div {
+
+    display: none;
+}
+
+.new-contact-mobile {
+    display: none;
+}
+
+.kanban-mobile-span {
+    display: none;
+}
+
+.mobile-blue-bar {
+    display: none;
+}
+
+.mobile-arrow-left {
+    display: none;
+}
+
 @media(max-width:992px) {
+    .mobile-edit-contact-btn {
+        background-image: url('img/pencil-btn-default.svg');
+        background-repeat: no-repeat;
+    }
+
+    .mobile-d-none {
+        display: none;
+    }
+
+    header {
+        z-index: 1;
+    }
+
+    .contacts-slide-bar {
+        position: relative;
+        margin-bottom: 5em;
+    }
+
+    .mobile-button-div {
+        background-color: white;
+        display: block;
+        position: sticky;
+        top: 0em;
+        height: 4.5em;
+    }
+
+    .new-contact-mobile {
+        bottom: 0em;
+        top: 1em;
+        right: 1em;
+        display: block;
+    }
+
     .contacts-right-div {
+        position: absolute;
+        top: 5.7em;
+        bottom: 5em;
+        left: 0em;
+        right: 0em;
+        background-color: white;
+        padding: 2em;
+    }
+
+    .mobile-arrow-left {
+        display: block;
+        position: absolute;
+        right: 3em;
+        top: 6em;
+    }
+
+    .right-div-mobile {
         display: none;
     }
 
@@ -325,25 +397,82 @@
 
     .contacts-outer-div {
         flex-direction: column;
+        background-color: white;
         align-items: center;
         margin-left: 0em;
-        background-color: white;
-        overflow: auto;
+    }
+
+}
+
+@media(max-width:820px) {
+    .kanban-mobile-span {
+        display: block;
+    }
+
+    .contacts-big-card {
+        padding: 1em;
+        margin-top: 1em;
+    }
+
+    .contacts-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contacts-bar-img {
+        display: none;
+    }
+
+    .mobile-blue-bar {
+        display: block;
+    }
+
+    .contacts-head span {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+    }
+
+    .contacts-head h1 {
+        font-size: 3em;
+        margin-bottom: 0.4em;
+    }
+
+    .big-card-name-div {
+        margin-left: 1.5em;
+    }
+
+    .big-card-name {
+        font-weight: 400;
+        font-size: 2em;
+    }
+
+    .contact-initials-big {
+        width: 6em;
+        height: 6em;
+    }
+
+    .contact-initials-big span {
+        font-weight: 400;
+        font-size: 2.2em;
+    }
+
+    .edit-contact {
+        display: none;
     }
 }
 
 @media(max-width:640px) {
+
     .contacts-slide-bar {
         width: 20em;
         box-shadow: none;
-        padding-top: 5em;
         padding-left: 0em;
         padding-right: 0em;
         overflow: visible;
     }
 
     .contacts-outer-div::-webkit-scrollbar {
-        width: 1em;
+        width: 0.5em;
     }
 
     .contacts-outer-div::-webkit-scrollbar-track {
@@ -382,5 +511,3 @@
 
     }
 }
-
-@media(max-width:420px) {}

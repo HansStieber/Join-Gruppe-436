@@ -107,6 +107,7 @@ function getContactInfo(contact) {
 
 
 function renderBigCard(indexNum) {
+    showMobileBigCard();
     let contact = contacts[indexNum];
 
     const { initials1, initials2, bgColor, email,
@@ -125,6 +126,14 @@ function renderBigCard(indexNum) {
 
     initialsDiv.style = `background-color:${bgColor}`;
     bigCardDiv.classList.remove('d-none');
+}
+
+
+function showMobileBigCard() {
+    //let slideBar = document.getElementById('contacts-slide-bar');
+    let rightDiv = document.getElementById('contacts-right-div');
+    //slideBar.classList.add('d-none');
+    rightDiv.classList.remove('right-div-mobile');
 }
 
 

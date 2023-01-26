@@ -37,8 +37,16 @@
             <!-- MAIN CONTENT -->
             <div class="contacts-outer-div">
 
-                <div class="contacts-slide-bar">
-
+                <div id="contacts-slide-bar" class="contacts-slide-bar">
+                    <div class="mobile-button-div">
+                        <button class="btn-dark new-contact new-contact-mobile" type="submit"
+                            onclick="openAddOverlay()">
+                            <div class="btn-settings">
+                                <span>New Contact</span>
+                                <img src="./assets/img/new_contact.svg" alt="new contact icon">
+                            </div>
+                        </button>
+                    </div>
                     <div id="cards-main-A" class="cards-div-main d-none">
                         <div class="cards-div-letter"><span>A</span></div>
                         <div class="cards-div" id="cards-div-A"></div>
@@ -146,10 +154,14 @@
 
                 </div>
 
-                <div class="contacts-right-div">
+                <div id="contacts-right-div" class="contacts-right-div right-div-mobile">
                     <div class="contacts-head">
+                        <img class="mobile-arrow-left" src="img/arrow-left-contacts.svg">
+                        <span class="kanban-mobile-span">Kanban Project Management Tool</span>
                         <h1>Contacts</h1>
-                        <div class="contacts-bar-img"><img src="img/blue-bar.svg"></div><span>Better with a team</span>
+                        <div class="contacts-bar-img"><img src="img/blue-bar.svg"></div>
+                        <span>Better with a team</span>
+                        <div class="mobile-blue-bar"><img src="img/blue_underline.png"></div>
                     </div>
 
                     <div id="big-card" class="contacts-big-card d-none">
@@ -190,7 +202,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn-dark new-contact" type="submit" onclick="openAddOverlay()">
+                    <div class="mobile-edit-contact-btn"></div>
+                    <button class="btn-dark new-contact mobile-d-none" type="submit" onclick="openAddOverlay()">
                         <div class="btn-settings">
                             <span>New Contact</span>
                             <img src="./assets/img/new_contact.svg" alt="new contact icon">
