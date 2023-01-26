@@ -12,6 +12,9 @@ let categoryOpen = false;
 let categorySelected = false;
 let contactsOpen = false;
 let assignedContacts = [];
+let urgent = false;
+let medium = false;
+let low = false;
 let inputMissing;
 
 
@@ -34,8 +37,6 @@ function createNewTask() {
     if (inputMissing == false) {
         pushNewTask();
     } console.log(tasks);
-
-
 }
 
 function checkIfEmptyField() {
@@ -45,6 +46,7 @@ function checkIfEmptyField() {
     checkIfEmpty('date');
     checkIfCategoryEmpty();
     checkIfNotAssigned();
+    checkIfNoPriority();
 }
 
 function checkIfEmpty(id) {
@@ -74,15 +76,25 @@ function checkIfNotAssigned() {
     }
 }
 
+function checkIfNoPriority() {
+    if (urgent == false && medium == false && low == false) {
+        document.getElementById('priority-required').classList.add('alert-color');
+        inputMissing = true;
+    } else {
+        document.getElementById('priority-required').classList.remove('alert-color');
+    }
+}
+
 function pushNewTask() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let categoryTitle = document.getElementById('new-category-title').innerHTML;
     let date = document.getElementById('date').value;
 
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date);
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low);
     tasks.push(newTask);
     clearAllInputFields();
+    showConfirmation();
 }
 
 function clearAllInputFields() {
@@ -91,6 +103,7 @@ function clearAllInputFields() {
     document.getElementById('date').value = '';
     removeSelectedCategory();
     removeAllAssignments();
+    unsetPriority();
 }
 
 function removeSelectedCategory() {
@@ -101,11 +114,29 @@ function removeSelectedCategory() {
 function removeAllAssignments() {
     assignedContacts = [];
     loadAllOptions();
+    closeDropdownAssignment();
+}
+
+function unsetPriority() {
+    urgent = false;
+    medium = false;
+    low = false;
+    unfocusPrio('urgent', 'medium', 'low');
+    unfocusPrio('low', 'urgent', 'medium');
+    unfocusPrio('medium', 'low', 'urgent');
 }
 
 function closeAllDropdowns() {
     closeDropdownCategory();
     closeDropdownAssignment();
+}
+
+function showConfirmation() {
+    document.getElementById('task-added-to-board').classList.remove('d-none');
+    document.getElementById('task-added-to-board').classList.add('slide-in');
+    setTimeout(() => {
+        window.location.href = 'board.html';
+    }, 2000);
 }
 
 
@@ -375,6 +406,63 @@ function inviteNewContact() {
 function closeInviteContact() {
     hideInputField('contact');
     showDefaultInput('contact');
+}
+
+
+/*----------- SET PRIORITY -----------*/
+function taskIsUrgent(id, path, id2, id3) {
+    urgent = true;
+    medium = false;
+    low = false;
+    setImgSelected(id, path, id2, id3);
+}
+
+function setImgSelected(id, path, id2, id3) {
+    document.getElementById('prio-' + id).src = `assets/img/${path}_selected.svg`;
+        focusPrio(id, id2, id3);
+        unfocusPrio(id2, id, id3);
+        unfocusPrio(id3, id, id2);
+        console.log(urgent, medium, low)
+}
+
+function focusPrio(id, id2, id3) {
+    document.getElementById('prio-' + id).setAttribute('onmouseover', '');
+    document.getElementById('prio-' + id).setAttribute('onmouseout', '');
+    document.getElementById('prio-' + id).setAttribute('onclick', `unfocusPriority('${id}', '${id2}', '${id3}')`);
+}
+
+function unfocusPrio(id, id2, id3) {
+    document.getElementById('prio-' + id).setAttribute('onmouseover', `hover('${id}', '${id}_big', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).setAttribute('onmouseout', `leave('${id}', '${id}_big', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).src = `assets/img/${id}_big.svg`;
+}
+
+function unfocusPriority(id, id2, id3) {
+    urgent = false;
+    medium = false;
+    low = false;
+    let firstLeter = id.charAt(0);
+    let fLUppercase = firstLeter.toUpperCase();
+    let newId = fLUppercase + id.substring(1);
+    document.getElementById('prio-' + id).src = `assets/img/${id}_big.svg`;
+    document.getElementById('prio-' + id).setAttribute('onclick', `taskIs${newId}('${id}', '${id}_big', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).setAttribute('onmouseover', `hover('${id}', '${id}_big', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).setAttribute('onmouseout', `leave('${id}', '${id}_big', '${id2}', '${id3}')`);
+    console.log(urgent, medium, low)
+}
+
+function taskIsMedium(id, path, id2, id3) {
+    urgent = false;
+    medium = true;
+    low = false;
+    setImgSelected(id, path, id2, id3);
+}
+
+function taskIsLow(id, path, id2, id3) {
+    urgent = false;
+    medium = false;
+    low = true;
+    setImgSelected(id, path, id2, id3);
 }
 
 
