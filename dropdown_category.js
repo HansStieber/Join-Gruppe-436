@@ -37,8 +37,6 @@ function createNewTask() {
     if (inputMissing == false) {
         pushNewTask();
     } console.log(tasks);
-
-
 }
 
 function checkIfEmptyField() {
@@ -96,6 +94,7 @@ function pushNewTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low);
     tasks.push(newTask);
     clearAllInputFields();
+    showConfirmation();
 }
 
 function clearAllInputFields() {
@@ -130,6 +129,14 @@ function unsetPriority() {
 function closeAllDropdowns() {
     closeDropdownCategory();
     closeDropdownAssignment();
+}
+
+function showConfirmation() {
+    document.getElementById('task-added-to-board').classList.remove('d-none');
+    document.getElementById('task-added-to-board').classList.add('slide-in');
+    setTimeout(() => {
+        window.location.href = 'board.html';
+    }, 2000);
 }
 
 
@@ -421,7 +428,7 @@ function setImgSelected(id, path, id2, id3) {
 function focusPrio(id, id2, id3) {
     document.getElementById('prio-' + id).setAttribute('onmouseover', '');
     document.getElementById('prio-' + id).setAttribute('onmouseout', '');
-    document.getElementById('prio-' + id).setAttribute('onclick', `unsetPriority('${id}', '${id2}', '${id3}')`);
+    document.getElementById('prio-' + id).setAttribute('onclick', `unfocusPriority('${id}', '${id2}', '${id3}')`);
 }
 
 function unfocusPrio(id, id2, id3) {
@@ -430,7 +437,7 @@ function unfocusPrio(id, id2, id3) {
     document.getElementById('prio-' + id).src = `assets/img/${id}_big.svg`;
 }
 
-function unsetPriority(id, id2, id3) {
+function unfocusPriority(id, id2, id3) {
     urgent = false;
     medium = false;
     low = false;
