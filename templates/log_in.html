@@ -2,7 +2,7 @@
     <p>Not a Join user?</p>
     <button class="signup_button" onclick="location.href='sign_up.html'">Sign up</button>
 </div>
-<div class="login-container fade-in-login">
+<div  id="login-container" class="login-container fade-in-login">
     <h1>Log in</h1>
     <img src="./img/blue_underline.png" id="blue_underline">
     <div class="credentials">
@@ -14,7 +14,7 @@
             <input class="checkbox" type="checkbox" id="remember-me" name="remember-me">
             <label for="remember-me">Remember me</label>
         </div>
-        <a class="password_forgotten" href="./templates/forgot_password.html">Forgot my password</a>
+        <a class="password_forgotten" href="#" onclick="forgotPassword()">Forgot my password</a>
     </div>
     <div class="login_form_buttons">
         <button type="submit" class="login_button">Log in</button>
