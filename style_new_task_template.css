@@ -531,6 +531,10 @@ input[type='date']:hover {
         right: 0;
         margin: auto;
     }
+    
+    ::-webkit-calendar-picker-indicator {
+        background-size: 18px;
+    }
 }
 
 /* === Styling for smaller screens/tablets === */
@@ -549,6 +553,7 @@ input[type='date']:hover {
         width: 100%;
         height: calc(100vh - 169px);
         bottom: 80px;
+        font-size: 16px;
     }
 
     .content-new-task {
@@ -569,14 +574,39 @@ input[type='date']:hover {
 }
 
 
-@media (max-width: 490px) {
+@media (max-width: 505px) {
+
+    .prio-urgent, .prio-medium, .prio-low {
+        width: 100px;
+    }
+
+    .submit-button {
+        background-image: url('assets/img/create_task_mobile.svg');
+        background-position: center;
+        margin-left: 0;
+    }
+
+    .clear-form {
+        background-position: center;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .color {
+        margin-left: 5px;
+    }
+
     .prio-box {
         height: unset;
         flex-direction: column;
-        align-items: center;
     }
 
     .prio-urgent, .prio-medium, .prio-low {
         width: 145px;
+    }
+
+    .clear-form {
+        display: none;
     }
 }
