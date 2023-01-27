@@ -123,6 +123,7 @@ function clearAllInputFields() {
     removeSelectedCategory();
     removeAllAssignments();
     unsetPriority();
+    removeAllSubtasks();
 }
 
 function removeSelectedCategory() {
@@ -144,6 +145,12 @@ function unsetPriority() {
     unfocusPrio('urgent', 'medium', 'low');
     unfocusPrio('low', 'urgent', 'medium');
     unfocusPrio('medium', 'low', 'urgent');
+}
+
+function removeAllSubtasks() {
+    subtasks = [];
+    subtasksChecked = [];
+    document.getElementById('subtasks').innerHTML = '';
 }
 
 function closeAllDropdowns() {
@@ -516,12 +523,16 @@ function addNewSubtask() {
     
     document.getElementById('subtasks').innerHTML = '';
     closeNewSubtask();
+    loadSubtasks();
+
+    console.log(subtasks);
+}
+
+function loadSubtasks() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         renderSubtasks(subtask, i);
     }
-
-    console.log(subtasks);
 }
 
 function selectSubtask(i) {

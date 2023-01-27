@@ -480,6 +480,7 @@ input[type='date']:hover {
     border-radius: 3px;
     box-shadow: 1px 1px 0px 0px rgb(0 0 0 / 75%);
     position: relative;
+    background-color: white;
 }
 
 .checkbox-subtasks-unchecked:hover {
