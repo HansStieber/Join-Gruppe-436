@@ -17,6 +17,7 @@ let urgent = false;
 let medium = false;
 let low = false;
 let subtasks = [];
+let subtasksChecked = [];
 let inputMissing;
 
 
@@ -97,12 +98,22 @@ function pushNewTask() {
     let description = document.getElementById('description').value;
     let categoryTitle = document.getElementById('new-category-title').innerHTML;
     let date = document.getElementById('date').value;
+    pickSubtasks();
 
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low);
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low, subtasksChecked);
     tasks.push(newTask);
     categories.push(new Category(categoryTitle, currentColor));
     clearAllInputFields();
     showConfirmation();
+}
+
+function pickSubtasks() {
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        if (subtask.checked == true) {
+            subtasksChecked.push(subtask);
+        }
+    }
 }
 
 function clearAllInputFields() {
@@ -145,7 +156,7 @@ function showConfirmation() {
     document.getElementById('task-added-to-board').classList.add('slide-in');
     setTimeout(() => {
         window.location.href = 'board.html';
-    }, 2000);
+    }, 200000);
 }
 
 
@@ -514,11 +525,13 @@ function addNewSubtask() {
 }
 
 function selectSubtask(i) {
+    subtasks[i].checked = true;
     document.getElementById('checkbox-subtask' + i).classList.remove('d-none');
     document.getElementById('checkbox-subtask-unchecked' + i).setAttribute('onclick', `removeSelection('${i}')`);
 }
 
 function removeSelection(i) {
+    subtasks[i].checked = false;
     document.getElementById('checkbox-subtask' + i).classList.add('d-none');
     document.getElementById('checkbox-subtask-unchecked' + i).setAttribute('onclick', `selectSubtask('${i}')`);
 }
