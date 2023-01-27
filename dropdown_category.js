@@ -16,8 +16,14 @@ let assignedContacts = [];
 let urgent = false;
 let medium = false;
 let low = false;
+let subtasks = [];
 let inputMissing;
 
+
+async function init() {
+    await load();
+    loadAllOptions();
+}
 
 
 function setCurrentColor(color, i) {
@@ -474,6 +480,49 @@ function taskIsLow(id, path, id2, id3) {
     setImgSelected(id, path, id2, id3);
 }
 
+/*----------- ADD NEW SUBTASK -----------*/
+function createNewSubtask() {
+    document.getElementById('icon-plus').classList.add('d-none');
+    document.getElementById('close-subtask-icon').classList.remove('d-none');
+    document.getElementById('border-small').classList.remove('d-none');
+    document.getElementById('create-subtask-icon').classList.remove('d-none');
+}
+
+function closeNewSubtask() {
+    document.getElementById('icon-plus').classList.remove('d-none');
+    document.getElementById('close-subtask-icon').classList.add('d-none');
+    document.getElementById('border-small').classList.add('d-none');
+    document.getElementById('create-subtask-icon').classList.add('d-none');
+}
+
+function addNewSubtask() {
+    let title = document.getElementById('subtask').value;
+    let checked = false
+    let newSubtask = new Subtask(title, checked);
+    subtasks.push(newSubtask);
+
+    document.getElementById('subtask').value = '';
+    
+    document.getElementById('subtasks').innerHTML = '';
+    closeNewSubtask();
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        renderSubtasks(subtask, i);
+    }
+
+    console.log(subtasks);
+}
+
+function selectSubtask(i) {
+    document.getElementById('checkbox-subtask' + i).classList.remove('d-none');
+    document.getElementById('checkbox-subtask-unchecked' + i).setAttribute('onclick', `removeSelection('${i}')`);
+}
+
+function removeSelection(i) {
+    document.getElementById('checkbox-subtask' + i).classList.add('d-none');
+    document.getElementById('checkbox-subtask-unchecked' + i).setAttribute('onclick', `selectSubtask('${i}')`);
+}
+
 
 /*----------- TEMPLATES -----------*/
 
@@ -508,6 +557,7 @@ function renderDefaultCategory() {
     `;
 }
 
+
 /*----------- TEMPLATES FOR CATEGORY COLOR SELECTION CONTAINER -----------*/
 function renderCategoryColors(color, i) {
     document.getElementById('color-selection-container').innerHTML += `
@@ -519,11 +569,24 @@ function renderCategoryColors(color, i) {
 /*----------- TEMPLATES FOR ASSIGNING CONTACT -----------*/
 function renderAssignmentOptions(option, i) {
     document.getElementById('contacts-dropdown-container').innerHTML += `
-    <div id="${'a-option' + i}" class="option d-none selectable checkbox-container" onclick="assignContact(${i})">
+    <div id="${'a-option' + i}" class="option d-none selectable checkbox-contacts" onclick="assignContact(${i})">
         <span>${option.firstName + ' ' + option.lastName}</span>
-        <div class="checkbox-unchecked">
-            <div id="${'checkbox' + i}" class="checkbox-checked d-none"></div>
+        <div class="checkbox-contacts-unchecked">
+            <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
         </div>
     </div>
 `;
+}
+
+
+/*----------- TEMPLATES FOR SUBTASKS -----------*/
+function renderSubtasks(subtask, i) {
+    document.getElementById('subtasks').innerHTML += `
+    <div id="${'st-option' + i}" class="subtask selectable checkbox-subtasks">
+        <div id="${'checkbox-subtask-unchecked' + i}" class="checkbox-subtasks-unchecked" onclick="selectSubtask('${i}')">
+            <img id="${'checkbox-subtask' + i}" class="d-none confirm-subtask" src="assets/img/confirm.svg">
+        </div>
+        <span>${subtask.title}</span>
+    </div>
+    `;
 }

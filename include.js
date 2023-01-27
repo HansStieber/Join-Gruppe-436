@@ -1,7 +1,6 @@
 
 async function load() {
     await includeHTML();
-    loadAllOptions();
 }
 
 async function includeHTML() {
