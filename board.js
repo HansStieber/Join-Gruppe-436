@@ -1,51 +1,6 @@
-function showNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
-    newTaskCloseBtn.classList.remove('d-none');
-    addShadowScreen();
-    slideInTaskCard()
-}
-
-
-function hideNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
-    slideOutTaskCard();
-    removeShadowScreen();
-    setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
-}
-
-
-function addShadowScreen() {
-    let shadowScreen = document.getElementById('shadow-screen');
-    shadowScreen.classList.remove('d-none');
-    shadowScreen.classList.remove('smooth-opacity-out');
-    shadowScreen.classList.add('smooth-opacity-in');
-}
-
-
-function removeShadowScreen() {
-    let shadowScreen = document.getElementById('shadow-screen');
-    shadowScreen.classList.remove('smooth-opacity-in');
-    shadowScreen.classList.add('smooth-opacity-out');
-    setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
-}
-
-
-function slideInTaskCard() {
-    let newTask = document.getElementById('center-new-task-card');
-    newTask.classList.remove('slide-right');
-    newTask.classList.add('slide-left');
-}
-
-
-function slideOutTaskCard() {
-    let newTask = document.getElementById('center-new-task-card');
-    newTask.classList.remove('slide-left');
-    newTask.classList.add('slide-right');
-}
-
 let todos = [
     {
-        'id': 0,
+        'id': 0, //timestamp
         'titel': 'Website redesignen',
         'info': 'Modify the Content of the main Website...',
         'progress-bar': '1/2 Done',
@@ -73,6 +28,15 @@ let todos = [
         'progress-bar': '1/2 Done',
         'status': 'feedback',
     }
+// id = tasks.length - 1
+// category
+// titel = id.title
+// description = id.description
+// assignments
+// priority
+// status
+
+
 
 ];
 
@@ -156,5 +120,53 @@ function moveTo(status) {
     todos[currentDraggedElement]['status'] = status;
     updateBoard();
 }
+
+
+function showNewTaskCard() {
+    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+    newTaskCloseBtn.classList.remove('d-none');
+    addShadowScreen();
+    slideInTaskCard()
+}
+
+
+function hideNewTaskCard() {
+    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+    slideOutTaskCard();
+    removeShadowScreen();
+    setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
+}
+
+
+function addShadowScreen() {
+    let shadowScreen = document.getElementById('shadow-screen');
+    shadowScreen.classList.remove('d-none');
+    shadowScreen.classList.remove('smooth-opacity-out');
+    shadowScreen.classList.add('smooth-opacity-in');
+}
+
+
+function removeShadowScreen() {
+    let shadowScreen = document.getElementById('shadow-screen');
+    shadowScreen.classList.remove('smooth-opacity-in');
+    shadowScreen.classList.add('smooth-opacity-out');
+    setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
+}
+
+
+function slideInTaskCard() {
+    let newTask = document.getElementById('center-new-task-card');
+    newTask.classList.remove('slide-right');
+    newTask.classList.add('slide-left');
+}
+
+
+function slideOutTaskCard() {
+    let newTask = document.getElementById('center-new-task-card');
+    newTask.classList.remove('slide-left');
+    newTask.classList.add('slide-right');
+}
+
+
 
 
