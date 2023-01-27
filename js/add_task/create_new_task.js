@@ -1,5 +1,8 @@
-/*----------- FUNCTION CREATE NEW TASK -----------*/
+let tasks = [];
+let inputMissing;
 
+
+/*----------- FUNCTION CREATE NEW TASK -----------*/
 
 /**
  * Creates a new task

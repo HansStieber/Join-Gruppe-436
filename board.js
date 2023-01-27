@@ -195,6 +195,6 @@ function showCards(idOfCard){
 
     detailContainer.removeAttribute("style");
     
-}l
+}
 
 
