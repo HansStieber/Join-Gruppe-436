@@ -175,10 +175,7 @@ function slideOutTaskCard() {
  * created by sasha
  */
 
-
 function showCards(idOfCard){
-    
- 
     let todoArray = todos[idOfCard];
     let detailContainer = document.getElementById("detailView");
     let info = todoArray["info"];
@@ -192,9 +189,7 @@ function showCards(idOfCard){
         <span>${status}</span>
         <span>${titel}</span>
     </div>`
-
     detailContainer.removeAttribute("style");
-    
-}l
+}
 
 
