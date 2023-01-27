@@ -21,34 +21,33 @@ let subtasksChecked = [];
 let inputMissing;
 
 
+/*----------- INITIALIZING CONTENT OF THE PAGE -----------*/
+/**
+ * Function load() loads all templates that are included in this page (sidebar, header);
+ * Function loadAllOptions loads all options of dropdown menus that are available in add_task.html
+ */
 async function init() {
     await load();
     loadAllOptions();
 }
 
 
-function setCurrentColor(color, i) {
-    currentColor = color;
-
-    highlightCurrentColor(i);
-}
-
-function highlightCurrentColor(i) {
-    document.getElementById('color' + i).classList.add('highlight');
-}
-
-
 /*----------- FUNCTION CREATE NEW TASK -----------*/
+/**
+ * Creates a new task
+ */
 function createNewTask() {
     checkIfEmptyField();
     closeAllDropdowns();
-    if (inputMissing == false) {
-        pushNewTask();
-    } console.log(tasks);
+    checkIfInputMissing();
 }
 
+
+/**
+ * Checks if one required Input is still missing
+ */
 function checkIfEmptyField() {
-    inputMissing = false;
+    setInputMissingToFalse();
     checkIfEmpty('title');
     checkIfEmpty('description');
     checkIfEmpty('date');
@@ -57,13 +56,43 @@ function checkIfEmptyField() {
     checkIfNoPriority();
 }
 
+
+/**
+ * Sets variable inputMissing to false
+ */
+function setInputMissingToFalse() {
+    inputMissing = false;
+}
+
+
+/**
+ * 
+ * 
+ * @param {string} id - id of either input-field of title or description
+ */
 function checkIfEmpty(id) {
-    if (document.getElementById(id).value == '') {
-        document.getElementById(id + '-required').classList.add('alert-color');
-        inputMissing = true;
+    if (inputFieldIsEmpty()) {
+        initiateAlert(id);
+        setInputMissingToTrue();
     } else {
-        document.getElementById(id + '-required').classList.remove('alert-color');
+        removeAlert(id);
     }
+}
+
+function inputFieldIsEmpty() {
+    return document.getElementById(id).value == '';
+}
+
+function initiateAlert(id) {
+    document.getElementById(id + '-required').classList.add('alert-color');
+}
+
+function setInputMissingToTrue() {
+    inputMissing = true;
+}
+
+function removeAlert(id) {
+    document.getElementById(id + '-required').classList.remove('alert-color');
 }
 
 function checkIfCategoryEmpty() {
@@ -156,6 +185,12 @@ function removeAllSubtasks() {
 function closeAllDropdowns() {
     closeDropdownCategory();
     closeDropdownAssignment();
+}
+
+function checkIfInputMissing() {
+    if (inputMissing == false) {
+        pushNewTask();
+    } console.log(tasks);
 }
 
 function showConfirmation() {
@@ -345,6 +380,26 @@ function addNewCategory() {
 
 function showCategories() {
     document.getElementById('category-options-container').classList.remove('d-none');
+}
+
+
+/*----------- SETTING CURRENTCOLOR -----------*/
+/**
+ * Sets the parameter currentColor to the 
+ * 
+ * @param {string} color - 
+ * @param {number} i 
+ */
+function setCurrentColor(color, i) {
+    currentColor = color;
+
+    highlightCurrentColor(i);
+}
+
+
+
+function highlightCurrentColor(i) {
+    document.getElementById('color' + i).classList.add('highlight');
 }
 
 
