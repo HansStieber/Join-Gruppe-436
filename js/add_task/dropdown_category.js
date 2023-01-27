@@ -39,12 +39,12 @@ async function init() {
 function createNewTask() {
     checkIfEmptyField();
     closeAllDropdowns();
-    checkIfInputMissing();
+    checkIfInputMissingAndPushNewTask();
 }
 
 
 /**
- * Checks if one required Input is still missing
+ * Checks if required inputs are still missing
  */
 function checkIfEmptyField() {
     setInputMissingToFalse();
@@ -66,12 +66,12 @@ function setInputMissingToFalse() {
 
 
 /**
+ *Checks if input-field title, date or description value is null
  * 
- * 
- * @param {string} id - id of either input-field of title or description
+ * @param {string} id - id of either input-field title, date or description
  */
 function checkIfEmpty(id) {
-    if (inputFieldIsEmpty()) {
+    if (inputFieldIsEmpty(id)) {
         initiateAlert(id);
         setInputMissingToTrue();
     } else {
@@ -79,72 +79,176 @@ function checkIfEmpty(id) {
     }
 }
 
-function inputFieldIsEmpty() {
+
+/**
+ * Returns if input-field title, date or description value is null
+ * 
+ * @param {string} id - id of either input-field title, date or description
+ */
+function inputFieldIsEmpty(id) {
     return document.getElementById(id).value == '';
 }
 
+
+/**
+ * Initiates Alert message for either input-field title, date or description that the field is not filled
+ * 
+ * @param {string} id - id of either input-field title, date or description
+ */
 function initiateAlert(id) {
     document.getElementById(id + '-required').classList.add('alert-color');
 }
 
+
+/**
+ * Sets variable inputMissing to true; stops form from being submitted
+ */
 function setInputMissingToTrue() {
     inputMissing = true;
 }
 
+
+/**
+ * Removes Alert message for either input-field title, date or description that the field is not filled
+ * 
+ * @param {string} id - id of either input-field title, date or description
+ */
 function removeAlert(id) {
     document.getElementById(id + '-required').classList.remove('alert-color');
 }
 
+
+/**
+ * Checks if no category is selected at category dropdown selcetion menu; adds/removes alerts if needed; if category is empty sets inputMissing to true
+ */
 function checkIfCategoryEmpty() {
     if (categorySelected == false) {
-        document.getElementById('category-required').classList.add('alert-color');
-        inputMissing = true;
+        initiateAlert('category');
+        setInputMissingToTrue();
     } else {
-        document.getElementById('category-required').classList.remove('alert-color');
+        removeAlert('category');
     }
 }
 
+
+/**
+ * Checks if no contact is assigned at assignment dropdown selcetion menu; adds/removes alerts if needed; if no contact is assigned, sets inputMissing to true
+ */
 function checkIfNotAssigned() {
-    if (assignedContacts.length == 0) {
-        document.getElementById('assignment-required').classList.add('alert-color');
-        inputMissing = true;
+    if (noContactsAreAssigned()) {
+        initiateAlert('assignment');
+        setInputMissingToTrue();
     } else {
-        document.getElementById('assignment-required').classList.remove('alert-color');
+        removeAlert('assignment');
     }
 }
 
+
+/**
+ * Checking length of assignedContacts to see if any contacts are assigned yet
+ */
+function noContactsAreAssigned() {
+    return assignedContacts.length == 0;
+}
+
+
+/**
+ * Checks if no priority is set; adds/removes alerts if needed; if priority is not set, sets inputMissing to true
+ */
 function checkIfNoPriority() {
-    if (urgent == false && medium == false && low == false) {
-        document.getElementById('priority-required').classList.add('alert-color');
-        inputMissing = true;
+    if (noPriorityIsSet()) {
+        initiateAlert('priority');
+        setInputMissingToTrue();
     } else {
-        document.getElementById('priority-required').classList.remove('alert-color');
+        removeAlert('priority');
     }
 }
 
-function pushNewTask() {
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    let categoryTitle = document.getElementById('new-category-title').innerHTML;
-    let date = document.getElementById('date').value;
-    pickSubtasks();
 
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low, subtasksChecked);
-    tasks.push(newTask);
-    categories.push(new Category(categoryTitle, currentColor));
+/**
+ * Checks variables urgent, medium and low are false; returns if all prioritys are false, meaning unset
+ * 
+ * @returns - 
+ */
+function noPriorityIsSet() {
+    return urgent == false && medium == false && low == false;
+}
+
+
+/**
+ * Checks if any input is missing; if not, initiates pushing new Task into array tasks
+ */
+function checkIfInputMissingAndPushNewTask() {
+    if (inputMissing == false) {
+        pushNewTask();
+    } console.log(tasks);
+}
+
+/**
+ * Runs functions essential for submitting the form and creating a new task
+ */ 
+function pushNewTask() {
+    pickSubtasks();
+    pushTask();
     clearAllInputFields();
     showConfirmation();
 }
 
+
+/**
+ * Picks subtasks which are checked and pushes them into the array subtasksChecked
+ */
 function pickSubtasks() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         if (subtask.checked == true) {
-            subtasksChecked.push(subtask);
+            pushCheckedSubtasksIntoArraySubtasksChecked(subtask);
         }
     }
 }
 
+
+/**
+ * Pushes checked subtasks into array subtasksChecked
+ * 
+ * @param {object{}} subtask - object that gets pushed
+ */
+function pushCheckedSubtasksIntoArraySubtasksChecked(subtask) {
+    subtasksChecked.push(subtask);
+}
+
+
+/**
+ * Sets variables of class Task() and pushes a newTask into array tasks; also initiates pushing newly created category
+ */
+function pushTask() {
+    let title = document.getElementById('title').value;
+    let description = document.getElementById('description').value;
+    let categoryTitle = document.getElementById('new-category-title').innerHTML;
+    let date = document.getElementById('date').value;
+
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low, subtasksChecked);
+
+    tasks.push(newTask);
+    
+    pushNewCategories(categoryTitle);
+}
+
+
+/**
+ * Pushes newly created category into array categories by using class Category()
+ * 
+ * @param {string} categoryTitle - name of the new category
+ * @param {string} currentColor - name of the color of the new category
+ */
+function pushNewCategories(categoryTitle) {
+    categories.push(new Category(categoryTitle, currentColor));
+}
+
+
+/**
+ * Sets values of all input-fields to default
+ */
 function clearAllInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
@@ -155,12 +259,23 @@ function clearAllInputFields() {
     removeAllSubtasks();
 }
 
+
+/**
+ * Sets variable categorySelected to false, meaning no category is selecte currently; clears array newCategories; initiates rendering default category
+ * 
+ * @
+ * @param {object[]} - 
+ */
 function removeSelectedCategory() {
     categorySelected = false;
     newCategories = [];
     renderDefaultCategory();
 }
 
+
+/**
+ * Removes all assignments by clearing array assignedContacts; 
+ */
 function removeAllAssignments() {
     assignedContacts = [];
     loadAllOptions();
@@ -187,11 +302,6 @@ function closeAllDropdowns() {
     closeDropdownAssignment();
 }
 
-function checkIfInputMissing() {
-    if (inputMissing == false) {
-        pushNewTask();
-    } console.log(tasks);
-}
 
 function showConfirmation() {
     document.getElementById('task-added-to-board').classList.remove('d-none');
