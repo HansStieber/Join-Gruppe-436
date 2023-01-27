@@ -1,7 +1,15 @@
+let users = [];
+
+async function init() {
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+    backend.setItem('test', 'hallo');
+}
+
 
 async function load() {
     await includeHTML();
-    loadAllOptions();
+    // loadAllOptions();
 }
 
 async function includeHTML() {
