@@ -82,7 +82,7 @@ function generateTodoHTML(element) {
 
     return /*html*/ `
     <div class="card" id="${element['id']}" draggable="true" onclick="showCards(${element["id"]})" ondragstart="startDragging(${element['id']})">
- 
+    <div class="detailView" id="detailView" style="display:none"></div>
     <div  class="card-name" style="background-color:#FF7A00;;">Designs</div>
                                 <div class="card-text">
                                     <span class="card-headline">${element['titel']}</span>
@@ -179,9 +179,22 @@ function slideOutTaskCard() {
 function showCards(idOfCard){
     
  
-    console.log(todos[idOfCard])
-    let detailView = document.getElementById(`${idOfCard}`);
+    let todoArray = todos[idOfCard];
+    let detailContainer = document.getElementById("detailView");
+    let info = todoArray["info"];
+    let progressBar = todoArray["progress-bar"]
+    let status = todoArray["status"]
+    let titel = todoArray["titel"]
+
+    detailContainer.innerHTML = `<div>
+        <span>${info}</span>
+        <span>${progressBar}</span>
+        <span>${status}</span>
+        <span>${titel}</span>
+    </div>`
+
+    detailContainer.removeAttribute("style");
     
-}
+}l
 
 
