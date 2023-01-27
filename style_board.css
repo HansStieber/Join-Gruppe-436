@@ -8,8 +8,6 @@
     flex-direction: column;
     justify-content: space-between;
     padding-right: 65px;
-    padding-left: 80px;
-    padding-top: 85px;
     padding-bottom: 80px;
 }
 
@@ -119,7 +117,6 @@
 .cards-div {
     display: flex;
     padding-right: 65px;
-    padding-left: 65px;
     padding-top: 30px;
 }
 

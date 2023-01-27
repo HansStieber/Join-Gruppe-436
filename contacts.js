@@ -239,13 +239,17 @@ function popOutContactAddedMessage() {
 
 
 function showMobileBigCard() {
+    let outerDiv = document.getElementById('contacts-outer-div');
     let rightDiv = document.getElementById('contacts-right-div');
+    outerDiv.classList.add('overflow-hidden');
     rightDiv.classList.remove('right-div-mobile');
 }
 
 
 function closeMobileBigCard() {
+    let outerDiv = document.getElementById('contacts-outer-div');
     let rightDiv = document.getElementById('contacts-right-div');
+    outerDiv.classList.remove('overflow-hidden');
     rightDiv.classList.add('right-div-mobile');
 }
 
