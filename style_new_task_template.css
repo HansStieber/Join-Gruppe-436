@@ -367,11 +367,11 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 /* === Styling checkboxes for assignment === */
-.checkbox-container {
+.checkbox-contacts {
     justify-content: space-between;
 }
 
-.checkbox-unchecked {
+.checkbox-contacts-unchecked {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -384,11 +384,11 @@ textarea::-webkit-scrollbar-thumb {
     box-shadow: 1px 1px 0px 0px rgb(0 0 0 / 75%);
 }
 
-.checkbox-unchecked:hover {
+.checkbox-contacts-unchecked:hover {
     transform: scale(1.05);
 }
 
-.checkbox-checked {
+.checkbox-contacts-checked {
     width: 7px;
     height: 7px;
     background-color: #2A3647;
@@ -441,6 +441,56 @@ input[type='date']:hover {
 
 .prio-low:hover {
     cursor: pointer;
+}
+
+/* === Styling of priority container === */
+.new-subtask-container {
+    position: relative;
+}
+
+.right-pos-no-filter {
+    right: 15px;
+}
+
+.right-pos-no-filter:hover {
+    transform: unset;
+}
+
+.subtask {
+    padding: 8px 5px 8px 10px;
+}
+
+.subtask:hover {
+    background-color: unset;
+}
+
+.checkbox-subtasks {
+    justify-content: left;
+    font-size: 16px;
+}
+
+.checkbox-subtasks-unchecked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border: 2px solid #6e6e6e;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0px 0px rgb(0 0 0 / 75%);
+    position: relative;
+}
+
+.checkbox-subtasks-unchecked:hover {
+    cursor: pointer;
+}
+
+.confirm-subtask {
+    position: absolute;
+    left: -3px;
+    bottom: -5px;
+    filter: invert(1);
 }
 
 /* === Styling of submit/clear button === */

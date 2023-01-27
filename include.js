@@ -9,7 +9,7 @@ async function init() {
 
 async function load() {
     await includeHTML();
-    // loadAllOptions();
+    loadAllOptions();
 }
 
 async function includeHTML() {

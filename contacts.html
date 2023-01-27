@@ -15,11 +15,14 @@
     <script src="script.js"></script>
     <script src="include.js"></script>
     <script src="contacts.js"></script>
+    <script src="board.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_sidebar.css">
     <link rel="stylesheet" href="style_header.css">
     <link rel="stylesheet" href="style_contacts.css">
     <link rel="stylesheet" href="style_add_contact.css">
+    <link rel="stylesheet" href="style_new_task_template.css">
 
     <link rel="icon" type="image/x-icon" href="./img/join-logo.png">
 </head>
@@ -27,6 +30,11 @@
 <body onload="load(),renderContacts()">
 
     <div class="body2">
+        <div id="shadow-screen" class="shadow-screen d-none">
+            <div id="center-new-task-card" class="center-new-task-card">
+                <div w3-include-html="./templates/new_task.html"></div>
+            </div>
+        </div>
         <!-- NAVBAR -->
         <div w3-include-html="./templates/sidebar.html"></div>
 
@@ -156,7 +164,7 @@
 
                 <div id="contacts-right-div" class="contacts-right-div right-div-mobile">
                     <div class="contacts-head">
-                        <img class="mobile-arrow-left" src="img/arrow-left-contacts.svg">
+                        <img onclick="closeMobileBigCard()" class="mobile-arrow-left" src="img/arrow-left-contacts.svg">
                         <span class="kanban-mobile-span">Kanban Project Management Tool</span>
                         <h1>Contacts</h1>
                         <div class="contacts-bar-img"><img src="img/blue-bar.svg"></div>
@@ -175,7 +183,7 @@
                                         <span class="big-card-name" id="big-card-firstname"></span>
                                         <span class="big-card-name" id="big-card-lastname"></span>
                                     </div>
-                                    <div class="big-card-add-task">
+                                    <div onclick="showNewTaskCard()" class="big-card-add-task">
                                         <div class="big-card-plus-img">
                                             <img src="img/plus-blue-no-border.svg">
                                         </div>
@@ -202,7 +210,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mobile-edit-contact-btn"></div>
+                    <div id="mobile-edit-contact" class="mobile-edit-contact-btn"></div>
                     <button class="btn-dark new-contact mobile-d-none" type="submit" onclick="openAddOverlay()">
                         <div class="btn-settings">
                             <span>New Contact</span>

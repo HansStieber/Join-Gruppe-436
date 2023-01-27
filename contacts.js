@@ -123,17 +123,10 @@ function renderBigCard(indexNum) {
     phoneSpan.innerHTML = phone;
 
     addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
+    addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
 
     initialsDiv.style = `background-color:${bgColor}`;
     bigCardDiv.classList.remove('d-none');
-}
-
-
-function showMobileBigCard() {
-    //let slideBar = document.getElementById('contacts-slide-bar');
-    let rightDiv = document.getElementById('contacts-right-div');
-    //slideBar.classList.add('d-none');
-    rightDiv.classList.remove('right-div-mobile');
 }
 
 
@@ -245,8 +238,20 @@ function popOutContactAddedMessage() {
 }
 
 
-function addOnclickEvent(element, functionName, indexNum) {
-    let editContactBtn = document.getElementById(`${element}`);
+function showMobileBigCard() {
+    let rightDiv = document.getElementById('contacts-right-div');
+    rightDiv.classList.remove('right-div-mobile');
+}
+
+
+function closeMobileBigCard() {
+    let rightDiv = document.getElementById('contacts-right-div');
+    rightDiv.classList.add('right-div-mobile');
+}
+
+
+function addOnclickEvent(htmlElement, functionName, indexNum) {
+    let editContactBtn = document.getElementById(`${htmlElement}`);
     editContactBtn.setAttribute("onclick", `${functionName}(${indexNum})`);
 }
 
