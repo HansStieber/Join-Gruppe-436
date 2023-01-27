@@ -78,9 +78,11 @@ function updateBoard() {
 }
 
 function generateTodoHTML(element) {
-    return /*html*/ `
-    <div class="card" draggable="true" ondragstart="startDragging(${element['id']})">
+    
 
+    return /*html*/ `
+    <div class="card" id="${element['id']}" draggable="true" onclick="showCards(${element["id"]})" ondragstart="startDragging(${element['id']})">
+ 
     <div  class="card-name" style="background-color:#FF7A00;;">Designs</div>
                                 <div class="card-text">
                                     <span class="card-headline">${element['titel']}</span>
@@ -103,6 +105,7 @@ function generateTodoHTML(element) {
                                 </div>
                             </div>
     `;
+
 }
 
 
@@ -168,5 +171,17 @@ function slideOutTaskCard() {
 }
 
 
+/**
+ * created by sasha
+ */
+
+
+function showCards(idOfCard){
+    
+ 
+    console.log(todos[idOfCard])
+    let detailView = document.getElementById(`${idOfCard}`);
+    
+}
 
 
