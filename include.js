@@ -1,6 +1,6 @@
 let users = [];
 
-async function init() {
+async function loadBackend() {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
     backend.setItem('test', 'hallo');
