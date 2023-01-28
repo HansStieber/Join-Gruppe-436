@@ -63,6 +63,11 @@
     display: none !important;
 }
 
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
 .mobile-description {
     display: none;
 }
@@ -582,7 +587,7 @@ input[type='date']:hover {
         right: 0;
         margin: auto;
     }
-    
+
     ::-webkit-calendar-picker-indicator {
         background-size: 18px;
     }

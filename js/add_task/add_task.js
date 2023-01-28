@@ -1,5 +1,11 @@
 let categoryOpen = false;
 let contactsOpen = false;
+let assignments = [
+    new Contact('Hans', 'Stieber', '01518547387', 'stieber@gmx.de', 'P4SsW0rTeins2drei', 'blue'),
+    new Contact('Daniela', 'Scholz', '01518543875', 'scholz@web.de', 'P4SsW0rTeins2drei', 'purple'),
+    new Contact('Sasha', 'Seslija', '01518543875', 'seslija@protonmail.com', 'P4SsW0rTeins2drei', 'green'),
+    new Contact('Pierre', 'Lettner', '0151854715', 'lettner@gmail.de', 'P4SsW0rTeins2drei,', 'red')
+];
 
 
 /*----------- INITIALIZING CONTENT OF THE PAGE -----------*/
@@ -57,12 +63,18 @@ function lastCategoryOption(i) {
 
 function loadAssignmentOptions() {
     document.getElementById('contacts-dropdown-container').innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        const option = contacts[i];
-        if (option.phone) {
+    for (let i = 0; i < assignments.length; i++) {
+        const option = assignments[i];
+        if (lastAssignmentOption(i)) {
+            renderLastAssignmentOption(option, i);
+        } else {
             renderAssignmentOptions(option, i);
         }
     }
+}
+
+function lastAssignmentOption(i) {
+    return i == assignments.length - 1;
 }
 
 
@@ -136,7 +148,7 @@ function openDropdownAssignment() {
 }
 
 function showAssignmentOptions() {
-    for (let i = 0; i < contacts.length; i++) {
+    for (let i = 0; i < assignments.length; i++) {
         document.getElementById('a-option' + i).classList.remove('d-none');
     }
     document.getElementById('invite-new-contact').classList.remove('d-none');
@@ -157,7 +169,7 @@ function closeDropdownAssignment() {
 
 
 function hideAssignmentOptions() {
-    for (let i = 0; i < contacts.length; i++) {
+    for (let i = 0; i < assignments.length; i++) {
         if (containerWithTargetedIdsExists('a', i)) {
             document.getElementById('a-option' + i).classList.add('d-none');
         }

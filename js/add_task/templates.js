@@ -7,7 +7,7 @@ function renderCategoryOptions(option, i) {
         <span>${option.title}</span><div class="color ${option.color}"></div>
     </div>
 `;
-}
+} 
 
 
 function renderLastCategoryOption(option, i) {
@@ -49,9 +49,19 @@ function renderAssignmentOptions(option, i) {
             <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
         </div>
     </div>
-`;
+    `;
 }
 
+function renderLastAssignmentOption(option, i) {
+    document.getElementById('contacts-dropdown-container').innerHTML += `
+    <div id="${'a-option' + i}" class="option d-none selectable checkbox-contacts last-option" onclick="assignContact(${i})">
+        <span>${option.firstName + ' ' + option.lastName}</span>
+        <div class="checkbox-contacts-unchecked">
+            <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
+        </div>
+    </div>
+    `;
+}
 
 /*----------- TEMPLATES FOR SUBTASKS -----------*/
 function renderSubtasks(subtask, i) {

@@ -34,3 +34,15 @@ function closeInviteContact() {
     hideInputField('contact');
     showDefaultInput('contact');
 }
+
+function inviteContact() {
+    let search = document.getElementById('new-contact').value;
+    for (let i = 0; i < contacts.length; i++) {
+        const email = contacts[i].email;
+        if (email.toLowerCase().includes(search)) {
+            assignments.push(contacts[i]);
+        }
+    }
+    loadAssignmentOptions();
+    closeInviteContact();
+}

@@ -59,7 +59,7 @@ function checkIfEmpty(id) {
  * @param {string} id - id of either input-field title, date or description
  */
 function inputFieldIsEmpty(id) {
-    return document.getElementById(id).value == '';
+    return !document.getElementById(id).value;
 }
 
 
