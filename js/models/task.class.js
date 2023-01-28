@@ -6,7 +6,7 @@ class Task {
     date;
     priority;
     subtasks;
-
+    positionBoard;
     constructor(title, description, categoryTitle, assignedContacts, color, date, urgent, medium, low, subtasks) {
         this.title = title;
         this.description = description;
