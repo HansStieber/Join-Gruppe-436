@@ -1,13 +1,15 @@
-class Person {
+class Contact {
+    phone;
     firstName;
     lastName;
     email;
     color;
     password;
-    constructor(firstName, lastName, email, password, color) {
-        if (firstName) {
-            this.firstName = upperCaseFirstLetter(firstName);
-        }
+
+    constructor(firstName, lastName, phone, email, password, color) {
+        this.phone = phone;
+
+        this.firstName = checkIfFirstname(firstName);
         this.lastName = upperCaseFirstLetter(lastName);
         this.email = email;
         if (color) {
@@ -18,23 +20,17 @@ class Person {
         this.password = password;
     }
 
-
-}
-
-
-class Contact extends Person {
-    phone;
-
-    constructor(firstName, lastName, phone, email, password, color) {
-        super(firstName, lastName, email, password, color);
-        this.phone = phone;
-    }
-
     call() {
         window.location.href = 'tel:' + this.phone;
     }
 }
 
+function checkIfFirstname(firstName) {
+    if (firstName) {
+        let newFirstName = upperCaseFirstLetter(firstName);
+        return newFirstName;
+    }
+}
 
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let contacts = [
