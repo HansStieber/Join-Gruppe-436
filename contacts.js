@@ -265,24 +265,32 @@ function generateRandomColor() {
     return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
 }
 
+/*----------- SHOW/CLOSE OVERLAY -----------*/
 
 function openEditOverlay(indexNum) {
     document.getElementById('editContactOverlay').classList.remove('d-none');
     setEditContactInitials(indexNum);
-    addOnclickEvent('edit-save-btn', 'saveContactChanges', indexNum)
+    addOnclickEvent('edit-save-btn', 'saveContactChanges', indexNum);
+    showShadowScreen();
+    slideInCard();
 }
 
 
 function closeEditOverlay() {
-    document.getElementById('editContactOverlay').classList.add('d-none');
+    slideOutCard();
+    hideShadowScreen();
+    setTimeout(function () {document.getElementById('editContactOverlay').classList.add('d-none');}, 450);
 }
 
 
 function openAddOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
+    showShadowScreen();
+    slideInCard();
 }
 
-
 function closeAddOverlay() {
-    document.getElementById('addContactOverlay').classList.add('d-none');
+    slideOutCard();
+    hideShadowScreen();
+    setTimeout(function () {document.getElementById('addContactOverlay').classList.add('d-none');}, 450);
 }

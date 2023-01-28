@@ -1,4 +1,4 @@
-/* === General Settings === */
+/* === general settings === */
 
 body {
     margin: 0;
@@ -21,13 +21,12 @@ body {
     width: 100%;
 }
 
-/* Universal-classes */
+/* universal-classes */
 .screenreader {
     display: none;
 }
 
-
-/*=== Colors ===*/
+/*=== colors ===*/
 /* 
 DUNKELBLAU: #2A3647
 HELLBALU: #29ABE2
@@ -35,6 +34,130 @@ ORANGE: #FF3D00
 HELLGRAU (BACKGROUND): #F5F5F5 
 
 */
+
+
+/* buttons */
+
+
+/* centers overlay */
+.general-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* shadowscreen settings for all overlays */
+
+.shadow-screen {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+    background-color: #b8b9ba9c;
+    opacity: 0;
+}
+
+.smooth-opacity-in {
+    animation-name: opacity-in;
+    animation-duration: 0.7s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes opacity-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.smooth-opacity-out {
+    animation-name: opacity-out;
+    animation-duration: 0.7s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes opacity-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.slide-left {
+    -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-left {
+    0% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+.slide-right {
+    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+
+    100% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+}
+
 
 
 /* === General Setting for MAIN CONTENT === */

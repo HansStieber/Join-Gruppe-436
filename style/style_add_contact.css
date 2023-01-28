@@ -4,13 +4,6 @@
     display: none !important;
 }
 
-.overlay-contact {
-    position: fixed;
-    top: 182px;
-    right: 161px;
-    transition: opacity 350ms ease-out;
-}
-
 .add-contact-container {
     display: flex;
     width: 1212px;

@@ -32,11 +32,10 @@
 <body onload="loadBackend(), load(),renderContacts()">
 
     <div class="body2">
-        <div id="shadow-screen" class="shadow-screen d-none">
-            <div id="center-new-task-card" class="center-new-task-card">
-                <div w3-include-html="./templates/new_task.html"></div>
+        <!-- <div id="shadow-screen" class="shadow-screen d-none">
+            <div id="center-new-task-card" class="general-overlay">
             </div>
-        </div>
+        </div> -->
         <!-- NAVBAR -->
         <div w3-include-html="./templates/sidebar.html"></div>
 
@@ -230,10 +229,15 @@
 
         </div>
 
-        <!-- TEMPLATE ADD/EDIT CONTACT -->
-        <div w3-include-html="./templates/add_contact.html"></div>
-        <div w3-include-html="./templates/edit_contact.html"></div>
+             <!-- TEMPLATE ADD/EDIT CONTACT -->
+             <div class="d-none shadow-screen">
+                <div class="general-overlay">
+                    <div w3-include-html="./templates/add_contact.html"></div>
+                    <div w3-include-html="./templates/edit_contact.html"></div>
+                    <div w3-include-html="./templates/new_task.html"></div>
 
+                </div>
+            </div>
 
 </body>
 

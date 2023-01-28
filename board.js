@@ -133,49 +133,49 @@ function moveTo(status) {
 
 
 function showNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+    let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
-    addShadowScreen();
-    slideInTaskCard()
+    showShadowScreen();
+    slideInCard()
 }
 
 
 function hideNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
-    slideOutTaskCard();
-    removeShadowScreen();
+    let newTaskCloseBtn = document.getElementById('content-new-task');
+    slideOutCard();
+    hideShadowScreen();
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
 }
 
-
-function addShadowScreen() {
-    let shadowScreen = document.getElementById('shadow-screen');
-    shadowScreen.classList.remove('d-none');
-    shadowScreen.classList.remove('smooth-opacity-out');
-    shadowScreen.classList.add('smooth-opacity-in');
-}
-
-
-function removeShadowScreen() {
-    let shadowScreen = document.getElementById('shadow-screen');
-    shadowScreen.classList.remove('smooth-opacity-in');
-    shadowScreen.classList.add('smooth-opacity-out');
-    setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
-}
+// =============================================wurde durch GENERAL SHOW AND HIDE FUNCTIONS in script.js ersetzt
+// function addShadowScreen() {
+//     let shadowScreen = document.getElementById('shadow-screen');
+//     shadowScreen.classList.remove('d-none');
+//     shadowScreen.classList.remove('smooth-opacity-out');
+//     shadowScreen.classList.add('smooth-opacity-in');
+// }
 
 
-function slideInTaskCard() {
-    let newTask = document.getElementById('center-new-task-card');
-    newTask.classList.remove('slide-right');
-    newTask.classList.add('slide-left');
-}
+// function removeShadowScreen() {
+//     let shadowScreen = document.getElementById('shadow-screen');
+//     shadowScreen.classList.remove('smooth-opacity-in');
+//     shadowScreen.classList.add('smooth-opacity-out');
+//     setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
+// }
 
 
-function slideOutTaskCard() {
-    let newTask = document.getElementById('center-new-task-card');
-    newTask.classList.remove('slide-left');
-    newTask.classList.add('slide-right');
-}
+// function slideInTaskCard() {
+//     let newTask = document.getElementById('center-new-task-card');
+//     newTask.classList.remove('slide-right');
+//     newTask.classList.add('slide-left');
+// }
+
+
+// function slideOutTaskCard() {
+//     let newTask = document.getElementById('center-new-task-card');
+//     newTask.classList.remove('slide-left');
+//     newTask.classList.add('slide-right');
+// }
 
 
 /**

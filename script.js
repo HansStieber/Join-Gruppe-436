@@ -25,3 +25,49 @@ function forgotPassword(){
 }
 
 
+
+/*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
+
+
+/**
+ * function for show shadowscreen 
+ */
+
+function showShadowScreen(){
+    let shadowScreen = document.querySelector('.shadow-screen');
+    shadowScreen.classList.remove('d-none');
+    shadowScreen.classList.remove('smooth-opacity-out');
+    shadowScreen.classList.add('smooth-opacity-in');
+}
+
+/**
+ * function to slide the a card in 
+ */
+
+function slideInCard(){
+    let newCard = document.querySelector('.general-overlay');
+    newCard.classList.remove('slide-right');
+    newCard.classList.add('slide-left');
+}
+
+/**
+ * function to slide the car out
+ */
+
+function slideOutCard() {
+    let newCard = document.querySelector('.general-overlay');
+    newCard.classList.remove('slide-left');
+    newCard.classList.add('slide-right');
+}
+
+/**
+ * function to hide the shadowscreen
+ */
+function hideShadowScreen(){
+    let shadowScreen = document.querySelector('.shadow-screen');
+    shadowScreen.classList.remove('smooth-opacity-in');
+    shadowScreen.classList.add('smooth-opacity-out');
+    setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
+}
+
+

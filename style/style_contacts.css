@@ -308,7 +308,7 @@
         transform: translateY(0%);
     }
 }
-
+/* 
 .shadow-screen {
     overflow-x: hidden;
     overflow-y: auto;
@@ -354,7 +354,7 @@
     to {
         opacity: 0;
     }
-}
+} */
 
 .center-new-task-card {
     position: absolute;
@@ -377,7 +377,7 @@
     transition: all 225ms ease-in-out;
     transform: translateX(360px);
 }
-
+/* 
 .slide-left {
     -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -435,7 +435,7 @@
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
     }
-}
+} */
 
 .d-none {
     display: none;

@@ -236,7 +236,7 @@
     width: 0px;
     height: 0px;
 }
-
+/* 
 .shadow-screen {
     overflow-x: hidden;
     overflow-y: auto;
@@ -293,7 +293,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .new-task-card {
     transition: all 225ms ease-in-out;
@@ -306,7 +306,7 @@
     transform: translateX(360px);
 }
 
-.slide-left {
+/* .slide-left {
     -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -363,7 +363,7 @@
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
     }
-}
+} */
 
 @media(max-width:820px) {
     .kanban-mobile-span {
