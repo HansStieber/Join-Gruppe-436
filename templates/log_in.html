@@ -1,27 +1,38 @@
-
-
-<div class="signup">
-    <p>Not a Join user?</p>
-    <button class="signup_button" onclick="location.href='./templates/sign_up.html'">Sign up</button>
-</div>
-<div  id="login-container" class="login-container fade-in-login">
-    <h1>Log in</h1>
-    <img src="./img/blue_underline.png" id="blue_underline">
-    <div class="credentials">
-        <input id="email" type="text" name="email" type="email" placeholder="Email" required>
-        <input id="password" type="password" name="password" type="password" placeholder="Password" required>
-    </div>
-    <div class="remember_me_forgotten">
-        <div class="remember_me">
-            <input class="checkbox" type="checkbox" id="remember-me" name="remember-me">
-            <label for="remember-me">Remember me</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <div class="signup">
+            <p>Not a Join user?</p>
+            <button class="signup_button" onclick="location.href='./templates/sign_up.html'">Sign up</button>
         </div>
-        <a class="password_forgotten" href="#" onclick="forgotPassword()">Forgot my password</a>
-    </div>
-    <div class="login_form_buttons">
-        <button type="submit" class="login_button" onclick="login()">Log in</button>
-        <button class="guest_button" id="guest_button" onclick="guestLogin()">Guest Log in</button>
-    </div>
-    <div id="error-login" class="error-login"></div>
-</div>
+        <div  id="login-container" class="login-container fade-in-login">
+            <h1>Log in</h1>
+            <img src="./img/blue_underline.png" id="blue_underline">
+            <div class="credentials">
+                <input id="email" type="text" name="email" type="email" placeholder="Email" required>
+                <input id="password" type="password" name="password" type="password" placeholder="Password" required>
+            </div>
+            <div class="remember_me_forgotten">
+                <div class="remember_me">
+                    <input class="checkbox" type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a class="password_forgotten" href="#" onclick="forgotPassword()">Forgot my password</a>
+            </div>
+            <div class="login_form_buttons">
+                <button type="submit" class="login_button" onclick="login()">Log in</button>
+                <button class="guest_button" id="guest_button" onclick="guestLogin()">Guest Log in</button>
+            </div>
+            <div id="error-login" class="error-login"></div>
+        </div>
+    </body>
+</html>
+
+
 

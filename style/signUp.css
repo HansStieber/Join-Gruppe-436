@@ -4,6 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f5f5f5;
+}
+
+#joinLogo-SignUp {
+    position: absolute;
+    left: 80px;
+    top: 77px;
+    width: 100px;
 }
 
 .maincontainer-SignUp h1 {
