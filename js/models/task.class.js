@@ -6,14 +6,17 @@ class Task {
     date;
     priority;
     subtasks;
-    positionBoard;
-    constructor(title, description, categoryTitle, assignedContacts, color, date, urgent, medium, low, subtasks) {
+    status;
+    id;
+    constructor(title, description, categoryTitle, assignedContacts, color, date, priority, subtasks, status, id) {
         this.title = title;
         this.description = description;
         this.category = new Category(categoryTitle, color);
         this.assignments = assignedContacts;
         this.date = date;
-        this.priority = new Priority(urgent, medium, low);
+        this.priority = priority;
         this.subtasks = subtasks;
+        this.status = status;
+        this.id = id;
     }
 }

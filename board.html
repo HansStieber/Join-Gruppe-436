@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style_sidebar.css">
     <link rel="stylesheet" href="style_header.css">
     <link rel="stylesheet" href="style/style_board.css">
+    <script src="js/models/task.class.js"></script>
+    <script src="js/models/category.class.js"></script>
+    <script src="js/models/priority.class.js"></script>
+    <script src="js/models/subtask.class.js"></script>
+
     <script src="script.js"></script>
     <script src="mini_backend.js"></script>
     <script src="include.js"></script>
@@ -28,7 +33,7 @@
 
 
 
-<body onload="loadBackend(),load(), updateBoard()">
+<body onload="load(), updateBoard()">
     <div class="body2">
         <div id="shadow-screen" class="shadow-screen d-none">
             <div id="center-new-task-card" class="center-new-task-card">
@@ -46,7 +51,6 @@
                 <!-- MAIN CONTENT -->
                 <div class="board-outer-div">
                     <div class="board">
-
                         <div class="board-head-div">
                             <span class="kanban-mobile-span">Kanban Project Management Tool</span>
                             <div class="mobile-headline-div">
@@ -70,6 +74,7 @@
                     </div>
 
                     <div class="cards-div">
+
                         <div class="cards-column-main">
 
                             <div class="cards-category">
@@ -77,69 +82,24 @@
                                 <div class="plus-btn"></div>
                             </div>
 
-
                             <div class="card-column" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
-
-                                <!-- <div class="card" >
-                                    <div class="card-name" style="background-color:#FF7A00;;">Designs</div>
-                                    <div class="card-text">
-                                        <span class="card-headline">WEBSITE REDESIGNEN</span>
-                                        <span class="card-info">Modify the Content of the main Website...</span>
-                                        <div class="progress-div">
-                                            <div class="progress-bar">
-                                            </div>
-                                            <span>1/2 Done</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <div class="user-icons">
-                                            <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                            <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                            </div>
-                                            <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
-                                            </div>
-                                        </div>
-                                        <div><img src="img/arrow-down.svg"></div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
 
-
                         <div class="cards-column-main">
+
                             <div class="cards-category">
                                 <span>In progress</span>
                                 <div class="plus-btn"></div>
                             </div>
 
-
                             <div class="card-column" id="progress" ondrop="moveTo('progress')"
                                 ondragover="allowDrop(event)">
-
-                                <!-- <div  class="card drag-area">
-                                    ondragover="allowDrop(event)">
-                                    <div class="card-name" style="background-color: #FC71FF;">Sales</div>
-                                    <div class="card-text">
-                                        <span class="card-headline">Call potencial clients</span>
-                                        <span class="card-info">Make the product presentation to prospective
-                                            buyers</span>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <div class="user-icons">
-                                            <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                            <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                            </div>
-                                            <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
-                                            </div>
-                                        </div>
-                                        <div><img src="img/arrow-up.svg"></div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
 
-
                         <div class="cards-column-main">
+
                             <div class="cards-category">
                                 <span>Awaiting Feedback</span>
                                 <div class="plus-btn"></div>
@@ -147,77 +107,19 @@
 
                             <div class="card-column" id="feedback" ondrop="moveTo('feedback')"
                                 ondragover="allowDrop(event)">
-
-                                <!-- <div class="card">
-                                    <div class="card-name" style="background-color: #1FD7C1;">Backoffice</div>
-                                    <div class="card-text">
-                                        <span class="card-headline">Accounting invoices</span>
-                                        <span class="card-info">Write open invoices for customer</span>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <div class="user-icons">
-                                            <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                            <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                            </div>
-                                            <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
-                                            </div>
-                                        </div>
-                                        <div><img src="img/bars.svg"></div>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="card">
-                                    <div class="card-name" style="background-color: #FFC701;">Media</div>
-                                    <div class="card-text">
-                                        <span class="card-headline">Video cut</span>
-                                        <span class="card-info">Edit the new company video</span>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <div class="user-icons">
-                                            <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                            <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                            </div>
-                                            <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
-                                            </div>
-                                        </div>
-                                        <div><img src="img/bars.svg"></div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
 
                         <div class="cards-column-main">
+
                             <div class="cards-category">
                                 <span>Done</span>
                                 <div class="plus-btn"></div>
                             </div>
                             <div class="card-column" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-
-                                <!-- <div class="card">
-                                    <div class="card-name" style="background-color: #0037F8;">Marketing</div>
-                                    <div class="card-text">
-                                        <span class="card-headline">Social media strategy</span>
-                                        <span class="card-info">Develop an ad campaign for brand positioning</span>
-                                        <div class="progress-div">
-                                            <div class="progress-bar " style="background-color: #29ABE2;">
-                                            </div>
-                                            <span>3/3 Done</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <div class="user-icons">
-                                            <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                            <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                            </div>
-                                            <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
-                                            </div>
-                                        </div>
-                                        <div><img src="img/arrow-down.svg"></div>
-
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
