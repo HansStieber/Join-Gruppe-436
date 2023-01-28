@@ -42,7 +42,7 @@
 
 
 
-<body onload="load(), updateBoard()">
+<body onload="load(), selectingArrayForBoardUpdate()">
     <div class="body2">
         <div id="shadow-screen" class="shadow-screen d-none">
             <div id="center-new-task-card" class="general-overlay">
@@ -74,7 +74,7 @@
                                             <img src="img/loup.svg">
                                         </div>
                                     </div>
-                                    <input type="text" placeholder="Find Task" class="board-input">
+                                    <input id="find-task" type="text" placeholder="Find Task" class="board-input" onkeyup="findTask()">
                                 </div>
                                 <div onclick="showNewTaskCard()" class="add-task-btn">
                                 </div>

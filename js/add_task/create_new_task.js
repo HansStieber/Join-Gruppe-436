@@ -1,5 +1,7 @@
-let tasks = [];
 let inputMissing;
+let priority;
+let id;
+let progressStatus = 'todo';
 
 
 /*----------- FUNCTION CREATE NEW TASK -----------*/
@@ -150,7 +152,7 @@ function noPriorityIsSet() {
 function checkIfInputMissingAndPushNewTask() {
     if (inputMissing == false) {
         pushNewTask();
-    } console.log(tasks);
+    } console.log(todos);
 }
 
 /**
@@ -201,12 +203,30 @@ function pushTask() {
     let description = document.getElementById('description').value;
     let categoryTitle = document.getElementById('new-category-title').innerHTML;
     let date = document.getElementById('date').value;
+    getPriority();
+    getId();
 
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low, subtasksChecked);
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
-    tasks.push(newTask);
+    todos.push(newTask);
 
     pushNewCategories(categoryTitle);
+}
+
+function getPriority() {
+    if (urgent == true) {
+        priority = 'urgent';
+    }
+    if (medium == true) {
+        priority = 'medium';
+    }
+    if (low == true) {
+        priority = 'low';
+    }
+}
+
+function getId() {
+    id = todos.length;
 }
 
 

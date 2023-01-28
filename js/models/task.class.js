@@ -8,6 +8,7 @@ class Task {
     subtasks;
     status;
     id;
+    
     constructor(title, description, categoryTitle, assignedContacts, color, date, priority, subtasks, status, id) {
         this.title = title;
         this.description = description;

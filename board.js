@@ -49,10 +49,23 @@ let todos = [
     new Task('Video cut', 'Edit the new company video', 'Media', 'Hans Stieber', 'yellow', '01/24/2022', 'medium', '', 'feedback', '3'),
     new Task('Social media strategy', 'Develop an ad campaign for brand positioning', 'Marketing', 'Hans Stieber', 'blue', '01/25/2022', 'low', '', 'done', '4'),
 ];
-
+let searchedTodos = [];
 let currentDraggedElements;
 
-function updateBoard() {
+
+/**
+ * Function checks if there is a specific search value at the search input-field. If not, the board is updated from the
+ * array todos, which includes ALL tasks. If a search value exists the board is updated from the array searchedTodos.
+ */
+function selectingArrayForBoardUpdate() {
+    if (!document.getElementById('find-task').value) {
+        updateBoard(todos);
+    } else {
+        updateBoard(searchedTodos);
+    }
+}
+
+function updateBoard(todos) {
     let todo = todos.filter(t => t.status == 'todo');
     document.getElementById('todo').innerHTML = '';
 
@@ -197,6 +210,26 @@ function showCards(idOfCard) {
         <span>${titel}</span>
     </div>`
     detailContainer.removeAttribute("style");
+}
+
+/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
+/**
+ * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
+ * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
+ * board.
+ */
+function findTask() {
+    searchedTodos = [];
+    let search = document.getElementById('find-task').value;
+    for (let i = 0; i < todos.length; i++) {
+        const title = todos[i].title;
+        const description = todos[i].description;
+        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+            searchedTodos.push(todos[i]);
+            console.log(searchedTodos);
+        }
+        selectingArrayForBoardUpdate();
+    }
 }
 
 
