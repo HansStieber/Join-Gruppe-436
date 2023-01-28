@@ -38,20 +38,20 @@ class Contact extends Person {
 
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let contacts = [
-    new Contact('Hans', 'Stieber', '01518547387', 'stieber@mail.de', 'P4SsW0rTeins2drei', 'blue'),
-    new Contact('Daniela', 'Scholz', '01518543875', 'scholz@mail.de', 'P4SsW0rTeins2drei', 'purple'),
-    new Contact('Sasha', 'Seslija', '01518543875', 'seslija@mail.de', 'P4SsW0rTeins2drei', 'green'),
-    new Contact('Pierre', 'Lettner', '0151854715', 'lettner@mail.de', 'P4SsW0rTeins2drei,', 'red'),
-    new Contact('Fans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei', 'cyan'),
-    new Contact('Jans', 'Petersson', '01518543875', 'petersson@mail.de', 'P4SsW0rTeins2drei', 'grey'),
-    new Contact('Kans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Qans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Xans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Sans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Aans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Yans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Bans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei'),
-    new Contact('Uans', 'Petersson', '0151854715', 'petersson@mail.de', 'P4SsW0rTeins2drei')
+    new Contact('Hans', 'Stieber', '01518547387', 'stieber@gmx.de', 'P4SsW0rTeins2drei', 'blue'),
+    new Contact('Daniela', 'Scholz', '01518543875', 'scholz@web.de', 'P4SsW0rTeins2drei', 'purple'),
+    new Contact('Sasha', 'Seslija', '01518543875', 'seslija@protonmail.com', 'P4SsW0rTeins2drei', 'green'),
+    new Contact('Pierre', 'Lettner', '0151854715', 'lettner@gmail.de', 'P4SsW0rTeins2drei,', 'red'),
+    new Contact('Franz', 'Heppenheimer', '0151854715', 'heppenheimer@gmail.com', 'P4SsW0rTeins2drei', 'cyan'),
+    new Contact('Josef', 'Liebherr', '01518543875', 'liebherr@web.de', 'P4SsW0rTeins2drei', 'grey'),
+    new Contact('Kain', 'Sörensen', '0151854715', 'sörensen@hotmail.de', 'P4SsW0rTeins2drei'),
+    new Contact('Abel', 'Müller', '0151854715', 'müller@hotmail.de', 'P4SsW0rTeins2drei'),
+    new Contact('Xavier', 'Egger', '0151854715', 'egger@gmail.de', 'P4SsW0rTeins2drei'),
+    new Contact('Stefan', 'Brackhaus', '0151854715', 'brackhaus@protonmail.com', 'P4SsW0rTeins2drei'),
+    new Contact('Anke', 'Kaiser', '0151854715', 'kaiser@gmx.de', 'P4SsW0rTeins2drei'),
+    new Contact('Renate', 'Bauer', '0151854715', 'bauer@gmx.de', 'P4SsW0rTeins2drei'),
+    new Contact('Bastian', 'König', '0151854715', 'könig@yandex.com', 'P4SsW0rTeins2drei'),
+    new Contact('Ulrich', 'Petersson', '0151854715', 'petersson@web.de', 'P4SsW0rTeins2drei')
 ];
 
 
