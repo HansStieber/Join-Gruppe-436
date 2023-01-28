@@ -1,0 +1,83 @@
+/* === General Settings === */
+
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.body2 {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Universal-classes */
+.screenreader {
+    display: none;
+}
+
+
+/*=== Colors ===*/
+/* 
+DUNKELBLAU: #2A3647
+HELLBALU: #29ABE2
+ORANGE: #FF3D00
+HELLGRAU (BACKGROUND): #F5F5F5 
+
+*/
+
+
+/* === General Setting for MAIN CONTENT === */
+.main {
+    padding: 172px 116px 0 348px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-container h1 {
+    font-size: 61px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.main-container h2 {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .body2 {
+        flex-direction: column-reverse;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .main{
+        padding: 90px 116px 90px 116px;
+    }
+}
+
+@media (max-width: 820px) {
+    .main{
+        padding: 90px 70px 90px 70px;
+
+    }
+}
+
+@media (max-width: 700px) {
+    .main{
+        padding: 90px 33px 90px 33px;
+
+    }
+}
