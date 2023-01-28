@@ -43,11 +43,11 @@
 /*Variablen Namen und Reihenfolge: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status)*/
 
 let todos = [
-    new Task('Website redesign', 'Modify the Content of the main Website...', 'Design', 'Hans Stieber', 'orange', '01/02/2022', 'low', '', 'todo', '0'),
-    new Task('Call potencial clients', 'Make the product presentation to prospective buyers', 'Sales', 'Daniela Scholz', 'purple', '01/02/2022', 'urgent', '', 'progress', '1'),
-    new Task('Accounting invoices', 'Write open invoices for customer', 'Backoffice', 'Hans Stieber', 'cyan', '01/02/2022', 'medium', '', 'feedback', '2'),
-    new Task('Video cut', 'Edit the new company video', 'Media', 'Hans Stieber', 'yellow', '01/02/2022', 'medium', 'feedback', '3'),
-    new Task('Social media strategy', 'Develop an ad campaign for brand positioning', 'Marketing', 'Hans Stieber', 'blue', '01/02/2022', 'low', '', 'done', '4'),
+    new Task('Website redesign', 'Modify the Content of the main Website...', 'Design', 'Hans Stieber', 'orange', '01/21/2022', 'low', '', 'todo', '0'),
+    new Task('Call potencial clients', 'Make the product presentation to prospective buyers', 'Sales', 'Daniela Scholz', 'purple', '02/08/2022', 'urgent', '', 'progress', '1'),
+    new Task('Accounting invoices', 'Write open invoices for customer', 'Backoffice', 'Hans Stieber', 'cyan', '01/23/2022', 'medium', '', 'feedback', '2'),
+    new Task('Video cut', 'Edit the new company video', 'Media', 'Hans Stieber', 'yellow', '01/24/2022', 'medium', '', 'feedback', '3'),
+    new Task('Social media strategy', 'Develop an ad campaign for brand positioning', 'Marketing', 'Hans Stieber', 'blue', '01/25/2022', 'low', '', 'done', '4'),
 ];
 
 let currentDraggedElements;
@@ -88,11 +88,10 @@ function updateBoard() {
 
 function generateTodoHTML(element) {
 
-
     return /*html*/ `
     <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id}" ondragstart="startDragging(${element.id})">
     <div class="detailView" id="detailView" style="display:none"></div>
-    <div  class="card-name" style="background-color:#FF7A00;;">Designs</div>
+    <div  class="card-name" style="background-color:${element.category.color};">${element.category.title}</div>
                                 <div class="card-text">
                                     <span class="card-headline">${element.title}</span>
                                     <span class="card-info">${element.description}</span>
@@ -114,7 +113,6 @@ function generateTodoHTML(element) {
                                 </div>
                             </div>
     `;
-
 }
 
 

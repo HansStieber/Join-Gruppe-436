@@ -6,8 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+
+    <script src="js/models/category.class.js"></script>
+    <script src="js/models/priority.class.js"></script>
+    <script src="js/models/subtask.class.js"></script>
+    <script src="js/models/task.class.js"></script>
+
     <script src="script.js"></script>
     <script src="include.js"></script>
+    <script src="board.js"></script>
+    <script src="summary.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_sidebar.css">
     <link rel="stylesheet" href="style_header.css">
@@ -16,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="./img/join-logo.png">
 </head>
 
-<body onload="load()">
+<body onload="load(),updateSummary()">
 
     <div class="body2">
         <!-- NAVBAR -->
@@ -58,13 +66,13 @@
                                 <div class="urgent-tasks">
                                     <div class="urgent-icon"></div>
                                     <div>
-                                        <div id="urgent" class="bold">1</div>
+                                        <div id="tasks-urgent" class="bold">1</div>
                                         <span>Urgent</span>
                                     </div>
                                 </div>
                                 <div class="urgent-tasks separation"></div>
                                 <div class="urgent-tasks">
-                                    <div id="urgent-date" class="urgentDate">January 20, 2023</div>
+                                    <div id="tasks-urgent-date" class="urgentDate">January 20, 2023</div>
                                     <div>Upcoming deadline</div>
                                 </div>
                             </a>
@@ -74,14 +82,14 @@
                             <a class="col-2" href="board.html">
                                 <div class="pencil-image"></div>
                                 <div>
-                                    <div id="to-do" class="bold">1</div>
+                                    <div id="tasks-to-do" class="bold">1</div>
                                     <span>To-do</span>
                                 </div>
                             </a>
                             <a class="col-2" href="board.html">
                                 <div class="tick-image"></div>
                                 <div>
-                                    <div id="done" class="bold">1</div>
+                                    <div id="tasks-done" class="bold">1</div>
                                     <span>Done</span>
                                 </div>
                             </a>

@@ -155,7 +155,7 @@ function checkIfInputMissingAndPushNewTask() {
 
 /**
  * Runs functions essential for submitting the form and creating a new task
- */ 
+ */
 function pushNewTask() {
     pickSubtasks();
     pushTask();
@@ -205,7 +205,7 @@ function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, urgent, medium, low, subtasksChecked);
 
     tasks.push(newTask);
-    
+
     pushNewCategories(categoryTitle);
 }
 
