@@ -52,14 +52,10 @@ function renderAssignmentOptions(option, i) {
     `;
 }
 
-function renderLastAssignmentOption(option, i) {
-    document.getElementById('contacts-dropdown-container').innerHTML += `
-    <div id="${'a-option' + i}" class="option d-none selectable checkbox-contacts last-option" onclick="assignContact(${i})">
-        <span>${option.firstName + ' ' + option.lastName}</span>
-        <div class="checkbox-contacts-unchecked">
-            <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
-        </div>
-    </div>
+
+function renderContactIcon() {
+    document.getElementById('assignment-icons-container').innerHTML += `
+    <div><span></span><span></span></div>
     `;
 }
 

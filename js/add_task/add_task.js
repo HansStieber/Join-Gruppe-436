@@ -65,16 +65,8 @@ function loadAssignmentOptions() {
     document.getElementById('contacts-dropdown-container').innerHTML = '';
     for (let i = 0; i < assignments.length; i++) {
         const option = assignments[i];
-        if (lastAssignmentOption(i)) {
-            renderLastAssignmentOption(option, i);
-        } else {
-            renderAssignmentOptions(option, i);
-        }
+        renderAssignmentOptions(option, i);
     }
-}
-
-function lastAssignmentOption(i) {
-    return i == assignments.length - 1;
 }
 
 
@@ -178,10 +170,6 @@ function hideAssignmentOptions() {
     if (contactsOpen == true) {
         playCloseDropdownAnimation('options-contact');
     }
-}
-
-function containerWithTargetedIdsExists(x, i) {
-    return typeof (document.getElementById(x + '-option' + i)) != 'undefined' && document.getElementById(x + '-option' + i) != null
 }
 
 function addOpenContactsFunktion() {

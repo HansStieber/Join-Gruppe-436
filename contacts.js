@@ -112,7 +112,7 @@ function renderBigCard(indexNum) {
     const { initialsSpan, firstNameSpan, lastNameSpan,
         emailLink, phoneSpan, bigCardDiv, initialsDiv } = getBigCardElements();
 
-    initialsSpan.innerHTML = initials1 + initials2;;
+    initialsSpan.innerHTML = initials1 + initials2;
     firstNameSpan.innerHTML = firstName;
     lastNameSpan.innerHTML = lastName;
     emailLink.innerHTML = email;

@@ -6,7 +6,7 @@ class Task {
     date;
     priority;
     subtasks;
-    status;
+    status; 
     id;
     
     constructor(title, description, categoryTitle, assignedContacts, color, date, priority, subtasks, status, id) {
