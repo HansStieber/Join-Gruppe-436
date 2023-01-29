@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style/style_sidebar.css">
     <link rel="stylesheet" href="style/style_header.css">
     <link rel="stylesheet" href="style/style_board.css">
+
     <script src="js/models/task.class.js"></script>
     <script src="js/models/category.class.js"></script>
     <script src="js/models/subtask.class.js"></script>
@@ -18,6 +19,7 @@
     <script src="include.js"></script>
     <script src="board.js"></script>
     <script src="contacts.js"></script>
+
     <script src="js/add_task/create_new_task.js"></script>
     <script src="js/add_task/create_new_category.js"></script>
     <script src="js/add_task/assign_contact.js"></script>
@@ -41,7 +43,8 @@
 
 
 
-<body onload="load(), selectingArrayForBoardUpdate()">
+<body onload="load(), selectingArrayForBoardUpdate(), renderBoard();" >
+
     <div class="body2">
         <div id="shadow-screen" class="shadow-screen d-none">
             <div id="center-new-task-card" class="general-overlay">
