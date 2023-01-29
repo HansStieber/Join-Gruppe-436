@@ -53,11 +53,14 @@ function renderAssignmentOptions(option, i) {
 }
 
 
-//function renderContactIcon() {
-//    document.getElementById('assignment-icons-container').innerHTML += `
-//    <div><span></span><span></span></div>
-//    `;
-//}
+function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color) {
+    document.getElementById('assignments-icons-container').innerHTML += `
+    <div style="background-color: ${color}" class="contact-icon">
+        <span>${firstLetterFirstName}</span>
+        <span>${firstLetterLasttName}</span>
+    </div>
+    `;
+}
 
 /*----------- TEMPLATES FOR SUBTASKS -----------*/
 function renderSubtasks(subtask, i) {
