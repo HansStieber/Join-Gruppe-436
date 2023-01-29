@@ -1,13 +1,12 @@
-let users = [];
-
 async function loadBackend() {
     await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
-    backend.setItem('test', 'hallo');
+    todos = JSON.parse(backend.getItem('todo')) || [];
+    //todos.push(savedTodos);
 }
 
 
 async function load() {
+    await loadBackend();
     await includeHTML();
 }
 

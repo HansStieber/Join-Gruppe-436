@@ -53,11 +53,11 @@ function renderAssignmentOptions(option, i) {
 }
 
 
-function renderContactIcon() {
-    document.getElementById('assignment-icons-container').innerHTML += `
-    <div><span></span><span></span></div>
-    `;
-}
+//function renderContactIcon() {
+//    document.getElementById('assignment-icons-container').innerHTML += `
+//    <div><span></span><span></span></div>
+//    `;
+//}
 
 /*----------- TEMPLATES FOR SUBTASKS -----------*/
 function renderSubtasks(subtask, i) {

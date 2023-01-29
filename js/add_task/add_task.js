@@ -13,7 +13,8 @@ let assignments = [
  * Function load() loads all templates that are included in this page (sidebar, header);
  * Function loadAllOptions loads all options of dropdown menus that are available in add_task.html
  */
-async function init() {
+async function initAddTask() {
+    await loadBackend();
     await load();
     loadAllOptions();
 }

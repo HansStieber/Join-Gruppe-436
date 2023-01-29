@@ -8,7 +8,7 @@ function assignContact(i) {
     assignedContacts.push(contacts[i]);
     console.log(assignedContacts);
     document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
-    renderContactIcon();
+    //renderContactIcon();
 }
 
 function removeAssignment(i, fN, lN) {

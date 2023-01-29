@@ -1,40 +1,45 @@
 
 /*Variablen Namen und Reihenfolge: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
 
-let todos = [
-    new Task('Website redesign', 'Modify the Content of the main Website...', 'Design', 'Hans Stieber', 'orange', '01/21/2022', 'low', '', 'todo', '0'),
-    new Task('Call potencial clients', 'Make the product presentation to prospective buyers', 'Sales', 'Daniela Scholz', 'purple', '02/08/2022', 'urgent', '', 'progress', '1'),
-    new Task('Accounting invoices', 'Write open invoices for customer', 'Backoffice', 'Hans Stieber', 'cyan', '01/23/2022', 'medium', '', 'todo', '2'),
-    new Task('Video cut', 'Edit the new company video', 'Media', 'Hans Stieber', 'yellow', '01/24/2022', 'medium', '', 'feedback', '3'),
-    new Task('Social media strategy', 'Develop an ad campaign for brand positioning', 'Marketing', 'Hans Stieber', 'blue', '01/25/2022', 'low', '', 'done', '4'),
-];
+//let todos = [
+//    new Task('Website redesign', 'Modify the Content of the main Website...', 'Design', 'Hans Stieber', 'orange', '01/21/2022', 'low', '', 'todo', '0'),
+//    new Task('Call potencial clients', 'Make the product presentation to prospective buyers', 'Sales', 'Daniela Scholz', 'purple', '02/08/2022', 'urgent', '', 'progress', '1'),
+//    new Task('Accounting invoices', 'Write open invoices for customer', 'Backoffice', 'Hans Stieber', 'cyan', '01/23/2022', 'medium', '', 'todo', '2'),
+//    new Task('Video cut', 'Edit the new company video', 'Media', 'Hans Stieber', 'yellow', '01/24/2022', 'medium', '', 'feedback', '3'),
+//    new Task('Social media strategy', 'Develop an ad campaign for brand positioning', 'Marketing', 'Hans Stieber', 'blue', '01/25/2022', 'low', '', 'done', '4'),
+//];
+
 let searchedTodos = [];
 let currentDraggedElements;
 
+async function initBoard() {
+    await load();
+    selectingArrayForBoardUpdate();
+}
 
-function clearBoard(){
-    document.getElementById('todo').innerHTML= '';
-    document.getElementById('progress').innerHTML= '';
-    document.getElementById('feedback').innerHTML= '';
-    document.getElementById('done').innerHTML= '';
+function clearBoard() {
+    document.getElementById('todo').innerHTML = '';
+    document.getElementById('progress').innerHTML = '';
+    document.getElementById('feedback').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
 }
 
 
-function renderBoard(){
+function renderBoard(todos) {
     clearBoard();
     // loadTasks();
-    renderTodoColumn();
-    renderProgressColumn();
-    renderFeedbackColumn();
-    renderDoneColumn();
+    renderTodoColumn(todos);
+    renderProgressColumn(todos);
+    renderFeedbackColumn(todos);
+    renderDoneColumn(todos);
 }
 
 
-function renderTodoColumn(){
-    let todo = todos.filter(t => t.status == 'todo'); 
-    console.log(todo); 
+function renderTodoColumn(todos) {
+    let todo = todos.filter(t => t.status == 'todo');
+    console.log(todo);
     for (let i = 0; i < todo.length; i++) {
-        const element = todo[i]; 
+        const element = todo[i];
         const status = element.status;
         console.log(element);
         console.log(status);
@@ -42,7 +47,7 @@ function renderTodoColumn(){
     }
 }
 
-function renderProgressColumn(){
+function renderProgressColumn(todos) {
     let progress = todos.filter(t => t.status == 'progress');
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
@@ -53,7 +58,7 @@ function renderProgressColumn(){
     }
 }
 
-function renderFeedbackColumn(){
+function renderFeedbackColumn(todos) {
     let feedback = todos.filter(t => t.status == 'feedback');
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
@@ -64,7 +69,7 @@ function renderFeedbackColumn(){
     }
 }
 
-function renderDoneColumn(){
+function renderDoneColumn(todos) {
     let done = todos.filter(t => t.status == 'done');
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
@@ -128,7 +133,14 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     todos[currentDraggedElement]['status'] = status;
-    renderBoard();
+    renderBoard(todos);
+    saveStatus();
+}
+
+
+function saveStatus() {
+    let todosAsText = JSON.stringify(todos);
+    backend.setItem('todo', todosAsText);
 }
 
 

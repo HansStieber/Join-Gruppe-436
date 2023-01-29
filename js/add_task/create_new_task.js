@@ -13,7 +13,7 @@ function createNewTask() {
     checkIfEmptyField();
     closeAllDropdowns();
     checkIfInputMissingAndPushNewTask();
-    hideNewTaskCard()
+    //hideNewTaskCard()
 }
 
 
@@ -210,16 +210,16 @@ function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
     todos.push(newTask);
-    renderBoard();
+    //renderBoard();
     saveTasks();
 
-    pushNewCategories(categoryTitle);
+    saveCategories(categoryTitle);
 }
 
 
 function saveTasks() {
     let todosAsText = JSON.stringify(todos);
-    localStorage.setItem('todo', todosAsText);
+    backend.setItem('todo', todosAsText);
 }
 
 
@@ -240,14 +240,10 @@ function getId() {
 }
 
 
-/**
- * Pushes newly created category into array categories by using class Category()
- * 
- * @param {string} categoryTitle - name of the new category
- * @type {string} currentColor - name of the color of the new category
- */
-function pushNewCategories(categoryTitle) {
+function saveCategories(categoryTitle) {
     categories.push(new Category(categoryTitle, currentColor));
+    let categoriesAsText = JSON.stringify(categories);
+    backend.setItem('category', categoriesAsText);
 }
 
 
@@ -316,5 +312,5 @@ function showConfirmation() {
     document.getElementById('task-added-to-board').classList.add('slide-in');
     setTimeout(() => {
         window.location.href = 'board.html';
-    }, 200000);
+    }, 20000);
 }
