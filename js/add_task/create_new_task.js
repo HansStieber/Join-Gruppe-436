@@ -210,7 +210,6 @@ function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
     todos.push(newTask);
-    //renderBoard();
     saveTasks();
 
     saveCategories(categoryTitle);
@@ -284,6 +283,7 @@ function removeAllAssignments() {
     assignedContacts = [];
     loadAllOptions();
     closeDropdownAssignment();
+    loadContactIcon();
 }
 
 function unsetPriority() {

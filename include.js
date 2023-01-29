@@ -1,7 +1,7 @@
 async function loadBackend() {
     await downloadFromServer();
     todos = JSON.parse(backend.getItem('todo')) || [];
-    //todos.push(savedTodos);
+    categories = JSON.parse(backend.getItem('category')) || [];
 }
 
 

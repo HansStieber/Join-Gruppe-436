@@ -1,12 +1,6 @@
 let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
 let newCategories = [];
-let categories = [
-    new Category('Design', 'orange'),
-    new Category('Sales', 'violet'),
-    new Category('Backoffice', 'cyan'),
-    new Category('Media', 'gold'),
-    new Category('Marketing', 'blue')
-];
+
 let currentColor;
 let categorySelected = false;
 
@@ -94,6 +88,9 @@ function setCurrentColor(color, i) {
 
 
 function highlightCurrentColor(i) {
+    for (let i = 0; i < colors.length; i++) {
+        document.getElementById('color' + i).classList.remove('highlight');
+    }
     document.getElementById('color' + i).classList.add('highlight');
 }
 
