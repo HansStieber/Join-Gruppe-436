@@ -13,6 +13,7 @@ function createNewTask() {
     checkIfEmptyField();
     closeAllDropdowns();
     checkIfInputMissingAndPushNewTask();
+    hideNewTaskCard()
 }
 
 
@@ -209,9 +210,18 @@ function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
     todos.push(newTask);
+    renderBoard();
+    saveTasks();
 
     pushNewCategories(categoryTitle);
 }
+
+
+function saveTasks() {
+    let todosAsText = JSON.stringify(todos);
+    localStorage.setItem('todo', todosAsText);
+}
+
 
 function getPriority() {
     if (urgent == true) {
