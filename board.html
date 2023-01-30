@@ -93,7 +93,7 @@
 
                             <div class="cards-category">
                                 <span>To do</span>
-                                <div class="plus-btn"></div>
+                                <div class="plus-btn" onclick="showNewTaskCard()"></div>
                             </div>
 
                             <div class="card-column" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
@@ -104,7 +104,7 @@
 
                             <div class="cards-category">
                                 <span>In progress</span>
-                                <div class="plus-btn"></div>
+                                <div class="plus-btn" onclick="addTaskToStatusProgress()"></div>
                             </div>
 
                             <div class="card-column" id="progress" ondrop="moveTo('progress')"
@@ -116,7 +116,7 @@
 
                             <div class="cards-category">
                                 <span>Awaiting Feedback</span>
-                                <div class="plus-btn"></div>
+                                <div class="plus-btn" onclick="addTaskToStatusFeedback()"></div>
                             </div>
 
                             <div class="card-column" id="feedback" ondrop="moveTo('feedback')"
@@ -128,7 +128,7 @@
 
                             <div class="cards-category">
                                 <span>Done</span>
-                                <div class="plus-btn"></div>
+                                <div class="plus-btn" onclick="addTaskToStatusDone()"></div>
                             </div>
                             <div class="card-column" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                             </div>

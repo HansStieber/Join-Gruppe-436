@@ -218,4 +218,20 @@ function findTask() {
     }
 }
 
+/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 
+
+function addTaskToStatusProgress() {
+    progressStatus = 'progress';
+    showNewTaskCard();
+}
+
+function addTaskToStatusFeedback(){
+    progressStatus = 'feedback';
+    showNewTaskCard();
+}
+
+function addTaskToStatusDone(){
+    progressStatus = 'done';
+    showNewTaskCard();
+}
