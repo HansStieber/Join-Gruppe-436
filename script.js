@@ -43,7 +43,6 @@ function forgotPassword() {
 }
 
 
-
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
 
 /**
@@ -63,7 +62,6 @@ function showNewTaskCard() {
  */
 function hideNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
-    h
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
