@@ -1,3 +1,9 @@
+async function initSummary() {
+    await load();
+    updateSummary();
+}
+
+
 function updateSummary() {
     const { tasksInBoardDiv, tasksInProgressDiv, tasksInFeedbackDiv, urgentDiv, urgentDateDiv, tasksTodoDiv, tasksDoneDiv } = getSummaryElements();
     const { tasksInBoard, tasksInProgress, tasksInFeedback, tasksUrgent, urgentTaskDate, tasksTodo, tasksDone } = getSummaryInfo();
