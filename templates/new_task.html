@@ -74,7 +74,8 @@
                     <div id="options-contact" class="options">
                         <div id="contacts-dropdown-container">
                         </div>
-                        <div id="invite-new-contact" class="option d-none selectable checkbox-container space-between last-option"
+                        <div id="invite-new-contact"
+                            class="option d-none selectable checkbox-container space-between last-option"
                             onclick="inviteNewContact()">
                             <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
                         </div>
@@ -85,7 +86,7 @@
                 </div>
             </div>
         </div>
- 
+
         <!-- BORDER -->
         <div class="border"></div>
 
@@ -135,7 +136,7 @@
 
         </div>
         <div class="button-container">
-            <div id="clear-form" class="clear-form" onclick="clearAllInputFields()">
+            <div id="clear-form" class="cancel-form" onclick="clearAllInputFields(),hideNewTaskCard()">
             </div>
             <div id="submit-button" class="submit-button" onclick="createNewTask()">
             </div>

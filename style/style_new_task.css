@@ -529,18 +529,29 @@ input[type='date']:hover {
     bottom: 71px;
     width: 144px;
     height: 69px;
+    background-image: url('../assets/img/clear_new_task.svg');
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.cancel-form {
+    position: absolute;
+    right: 280px;
+    bottom: 71px;
+    width: 144px;
+    height: 69px;
     background-image: url('../assets/img/cancel_new_task.svg');
     background-position: top;
     background-repeat: no-repeat;
 }
 
-.clear-form:hover {
+.cancel-form:hover {
     cursor: pointer;
     background-image: url('../assets/img/cancel_new_task_hover.svg');
     transform: scale(1.025);
 }
 
-.clear-form:active {
+.cancel-form:active {
     background-image: url('../assets/img/cancel_new_task_click.svg');
 }
 

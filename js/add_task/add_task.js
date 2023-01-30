@@ -17,8 +17,14 @@ async function initAddTask() {
     await loadBackend();
     await load();
     loadAllOptions();
+    showClearButton();
 }
 
+function showClearButton() {
+    let btn = document.getElementById('clear-form');
+    btn.style = 'background-image: url("../assets/img/clear_new_task.svg")';
+    btn.setAttribute('onclick', 'clearAllInputFields()');
+}
 
 /*----------- HOVER EFFECTS PRIORITY BUTTONS -----------*/
 function hover(id, path) {
