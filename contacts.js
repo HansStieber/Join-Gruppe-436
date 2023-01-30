@@ -129,15 +129,7 @@ function getCardInnerHTML(contact, i) {
     </div>
 `;
 }
-function saveContacts() {
-    let contactAsText = JSON.stringify(contacts);
-    backend.setItem('contact', contactAsText);
-}
 
-function getContacts() {
-    let contactAsText = JSON.stringify(contacts);
-    backend.getItem('contact', contactAsText);
-}
 
 function addContact() {
     const inputName = document.getElementById('add-name-input');
@@ -146,6 +138,7 @@ function addContact() {
     let nameArray = inputName.value.split(" ");
     if (nameArray.length == 2) {
         contacts.push(new Contact(nameArray[0], nameArray[1], inputPhone.value, inputEmail.value));
+        saveContacts();
         closeAddOverlay();
         renderContacts();
         popInContactAddedMessage();

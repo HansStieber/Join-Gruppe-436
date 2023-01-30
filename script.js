@@ -2,12 +2,19 @@ async function loadBackend() {
     await downloadFromServer();
     todos = JSON.parse(backend.getItem('todo')) || [];
     categories = JSON.parse(backend.getItem('category')) || [];
+    contacts = JSON.parse(backend.getItem('contact')) || [];
 }
 
 
 async function load() {
     await loadBackend();
     await includeHTML();
+}
+
+
+function saveContacts() {
+    let contactAsText = JSON.stringify(contacts);
+    backend.setItem('contact', contactAsText);
 }
 
 

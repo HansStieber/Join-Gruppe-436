@@ -424,7 +424,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 ::-webkit-calendar-picker-indicator {
-    background-image: url('assets/img/calender.svg');
+    background-image: url('../assets/img/calender.svg');
     background-size: 24px;
 }
 
@@ -529,19 +529,19 @@ input[type='date']:hover {
     bottom: 71px;
     width: 144px;
     height: 69px;
-    background-image: url('assets/img/cancel_new_task.svg');
+    background-image: url('../assets/img/cancel_new_task.svg');
     background-position: top;
     background-repeat: no-repeat;
 }
 
 .clear-form:hover {
     cursor: pointer;
-    background-image: url('assets/img/cancel_new_task_hover.svg');
+    background-image: url('../assets/img/cancel_new_task_hover.svg');
     transform: scale(1.025);
 }
 
 .clear-form:active {
-    background-image: url('assets/img/cancel_new_task_click.svg');
+    background-image: url('../assets/img/cancel_new_task_click.svg');
 }
 
 .submit-button {
@@ -550,17 +550,17 @@ input[type='date']:hover {
     bottom: 71px;
     width: 185px;
     height: 69px;
-    background-image: url('assets/img/create_task.svg');
+    background-image: url('../assets/img/create_task.svg');
     background-repeat: no-repeat;
 }
 
 .submit-button:hover {
     cursor: pointer;
-    background-image: url('assets/img/create_task_hover.svg');
+    background-image: url('../assets/img/create_task_hover.svg');
 }
 
 .submit-button:active {
-    background-image: url('assets/img/create_task_click.svg');
+    background-image: url('../assets/img/create_task_click.svg');
 }
 
 /* === Styling for smaller Screens === */
@@ -655,7 +655,7 @@ input[type='date']:hover {
     }
 
     .submit-button {
-        background-image: url('assets/img/create_task_mobile.svg');
+        background-image: url('../assets/img/create_task_mobile.svg');
         background-position: center;
         margin-left: 0;
     }
