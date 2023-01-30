@@ -12,7 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    
+
+    <script src="js/models/contact.class.js"></script>
     <script src="js/models/category.class.js"></script>
     <script src="js/models/task.class.js"></script>
     <script src="js/models/subtask.class.js"></script>
@@ -42,7 +43,7 @@
     <link rel="icon" type="image/x-icon" href="./img/join-logo.png">
 </head>
 
-<body onload="loadBackend(), load(),renderContacts()">
+<body onload="initContacts()">
 
     <div class="body2">
         <!-- <div id="shadow-screen" class="shadow-screen d-none">
@@ -242,15 +243,24 @@
 
         </div>
 
-             <!-- TEMPLATE ADD/EDIT CONTACT -->
-             <div class="d-none shadow-screen">
-                <div class="general-overlay">
-                    <div w3-include-html="./templates/add_contact.html"></div>
-                    <div w3-include-html="./templates/edit_contact.html"></div>
-                    <div w3-include-html="./templates/new_task.html"></div>
-
-                </div>
+        <!-- TEMPLATE ADD/EDIT CONTACT -->
+        <div id="new-task-shadow-screen" class="d-none shadow-screen">
+            <div id="new-task-overlay" class="general-overlay">
+                <div w3-include-html="./templates/new_task.html"></div>
             </div>
+        </div>
+
+        <div id="add-contact-shadow-screen" class="d-none shadow-screen">
+            <div id="add-contact-overlay" class="general-overlay">
+                <div w3-include-html="./templates/add_contact.html"></div>
+            </div>
+        </div>
+
+        <div id="edit-contact-shadow-screen" class="d-none shadow-screen">
+            <div id="edit-contact-overlay" class="general-overlay">
+                <div w3-include-html="./templates/edit_contact.html"></div>
+            </div>
+        </div>
 
 </body>
 
