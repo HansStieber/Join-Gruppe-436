@@ -144,20 +144,7 @@ function saveStatus() {
 }
 
 
-function showNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('content-new-task');
-    newTaskCloseBtn.classList.remove('d-none');
-    showShadowScreen();
-    slideInCard()
-}
 
-
-function hideNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('content-new-task');
-    slideOutCard();
-    hideShadowScreen();
-    setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
-}
 
 // =============================================wurde durch GENERAL SHOW AND HIDE FUNCTIONS in script.js ersetzt
 // function addShadowScreen() {

@@ -1,37 +1,3 @@
-class Contact {
-    phone;
-    firstName;
-    lastName;
-    email;
-    color;
-    password;
-
-    constructor(firstName, lastName, phone, email, password, color) {
-        this.phone = phone;
-
-        this.firstName = checkIfFirstname(firstName);
-        this.lastName = upperCaseFirstLetter(lastName);
-        this.email = email;
-        if (color) {
-            this.color = color;
-        } else {
-            this.color = generateRandomColor();
-        }
-        this.password = password;
-    }
-
-    call() {
-        window.location.href = 'tel:' + this.phone;
-    }
-}
-
-function checkIfFirstname(firstName) {
-    if (firstName) {
-        let newFirstName = upperCaseFirstLetter(firstName);
-        return newFirstName;
-    }
-}
-
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let contacts = [
     new Contact('Hans', 'Stieber', '01518547387', 'stieber@gmx.de', 'P4SsW0rTeins2drei', 'blue'),
@@ -50,7 +16,10 @@ let contacts = [
     new Contact('Ulrich', 'Petersson', '0151854715', 'petersson@web.de', 'P4SsW0rTeins2drei')
 ];
 
-
+async function initContacts() {
+    await load();
+    renderContacts();
+}
 function clearCards() {
     for (let i = 0; i < abc.length; i++) {
         const letter = abc[i];
@@ -250,6 +219,14 @@ function closeMobileBigCard() {
 }
 
 
+function checkIfFirstname(firstName) {
+    if (firstName) {
+        let newFirstName = upperCaseFirstLetter(firstName);
+        return newFirstName;
+    }
+}
+
+
 function addOnclickEvent(htmlElement, functionName, indexNum) {
     let editContactBtn = document.getElementById(`${htmlElement}`);
     editContactBtn.setAttribute("onclick", `${functionName}(${indexNum})`);
@@ -271,26 +248,28 @@ function openEditOverlay(indexNum) {
     document.getElementById('editContactOverlay').classList.remove('d-none');
     setEditContactInitials(indexNum);
     addOnclickEvent('edit-save-btn', 'saveContactChanges', indexNum);
-    showShadowScreen();
-    slideInCard();
+    showShadowScreen('edit-contact-shadow-screen');
+    slideInCard('edit-contact-overlay');
 }
 
 
 function closeEditOverlay() {
-    slideOutCard();
-    hideShadowScreen();
-    setTimeout(function () {document.getElementById('editContactOverlay').classList.add('d-none');}, 450);
+    slideOutCard('edit-contact-overlay');
+    hideShadowScreen('edit-contact-shadow-screen');
+    setTimeout(function () { document.getElementById('editContactOverlay').classList.add('d-none'); }, 450);
 }
 
 
 function openAddOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
-    showShadowScreen();
-    slideInCard();
+    showShadowScreen('add-contact-shadow-screen');
+    slideInCard('add-contact-overlay');
+    showNewTaskCloseBtn();
 }
 
 function closeAddOverlay() {
-    slideOutCard();
-    hideShadowScreen();
-    setTimeout(function () {document.getElementById('addContactOverlay').classList.add('d-none');}, 450);
+    slideOutCard('add-contact-overlay');
+    hideShadowScreen('add-contact-shadow-screen');
+    hideNewTaskCloseBtn();
+    setTimeout(function () { document.getElementById('addContactOverlay').classList.add('d-none'); }, 450);
 }

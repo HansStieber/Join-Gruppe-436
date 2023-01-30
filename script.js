@@ -14,7 +14,7 @@ async function load() {
 /**
  * function for sending an Email for reset
  */
-function sendMail(){
+function sendMail() {
     alert("test")
 }
 
@@ -28,7 +28,7 @@ function guestLogin() {
 }
 
 
-function forgotPassword(){
+function forgotPassword() {
     let forgotContainer = document.getElementById("forgotPw");
     let loginContainer = document.getElementById("login-container");
     forgotContainer.removeAttribute("style");
@@ -39,46 +39,80 @@ function forgotPassword(){
 
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
 
+/**
+ * function to show New Task template
+ */
+function showNewTaskCard() {
+    let newTaskCloseBtn = document.getElementById('content-new-task');
+    newTaskCloseBtn.classList.remove('d-none');
+    showShadowScreen('new-task-shadow-screen');
+    slideInCard('new-task-overlay');
+    showNewTaskCloseBtn();
+}
 
 /**
- * function for show shadowscreen 
+ * function to hide New Task template
+ */
+function hideNewTaskCard() {
+    let newTaskCloseBtn = document.getElementById('content-new-task');
+    slideOutCard('new-task-overlay');
+    hideShadowScreen('new-task-shadow-screen');
+    hideNewTaskCloseBtn('new-task-overlay');
+    setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
+}
+
+/**
+ * function to show shadowscreen per Id 
  */
 
-function showShadowScreen(){
-    let shadowScreen = document.querySelector('.shadow-screen');
+function showShadowScreen(shadowDivId) {
+    let shadowScreen = document.getElementById(`${shadowDivId}`);
     shadowScreen.classList.remove('d-none');
     shadowScreen.classList.remove('smooth-opacity-out');
     shadowScreen.classList.add('smooth-opacity-in');
 }
 
 /**
- * function to slide the a card in 
+ * function to slide a card in, per Id
  */
-
-function slideInCard(){
-    let newCard = document.querySelector('.general-overlay');
+function slideInCard(slideDivId) {
+    let newCard = document.getElementById(`${slideDivId}`);
     newCard.classList.remove('slide-right');
     newCard.classList.add('slide-left');
 }
 
 /**
- * function to slide the car out
+ * function to slide a card out, per Id
  */
 
-function slideOutCard() {
-    let newCard = document.querySelector('.general-overlay');
+function slideOutCard(slideDivId) {
+    let newCard = document.getElementById(`${slideDivId}`);
     newCard.classList.remove('slide-left');
     newCard.classList.add('slide-right');
 }
 
 /**
- * function to hide the shadowscreen
+ * function to hide shadowscreen per Id
  */
-function hideShadowScreen(){
-    let shadowScreen = document.querySelector('.shadow-screen');
+function hideShadowScreen(shadowDivId) {
+    let shadowScreen = document.getElementById(`${shadowDivId}`);
     shadowScreen.classList.remove('smooth-opacity-in');
     shadowScreen.classList.add('smooth-opacity-out');
     setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
 }
 
+/**
+ * function to show close Button on NewTask template
+ */
+function showNewTaskCloseBtn() {
+    let closeBtn = document.getElementById('new-task-close-btn');
+    closeBtn.classList.remove('d-none');
+}
 
+/**
+ * function to hide close Button on NewTask template
+ */
+function hideNewTaskCloseBtn() {
+    let closeBtn = document.getElementById('new-task-close-btn');
+    closeBtn.classList.add('d-none');
+}
