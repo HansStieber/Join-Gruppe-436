@@ -143,40 +143,6 @@ function saveStatus() {
     backend.setItem('todo', todosAsText);
 }
 
-
-
-
-// =============================================wurde durch GENERAL SHOW AND HIDE FUNCTIONS in script.js ersetzt
-// function addShadowScreen() {
-//     let shadowScreen = document.getElementById('shadow-screen');
-//     shadowScreen.classList.remove('d-none');
-//     shadowScreen.classList.remove('smooth-opacity-out');
-//     shadowScreen.classList.add('smooth-opacity-in');
-// }
-
-
-// function removeShadowScreen() {
-//     let shadowScreen = document.getElementById('shadow-screen');
-//     shadowScreen.classList.remove('smooth-opacity-in');
-//     shadowScreen.classList.add('smooth-opacity-out');
-//     setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
-// }
-
-
-// function slideInTaskCard() {
-//     let newTask = document.getElementById('center-new-task-card');
-//     newTask.classList.remove('slide-right');
-//     newTask.classList.add('slide-left');
-// }
-
-
-// function slideOutTaskCard() {
-//     let newTask = document.getElementById('center-new-task-card');
-//     newTask.classList.remove('slide-left');
-//     newTask.classList.add('slide-right');
-// }
-
-
 /**
  * created by sasha
  */
