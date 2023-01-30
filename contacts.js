@@ -16,10 +16,13 @@ let contacts = [
     new Contact('Ulrich', 'Petersson', '0151854715', 'petersson@web.de', 'P4SsW0rTeins2drei')
 ];
 
+
 async function initContacts() {
     await load();
     renderContacts();
 }
+
+
 function clearCards() {
     for (let i = 0; i < abc.length; i++) {
         const letter = abc[i];
@@ -126,7 +129,15 @@ function getCardInnerHTML(contact, i) {
     </div>
 `;
 }
+function saveContacts() {
+    let contactAsText = JSON.stringify(contacts);
+    backend.setItem('contact', contactAsText);
+}
 
+function getContacts() {
+    let contactAsText = JSON.stringify(contacts);
+    backend.getItem('contact', contactAsText);
+}
 
 function addContact() {
     const inputName = document.getElementById('add-name-input');
