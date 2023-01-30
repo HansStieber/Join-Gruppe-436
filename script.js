@@ -52,6 +52,7 @@ function forgotPassword() {
 function showNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
+    showClearButton();
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
@@ -62,6 +63,7 @@ function showNewTaskCard() {
  */
 function hideNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
+    h
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
