@@ -16,10 +16,13 @@ let contacts = [
     new Contact('Ulrich', 'Petersson', '0151854715', 'petersson@web.de', 'P4SsW0rTeins2drei')
 ];
 
+
 async function initContacts() {
     await load();
     renderContacts();
 }
+
+
 function clearCards() {
     for (let i = 0; i < abc.length; i++) {
         const letter = abc[i];
@@ -135,6 +138,7 @@ function addContact() {
     let nameArray = inputName.value.split(" ");
     if (nameArray.length == 2) {
         contacts.push(new Contact(nameArray[0], nameArray[1], inputPhone.value, inputEmail.value));
+        saveContacts();
         closeAddOverlay();
         renderContacts();
         popInContactAddedMessage();

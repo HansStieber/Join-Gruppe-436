@@ -1,3 +1,21 @@
+async function loadBackend() {
+    await downloadFromServer();
+    todos = JSON.parse(backend.getItem('todo')) || [];
+    categories = JSON.parse(backend.getItem('category')) || [];
+    contacts = JSON.parse(backend.getItem('contact')) || [];
+}
+
+
+async function load() {
+    await loadBackend();
+    await includeHTML();
+}
+
+
+function saveContacts() {
+    let contactAsText = JSON.stringify(contacts);
+    backend.setItem('contact', contactAsText);
+}
 
 
 /**
@@ -51,9 +69,8 @@ function hideNewTaskCard() {
 }
 
 /**
- * function to show shadowscreen per Id 
+ * function to show shadowscreen, per Id 
  */
-
 function showShadowScreen(shadowDivId) {
     let shadowScreen = document.getElementById(`${shadowDivId}`);
     shadowScreen.classList.remove('d-none');
@@ -81,7 +98,7 @@ function slideOutCard(slideDivId) {
 }
 
 /**
- * function to hide shadowscreen per Id
+ * function to hide shadowscreen, per Id
  */
 function hideShadowScreen(shadowDivId) {
     let shadowScreen = document.getElementById(`${shadowDivId}`);
@@ -91,7 +108,7 @@ function hideShadowScreen(shadowDivId) {
 }
 
 /**
- * function to show close Button on NewTask template
+ * function to show the close Button on NewTask template
  */
 function showNewTaskCloseBtn() {
     let closeBtn = document.getElementById('new-task-close-btn');
@@ -99,7 +116,7 @@ function showNewTaskCloseBtn() {
 }
 
 /**
- * function to hide close Button on NewTask template
+ * function to hide the close Button on NewTask template
  */
 function hideNewTaskCloseBtn() {
     let closeBtn = document.getElementById('new-task-close-btn');
