@@ -8,11 +8,15 @@ function register() {
   
   if (!existingUser) {
 
-      users.push({name: name, email: email, password: password});
+      users.push({
+        name: name, 
+        email: email, 
+        password: password
+      });
       localStorage.setItem("users", JSON.stringify(users));
       console.log("User registered successfully.");
       setTimeout(function(){ 
-        window.location.href = "../templates/log_in.html";
+        window.location.href = "../index.html";
         }, 2000);
     } else {
         console.log("Email already in use. Registration failed.");

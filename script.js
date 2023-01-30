@@ -22,7 +22,11 @@ function saveContacts() {
  * function for sending an Email for reset
  */
 function sendMail() {
-    alert("test")
+    let confirmSentMail = document.getElementById("resetPWackknowledge");
+    confirmSentMail.classList.add("flighUp");
+    setTimeout(function(){
+        window.location.href="../templates/reset_password.html"
+    },2000)
 }
 
 

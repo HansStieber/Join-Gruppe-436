@@ -33,6 +33,11 @@
     border-radius: 30px;
 }
 
+#backArrowSignUp {
+    position: relative;
+    left: -280px;
+}
+
 .signUp-container input {
     width: 350px;
     height: 45px;
