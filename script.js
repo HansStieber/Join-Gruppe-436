@@ -1,3 +1,14 @@
+async function loadBackend() {
+    await downloadFromServer();
+    todos = JSON.parse(backend.getItem('todo')) || [];
+    categories = JSON.parse(backend.getItem('category')) || [];
+}
+
+
+async function load() {
+    await loadBackend();
+    await includeHTML();
+}
 
 
 /**
