@@ -22,7 +22,6 @@
     background-color: #2A3647;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-
 }
 
 .static-design>h1 {
@@ -53,9 +52,9 @@
     border-bottom-right-radius: 30px;
 }
 
-.contact-input-container>img {
-    height: 120px;
+.contact-input-container>img, .mobile-contact-initials {
     position: absolute;
+    height: 120px;
     left: 20px;
 }
 
@@ -236,6 +235,14 @@
     .contact-input-container>img {
         left: 190px;
         top: -66px;
+    }
+
+    .mobile-contact-initials {
+        position: absolute;
+        left: 135px;
+        top: -66px;
+        height: 110px;
+        width: 110px;
     }
 
 

@@ -1,10 +1,10 @@
 <!-- OVERLAY EDIT CONTACT -->
-<div id="editContactOverlay" class="overlay-contact d-none">
-    <div class="add-contact-container">
+    <div id="editContactOverlay" class="add-contact-container d-none">
 
         <!--Left static design-->
         <div class="static-design">
-            <img src="./assets/img/join_small.svg" alt="main logo">
+            <img class="mobile-close-icon" src="./assets/img/mobile-close-icon.svg" alt="x-icon" onclick="closeEditOverlay()">
+            <img class="mobile-join-logo" src="./assets/img/join_small.svg" alt="main logo">
             <h1>Edit contact</h1>
             <div class="grafic-line"></div>
         </div>
@@ -14,11 +14,10 @@
             <div class="closing-icon" onclick="closeEditOverlay()">
                 <img src="./assets/img/close.svg" alt="x-icon">
             </div>
+            <div id="edit-initials-div" class="contact-initials-big mobile-contact-initials">
+                <span id="edit-initials-span"></span>
+            </div>
             <div class="contact-input-area">
-
-                <div id="edit-initials-div" class="contact-initials-big">
-                    <span id="edit-initials-span"></span>
-                </div>
 
                 <!--Add contact Formular-->
                 <form class="add-contact-formular" action="#" onsubmit="return saveContactChanges()">
@@ -62,4 +61,3 @@
             </div>
         </div>
     </div>
-</div>
