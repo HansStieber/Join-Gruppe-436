@@ -5,8 +5,11 @@ async function initSummary() {
 
 
 function updateSummary() {
-    const { tasksInBoardDiv, tasksInProgressDiv, tasksInFeedbackDiv, urgentDiv, urgentDateDiv, tasksTodoDiv, tasksDoneDiv } = getSummaryElements();
-    const { tasksInBoard, tasksInProgress, tasksInFeedback, tasksUrgent, urgentTaskDate, tasksTodo, tasksDone } = getSummaryInfo();
+    const { tasksInBoardDiv, tasksInProgressDiv, tasksInFeedbackDiv,
+        urgentDiv, urgentDateDiv, tasksTodoDiv, tasksDoneDiv } = getSummaryElements();
+
+    const { tasksInBoard, tasksInProgress, tasksInFeedback,
+        tasksUrgent, urgentTaskDate, tasksTodo, tasksDone } = getSummaryInfo();
 
     tasksInBoardDiv.innerHTML = tasksInBoard.length;
     tasksInProgressDiv.innerHTML = tasksInProgress.length;
@@ -48,6 +51,7 @@ function getSummaryInfo() {
 function formatDate(tasksUrgent) {
     var country = "en-US";
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
+
     let date = tasksUrgent[0].date;
     let dateLong = new Date(date);
     let formatedDate = dateLong.toLocaleDateString(country, options);

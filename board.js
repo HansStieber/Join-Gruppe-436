@@ -1,16 +1,12 @@
 
-/*Variablen Namen und Reihenfolge: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
+/*Variablen Namen und Reihenfolge,für Tasks: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
 
-let tasks = [
-    new Task('Website redesign', 'Modify the Content of the main Website...', 'Design', 'Hans Stieber', 'orange', '01/21/2022', 'low', '', 'todo', '0'),
-    new Task('Call potencial clients', 'Make the product presentation to prospective buyers', 'Sales', 'Daniela Scholz', 'purple', '02/08/2022', 'urgent', '', 'progress', '1'),
-    new Task('Accounting invoices', 'Write open invoices for customer', 'Backoffice', 'Hans Stieber', 'cyan', '01/23/2022', 'medium', '', 'todo', '2'),
-    new Task('Video cut', 'Edit the new company video', 'Media', 'Hans Stieber', 'yellow', '01/24/2022', 'medium', '', 'feedback', '3'),
-    new Task('Social media strategy', 'Develop an ad campaign for brand positioning', 'Marketing', 'Hans Stieber', 'blue', '01/25/2022', 'low', '', 'done', '4'),
-];
+let tasks = [];
 
 let searchedTodos = [];
 let currentDraggedElements;
+let acronymBg;
+let acronym;
 
 async function initBoard() {
     await load();
@@ -37,12 +33,9 @@ function renderBoard(todos) {
 
 function renderTodoColumn(todos) {
     let todo = todos.filter(t => t.status == 'todo');
-    console.log(todo);
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
-        const status = element.status;
-        console.log(element);
-        console.log(status);
+        console.log(element.assignments);
         document.getElementById('todo').insertAdjacentHTML("beforeend", generateTodoHTML(element));
     }
 }
@@ -51,9 +44,8 @@ function renderProgressColumn(todos) {
     let progress = todos.filter(t => t.status == 'progress');
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
-        const status = element.status;
-        console.log(element);
-        console.log(status);
+        console.log(element.assignments);
+
         document.getElementById('progress').insertAdjacentHTML("beforeend", generateTodoHTML(element));
     }
 }
@@ -62,9 +54,8 @@ function renderFeedbackColumn(todos) {
     let feedback = todos.filter(t => t.status == 'feedback');
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
-        const status = element.status;
-        console.log(element);
-        console.log(status);
+        console.log(element.assignments);
+
         document.getElementById('feedback').insertAdjacentHTML("beforeend", generateTodoHTML(element));
     }
 }
@@ -73,12 +64,22 @@ function renderDoneColumn(todos) {
     let done = todos.filter(t => t.status == 'done');
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
-        const status = element.status;
-        console.log(element);
-        console.log(status);
+        console.log(element.assignments);
+
         document.getElementById('done').insertAdjacentHTML("beforeend", generateTodoHTML(element));
     }
 }
+
+
+// function getAcronym(assignments){
+//     for (let i = 0; i < assignments.length; i++) {
+//         let firstName = assignments[i].firstName.slice(0,1);
+//         let lastName = assignments[i].lastName.slice(0,1);
+//         acronymBg = assignments[i].color;
+//         acronym = firstName + lastName;
+//         return acronym, acronymBg;
+//     }
+// }
 
 
 /**
@@ -108,9 +109,8 @@ function generateTodoHTML(element) {
                                     <!-- </div> -->
                                 <div class="card-bottom">
                                     <div class="user-icons">
-                                        <div class="user-icon" style="background:#EE00D6"><span>DS</span></div>
-                                        <div class="user-icon" style="background:#0190E0;left:30px"><span>SS</span>
-                                        </div>
+                                        <div class="user-icon" background-color="${acronymBg}"><span>${acronym}</span></div>
+
                                         <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
                                         </div>
                                     </div>
@@ -192,12 +192,12 @@ function addTaskToStatusProgress() {
     showNewTaskCard();
 }
 
-function addTaskToStatusFeedback(){
+function addTaskToStatusFeedback() {
     progressStatus = 'feedback';
     showNewTaskCard();
 }
 
-function addTaskToStatusDone(){
+function addTaskToStatusDone() {
     progressStatus = 'done';
     showNewTaskCard();
 }

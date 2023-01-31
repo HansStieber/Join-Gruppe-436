@@ -10,7 +10,7 @@ function login() {
     setTimeout(function(){ 
         window.location.href = "./summary.html";
     }, 2000);
-    document.getElementById("user-greeting").innerHTML = existingUser["name"];
+    document.getElementById("user-greeting").innerHTML = `${existingUser["name"]}`;
     
   } else {
     console.log("Invalid email or password. Login failed.");
