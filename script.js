@@ -57,14 +57,14 @@ function forgotPassword() {
 /**
  * function to show New Task template
  */
-function showNewTaskCard(i) {
+function showNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
     showClearButton();
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
-    selectCurrentContact(i);
+    selectCurrentContact(contactToEditId);
     loadAllOptions();
 }
 
