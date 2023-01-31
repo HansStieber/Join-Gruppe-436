@@ -1,10 +1,10 @@
 <!-- OVERLAY ADD CONTACT -->
-<div id="addContactOverlay" class="d-none">
-    <div class="add-contact-container">
+    <div id="addContactOverlay" class="add-contact-container">
 
         <!--Left static design-->
         <div class="static-design">
-            <img src="./assets/img/join_small.svg" alt="main logo">
+            <img class="mobile-close-icon" src="./assets/img/mobile-close-icon.svg" alt="x-icon" onclick="closeAddOverlay()">
+            <img class="mobile-join-logo" src="./assets/img/join_small.svg" alt="main logo">
             <h1>Add contact</h1>
             <span>Tasks are better with a team!</span>
             <div class="grafic-line"></div>
@@ -15,8 +15,9 @@
             <div class="closing-icon" onclick="closeAddOverlay()">
                 <img src="./assets/img/close.svg" alt="x-icon">
             </div>
+            <img src="./assets/img/avatar.svg" alt="icon of an avatar">
+
             <div class="contact-input-area">
-                <img src="./assets/img/avatar.svg" alt="icon of an avatar">
 
                 <!--Add contact Formular-->
                 <form class="add-contact-formular" action="#" onsubmit="return false">
@@ -67,4 +68,3 @@
             </div>
         </div>
     </div>
-</div>

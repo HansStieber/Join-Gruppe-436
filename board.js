@@ -35,6 +35,8 @@ function renderTodoColumn(todos) {
     let todo = todos.filter(t => t.status == 'todo');
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
+        const assignments = todo[i].assignments;
+        // getAcronym(assignments);
         console.log(element.assignments);
         document.getElementById('todo').insertAdjacentHTML("beforeend", generateTodoHTML(element));
     }
@@ -75,8 +77,8 @@ function renderDoneColumn(todos) {
 //     for (let i = 0; i < assignments.length; i++) {
 //         let firstName = assignments[i].firstName.slice(0,1);
 //         let lastName = assignments[i].lastName.slice(0,1);
-//         acronymBg = assignments[i].color;
 //         acronym = firstName + lastName;
+//         acronymBg = assignments[i].color;
 //         return acronym, acronymBg;
 //     }
 // }
