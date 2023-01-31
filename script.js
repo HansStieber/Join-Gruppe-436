@@ -19,10 +19,13 @@ function deleteItemFromBackend(array, deleteId) {
     saveArrayToBackend(newArray);
 }
 
+
 function saveArrayToBackend(key, array) {
     let arrayAsText = JSON.stringify(array);
     backend.setItem(key, arrayAsText);
 }
+
+
 /**
  * function for sending an Email for reset
  */

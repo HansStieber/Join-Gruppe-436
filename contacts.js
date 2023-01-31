@@ -11,7 +11,10 @@ async function initContacts() {
     renderContacts();
 }
 
-
+/**
+ * This function iterate thru the Contacts Array, and render them.
+ * 
+ */
 function renderContacts() {
     clearCards();
     addCardsDivMainDNone();
@@ -19,12 +22,22 @@ function renderContacts() {
         for (let i = 0; i < contacts.length; i++) {
             const contact = contacts[i];
             if (contact) {
-                const { cardsMainLetter, cardsDivLetter } = getContactInfo(contact);
-                cardsMainLetter.classList.remove('d-none');
+                const { cardsDivLetter } = getContactInfo(contact);
+                removeCardsDivMainDnone(contact);
                 cardsDivLetter.innerHTML += getCardInnerHTML(contact, i);
             }
         }
     }, 500)
+}
+
+/**
+ * This function removes the d-none class from 
+ * 
+ * @param {object} contact 
+ */
+function removeCardsDivMainDnone(contact) {
+    const { cardsMainLetter } = getContactInfo(contact);
+    cardsMainLetter.classList.remove('d-none');
 }
 
 
@@ -130,7 +143,7 @@ function saveContactChanges() {
     const names = nameInput.value.split(" ");
     changeContactDataIfInput(contact, names, emailInput, phoneInput);
     saveChangesToBackend();
-    setTimeout(initContacts, 2000);
+    setTimeout(initContacts, 2500);
     closeEditOverlay();
     //renderBigCard(contactToEditId);
 }
@@ -147,7 +160,7 @@ function getEditInputs() {
 
 function saveChangesToBackend() {
     backend.deleteItem('contact');
-    setTimeout(() => { saveArrayToBackend('contact', contacts) }, 1000);
+    setTimeout(() => { saveArrayToBackend('contact', contacts) }, 1500);
 }
 
 
