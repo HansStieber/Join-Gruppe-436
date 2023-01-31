@@ -73,8 +73,6 @@
                             </button>
                         </div>
 
-
-
                         <div id="cards-main-A" class="cards-div-main d-none">
                             <div class="cards-div-letter"><span>A</span></div>
                             <div class="cards-div" id="cards-div-A"></div>
@@ -203,7 +201,7 @@
                                     <span class="big-card-name" id="big-card-firstname"></span>
                                     <span class="big-card-name" id="big-card-lastname"></span>
                                 </div>
-                                <div onclick="showNewTaskCard()" class="big-card-add-task">
+                                <div id="open-add-task" onclick="showNewTaskCard()" class="big-card-add-task">
                                     <div class="big-card-plus-img">
                                         <img src="img/plus-blue-no-border.svg">
                                     </div>
@@ -212,10 +210,9 @@
                             </div>
                         </div>
 
-
                         <div class="big-card-info">
                             <span>Contact Information</span>
-                            <div id="edit-contact" class="edit-contact">
+                            <div id="edit-contact" class="edit-contact" onclick="openEditOverlay()">
                                 <div class="pencil-img"></div><span>Edit Contact</span>
                             </div>
                         </div>

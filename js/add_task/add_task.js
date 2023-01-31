@@ -1,10 +1,10 @@
 let categoryOpen = false;
 let contactsOpen = false;
 let assignments = [
-    new Contact('Hans', 'Stieber', '01518547387', 'stieber@gmx.de', 'P4SsW0rTeins2drei', 'blue'),
+    /*new Contact('Hans', 'Stieber', '01518547387', 'stieber@gmx.de', 'P4SsW0rTeins2drei', 'blue'),
     new Contact('Daniela', 'Scholz', '01518543875', 'scholz@web.de', 'P4SsW0rTeins2drei', 'purple'),
     new Contact('Sasha', 'Seslija', '01518543875', 'seslija@protonmail.com', 'P4SsW0rTeins2drei', 'green'),
-    new Contact('Pierre', 'Lettner', '0151854715', 'lettner@gmail.de', 'P4SsW0rTeins2drei,', 'red')
+    new Contact('Pierre', 'Lettner', '0151854715', 'lettner@gmail.de', 'P4SsW0rTeins2drei,', 'red')*/
 ];
 
 

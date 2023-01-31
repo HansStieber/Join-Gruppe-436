@@ -403,7 +403,7 @@ textarea::-webkit-scrollbar-thumb {
 .assignments-icons-container {
     display: flex;
     color: white;
-    margin: 8px 0;
+    margin: 0 0 16px 0;
 }
 
 .contact-icon {
@@ -606,7 +606,7 @@ input[type='date']:hover {
         padding: 20px 0 82px 0;
     }
 
-    .clear-form, .submit-button {
+    .cancel-form, .submit-button {
         position: unset;
         margin-left: 30px;
     }
@@ -671,9 +671,8 @@ input[type='date']:hover {
         margin-left: 0;
     }
 
-    .clear-form {
-        background-position: center;
-        margin-left: 0;
+    .cancel-form {
+        display: none;
     }
 }
 
@@ -689,9 +688,5 @@ input[type='date']:hover {
 
     .prio-urgent, .prio-medium, .prio-low {
         width: 145px;
-    }
-
-    .clear-form {
-        display: none;
     }
 }

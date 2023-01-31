@@ -3,6 +3,7 @@ async function loadBackend() {
     todos = JSON.parse(backend.getItem('todo')) || [];
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
+    assignments = JSON.parse(backend.getItem('assignments')) || [];
 }
 
 
@@ -12,9 +13,16 @@ async function load() {
 }
 
 
-function saveContacts() {
-    let contactAsText = JSON.stringify(contacts);
-    backend.setItem('contact', contactAsText);
+function deleteItemFromBackend(array, deleteId) {
+    let newArray = array.splice(deleteId, 1);
+    backend.deleteItem(array);
+    saveArrayToBackend(newArray);
+}
+
+
+function saveArrayToBackend(key, array) {
+    let arrayAsText = JSON.stringify(array);
+    backend.setItem(key, arrayAsText);
 }
 
 
@@ -24,9 +32,9 @@ function saveContacts() {
 function sendMail() {
     let confirmSentMail = document.getElementById("resetPWackknowledge");
     confirmSentMail.classList.add("flighUp");
-    setTimeout(function(){
-        window.location.href="../templates/reset_password.html"
-    },2000)
+    setTimeout(function () {
+        window.location.href = "../templates/reset_password.html"
+    }, 2000)
 }
 
 
@@ -59,6 +67,18 @@ function showNewTaskCard() {
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
+    selectCurrentContact(contactToEditId);
+    loadAllOptions();
+}
+
+//Von Hans
+function selectCurrentContact(i) {
+    assignments.push(contacts[i]);
+    //assignContact(i);
+}
+
+function removeCurrentContact() {
+    assignments.splice(-1);
 }
 
 /**
@@ -69,6 +89,7 @@ function hideNewTaskCard() {
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
+    removeCurrentContact();
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
 }
 
