@@ -69,6 +69,8 @@ function showNewTaskCard() {
     showNewTaskCloseBtn();
     selectCurrentContact(contactToEditId);
     loadAllOptions();
+    let index = assignments.length - 1;
+    assignContact(index);
 }
 
 //Von Hans
