@@ -51,6 +51,7 @@ function renderBigCard(indexNum) {
 
     addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
     addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
+    addOnclickEvent('open-add-task', 'showNewTaskCard', indexNum);
 }
 
 
@@ -66,9 +67,6 @@ function setBigCardInnerHTML(contact) {
     lastNameSpan.innerHTML = lastName;
     emailLink.innerHTML = email;
     phoneSpan.innerHTML = phone;
-
-    addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
-    addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
 
     initialsDiv.style = `background-color:${bgColor}`;
     bigCardDiv.classList.remove('d-none'); 
