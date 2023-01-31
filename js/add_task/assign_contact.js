@@ -57,4 +57,5 @@ function inviteContact() {
     }
     loadAssignmentOptions();
     closeInviteContact();
+    openDropdownAssignment();
 }

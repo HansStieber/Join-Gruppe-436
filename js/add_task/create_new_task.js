@@ -199,7 +199,7 @@ function pushCheckedSubtasksIntoArraySubtasksChecked(subtask) {
  * @param {string} date - date for class new Task
  * @param {object} newTask - object that includes all information of a new task;
  */
-function pushTask() {
+async function pushTask() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let categoryTitle = document.getElementById('new-category-title').innerHTML;
@@ -210,16 +210,15 @@ function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
     todos.push(newTask);
-    saveTasks();
-
-    saveCategories(categoryTitle);
-    saveAssignmentOptions();
+    await saveTasks();
+    await saveCategories(categoryTitle);
+    await saveAssignmentOptions();
 }
 
 
-function saveTasks() {
+async function saveTasks() {
     let todosAsText = JSON.stringify(todos);
-    backend.setItem('todo', todosAsText);
+    await backend.setItem('todo', todosAsText);
 }
 
 
@@ -240,16 +239,21 @@ function getId() {
 }
 
 
-function saveCategories(categoryTitle) {
-    categories.push(new Category(categoryTitle, currentColor));
+async function saveCategories(categoryTitle) {
+
+
+    if (!categories.filter(t => t.title == `${categoryTitle}`) && !categories.filter(c => c.color == `${currentColor}`)) {
+        categories.push(new Category(categoryTitle, currentColor));
+    }
     let categoriesAsText = JSON.stringify(categories);
-    backend.setItem('category', categoriesAsText);
+    //await backend.deleteItem('category')
+    await backend.setItem('category', categoriesAsText);
 }
 
 
-function saveAssignmentOptions() {
+async function saveAssignmentOptions() {
     let assignmentsAsText = JSON.stringify(assignments);
-    backend.setItem('assignments', assignmentsAsText);
+    await backend.setItem('assignments', assignmentsAsText);
 }
 
 
