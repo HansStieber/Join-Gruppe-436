@@ -81,6 +81,7 @@ function selectCurrentContact(i) {
 
 function removeCurrentContact() {
     assignments.splice(-1);
+    assignedContacts = [];
 }
 
 /**
@@ -92,6 +93,7 @@ function hideNewTaskCard() {
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
     removeCurrentContact();
+    closeAllDropdowns();
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
 }
 
