@@ -1,3 +1,5 @@
+let contacts = [];
+let contactToEditId;
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
     'X', 'Y', 'Z'];
@@ -45,12 +47,9 @@ function getContactInfo(contact) {
 
 function renderBigCard(indexNum) {
     let contact = contacts[indexNum];
-
+    contactToEditId = indexNum;
     showMobileBigCard();
     setBigCardInnerHTML(contact);
-
-    addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
-    addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
 }
 
 
@@ -108,63 +107,83 @@ function addContact() {
     const inputName = document.getElementById('add-name-input');
     const inputEmail = document.getElementById('add-eMail-input');
     const inputPhone = document.getElementById('add-phonenumber-input');
-    let nameArray = inputName.value.split(" ");
-    if (nameArray.length == 2) {
-        contacts.push(new Contact(nameArray[0], nameArray[1], inputPhone.value, inputEmail.value));
-        saveContacts();
-        closeAddOverlay();
-        renderContacts();
-        showContactAddedMessage();
-    } else {
-        alert('Bitte Vorname und Nachname eingeben.');
-    }
+    let names = inputName.value.split(" ");
+
+    contacts.push(new Contact(names[0], names[1], inputPhone.value, inputEmail.value));
+
+    saveChangesToBackend()
+    closeAddOverlay();
+    initContacts();
+    showContactAddedMessage();
 }
 
 
-function saveContactChanges(indexNum) {
-    const contact = contacts[indexNum]
-    const newName = document.getElementById('edit-name-input');
-    const newEmail = document.getElementById('edit-eMail-input');
-    const newPhone = document.getElementById('edit-phonenumber-input');
-    if (newName.value == '' && newEmail.value == '' && newPhone.value == '')
+function saveContactChanges() {
+    const contact = contacts[contactToEditId]
+    const { nameInput, emailInput, phoneInput } = getEditInputs();
+    let contactName = contact.firstName + ' ' + contact.lastName;
+    if (nameInput.value == '' && emailInput.value == '' && phoneInput.value == '')
         return;
-
-    const names = newName.value.split(" ");
-    changeContactDataIfInput(contact, names, newEmail, newPhone);
-
+    if (nameInput.value == contactName && emailInput.value == contact.email && phoneInput.value == contact.phone)
+        return;
+    const names = nameInput.value.split(" ");
+    changeContactDataIfInput(contact, names, emailInput, phoneInput);
+    saveChangesToBackend();
+    setTimeout(initContacts, 2000);
     closeEditOverlay();
-    renderContacts();
-    renderBigCard(indexNum);
+    //renderBigCard(contactToEditId);
 }
 
 
-function changeContactDataIfInput(contact, names, newEmail, newPhone) {
-    if (newEmail.value) {
-        contact.email = newEmail.value;
+function getEditInputs() {
+    return {
+        nameInput: document.getElementById('edit-name-input'),
+        emailInput: document.getElementById('edit-eMail-input'),
+        phoneInput: document.getElementById('edit-phonenumber-input')
+    }
+}
+
+
+function saveChangesToBackend() {
+    backend.deleteItem('contact');
+    setTimeout(() => { saveArrayToBackend('contact', contacts) }, 1000);
+}
+
+
+function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
+    if (emailInput.value) {
+        contact.email = emailInput.value;
     }
 
-    if (newPhone.value) {
-        contact.phone = newPhone.value;
+    if (phoneInput.value) {
+        contact.phone = phoneInput.value;
     }
 
-    if (nameArray[0] && nameArray[1]) {
+    if (names[0] && names[1]) {
         contact.firstName = names[0];
         contact.lastName = names[1];
-    } else {
-        alert('Bitte Vorname und Nachname eingeben.');
     }
 }
 
 
-function setEditContactInitials(indexNum) {
+function setEditContactInitials() {
     let initialsDiv = document.getElementById('edit-initials-div');
     let initialsSpan = document.getElementById('edit-initials-span');
-    let contact = contacts[indexNum];
+    let contact = contacts[contactToEditId];
     const { initials1, initials2, bgColor } = getContactInfo(contact);
     initialsDiv.style = `background-color:${bgColor}`;
     initialsSpan.innerHTML = initials1 + initials2;
 }
 
+function setEditContactValues() {
+    let contact = contacts[contactToEditId];
+    const { nameInput, emailInput, phoneInput } = getEditInputs();
+    contactName = (contact.firstName + ' ' + contact.lastName);
+
+    nameInput.value = contactName;
+    emailInput.value = contact.email;
+    phoneInput.value = contact.phone;
+}
 
 function showContactAddedMessage() {
     popInContactAddedMessage();
@@ -232,12 +251,6 @@ function checkIfFirstname(firstName) {
 }
 
 
-function addOnclickEvent(htmlElement, functionName, indexNum) {
-    let editContactBtn = document.getElementById(`${htmlElement}`);
-    editContactBtn.setAttribute("onclick", `${functionName}(${indexNum})`);
-}
-
-
 function upperCaseFirstLetter(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -249,10 +262,10 @@ function generateRandomColor() {
 
 /*----------- SHOW/CLOSE OVERLAY -----------*/
 
-function openEditOverlay(indexNum) {
+function openEditOverlay() {
     document.getElementById('editContactOverlay').classList.remove('d-none');
-    setEditContactInitials(indexNum);
-    addOnclickEvent('edit-save-btn', 'saveContactChanges', indexNum);
+    setEditContactInitials();
+    setEditContactValues();
     showShadowScreen('edit-contact-shadow-screen');
     slideInCard('edit-contact-overlay');
 }

@@ -19,12 +19,12 @@
                 <img src="./assets/img/avatar.svg" alt="icon of an avatar">
 
                 <!--Add contact Formular-->
-                <form class="add-contact-formular" action="#" onsubmit="return false">
+                <form class="add-contact-formular" action="#" onsubmit="return addContact()">
                     <div class="contact-input-box">
                         <div class="contact-input-field">
                             <label for="name" class="screenreader">Name:</label>
-                            <input id="add-name-input" class="input-styling" type="text" name="name" placeholder="Name"
-                                required>
+                            <input id="add-name-input" class="input-styling" type="text" name="name"
+                                placeholder="Vor und Nachname" pattern="([a-zA-Z]+\s){1,}([a-zA-Z]+)" required>
                             <img src="./assets/img/avatar-small.svg" alt="icon of a small avatar">
                         </div>
                         <div class="field-required">This field is required</div>
@@ -44,7 +44,7 @@
                         <div class="contact-input-field">
                             <label for="phonenumber" class="screenreader">Phonenumber:</label>
                             <input id="add-phonenumber-input" class="input-styling" type="tel" name="phonenumber"
-                                placeholder="Phone" required>
+                                placeholder="Phone" pattern="[0-9]" required>
                             <img src="./assets/img/phone.svg" alt="icon of a small phone">
                         </div>
                         <div class="field-required">This field is required</div>
@@ -57,7 +57,7 @@
                             <img src="./assets/img/close.svg" alt="x-icon">
                         </div>
                     </button>
-                    <button onclick="addContact()" class="btn-dark" type="submit">
+                    <button class="btn-dark" type="submit">
                         <div class="btn-settings">
                             <span>Create contact</span>
                             <img src="./assets/img/check.svg" alt="check icon">

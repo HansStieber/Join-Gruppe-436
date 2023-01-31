@@ -12,21 +12,25 @@ async function load() {
 }
 
 
-function saveContacts() {
-    let contactAsText = JSON.stringify(contacts);
-    backend.setItem('contact', contactAsText);
+function deleteItemFromBackend(array, deleteId) {
+    let newArray = array.splice(deleteId, 1);
+    backend.deleteItem(array);
+    saveArrayToBackend(newArray);
 }
 
-
+function saveArrayToBackend(key, array) {
+    let arrayAsText = JSON.stringify(array);
+    backend.setItem(key, arrayAsText);
+}
 /**
  * function for sending an Email for reset
  */
 function sendMail() {
     let confirmSentMail = document.getElementById("resetPWackknowledge");
     confirmSentMail.classList.add("flighUp");
-    setTimeout(function(){
-        window.location.href="../templates/reset_password.html"
-    },2000)
+    setTimeout(function () {
+        window.location.href = "../templates/reset_password.html"
+    }, 2000)
 }
 
 

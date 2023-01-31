@@ -21,12 +21,12 @@
                 </div>
 
                 <!--Add contact Formular-->
-                <form class="add-contact-formular" action="#" onsubmit="return false">
+                <form class="add-contact-formular" action="#" onsubmit="return saveContactChanges()">
                     <div class="contact-input-box">
                         <div class="contact-input-field">
                             <label for="name" class="screenreader">Name:</label>
-                            <input id="edit-name-input" class="input-styling" type="text" name="name" placeholder="Name"
-                                required>
+                            <input id="edit-name-input" class="input-styling" type="text" name="name"
+                                placeholder="Vor und Nachname" pattern="([a-zA-Z]+\s){1,}([a-zA-Z]+)">
                             <img src="./assets/img/avatar-small.svg" alt="icon of a small avatar">
                         </div>
                         <div class="field-required">This field is required</div>
@@ -46,7 +46,7 @@
                         <div class="contact-input-field">
                             <label for="phonenumber" class="screenreader">Phonenumber:</label>
                             <input id="edit-phonenumber-input" class="input-styling" type="tel" name="phonenumber"
-                                placeholder="Phone" required>
+                                placeholder="Phone" pattern="[0-9]{11}">
                             <img src="./assets/img/phone.svg" alt="icon of a small phone">
                         </div>
                         <div class="field-required">This field is required</div>
