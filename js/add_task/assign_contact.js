@@ -3,10 +3,9 @@ let assignedContacts = [];
 /*----------- ASSIGN CONTACT FOR TASK -----------*/
 function assignContact(i) {
     document.getElementById('checkbox' + i).classList.remove('d-none');
-    let fN = contacts[i].firstName.toLowerCase();
-    let lN = contacts[i].lastName.toLowerCase();
-    assignedContacts.push(contacts[i]);
-    console.log(assignedContacts);
+    let fN = assignments[i].firstName.toLowerCase();
+    let lN = assignments[i].lastName.toLowerCase();
+    assignedContacts.push(assignments[i]);
     document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
     loadContactIcon();
 }

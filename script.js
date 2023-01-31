@@ -3,6 +3,7 @@ async function loadBackend() {
     todos = JSON.parse(backend.getItem('todo')) || [];
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
+    assignments = JSON.parse(backend.getItem('assignments')) || [];
 }
 
 
@@ -49,12 +50,24 @@ function forgotPassword() {
 /**
  * function to show New Task template
  */
-function showNewTaskCard() {
+function showNewTaskCard(i) {
     let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
+    selectCurrentContact(i);
+    loadAllOptions();
+}
+
+//Von Hans
+function selectCurrentContact(i) {
+    assignments.push(contacts[i]);
+    //assignContact(i);
+}
+
+function removeCurrentContact() {
+    assignments.splice(-1);
 }
 
 /**
@@ -65,6 +78,7 @@ function hideNewTaskCard() {
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
+    removeCurrentContact();
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
 }
 

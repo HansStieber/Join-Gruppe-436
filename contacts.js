@@ -75,11 +75,12 @@ function renderBigCard(indexNum) {
     emailLink.innerHTML = email;
     phoneSpan.innerHTML = phone;
 
+    addOnclickEvent('open-add-task', 'showNewTaskCard', indexNum);
     addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
     addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
 
     initialsDiv.style = `background-color:${bgColor}`;
-    bigCardDiv.classList.remove('d-none');
+    bigCardDiv.classList.remove('d-none'); 
 }
 
 

@@ -213,6 +213,7 @@ function pushTask() {
     saveTasks();
 
     saveCategories(categoryTitle);
+    saveAssignmentOptions();
 }
 
 
@@ -243,6 +244,12 @@ function saveCategories(categoryTitle) {
     categories.push(new Category(categoryTitle, currentColor));
     let categoriesAsText = JSON.stringify(categories);
     backend.setItem('category', categoriesAsText);
+}
+
+
+function saveAssignmentOptions() {
+    let assignmentsAsText = JSON.stringify(assignments);
+    backend.setItem('assignments', assignmentsAsText);
 }
 
 
