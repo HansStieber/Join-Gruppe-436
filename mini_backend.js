@@ -46,7 +46,7 @@ async function loadJSONFromServer() {
 }
 
 
-function loadJSONFromServerOld() {
+/*function loadJSONFromServerOld() {
     return new Promise(function (resolve, reject) {
         let xhttp = new XMLHttpRequest();
         let proxy = determineProxySettings();
@@ -67,7 +67,7 @@ function loadJSONFromServerOld() {
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttp.send();
     });
-}
+}*/
 
 
 /**

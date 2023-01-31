@@ -7,7 +7,7 @@ let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 
 async function initContacts() {
     await load();
-    loadAllOptions();
+    //loadAllOptions();
     renderContacts();
 }
 
@@ -61,6 +61,7 @@ function getContactInfo(contact) {
 function renderBigCard(indexNum) {
     let contact = contacts[indexNum];
     contactToEditId = indexNum;
+    showBigCard();
     showMobileBigCard();
     setBigCardInnerHTML(contact);
 }
@@ -80,7 +81,7 @@ function setBigCardInnerHTML(contact) {
     phoneSpan.innerHTML = phone;
 
     initialsDiv.style = `background-color:${bgColor}`;
-    bigCardDiv.classList.remove('d-none');
+
 }
 
 
@@ -125,10 +126,19 @@ function addContact() {
 
     contacts.push(new Contact(names[0], names[1], inputPhone.value, inputEmail.value));
 
-    saveChangesToBackend()
+    saveArrayToBackend('contact', contacts);
     closeAddOverlay();
-    initContacts();
+    renderContacts();
     showContactAddedMessage();
+}
+
+
+function deleteContact() {
+    contacts.splice(contactToEditId, 1);
+    saveArrayToBackend('contact', contacts);
+    hideBigCard();
+    closeEditOverlay();
+    renderContacts();
 }
 
 
@@ -141,10 +151,10 @@ function saveContactChanges() {
     if (nameInput.value == contactName && emailInput.value == contact.email && phoneInput.value == contact.phone)
         return;
     const names = nameInput.value.split(" ");
-    renderContacts();
+
     changeContactDataIfInput(contact, names, emailInput, phoneInput);
-
-
+    saveArrayToBackend('contact', contacts);
+    renderContacts();
     closeEditOverlay();
     renderBigCard(contactToEditId);
 }
@@ -172,9 +182,6 @@ function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
         contact.firstName = names[0];
         contact.lastName = names[1];
     }
-    //saveArrayToBackend('contact', contacts);
-    let arrayAsText = JSON.stringify(contacts);
-    backend.setItem('contacts', arrayAsText);
 }
 
 
@@ -221,6 +228,18 @@ function popOutContactAddedMessage() {
 }
 
 
+function showBigCard() {
+    const { bigCardDiv } = getBigCardElements();
+    bigCardDiv.classList.remove('d-none');
+}
+
+
+function hideBigCard() {
+    const { bigCardDiv } = getBigCardElements();
+    bigCardDiv.classList.add('d-none');
+}
+
+
 function showMobileBigCard() {
     let outerDiv = document.getElementById('contacts-outer-div');
     let rightDiv = document.getElementById('contacts-right-div');
@@ -229,7 +248,7 @@ function showMobileBigCard() {
 }
 
 
-function closeMobileBigCard() {
+function hideMobileBigCard() {
     let outerDiv = document.getElementById('contacts-outer-div');
     let rightDiv = document.getElementById('contacts-right-div');
     outerDiv.classList.remove('overflow-hidden');
