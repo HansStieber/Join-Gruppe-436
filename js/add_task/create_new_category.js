@@ -1,6 +1,4 @@
 let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
-let newCategories = [];
-
 let currentColor;
 let categorySelected = false;
 
@@ -53,7 +51,7 @@ function addNewCategory() {
     if (!title == '' && !currentColor == '') {
         categorySelected = true;
         let newCategory = new Category(title, currentColor);
-        newCategories.push(newCategory);
+        categories.push(newCategory);
 
         document.getElementById('new-category').value = '';
 
@@ -62,7 +60,7 @@ function addNewCategory() {
         hideColorSelection();
         renderSelectedCategory(title, currentColor);
     }
-    console.log(newCategories);
+    console.log(categories);
 
 
 }

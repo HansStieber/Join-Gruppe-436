@@ -240,9 +240,7 @@ function getId() {
 
 
 async function saveCategories(categoryTitle) {
-
-
-    if (!categories.filter(t => t.title == `${categoryTitle}`) && !categories.filter(c => c.color == `${currentColor}`)) {
+    if (categories.every(t => t.title !== `${categoryTitle}`) && categories.every(c => c.color !== `${currentColor}`)) {
         categories.push(new Category(categoryTitle, currentColor));
     }
     let categoriesAsText = JSON.stringify(categories);
