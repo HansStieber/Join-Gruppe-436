@@ -57,5 +57,6 @@ function inviteContact() {
     }
     loadAssignmentOptions();
     closeInviteContact();
-    openDropdownAssignment();
+    let index = assignments.length - 1;
+    assignContact(index);
 }
