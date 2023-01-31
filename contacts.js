@@ -1,4 +1,4 @@
-let contacts = [];
+
 let contactToEditId;
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
@@ -141,11 +141,12 @@ function saveContactChanges() {
     if (nameInput.value == contactName && emailInput.value == contact.email && phoneInput.value == contact.phone)
         return;
     const names = nameInput.value.split(" ");
+    renderContacts();
     changeContactDataIfInput(contact, names, emailInput, phoneInput);
-    saveChangesToBackend();
-    setTimeout(initContacts, 2500);
+
+
     closeEditOverlay();
-    //renderBigCard(contactToEditId);
+    renderBigCard(contactToEditId);
 }
 
 
@@ -155,12 +156,6 @@ function getEditInputs() {
         emailInput: document.getElementById('edit-eMail-input'),
         phoneInput: document.getElementById('edit-phonenumber-input')
     }
-}
-
-
-function saveChangesToBackend() {
-    backend.deleteItem('contact');
-    setTimeout(() => { saveArrayToBackend('contact', contacts) }, 1500);
 }
 
 
@@ -177,6 +172,9 @@ function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
         contact.firstName = names[0];
         contact.lastName = names[1];
     }
+    //saveArrayToBackend('contact', contacts);
+    let arrayAsText = JSON.stringify(contacts);
+    backend.setItem('contacts', arrayAsText);
 }
 
 

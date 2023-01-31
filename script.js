@@ -1,15 +1,15 @@
+async function load() {
+    await loadBackend();
+    await includeHTML();
+}
+
+
 async function loadBackend() {
     await downloadFromServer();
     todos = JSON.parse(backend.getItem('todo')) || [];
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
     assignments = JSON.parse(backend.getItem('assignments')) || [];
-}
-
-
-async function load() {
-    await loadBackend();
-    await includeHTML();
 }
 
 
