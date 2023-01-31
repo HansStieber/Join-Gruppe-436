@@ -123,8 +123,8 @@ function addContact() {
     const inputEmail = document.getElementById('add-eMail-input');
     const inputPhone = document.getElementById('add-phonenumber-input');
     let names = inputName.value.split(" ");
-
-    contacts.push(new Contact(names[0], names[1], inputPhone.value, inputEmail.value));
+    let lastName = names[names.length - 1];
+    contacts.push(new Contact(names[0], lastName, inputPhone.value, inputEmail.value));
 
     saveArrayToBackend('contact', contacts);
     closeAddOverlay();
