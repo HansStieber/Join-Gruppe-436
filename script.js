@@ -22,7 +22,11 @@ function saveContacts() {
  * function for sending an Email for reset
  */
 function sendMail() {
-    alert("test")
+    let confirmSentMail = document.getElementById("resetPWackknowledge");
+    confirmSentMail.classList.add("flighUp");
+    setTimeout(function(){
+        window.location.href="../templates/reset_password.html"
+    },2000)
 }
 
 
@@ -41,7 +45,6 @@ function forgotPassword() {
     forgotContainer.removeAttribute("style");
     loginContainer.style.display = "none";
 }
-
 
 
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
@@ -63,7 +66,6 @@ function showNewTaskCard() {
  */
 function hideNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
-    h
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');

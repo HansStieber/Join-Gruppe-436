@@ -1,28 +1,12 @@
-let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+    'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+    'X', 'Y', 'Z'];
 
 
 async function initContacts() {
     await load();
     loadAllOptions();
     renderContacts();
-}
-
-
-function clearCards() {
-    for (let i = 0; i < abc.length; i++) {
-        const letter = abc[i];
-        const cardsDiv = document.getElementById(`cards-div-${letter}`);
-        cardsDiv.innerHTML = '';
-    }
-}
-
-
-function addCardsDivMainDNone() {
-    for (let i = 0; i < abc.length; i++) {
-        const letter = abc[i];
-        const cardsDivMain = document.getElementById(`cards-main-${letter}`);
-        cardsDivMain.classList.add('d-none');
-    }
 }
 
 
@@ -60,9 +44,17 @@ function getContactInfo(contact) {
 
 
 function renderBigCard(indexNum) {
-    showMobileBigCard();
     let contact = contacts[indexNum];
 
+    showMobileBigCard();
+    setBigCardInnerHTML(contact);
+
+    addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
+    addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
+}
+
+
+function setBigCardInnerHTML(contact) {
     const { initials1, initials2, bgColor, email,
         phone, firstName, lastName } = getContactInfo(contact);
 
@@ -74,10 +66,6 @@ function renderBigCard(indexNum) {
     lastNameSpan.innerHTML = lastName;
     emailLink.innerHTML = email;
     phoneSpan.innerHTML = phone;
-
-    addOnclickEvent('edit-contact', 'openEditOverlay', indexNum);
-    addOnclickEvent('mobile-edit-contact', 'openEditOverlay', indexNum);
-
     initialsDiv.style = `background-color:${bgColor}`;
     bigCardDiv.classList.remove('d-none');
 }
@@ -126,8 +114,7 @@ function addContact() {
         saveContacts();
         closeAddOverlay();
         renderContacts();
-        popInContactAddedMessage();
-        setTimeout(popOutContactAddedMessage, 1500);
+        showContactAddedMessage();
     } else {
         alert('Bitte Vorname und Nachname eingeben.');
     }
@@ -142,7 +129,16 @@ function saveContactChanges(indexNum) {
     if (newName.value == '' && newEmail.value == '' && newPhone.value == '')
         return;
 
-    let nameArray = newName.value.split(" ");
+    const names = newName.value.split(" ");
+    changeContactDataIfInput(contact, names, newEmail, newPhone);
+
+    closeEditOverlay();
+    renderContacts();
+    renderBigCard(indexNum);
+}
+
+
+function changeContactDataIfInput(contact, names, newEmail, newPhone) {
     if (newEmail.value) {
         contact.email = newEmail.value;
     }
@@ -152,15 +148,11 @@ function saveContactChanges(indexNum) {
     }
 
     if (nameArray[0] && nameArray[1]) {
-        contact.firstName = nameArray[0];
-        contact.lastName = nameArray[1];
+        contact.firstName = names[0];
+        contact.lastName = names[1];
     } else {
         alert('Bitte Vorname und Nachname eingeben.');
     }
-
-    closeEditOverlay();
-    renderContacts();
-    renderBigCard(indexNum);
 }
 
 
@@ -171,6 +163,12 @@ function setEditContactInitials(indexNum) {
     const { initials1, initials2, bgColor } = getContactInfo(contact);
     initialsDiv.style = `background-color:${bgColor}`;
     initialsSpan.innerHTML = initials1 + initials2;
+}
+
+
+function showContactAddedMessage() {
+    popInContactAddedMessage();
+    setTimeout(popOutContactAddedMessage, 1500);
 }
 
 
@@ -205,6 +203,24 @@ function closeMobileBigCard() {
     let rightDiv = document.getElementById('contacts-right-div');
     outerDiv.classList.remove('overflow-hidden');
     rightDiv.classList.add('right-div-mobile');
+}
+
+
+function clearCards() {
+    for (let i = 0; i < abc.length; i++) {
+        const letter = abc[i];
+        const cardsDiv = document.getElementById(`cards-div-${letter}`);
+        cardsDiv.innerHTML = '';
+    }
+}
+
+
+function addCardsDivMainDNone() {
+    for (let i = 0; i < abc.length; i++) {
+        const letter = abc[i];
+        const cardsDivMain = document.getElementById(`cards-main-${letter}`);
+        cardsDivMain.classList.add('d-none');
+    }
 }
 
 
@@ -255,6 +271,7 @@ function openAddOverlay() {
     slideInCard('add-contact-overlay');
     showNewTaskCloseBtn();
 }
+
 
 function closeAddOverlay() {
     slideOutCard('add-contact-overlay');

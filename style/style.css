@@ -1,4 +1,7 @@
 /*=== Login ===*/
+body {
+    overflow-y: hidden;
+}
 
 .main-login-container {
     width: 100vw;
@@ -217,3 +220,32 @@ input {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: background 225ms ease-in-out;
 }
+
+.resetPWackknowledge {
+    background-color: #2A3647;
+    border: none;
+    color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resetMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.flighUp {
+    transform: translateY(-436px);
+    transition: transform 500ms ease-in-out;
+}
+
+
+
+
