@@ -55,6 +55,17 @@ function inviteContact() {
             assignments.push(contacts[i]);
             loadAllOptions();
             assignContact(assignments.length - 1);
+        } else {
+            if (email.toLowerCase().includes(search) && assignments.every(a => a.email == email)) {
+                for (let k = 0; k < assignments.length; k++) {
+                    const assignment = assignments[k];
+                    if (assignment.email === email) {
+                        index = i;
+                    }
+                }
+                loadAllOptions();
+                assignContact(index);
+            }
         }
     }
     closeInviteContact();

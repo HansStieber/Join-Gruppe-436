@@ -76,7 +76,7 @@ function renderAssignmentOptions(option, i) {
         <div class="checkbox-contacts-unchecked">
             <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
         </div>
-    </div>
+    </div> 
     `;
 }
 
