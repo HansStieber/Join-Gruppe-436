@@ -152,3 +152,23 @@ function hideNewTaskCloseBtn() {
     let closeBtn = document.getElementById('new-task-close-btn');
     closeBtn.classList.add('d-none');
 }
+
+function toggleMobileMenu() {
+    checkWindowSize();
+    id.classList.contains('hide') ? showMobileMenu(id) : hideMobileMenu(id);
+}
+
+function checkWindowSize(){
+    return window.innerWidth <= 992 ? id = document.getElementById('mobileMenu') : id = document.getElementById('logoutBtn')
+}
+
+function showMobileMenu(id) {
+    id.classList.remove('hide');
+    id.classList.add('show');
+}
+
+function hideMobileMenu(id){
+    id.classList.add('hide');
+    id.classList.remove('show');
+}
+
