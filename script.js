@@ -71,7 +71,11 @@ function showNewTaskCard() {
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
-    selectCurrentContact(contactToEditId);
+    if (document.URL.includes("homepage.aspx")) {
+        selectCurrentContact(contactToEditId);
+    } else {
+        loadAllOptions();
+    }
 }
 
 //Von Hans
