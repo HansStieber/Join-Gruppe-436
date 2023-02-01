@@ -147,7 +147,7 @@ function addContact() {
     const inputEmail = document.getElementById('add-eMail-input');
     const inputPhone = document.getElementById('add-phonenumber-input');
     let names = inputName.value.split(" ");
-    let lastName = names[names.length - 1];
+    let lastName = names[i];
     contacts.push(new Contact(names[0], lastName, inputPhone.value, inputEmail.value));
 
     saveArrayToBackend('contact', contacts);
@@ -157,7 +157,17 @@ function addContact() {
 }
 
 
+function confirmDelete() {
+    let deleteBtn = document.getElementById('edit-delete-btn');
+    deleteBtn.innerHTML = 'Confirm';
+    deleteBtn.setAttribute('onclick', 'deleteContact()');
+}
+
+
 function deleteContact() {
+    let deleteBtn = document.getElementById('edit-delete-btn');
+    deleteBtn.setAttribute('onclick', 'confirmDelete()');
+    deleteBtn.innerHTML = 'Delete';
     contacts.splice(contactToEditId, 1);
     saveArrayToBackend('contact', contacts);
     hideBigCard();

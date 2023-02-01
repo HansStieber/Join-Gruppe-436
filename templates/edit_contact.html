@@ -26,7 +26,7 @@
                     <div class="contact-input-field">
                         <label for="name" class="screenreader">Name:</label>
                         <input id="edit-name-input" class="input-styling" type="text" name="name"
-                            placeholder="Vor und Nachname" pattern="([a-zA-ZäöüÄÖÜß]+\s){1,10}([a-zA-ZäöüÄÖÜß]+)">
+                            placeholder="Vor und Nachname" pattern="([a-zA-ZäöüÄÖÜß]+\s+){1,10}([a-zA-ZäöüÄÖÜß]+)">
 
 
                         <img src="./assets/img/avatar-small.svg" alt="icon of a small avatar">
@@ -61,7 +61,7 @@
                             <span>Save</span>
                         </div>
                     </button>
-                    <button onclick="deleteContact()" class="btn-red" type="reset">
+                    <button id="edit-delete-btn" onclick="confirmDelete()" class="btn-red" type="button">
                         <div>
                             <span>Delete</span>
                         </div>

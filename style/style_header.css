@@ -1,6 +1,6 @@
 /* === Header === */
 header {
-    /* z-index: 1; */
+    z-index: 1;
     position: fixed;
     top: 0;
     right: 0;
@@ -35,7 +35,7 @@ header {
     border: 3px solid #2A3647;
 }
 
-.mobile-menu, .logout-btn{
+.mobile-menu, .logout-btn {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -50,14 +50,14 @@ header {
     gap: 5px;
 }
 
-.mobile-menu > a, .logout-btn > a {
+.mobile-menu>a, .logout-btn>a {
     color: #CDCDCD;
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
 }
 
-.hide{
+.hide {
     -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     right: -5px;
@@ -87,7 +87,7 @@ header {
     }
 }
 
-.show{
+.show {
     display: flex;
     -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
