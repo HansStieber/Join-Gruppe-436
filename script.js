@@ -1,3 +1,6 @@
+let resetEmailInput;
+
+
 async function loadBackend() {
     await downloadFromServer();
     todos = JSON.parse(backend.getItem('todo')) || [];
@@ -21,13 +24,54 @@ function saveContacts() {
 /**
  * function for sending an Email for reset
  */
+
 function sendMail() {
-    let confirmSentMail = document.getElementById("resetPWackknowledge");
-    confirmSentMail.classList.add("flighUp");
-    setTimeout(function(){
-        window.location.href="../templates/reset_password.html"
-    },2000)
+    resetEmailInput = document.getElementById("resetEmailInput").value;
+    let users = JSON.parse(localStorage.getItem("users"));
+    let storedUser;
+
+    for (let i = 0; i <= users.length; i++) {
+        if (users[i].email === resetEmailInput) {
+            let confirmSentMail = document.getElementById("resetPWackknowledge");
+            confirmSentMail.classList.add("flighUp");
+            setTimeout(function(){
+                    window.location.href="../templates/reset_password.html";
+                }, 2000);
+            break;
+        } else{
+            console.error("No user found with email:", resetEmailInput);
+            return;
+        }
+    }
+   
+    
 }
+
+  
+    
+function resetPassword(){
+    let users = JSON.parse(localStorage.getItem("users"));
+    
+    let newPassword = document.getElementById("resetPWInput").value;
+    let newPasswordCONF = document.getElementById("resetPWInputConf").value;
+   
+    if (newPassword === newPasswordCONF){
+        for (let i = 0; i <= users.length; i++) {
+            if(users[i].email === resetEmailInput){
+                users[i].password = newPassword;
+                break;
+            }
+            
+        
+        }
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+}
+
+
+
+
+
 
 
 /**
