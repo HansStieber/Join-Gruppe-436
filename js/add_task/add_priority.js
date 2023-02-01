@@ -13,8 +13,8 @@ function taskIsUrgent(id, path, id2, id3) {
 function setImgSelected(id, path, id2, id3) {
     document.getElementById('prio-' + id).src = `assets/img/${path}_selected.svg`;
     focusPrio(id, id2, id3);
-    unfocusPrio(id2, id, id3);
-    unfocusPrio(id3, id, id2);
+    unfocusPriority(id2, id, id3);
+    unfocusPriority(id3, id, id2);
     console.log(urgent, medium, low)
 }
 
@@ -31,9 +31,15 @@ function unfocusPrio(id, id2, id3) {
 }
 
 function unfocusPriority(id, id2, id3) {
-    urgent = false;
-    medium = false;
-    low = false;
+    if (id == 'urgent') {
+        urgent = false;
+    }
+    if (id == 'medium') {
+        medium = false;
+    }
+    if (id == 'low') {
+        low = false;
+    }
     let firstLeter = id.charAt(0);
     let fLUppercase = firstLeter.toUpperCase();
     let newId = fLUppercase + id.substring(1);

@@ -3,10 +3,9 @@ let assignedContacts = [];
 /*----------- ASSIGN CONTACT FOR TASK -----------*/
 function assignContact(i) {
     document.getElementById('checkbox' + i).classList.remove('d-none');
-    let fN = contacts[i].firstName.toLowerCase();
-    let lN = contacts[i].lastName.toLowerCase();
-    assignedContacts.push(contacts[i]);
-    console.log(assignedContacts);
+    let fN = assignments[i].firstName.toLowerCase();
+    let lN = assignments[i].lastName.toLowerCase();
+    assignedContacts.push(assignments[i]);
     document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
     loadContactIcon();
 }
@@ -52,10 +51,12 @@ function inviteContact() {
     let search = document.getElementById('new-contact').value;
     for (let i = 0; i < contacts.length; i++) {
         const email = contacts[i].email;
-        if (email.toLowerCase().includes(search)) {
+        if (email.toLowerCase().includes(search) && assignments.every(a => a.email !== email)) {
             assignments.push(contacts[i]);
         }
     }
     loadAssignmentOptions();
     closeInviteContact();
+    let index = assignments.length - 1;
+    assignContact(index);
 }

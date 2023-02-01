@@ -18,11 +18,11 @@
     <script src="js/models/task.class.js"></script>
     <script src="js/models/subtask.class.js"></script>
 
+    <script src="script.js"></script>
+    <script src="mini_backend.js"></script>
     <script src="board.js"></script>
     <script src="include.js"></script>
-    <script src="mini_backend.js"></script>
     <script src="contacts.js"></script>
-    <script src="script.js"></script>
 
     <script src="js/add_task/create_new_task.js"></script>
     <script src="js/add_task/create_new_category.js"></script>
@@ -72,8 +72,6 @@
                                 </div>
                             </button>
                         </div>
-
-
 
                         <div id="cards-main-A" class="cards-div-main d-none">
                             <div class="cards-div-letter"><span>A</span></div>
@@ -203,7 +201,7 @@
                                     <span class="big-card-name" id="big-card-firstname"></span>
                                     <span class="big-card-name" id="big-card-lastname"></span>
                                 </div>
-                                <div onclick="showNewTaskCard()" class="big-card-add-task">
+                                <div id="open-add-task" onclick="showNewTaskCard()" class="big-card-add-task">
                                     <div class="big-card-plus-img">
                                         <img src="img/plus-blue-no-border.svg">
                                     </div>
@@ -212,10 +210,9 @@
                             </div>
                         </div>
 
-
                         <div class="big-card-info">
                             <span>Contact Information</span>
-                            <div id="edit-contact" class="edit-contact">
+                            <div id="edit-contact" class="edit-contact" onclick="openEditOverlay()">
                                 <div class="pencil-img"></div><span>Edit Contact</span>
                             </div>
                         </div>
@@ -230,7 +227,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="mobile-edit-contact" class="mobile-edit-contact-btn"></div>
+                    <div id="mobile-edit-contact" class="mobile-edit-contact-btn" onclick="openEditOverlay()"></div>
                     <button class="btn-dark new-contact mobile-d-none" type="submit" onclick="openAddOverlay()">
                         <div class="btn-settings">
                             <span>New Contact</span>

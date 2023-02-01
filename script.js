@@ -1,23 +1,22 @@
-let resetEmailInput;
-
-
 async function loadBackend() {
     await downloadFromServer();
     todos = JSON.parse(backend.getItem('todo')) || [];
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
+    assignments = JSON.parse(backend.getItem('assignments')) || [];
 }
 
 
-async function load() {
-    await loadBackend();
-    await includeHTML();
+function deleteItemFromBackend(array, deleteId) {
+    let newArray = array.splice(deleteId, 1);
+    backend.deleteItem(array);
+    saveArrayToBackend(newArray);
 }
 
 
-function saveContacts() {
-    let contactAsText = JSON.stringify(contacts);
-    backend.setItem('contact', contactAsText);
+function saveArrayToBackend(key, array) {
+    let arrayAsText = JSON.stringify(array);
+    backend.setItem(key, arrayAsText);
 }
 
 
@@ -26,52 +25,12 @@ function saveContacts() {
  */
 
 function sendMail() {
-    resetEmailInput = document.getElementById("resetEmailInput").value;
-    let users = JSON.parse(localStorage.getItem("users"));
-    let storedUser;
-
-    for (let i = 0; i <= users.length; i++) {
-        if (users[i].email === resetEmailInput) {
-            let confirmSentMail = document.getElementById("resetPWackknowledge");
-            confirmSentMail.classList.add("flighUp");
-            setTimeout(function(){
-                    window.location.href="../templates/reset_password.html";
-                }, 2000);
-            break;
-        } else{
-            console.error("No user found with email:", resetEmailInput);
-            return;
-        }
-    }
-   
-    
+    let confirmSentMail = document.getElementById("resetPWackknowledge");
+    confirmSentMail.classList.add("flighUp");
+    setTimeout(function(){
+        window.location.href="../templates/reset_password.html"
+    },2000)
 }
-
-  
-    
-function resetPassword(){
-    let users = JSON.parse(localStorage.getItem("users"));
-    
-    let newPassword = document.getElementById("resetPWInput").value;
-    let newPasswordCONF = document.getElementById("resetPWInputConf").value;
-   
-    if (newPassword === newPasswordCONF){
-        for (let i = 0; i <= users.length; i++) {
-            if(users[i].email === resetEmailInput){
-                users[i].password = newPassword;
-                break;
-            }
-            
-        
-        }
-        localStorage.setItem("users", JSON.stringify(users));
-    }
-}
-
-
-
-
-
 
 
 /**
@@ -103,6 +62,21 @@ function showNewTaskCard() {
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
+    selectCurrentContact(contactToEditId);
+    loadAllOptions();
+    let index = assignments.length - 1;
+    assignContact(index);
+}
+
+//Von Hans
+function selectCurrentContact(i) {
+    assignments.push(contacts[i]);
+    //assignContact(i);
+}
+
+function removeCurrentContact() {
+    assignments.splice(-1);
+    assignedContacts = [];
 }
 
 /**
@@ -113,6 +87,8 @@ function hideNewTaskCard() {
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
+    removeCurrentContact();
+    closeAllDropdowns();
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
 }
 
