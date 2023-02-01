@@ -1,6 +1,6 @@
 .board-outer-div {
     max-width: 1260px;
-    height: calc(100vh - 89px);
+    height: calc(100vh - 172px);
 }
 
 .board {
@@ -155,7 +155,7 @@
 .card-column {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    min-height: 500px;
     width: 240px;
 }
 
@@ -236,64 +236,6 @@
     width: 0px;
     height: 0px;
 }
-/* 
-.shadow-screen {
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: 1;
-    background-color: #b8b9ba9c;
-    opacity: 0;
-}
-
-.smooth-opacity-in {
-    animation-name: opacity-in;
-    animation-duration: 0.7s;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes opacity-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.smooth-opacity-out {
-    animation-name: opacity-out;
-    animation-duration: 0.7s;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes opacity-out {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-.center-new-task-card {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
 .new-task-card {
     transition: all 225ms ease-in-out;
@@ -305,65 +247,6 @@
     transition: all 225ms ease-in-out;
     transform: translateX(360px);
 }
-
-/* .slide-left {
-    -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@-webkit-keyframes slide-left {
-    0% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-}
-
-@keyframes slide-left {
-    0% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-}
-
-
-.slide-right {
-    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@-webkit-keyframes slide-right {
-    0% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-}
-
-@keyframes slide-right {
-    0% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-
-    100% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-} */
 
 @media(max-width:820px) {
     .kanban-mobile-span {

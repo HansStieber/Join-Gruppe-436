@@ -1,7 +1,7 @@
 /* === Sidebar === */
 .sidebar {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,9 @@
     background-color: #2A3647;
 }
 
-.navigation-container {width: 100%;}
+.navigation-container {
+    width: 100%;
+}
 
 .navigation-point {
     display: flex;
@@ -25,14 +27,16 @@
     text-decoration: none;
 }
 
-.center-icons{
+.center-icons {
     height: auto;
     width: 60px;
     display: flex;
     justify-content: flex-end;
 }
 
-.navigation-point:hover {background-color: #091931;}
+.navigation-point:hover {
+    background-color: #091931;
+}
 
 .main-logo {
     height: 121.97px;
