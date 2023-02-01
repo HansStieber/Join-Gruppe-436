@@ -54,6 +54,7 @@ function inviteContact() {
         if (email.toLowerCase().includes(search) && assignments.every(a => a.email !== email)) {
             assignments.push(contacts[i]);
             loadAllOptions();
+            assignContact(assignments.length - 1);
         }
     }
     closeInviteContact();
