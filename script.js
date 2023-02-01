@@ -1,3 +1,6 @@
+let spliceCurrentContact;
+let indexOfCurrentContact;
+
 async function load() {
     await loadBackend();
     await includeHTML();
@@ -68,20 +71,40 @@ function showNewTaskCard() {
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
-    selectCurrentContact(contactToEditId);
-    loadAllOptions();
-    let index = assignments.length - 1;
-    assignContact(index);
+    if (document.URL.includes("homepage.aspx")) {
+        selectCurrentContact(contactToEditId);
+    } else {
+        loadAllOptions();
+    }
 }
 
 //Von Hans
 function selectCurrentContact(i) {
-    assignments.push(contacts[i]);
-    //assignContact(i);
+    if (assignments.some(a => a.firstName === contacts[i].firstName) && assignments.some(a => a.lastName === contacts[i].lastName)) {
+        loadAllOptions();
+        for (let k = 0; k < assignments.length; k++) {
+            const assignment = assignments[k];
+            if (assignment.firstName === contacts[i].firstName) {
+                index = i;
+            }
+        }
+        assignContact(index);
+        spliceCurrentContact = false;
+    } else {
+        assignments.push(contacts[i]);
+        loadAllOptions();
+        indexOfCurrentContact = assignments.indexOf(contacts[i]);
+        let index = assignments.length - 1;
+        assignContact(index);
+        spliceCurrentContact = true;
+    }
 }
 
+
 function removeCurrentContact() {
-    assignments.splice(-1);
+    if (spliceCurrentContact == true) {
+        assignments.splice(indexOfCurrentContact, 10);
+    }
     assignedContacts = [];
 }
 

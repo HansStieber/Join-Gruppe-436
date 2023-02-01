@@ -53,10 +53,10 @@ function inviteContact() {
         const email = contacts[i].email;
         if (email.toLowerCase().includes(search) && assignments.every(a => a.email !== email)) {
             assignments.push(contacts[i]);
+            loadAllOptions();
+            assignContact(assignments.length - 1);
         }
     }
-    loadAssignmentOptions();
     closeInviteContact();
-    let index = assignments.length - 1;
-    assignContact(index);
+    loadContactIcon();
 }

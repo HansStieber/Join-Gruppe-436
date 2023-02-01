@@ -55,6 +55,7 @@ HELLGRAU (BACKGROUND): #F5F5F5
 /* shadowscreen settings for all overlays */
 
 .shadow-screen {
+    z-index: 3;
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
@@ -62,7 +63,6 @@ HELLGRAU (BACKGROUND): #F5F5F5
     left: 0px;
     right: 0px;
     bottom: 0px;
-    z-index: 1;
     background-color: #b8b9ba9c;
     opacity: 0;
 }

@@ -321,5 +321,5 @@ function showConfirmation() {
     document.getElementById('task-added-to-board').classList.add('slide-in');
     setTimeout(() => {
         window.location.href = 'board.html';
-    }, 20000);
+    }, 2000);
 }

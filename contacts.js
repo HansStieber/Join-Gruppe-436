@@ -12,34 +12,39 @@ async function initContacts() {
 }
 
 /**
- * This function iterate thru the Contacts Array, and render them.
- * 
+ * This function first clear all Card divs. 
+ * Then added 'd-none' class to all Card-main divs.
+ * Then loop thru contacts Array.
+ * For each Contact we:
+ * get the cardsDivLetter Element,
+ * remove 'd-none' from the Card-main div,
+ * and render the current Contact into the
+ * current cardsDivLetter Element.
  */
 function renderContacts() {
     clearCards();
-    addCardsDivMainDNone();
-    setTimeout(function () {
-        for (let i = 0; i < contacts.length; i++) {
-            const contact = contacts[i];
-            if (contact) {
-                const { cardsDivLetter } = getCardElements(contact);
-                removeCardsDivMainDnone(contact);
-                cardsDivLetter.innerHTML += getCardInnerHTML(contact, i);
-            }
+    addDnoneCardsDivMain();
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        if (contact) {
+            const { cardsDivLetter } = getCardElements(contact);
+            removeDnoneCardsDivMain(contact);
+            cardsDivLetter.innerHTML += getCardInnerHTML(contact, i);
         }
-    }, 500)
+    }
+
 }
 
 /**
- * This function removes the d-none class from 
  * 
- * @param {object} contact - This is 
+ * @param {object} contact - the actual Contact object.
+ * @returns two HTML Elements with the Id's from actual Contact's,
+ * firstname-firstletter.
+ * @example contact firstname = 'Andreas', initials1 = 'A',
+ * the return = 
+ *      cardsMainLetter: document.getElementById(`cards-main-A`),
+ *      cardsDivLetter: document.getElementById(`cards-div-A`)
  */
-function removeCardsDivMainDnone(contact) {
-    const { cardsMainLetter } = getCardElements(contact);
-    cardsMainLetter.classList.remove('d-none');
-}
-
 function getCardElements(contact) {
     const { initials1 } = getContactInfo(contact);
     return {
@@ -48,6 +53,22 @@ function getCardElements(contact) {
     }
 }
 
+/**
+ * This function returns all Info from given Contact,
+ * and cur the firsletter from firsname and lastname,
+ * to get the Initials.
+ * 
+ * @param {object} contact - the actual Contact object.
+ * @returns all info from actual Contact.
+ * @example return{ 
+ *      email: contact@mail.com,
+ *      phone: 015145546531,
+ *      initials1: 'A',
+ *      initials2: 'H',
+ *      bgColor: 'blue',
+ *      firstName: 'Andreas',
+ *      lastName: 'Huber'}
+ */
 function getContactInfo(contact) {
     return {
         email: contact.email,
@@ -267,13 +288,31 @@ function clearCards() {
     }
 }
 
-
-function addCardsDivMainDNone() {
+/**
+ * This function iterate thru the abc[] array, to add all Cards-main-${letter} divs the class 'd-none'.
+ * 
+ * @param {string} letter - This is the actual letter (one from A-Z), in the for-loop, we work with.
+ * @param {element} cardsDivMain - This is the actual Element, who gets the 'd-none' class.
+ */
+function addDnoneCardsDivMain() {
     for (let i = 0; i < abc.length; i++) {
         const letter = abc[i];
         const cardsDivMain = document.getElementById(`cards-main-${letter}`);
         cardsDivMain.classList.add('d-none');
     }
+}
+
+
+/**
+ * This function removes the 'd-none' class from Cards-Letter div, with a Id similar to
+ * to first Letter from current renderd Contacts firstname.
+ * 
+ * @param {object} contact - This is the current to rendered Contact Object.
+ * @param {element} cardsMainLetter - This the Element we remove the class 'd-none'.
+ */
+function removeDnoneCardsDivMain(contact) {
+    const { cardsMainLetter } = getCardElements(contact);
+    cardsMainLetter.classList.remove('d-none');
 }
 
 
