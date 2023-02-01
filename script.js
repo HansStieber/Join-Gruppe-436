@@ -6,6 +6,10 @@ async function loadBackend() {
     assignments = JSON.parse(backend.getItem('assignments')) || [];
 }
 
+async function load() {
+    await loadBackend();
+    await includeHTML();
+}
 
 function deleteItemFromBackend(array, deleteId) {
     let newArray = array.splice(deleteId, 1);
@@ -27,9 +31,9 @@ function saveArrayToBackend(key, array) {
 function sendMail() {
     let confirmSentMail = document.getElementById("resetPWackknowledge");
     confirmSentMail.classList.add("flighUp");
-    setTimeout(function(){
-        window.location.href="../templates/reset_password.html"
-    },2000)
+    setTimeout(function () {
+        window.location.href = "../templates/reset_password.html"
+    }, 2000)
 }
 
 

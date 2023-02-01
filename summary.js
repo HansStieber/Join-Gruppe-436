@@ -1,5 +1,5 @@
 async function initSummary() {
-    await load();
+    await loadBackend();
     updateSummary();
 }
 
