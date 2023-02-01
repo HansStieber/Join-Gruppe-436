@@ -1,4 +1,4 @@
-
+let contacts = [];
 let contactToEditId;
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
@@ -22,7 +22,7 @@ function renderContacts() {
         for (let i = 0; i < contacts.length; i++) {
             const contact = contacts[i];
             if (contact) {
-                const { cardsDivLetter } = getContactInfo(contact);
+                const { cardsDivLetter } = getCardElements(contact);
                 removeCardsDivMainDnone(contact);
                 cardsDivLetter.innerHTML += getCardInnerHTML(contact, i);
             }
@@ -33,27 +33,30 @@ function renderContacts() {
 /**
  * This function removes the d-none class from 
  * 
- * @param {object} contact 
+ * @param {object} contact - This is 
  */
 function removeCardsDivMainDnone(contact) {
-    const { cardsMainLetter } = getContactInfo(contact);
+    const { cardsMainLetter } = getCardElements(contact);
     cardsMainLetter.classList.remove('d-none');
 }
 
+function getCardElements(contact) {
+    const { initials1 } = getContactInfo(contact);
+    return {
+        cardsMainLetter: document.getElementById(`cards-main-${initials1}`),
+        cardsDivLetter: document.getElementById(`cards-div-${initials1}`)
+    }
+}
 
 function getContactInfo(contact) {
-    ini1 = contact.firstName.slice(0, 1);
-    ini2 = contact.lastName.slice(0, 1);
     return {
         email: contact.email,
         phone: contact.phone,
-        initials1: ini1,
-        initials2: ini2,
+        initials1: contact.firstName.slice(0, 1),
+        initials2: contact.firstName.slice(0, 1),
         bgColor: contact.color,
         firstName: contact.firstName,
         lastName: contact.lastName,
-        cardsMainLetter: document.getElementById(`cards-main-${ini1}`),
-        cardsDivLetter: document.getElementById(`cards-div-${ini1}`)
     }
 }
 
@@ -72,7 +75,7 @@ function setBigCardInnerHTML(contact) {
         phone, firstName, lastName } = getContactInfo(contact);
 
     const { initialsSpan, firstNameSpan, lastNameSpan,
-        emailLink, phoneSpan, bigCardDiv, initialsDiv } = getBigCardElements();
+        emailLink, phoneSpan, initialsDiv } = getBigCardElements();
 
     initialsSpan.innerHTML = initials1 + initials2;
     firstNameSpan.innerHTML = firstName;
