@@ -38,10 +38,10 @@ function leave(id, path) {
 
 /*----------- LOADING OPTIONS OF DROPDOWN SELECTION MENUS -----------*/
 function loadAllOptions() {
-
     loadCategoryColors();
     loadCategoryOptions();
     loadAssignmentOptions();
+    loadAssignedContacts();
 }
 
 function loadCategoryOptions() {
@@ -73,6 +73,15 @@ function loadAssignmentOptions() {
     for (let i = 0; i < assignments.length; i++) {
         const option = assignments[i];
         renderAssignmentOptions(option, i);
+    }
+}
+
+function loadAssignedContacts() {
+    for (let i = 0; i < assignments.length; i++) {
+        const option = assignments[i];
+        if (assignedContacts.includes(option)) {
+            document.getElementById('checkbox' + i).classList.remove('d-none');
+        }
     }
 }
 

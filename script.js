@@ -1,3 +1,6 @@
+let spliceCurrentContact;
+let indexOfCurrentContact;
+
 async function load() {
     await loadBackend();
     await includeHTML();
@@ -69,19 +72,28 @@ function showNewTaskCard() {
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
     selectCurrentContact(contactToEditId);
-    loadAllOptions();
-    let index = assignments.length - 1;
-    assignContact(index);
 }
 
 //Von Hans
 function selectCurrentContact(i) {
-    assignments.push(contacts[i]);
-    //assignContact(i);
+    if (assignments.some(a => a.firstName === contacts[i].firstName)) {
+        loadAllOptions();
+        spliceCurrentContact = false;
+    } else {
+        assignments.push(contacts[i]);
+        indexOfCurrentContact = assignments.indexOf(contacts[i]);
+        loadAllOptions();
+        let index = assignments.length - 1;
+        assignContact(index);
+        spliceCurrentContact = true;
+    }
 }
 
+
 function removeCurrentContact() {
-    assignments.splice(-1);
+    if (spliceCurrentContact == true) {
+        assignments.splice(indexOfCurrentContact, 10);
+    }
     assignedContacts = [];
 }
 
