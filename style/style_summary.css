@@ -7,7 +7,7 @@
 }
 
 .summary-outer-div {
-    min-height: calc(100vh - 172px);
+    height: calc(100vh - 172px);
 }
 
 .summary-container {
@@ -222,6 +222,10 @@
 @media (max-width: 992px) {
     .side-container {
         display: none;
+    }
+
+    .summary-outer-div {
+        overflow: auto;
     }
 }
 

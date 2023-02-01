@@ -1,3 +1,9 @@
+async function load() {
+    await loadBackend();
+    await includeHTML();
+}
+
+
 async function loadBackend() {
     await downloadFromServer();
     todos = JSON.parse(backend.getItem('todo')) || [];
@@ -6,10 +12,6 @@ async function loadBackend() {
     assignments = JSON.parse(backend.getItem('assignments')) || [];
 }
 
-async function load() {
-    await loadBackend();
-    await includeHTML();
-}
 
 function deleteItemFromBackend(array, deleteId) {
     let newArray = array.splice(deleteId, 1);

@@ -60,6 +60,7 @@
 }
 
 .contacts-right-div {
+    overflow: auto;
     position: relative;
     padding-left: 60px;
     padding-top: 80px;
