@@ -8,7 +8,8 @@
 }
 
 .slide-bar-scroll {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .contacts-slide-bar {
@@ -17,7 +18,8 @@
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     background-color: white;
     width: 490px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .slide-bar-scroll::-webkit-scrollbar {
@@ -378,9 +380,9 @@
 
 @media(max-width:1250px) {
     .contacts-slide-bar {
-        width: 22em;
-        padding-left: 2em;
-        padding-right: 2em;
+        width: 24em;
+        padding-left: 1em;
+        padding-right: 1em;
     }
 
     .contacts-right-div {
@@ -418,6 +420,11 @@
 }
 
 @media(max-width:992px) {
+    .contacts-slide-bar {
+        width: 30em;
+        padding-left: 3em;
+        padding-right: 3em;
+    }
 
     .contact-created-message {
         z-index: 1;
