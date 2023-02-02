@@ -290,6 +290,8 @@ function removeSelectedCategory() {
  */
 function removeAllAssignments() {
     assignedContacts = [];
+    removeCurrentContact();
+    spliceCurrentContact = false;
     loadAllOptions();
     closeDropdownAssignment();
     loadContactIcon();

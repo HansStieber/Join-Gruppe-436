@@ -1,5 +1,5 @@
 let spliceCurrentContact;
-let indexOfCurrentContact;
+let indexOfCurrentContact = -1;
 
 async function load() {
     await loadBackend();
@@ -85,7 +85,7 @@ function selectCurrentContact(i) {
         for (let k = 0; k < assignments.length; k++) {
             const assignment = assignments[k];
             if (assignment.firstName === contacts[i].firstName) {
-                index = i;
+                index = k;
             }
         }
         assignContact(index);
@@ -93,7 +93,9 @@ function selectCurrentContact(i) {
     } else {
         assignments.push(contacts[i]);
         loadAllOptions();
-        indexOfCurrentContact = assignments.indexOf(contacts[i]);
+        if (indexOfCurrentContact == -1) {
+            indexOfCurrentContact = assignments.indexOf(contacts[i]);
+        }
         let index = assignments.length - 1;
         assignContact(index);
         spliceCurrentContact = true;
@@ -106,6 +108,7 @@ function removeCurrentContact() {
         assignments.splice(indexOfCurrentContact, 10);
     }
     assignedContacts = [];
+    indexOfCurrentContact = -1;
 }
 
 /**
@@ -181,7 +184,7 @@ function toggleMobileMenu() {
     id.classList.contains('hide') ? showMobileMenu(id) : hideMobileMenu(id);
 }
 
-function checkWindowSize(){
+function checkWindowSize() {
     return window.innerWidth <= 992 ? id = document.getElementById('mobileMenu') : id = document.getElementById('logoutBtn')
 }
 
@@ -190,7 +193,7 @@ function showMobileMenu(id) {
     id.classList.add('show');
 }
 
-function hideMobileMenu(id){
+function hideMobileMenu(id) {
     id.classList.add('hide');
     id.classList.remove('show');
 }

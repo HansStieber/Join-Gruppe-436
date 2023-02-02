@@ -8,6 +8,10 @@ function assignContact(i) {
     assignedContacts.push(assignments[i]);
     document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
     loadContactIcon();
+    if (indexOfCurrentContact == -1) {
+        indexOfCurrentContact = assignments.indexOf(contacts[i]);
+    }
+    spliceCurrentContact = true;
 }
 
 function loadContactIcon() {
