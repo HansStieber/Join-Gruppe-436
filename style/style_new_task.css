@@ -161,7 +161,6 @@ h1 {
     height: 914px;
     padding: 65px 75px 75px 75px;
     border-radius: 30px;
-    overflow: auto;
 }
 
 .new-task-form {

@@ -11,7 +11,9 @@ function assignContact(i) {
     if (indexOfCurrentContact == -1) {
         indexOfCurrentContact = assignments.indexOf(contacts[i]);
     }
-    spliceCurrentContact = true;
+    if (assignments.some(a => a.email == contacts[i].email)) {
+        spliceCurrentContact = true;
+    }
 }
 
 function loadContactIcon() {
@@ -60,11 +62,11 @@ function inviteContact() {
             loadAllOptions();
             assignContact(assignments.length - 1);
         } else {
-            if (email.toLowerCase().includes(search) && assignments.every(a => a.email == email)) {
+            if (email.toLowerCase().includes(search) && assignments.some(a => a.email == email) && assignedContacts.every(c => c.email !== email)) {
                 for (let k = 0; k < assignments.length; k++) {
                     const assignment = assignments[k];
                     if (assignment.email === email) {
-                        index = i;
+                        index = k;
                     }
                 }
                 loadAllOptions();

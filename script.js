@@ -93,7 +93,7 @@ function selectCurrentContact(i) {
     } else {
         assignments.push(contacts[i]);
         loadAllOptions();
-        if (indexOfCurrentContact == -1) {
+        if (indexOfCurrentContact == -1 && assignments.some(a => a.email == contacts[i].email)) {
             indexOfCurrentContact = assignments.indexOf(contacts[i]);
         }
         let index = assignments.length - 1;
