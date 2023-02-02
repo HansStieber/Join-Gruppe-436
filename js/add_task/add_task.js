@@ -80,10 +80,8 @@ function loadAssignedContacts() {
     for (let i = 0; i < assignments.length; i++) {
         const option = assignments[i];
         if (assignedContacts.includes(option)) {
-            document.getElementById('checkbox' + i).classList.remove('d-none');
-            let fN = assignments[i].firstName.toLowerCase();
-            let lN = assignments[i].lastName.toLowerCase();
-            document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
+            tickCheckboxOfContact(i);
+            setRemoveAssignmentOnclickFunction(i);
         }
     }
 }
