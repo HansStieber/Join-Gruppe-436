@@ -1,12 +1,9 @@
-
 /*Variablen Namen und Reihenfolge,für Tasks: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
 
 let tasks = [];
-
 let searchedTodos = [];
 let currentDraggedElements;
-let acronymBg;
-let acronym;
+
 
 async function initBoard() {
     await load();
@@ -23,7 +20,6 @@ function clearBoard() {
 
 function renderBoard(todos) {
     clearBoard();
-    // loadTasks();
     renderTodoColumn(todos);
     renderProgressColumn(todos);
     renderFeedbackColumn(todos);
@@ -35,53 +31,74 @@ function renderTodoColumn(todos) {
     let todo = todos.filter(t => t.status == 'todo');
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
+        const id = todo[i].id;
         const assignments = todo[i].assignments;
-        // getAcronym(assignments);
-        console.log(element.assignments);
-        document.getElementById('todo').insertAdjacentHTML("beforeend", generateTodoHTML(element));
+        document.getElementById('todo').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        checkForSecondUser(assignments, id);
+        checkForMoreUsers(assignments, id);
     }
 }
+
 
 function renderProgressColumn(todos) {
     let progress = todos.filter(t => t.status == 'progress');
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
-        console.log(element.assignments);
-
-        document.getElementById('progress').insertAdjacentHTML("beforeend", generateTodoHTML(element));
+        const id = progress[i].id;
+        const assignments = progress[i].assignments;
+        document.getElementById('progress').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        checkForSecondUser(assignments, id);
+        checkForMoreUsers(assignments, id);
     }
 }
+
 
 function renderFeedbackColumn(todos) {
     let feedback = todos.filter(t => t.status == 'feedback');
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
-        console.log(element.assignments);
+        const id = feedback[i].id;
+        const assignments = feedback[i].assignments;
 
-        document.getElementById('feedback').insertAdjacentHTML("beforeend", generateTodoHTML(element));
+        document.getElementById('feedback').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        checkForSecondUser(assignments, id);
+        checkForMoreUsers(assignments, id);
     }
 }
+
 
 function renderDoneColumn(todos) {
     let done = todos.filter(t => t.status == 'done');
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
         console.log(element.assignments);
-
-        document.getElementById('done').insertAdjacentHTML("beforeend", generateTodoHTML(element));
+        const id = done[i].id;
+        const assignments = done[i].assignments;
+        document.getElementById('done').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        checkForSecondUser(assignments, id);
+        checkForMoreUsers(assignments, id);
     }
 }
 
 
-// function getAcronym(assignments){
-//     for (let i = 0; i < assignments.length; i++) {
-//         let firstName = assignments[i].firstName.slice(0,1);
-//         let lastName = assignments[i].lastName.slice(0,1);
-//         acronym = firstName + lastName;
-//         acronymBg = assignments[i].color;
-//         return acronym, acronymBg;
-//     }
-// }
+function checkForSecondUser(assignments, id) {
+    if (assignments.length > 1) {
+        let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
+        document.getElementById(`user-icons-${id}`).innerHTML += `
+        <div id="second-user-icon-${id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>
+        `;
+    }
+}
+
+
+function checkForMoreUsers(assignments, id){
+    if (assignments.length >=2) {
+        let userlength = assignments.length -2;
+        document.getElementById(`user-icons-${id}`).innerHTML += `
+        <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>
+        `;
+    }
+}
 
 
 /**
@@ -96,7 +113,9 @@ function selectingArrayForBoardUpdate() {
     }
 }
 
-function generateTodoHTML(element) {
+
+function generateTodoHTML(element, assignments) {
+    let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
 
     return /*html*/ `
     <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id})" ondragstart="startDragging(${element.id})">
@@ -110,11 +129,9 @@ function generateTodoHTML(element) {
                                             <span>${element.progress}</span></div> -->
                                     <!-- </div> -->
                                 <div class="card-bottom">
-                                    <div class="user-icons">
-                                        <div class="user-icon" background-color="${acronymBg}"><span>${acronym}</span></div>
-
-                                        <div class="user-icon" style="background:#000000;left:60px"><span>+2</span>
-                                        </div>
+                                    <div id="user-icons-${element.id}" class="user-icons">
+                                        <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
+                                        <!-- <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+2</span></div> -->
                                     </div>
                                     <div><img src="img/priority-${element.priority}.svg"></div>
                                 </div>
