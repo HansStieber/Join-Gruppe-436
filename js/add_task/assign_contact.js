@@ -108,7 +108,7 @@ function untickCheckboxOfContact(i) {
  * @param {object} contact - contact that is given for name comparison
  * @param {string} fN - first name that needs to match
  * @param {string} lN - last name that needs to match
- * @returns 
+ * @returns - returns if names match or not
  */
 function firstAndLastNameMatchParameters(contact, fN, lN) {
     return contact.firstName.toLowerCase().includes(fN) && contact.lastName.toLowerCase().includes(lN)
@@ -117,7 +117,7 @@ function firstAndLastNameMatchParameters(contact, fN, lN) {
 
 /*----------- INVITE CONTACT FOR TASK -----------*/
 /**
- * 
+ * The function closes the assignments dropdown menu, hides the default input field and opens the invitation input field.
  */
 function inviteNewContact() {
     document.getElementById('new-contact-container').classList.add('margin-bottom-zero');
@@ -126,38 +126,27 @@ function inviteNewContact() {
     hideDefaultInput('contact');
 }
 
+
+/**
+ * The funciton hides the invitation input field and shows the default input field again.
+ */
 function closeInviteContact() {
     hideInputField('contact');
     showDefaultInput('contact');
 }
 
+
+/**
+ * The function invites a new contact that is not included at the assignments list to the assignments list. It already assigns the contact
+ * to the given task. It also sets the spliceCurrentContact variable. It also closes the invitation input field again.
+ */
 function inviteContact() {
     let search = document.getElementById('new-contact').value;
     setSpliceCurrentContactVariable(search);
-    for (let i = 0; i < contacts.length; i++) {
-        const email = contacts[i].email;
-        if (email.toLowerCase().includes(search) && assignments.every(a => a.email !== email)) {
-            assignments.push(contacts[i]);
-            loadAllOptions();
-            assignContact(assignments.length - 1);
-        } else {
-            if (email.toLowerCase().includes(search) && assignments.some(a => a.email == email) && assignedContacts.every(c => c.email !== email)) {
-                for (let k = 0; k < assignments.length; k++) {
-                    const assignment = assignments[k];
-                    if (assignment.email === email) {
-                        index = k;
-                    }
-                }
-                loadAllOptions();
-                assignContact(index);
-            }
-        }
-    }
+    loopThroughEmailsOfContacts(search);
     closeInviteContact();
     loadContactIcon();
 }
-
-
 
 
 /**
@@ -171,5 +160,72 @@ function setSpliceCurrentContactVariable(search) {
         spliceCurrentContact = false;
     } else {
         spliceCurrentContact = true;
+    }
+}
+
+
+/**
+ * The function loops through the email addresses of all contacts. If the contact is not yet an assignment option, the contact is pushed
+ * into the assignments array and assigned for the current task. If the contact is already an assignment option and not yet assigned to the
+ * current task, the function loops through the emails of the contacts in the assignment array to get the index of current contact.
+ * 
+ * @param {string} search - email that was typed into the contact invitation input field at the assignment dropdown menu
+ */
+function loopThroughEmailsOfContacts(search) {
+    for (let i = 0; i < contacts.length; i++) {
+        const email = contacts[i].email;
+        if (contactIsNotAlreadyAssignmentOption(search, email)) {
+            assignments.push(contacts[i]);
+            loadAllOptions();
+            assignContact(assignments.length - 1);
+        } else {
+            if (contactIsAlreadyAssignmentOptionButNotAssigned(search, email)) {
+                loopThroughEmailsOfAssignments(email);
+                loadAllOptions();
+                assignContact(index);
+            }
+        }
+    }
+}
+
+
+/**
+ * The function returns if the contact is not already an assignment option.
+ * 
+ * @param {string} search - email that was typed into the contact invitation input field at the assignment dropdown menu 
+ * @param {string} email - email of the current contact
+ * @returns - if the email of the current contact matches the email in the search variable and if the email matches no contact in the 
+ *          assignments array yet
+ */
+function contactIsNotAlreadyAssignmentOption(search, email) {
+    return email.toLowerCase().includes(search) && assignments.every(a => a.email !== email);
+}
+
+
+/**
+ * The function returns if the contact is already an assignment option but not assigned to the current task yet.
+ * 
+ * @param {string} search - email that was typed into the contact invitation input field at the assignment dropdown menu 
+ * @param {string} email - email of the current contact
+ * @returns - if the email of the current contact matches the email in the search variable, the email matches a contact in the assignments
+ *          array and the contact is not assigned yet
+ */
+function contactIsAlreadyAssignmentOptionButNotAssigned(search, email) {
+    return email.toLowerCase().includes(search) && assignments.some(a => a.email == email) && assignedContacts.every(c => c.email !== email);
+}
+
+
+/**
+ * The function loops through the emails of the contacts that are located in the assignments array. If the email matches with the email of
+ * the current contact, the index variable is set to the index of the matching contact.
+ * 
+ * @param {string} email - email of the current contact
+ */
+function loopThroughEmailsOfAssignments(email) {
+    for (let k = 0; k < assignments.length; k++) {
+        const assignment = assignments[k];
+        if (assignment.email === email) {
+            index = k;
+        }
     }
 }
