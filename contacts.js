@@ -148,7 +148,7 @@ function addContact() {
     const inputEmail = document.getElementById('add-eMail-input');
     const inputPhone = document.getElementById('add-phonenumber-input');
     let names = inputName.value.split(" ");
-    let lastName = names[i];
+    let lastName = names[names.length - 1];
     contacts.push(new Contact(names[0], lastName, inputPhone.value, inputEmail.value));
 
     saveArrayToBackend('contact', contacts);
@@ -159,16 +159,31 @@ function addContact() {
 
 
 function confirmDelete() {
+    changeDeleteBtnOnclick('deleteContact()');
+    changeDeleteBtnSpan('Confirm');
+}
+
+
+function showDeleteBtn() {
+    changeDeleteBtnOnclick('confirmDelete()')
+    changeDeleteBtnSpan('Delete');
+}
+
+
+function changeDeleteBtnOnclick(functionName) {
     let deleteBtn = document.getElementById('edit-delete-btn');
-    deleteBtn.innerHTML = 'Confirm';
-    deleteBtn.setAttribute('onclick', 'deleteContact()');
+    deleteBtn.setAttribute('onclick', `${functionName}`);
+}
+
+
+function changeDeleteBtnSpan(html) {
+    let deleteBtnSpan = document.getElementById('delete-btn-span');
+    deleteBtnSpan.innerHTML = html;
 }
 
 
 function deleteContact() {
-    let deleteBtn = document.getElementById('edit-delete-btn');
-    deleteBtn.setAttribute('onclick', 'confirmDelete()');
-    deleteBtn.innerHTML = 'Delete';
+    showDeleteBtn();
     contacts.splice(contactToEditId, 1);
     saveArrayToBackend('contact', contacts);
     hideBigCard();
@@ -356,6 +371,7 @@ function openEditOverlay() {
 
 
 function closeEditOverlay() {
+    showDeleteBtn();
     slideOutCard('edit-contact-overlay');
     hideShadowScreen('edit-contact-shadow-screen');
     setTimeout(function () { document.getElementById('editContactOverlay').classList.add('d-none'); }, 450);
