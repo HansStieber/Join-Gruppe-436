@@ -1,3 +1,4 @@
+
 async function initSummary() {
     await load();
     updateSummary();
@@ -62,7 +63,6 @@ function formatDate(tasksUrgent) {
 
 function greetingUser() {
     let nameDiv = document.getElementById('user-greeting');
-    let existingUser = JSON.parse(localStorage.getItem("currentUser")) || [];
     if (existingUser.length == 0) {
         nameDiv.innerHTML = 'guest';
     } else {

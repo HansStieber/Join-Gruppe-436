@@ -13,6 +13,7 @@ async function loadBackend() {
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
     assignments = JSON.parse(backend.getItem('assignments')) || [];
+    existingUser = backend.getItem('currentUser') || [];
 }
 
 

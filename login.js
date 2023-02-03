@@ -11,8 +11,8 @@ function login() {
       window.location.href = "./summary.html";
     }, 2000);
     //document.getElementById("user-greeting").innerHTML = `${existingUser["name"]}`;
-    //von Pierre, um von Summary.js aus, auf den aktuellen Benutzer zuzugreifen,(muss auch noch ins Backend)//
-    localStorage.setItem("currentUser", JSON.stringify(existingUser.name));
+    //von Pierre, um von Summary.js aus, auf den aktuellen Benutzer zuzugreifen//
+    backend.setItem('currentUser', existingUser.name);
   } else {
     console.log("Invalid email or password. Login failed.");
     alert("failed")
