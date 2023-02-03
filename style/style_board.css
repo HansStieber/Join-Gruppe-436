@@ -138,7 +138,9 @@
     border-radius: 8px;
     color: white;
     padding: 4px 25px;
-    width: 103px;
+    width: fit-content;
+    min-width: 103px;
+    max-width: 130px;
     height: 27px;
     font-size: 16px;
     line-height: 120%;
