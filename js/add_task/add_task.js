@@ -51,12 +51,15 @@ function loadCategoryOptions() {
     document.getElementById('category-options').innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
         const option = categories[i];
+        renderCategoryOptions(option, i);
         if (lastCategoryOption(i)) {
-            renderLastCategoryOption(option, i);
-        } else {
-            renderCategoryOptions(option, i);
+            addLastOptionClass(i);
         }
     }
+}
+
+function addLastOptionClass(i) {
+    document.getElementById('option-' + i + '-container').classList.add('last-option');
 }
 
 function lastCategoryOption(i) {
