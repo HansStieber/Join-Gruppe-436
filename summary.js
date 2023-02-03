@@ -1,6 +1,7 @@
 async function initSummary() {
     await load();
     updateSummary();
+    daytimeGreetingUser();
 }
 
 
@@ -56,4 +57,20 @@ function formatDate(tasksUrgent) {
     let dateLong = new Date(date);
     let formatedDate = dateLong.toLocaleDateString(country, options);
     return formatedDate;
+}
+
+function daytimeGreetingUser() {
+    let date = new Date();
+    let currentHour = date.getHours();
+    let greetingDiv = document.getElementById('daytime-greeting');
+
+    if (currentHour > 5 && currentHour < 12) {
+        greetingDiv.innerHTML = 'morning';
+    }
+    if (currentHour > 12 && currentHour < 18) {
+        greetingDiv.innerHTML = 'afternoon';
+    }
+    if (currentHour > 18 && currentHour < 5) {
+        greetingDiv.innerHTML = 'evening';
+    }
 }

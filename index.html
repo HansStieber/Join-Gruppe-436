@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,25 +18,28 @@
     <link rel="stylesheet" href="style/style_header.css">
     <link rel="stylesheet" href="forgot_password.css">
     <link rel="stylesheet" href="./style/signUp.css">
+    <link rel="stylesheet" href="style/fonts.css">
     <link rel="icon" type="image/x-icon" href="./img/join-logo.png">
 </head>
+
 <body onload="load()">
-   
+
     <div class="main-login-container" id="main-login-container">
         <img src="./img/join-logo.png" id="join-logo" class="fade-in ">
         <div w3-include-html="./templates/log_in.html"></div>
         <div id="forgotPw" w3-include-html="./templates/forgot_password.html" style="display: none;"></div>
         <div id="SignUp" w3-include-html="./templates/sign_up.html" style="display: none;"></div>
     </div>
-    
+
     <div class="resetMain">
         <div id="resetPWackknowledge" class="resetPWackknowledge">
             <span>An email has been sent to you</span>
         </div>
     </div>
-    
-  
-   
+
+
+
 
 </body>
+
 </html>

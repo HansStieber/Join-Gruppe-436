@@ -52,6 +52,7 @@
 .side-container div {
     display: inline;
     font-size: 47px;
+    font-weight: 500;
 }
 
 .user-greeting {
