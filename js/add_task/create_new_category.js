@@ -48,17 +48,20 @@ function showDefaultInput(id) {
 function addNewCategory() {
     let title = document.getElementById('new-category').value;
 
-    if (!title == '' && !currentColor == '') {
+    if (!title == '' && !currentColor == '' && categories.every(t => t.title !== title) && categories.every(c => c.color !== currentColor)) {
         categorySelected = true;
         let newCategory = new Category(title, currentColor);
         categories.push(newCategory);
-
         document.getElementById('new-category').value = '';
 
         showCategories();
         hideInputField('category');
         hideColorSelection();
         renderSelectedCategory(title, currentColor);
+    } else {
+        showCategories();
+        hideInputField('category');
+        hideColorSelection();
     }
     console.log(categories);
 

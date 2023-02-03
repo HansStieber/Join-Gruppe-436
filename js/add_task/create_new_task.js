@@ -216,12 +216,6 @@ async function pushTask() {
 }
 
 
-async function saveTasks() {
-    let todosAsText = JSON.stringify(todos);
-    await backend.setItem('todo', todosAsText);
-}
-
-
 function getPriority() {
     if (urgent == true) {
         priority = 'urgent';
@@ -239,8 +233,14 @@ function getId() {
 }
 
 
+async function saveTasks() {
+    let todosAsText = JSON.stringify(todos);
+    await backend.setItem('todo', todosAsText);
+}
+
+
 async function saveCategories(categoryTitle) {
-    if (categories.every(t => t.title !== `${categoryTitle}`) && categories.every(c => c.color !== `${currentColor}`)) {
+    if (categories.every(t => t.title !== categoryTitle) && categories.every(c => c.color !== currentColor)) {
         categories.push(new Category(categoryTitle, currentColor));
     }
     let categoriesAsText = JSON.stringify(categories);
