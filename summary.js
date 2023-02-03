@@ -39,24 +39,44 @@ function getSummaryElements() {
 
 function getSummaryInfo() {
     let tasksUrgent = todos.filter(t => t.priority == 'urgent');
+
     return {
         tasksInBoard: todos,
         tasksInProgress: todos.filter(t => t.status == 'progress'),
         tasksInFeedback: todos.filter(t => t.status == 'feedback'),
         tasksUrgent: tasksUrgent,
-        urgentTaskDate: formatDate(tasksUrgent),
+        urgentTaskDate: getUrgentTasks(tasksUrgent),
         tasksTodo: todos.filter(t => t.status == 'todo'),
         tasksDone: todos.filter(t => t.status == 'done')
     }
 }
 
+function getLatestUrgentTask(tasksUrgent) {
+    let latestUrgentTask
+    for (let i = 0; i < tasksUrgent.length; i++) {
+        let date = tasksUrgent[i].date;
+        let dateLong = new Date(date);
+        let day = dateLong.getUTCDate();
+        let month = (dateLong.getMonth() + 1);
+        let latestDay = 31;
+        let latestmonth = 12;
+        if (month < latestmonth || month <= latestmonth && day < latestDay) {
 
-function formatDate(tasksUrgent) {
+            latestDay = day;
+            latestmonth = month
+            latestUrgentTask = tasksUrgent[i];
+        }
+    }
+    return latestUrgentTask;
+}
+
+function getUrgentTasks(tasksUrgent) {
     var country = "en-US";
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
-
-    let date = tasksUrgent[0].date;
+    let latestUrgenTask = getLatestUrgentTask(tasksUrgent);
+    let date = latestUrgenTask.date;
     let dateLong = new Date(date);
+
     let formatedDate = dateLong.toLocaleDateString(country, options);
     return formatedDate;
 }

@@ -1,4 +1,4 @@
-let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
+let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'lightblue', 'green', 'red'];
 let currentColor;
 let temporaryCategories = [];
 let categorySelected = false;
