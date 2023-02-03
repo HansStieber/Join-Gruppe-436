@@ -57,7 +57,7 @@
                 <div w3-include-html="./templates/header.html"></div>
 
                 <!-- MAIN CONTENT -->
-                <div class="board-outer-div slide-bar-scroll">
+                <div class="board-outer-div">
                     <div class="board">
                         <div class="board-head-div">
                             <span class="kanban-mobile-span">Kanban Project Management Tool</span>
@@ -81,54 +81,57 @@
                             </div>
                         </div>
                     </div>
+                    <div class="slide-bar-scroll cards-slide-div">
+                        <div class="cards-div">
 
-                    <div class="cards-div ">
+                            <div class="cards-column-main ">
 
-                        <div class="cards-column-main ">
+                                <div class="cards-category">
+                                    <span>To do</span>
+                                    <div class="plus-btn" onclick="showNewTaskCard()"></div>
+                                </div>
 
-                            <div class="cards-category">
-                                <span>To do</span>
-                                <div class="plus-btn" onclick="showNewTaskCard()"></div>
+                                <div class="card-column" id="todo" ondrop="moveTo('todo')"
+                                    ondragover="allowDrop(event)">
+                                </div>
                             </div>
 
-                            <div class="card-column" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+                            <div class="cards-column-main">
+
+                                <div class="cards-category">
+                                    <span>In progress</span>
+                                    <div class="plus-btn" onclick="addTaskToStatusProgress()"></div>
+                                </div>
+
+                                <div class="card-column" id="progress" ondrop="moveTo('progress')"
+                                    ondragover="allowDrop(event)">
+                                </div>
                             </div>
+
+                            <div class="cards-column-main">
+
+                                <div class="cards-category">
+                                    <span>Awaiting Feedback</span>
+                                    <div class="plus-btn" onclick="addTaskToStatusFeedback()"></div>
+                                </div>
+
+                                <div class="card-column" id="feedback" ondrop="moveTo('feedback')"
+                                    ondragover="allowDrop(event)">
+                                </div>
+                            </div>
+
+                            <div class="cards-column-main">
+
+                                <div class="cards-category">
+                                    <span>Done</span>
+                                    <div class="plus-btn" onclick="addTaskToStatusDone()"></div>
+                                </div>
+                                <div class="card-column" id="done" ondrop="moveTo('done')"
+                                    ondragover="allowDrop(event)">
+                                </div>
+                            </div>
+
                         </div>
-
-                        <div class="cards-column-main">
-
-                            <div class="cards-category">
-                                <span>In progress</span>
-                                <div class="plus-btn" onclick="addTaskToStatusProgress()"></div>
-                            </div>
-
-                            <div class="card-column" id="progress" ondrop="moveTo('progress')"
-                                ondragover="allowDrop(event)">
-                            </div>
-                        </div>
-
-                        <div class="cards-column-main">
-
-                            <div class="cards-category">
-                                <span>Awaiting Feedback</span>
-                                <div class="plus-btn" onclick="addTaskToStatusFeedback()"></div>
-                            </div>
-
-                            <div class="card-column" id="feedback" ondrop="moveTo('feedback')"
-                                ondragover="allowDrop(event)">
-                            </div>
-                        </div>
-
-                        <div class="cards-column-main">
-
-                            <div class="cards-category">
-                                <span>Done</span>
-                                <div class="plus-btn" onclick="addTaskToStatusDone()"></div>
-                            </div>
-                            <div class="card-column" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

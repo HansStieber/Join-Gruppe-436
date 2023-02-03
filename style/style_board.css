@@ -1,7 +1,12 @@
 .board-outer-div {
     max-width: 1260px;
-    height: calc(100vh - 172px);
+    /*height: calc(100vh - 172px);*/
     overflow: auto;
+}
+
+.cards-slide-div {
+    overflow: auto;
+    height: calc(100vh - 335px);
 }
 
 .slide-bar-scroll::-webkit-scrollbar {
