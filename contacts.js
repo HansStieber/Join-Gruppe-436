@@ -70,11 +70,12 @@ function getCardElements(contact) {
  *      lastName: 'Huber'}
  */
 function getContactInfo(contact) {
+    contact.firstName.slice(0, 1)
     return {
         email: contact.email,
         phone: contact.phone,
         initials1: contact.firstName.slice(0, 1),
-        initials2: contact.firstName.slice(0, 1),
+        initials2: contact.lastName.slice(0, 1),
         bgColor: contact.color,
         firstName: contact.firstName,
         lastName: contact.lastName,
