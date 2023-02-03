@@ -1,7 +1,8 @@
 async function initSummary() {
     await load();
     updateSummary();
-    daytimeGreetingUser();
+    daytimeGreeting();
+    greetingUser();
 }
 
 
@@ -59,7 +60,18 @@ function formatDate(tasksUrgent) {
     return formatedDate;
 }
 
-function daytimeGreetingUser() {
+function greetingUser() {
+    let nameDiv = document.getElementById('user-greeting');
+    let existingUser = JSON.parse(localStorage.getItem("currentUser")) || [];
+    if (existingUser.length == 0) {
+        nameDiv.innerHTML = 'guest';
+    } else {
+        nameDiv.innerHTML = existingUser;
+
+    }
+}
+
+function daytimeGreeting() {
     let date = new Date();
     let currentHour = date.getHours();
     let greetingDiv = document.getElementById('daytime-greeting');

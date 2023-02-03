@@ -7,16 +7,17 @@ function login() {
 
   if (existingUser) {
     console.log("Login successful.");
-    setTimeout(function(){ 
-        window.location.href = "./summary.html";
+    setTimeout(function () {
+      window.location.href = "./summary.html";
     }, 2000);
-    document.getElementById("user-greeting").innerHTML = `${existingUser["name"]}`;
-    
+    //document.getElementById("user-greeting").innerHTML = `${existingUser["name"]}`;
+    //von Pierre, um von Summary.js aus, auf den aktuellen Benutzer zuzugreifen,(muss auch noch ins Backend)//
+    localStorage.setItem("currentUser", JSON.stringify(existingUser.name));
   } else {
     console.log("Invalid email or password. Login failed.");
     alert("failed")
   }
-  
+
 }
 
 
