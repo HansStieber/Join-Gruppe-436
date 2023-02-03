@@ -76,6 +76,10 @@
     margin-bottom: 0 !important;
 }
 
+.margin-to-sides {
+    margin: 0 5px;
+}
+
 h1 {
     font-size: 61px;
     margin: 0;
@@ -369,6 +373,29 @@ textarea::-webkit-scrollbar-thumb {
 .last-option {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.option-container {
+    display: flex;
+    align-items: center;
+}
+
+.option-left-part {
+    width: calc(100% - 100px);
+}
+
+.option-right-part {
+    width: 100px;
+    justify-content: center;
+}
+
+.delete-category-text {
+    color: #e65252;
+    font-size: 16px;
+}
+
+.delete-category-text:hover {
+    scale: 1.1;
 }
 
 /* === Styling checkboxes for assignment === */

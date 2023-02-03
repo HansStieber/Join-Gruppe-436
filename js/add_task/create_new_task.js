@@ -239,12 +239,8 @@ async function saveTasks() {
 }
 
 
-async function saveCategories(categoryTitle) {
-    if (categories.every(t => t.title !== categoryTitle) && categories.every(c => c.color !== currentColor)) {
-        categories.push(new Category(categoryTitle, currentColor));
-    }
+async function saveCategories() {
     let categoriesAsText = JSON.stringify(categories);
-    //await backend.deleteItem('category')
     await backend.setItem('category', categoriesAsText);
 }
 

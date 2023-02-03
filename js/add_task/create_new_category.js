@@ -1,5 +1,6 @@
 let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
 let currentColor;
+let temporaryCategories = [];
 let categorySelected = false;
 
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
@@ -58,6 +59,7 @@ function addNewCategory() {
         hideInputField('category');
         hideColorSelection();
         renderSelectedCategory(title, currentColor);
+        saveCategories();
     } else {
         showCategories();
         hideInputField('category');
@@ -84,6 +86,27 @@ function setCurrentColor(color, i) {
     currentColor = color;
 
     highlightCurrentColor(i);
+}
+
+function deleteCategory(i) {
+    document.getElementById('c-delete-option' + i).innerHTML = `
+    <span class="delete-category-text" onclick=confirmDeletion(${i})>Yes</span><span class="margin-to-sides"> </span><span class="delete-category-text" onclick=doNotDelete(${i})>No</span>
+    `;
+}
+
+function confirmDeletion(i) {
+    categories.splice(i, 1);
+    loadAllOptions();
+    showCategoryOptions();
+    saveCategories();
+    closeDropdownCategory();
+    openDropdownCategory();
+}
+
+function doNotDelete(i) {
+    document.getElementById('c-delete-option' + i).innerHTML = `
+    <span class="delete-category-text" onclick=deleteCategory(${i})>delete</span>
+    `;
 }
 
 

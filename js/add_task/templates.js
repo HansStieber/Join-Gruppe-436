@@ -8,9 +8,17 @@
  * @param {number} i - position of the category; i is used to create unique id
  */
 function renderCategoryOptions(option, i) {
-    document.getElementById('options-category').innerHTML += `
-    <div id="${'c-option' + i}" class="option d-none selectable" onclick="selectCategory('${option.title}', '${option.color}')">
-        <span>${option.title}</span><div class="color ${option.color}"></div>
+    document.getElementById('category-options').innerHTML += `
+    <div class="space-between selectable">
+    <div id="${'c-option' + i}" class="option d-none option-left-part" onclick="selectCategory('${option.title}', '${option.color}')">
+        <div class="option-container">
+            <span>${option.title}</span>
+            <div class="color ${option.color}"></div>
+        </div>
+    </div>
+    <div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
+        <span class="delete-category-text" onclick=deleteCategory(${i})>delete</span>
+    </div>
     </div>
 `;
 } 
@@ -23,9 +31,17 @@ function renderCategoryOptions(option, i) {
  * @param {number} i - position of the category; i is used to create unique id
  */
 function renderLastCategoryOption(option, i) {
-    document.getElementById('options-category').innerHTML += `
-    <div id="${'c-option' + i}" class="option d-none selectable last-option" onclick="selectCategory('${option.title}', '${option.color}')">
-        <span>${option.title}</span><div class="color ${option.color}"></div>
+    document.getElementById('category-options').innerHTML += `
+    <div class="space-between last-option selectable">
+    <div id="${'c-option' + i}" class="option d-none option-left-part" onclick="selectCategory('${option.title}', '${option.color}')">
+        <div class="option-container">
+            <span>${option.title}</span>
+            <div class="color ${option.color}"></div>
+        </div>
+    </div>
+    <div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
+        <span class="delete-category-text" onclick=deleteCategory(${i})>delete</span>
+    </div>
     </div>
     `;
 }
