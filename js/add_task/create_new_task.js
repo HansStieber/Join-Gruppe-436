@@ -186,7 +186,7 @@ function pickSubtasks() {
  * @param {object{}} subtask - object that gets pushed
  */
 function pushCheckedSubtasksIntoArraySubtasksChecked(subtask) {
-    subtasksChecked.push(subtask);
+    subtasksChecked.push(subtask.title);
 }
 
 

@@ -15,7 +15,6 @@ function setImgSelected(id, path, id2, id3) {
     focusPrio(id, id2, id3);
     unfocusPriority(id2, id, id3);
     unfocusPriority(id3, id, id2);
-    console.log(urgent, medium, low)
 }
 
 function focusPrio(id, id2, id3) {
@@ -47,7 +46,6 @@ function unfocusPriority(id, id2, id3) {
     document.getElementById('prio-' + id).setAttribute('onclick', `taskIs${newId}('${id}', '${id}_big', '${id2}', '${id3}')`);
     document.getElementById('prio-' + id).setAttribute('onmouseover', `hover('${id}', '${id}_big', '${id2}', '${id3}')`);
     document.getElementById('prio-' + id).setAttribute('onmouseout', `leave('${id}', '${id}_big', '${id2}', '${id3}')`);
-    console.log(urgent, medium, low)
 }
 
 function taskIsMedium(id, path, id2, id3) {
