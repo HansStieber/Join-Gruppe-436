@@ -10,13 +10,11 @@
 
 .slide-bar-scroll::-webkit-scrollbar-track {
     background: white;
-
 }
 
 .slide-bar-scroll::-webkit-scrollbar-thumb {
     background-color: #A8A8A8;
     border-radius: 10px;
-
 }
 
 /* Buttons */
@@ -216,11 +214,11 @@
 }
 
 .card-text span:nth-of-type(2) {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
     color: #A8A8A8;
     max-height: 65px;
     margin-bottom: 20px;
+    overflow: hidden;
+    white-space: pre-line;
 }
 
 .progress-div {
