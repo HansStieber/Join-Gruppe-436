@@ -53,13 +53,14 @@ function getSummaryInfo() {
 
 function getLatestUrgentTask(tasksUrgent) {
     let latestUrgentTask
+    let latestDay = 31;
+    let latestmonth = 12;
     for (let i = 0; i < tasksUrgent.length; i++) {
         let date = tasksUrgent[i].date;
         let dateLong = new Date(date);
         let day = dateLong.getUTCDate();
         let month = (dateLong.getMonth() + 1);
-        let latestDay = 31;
-        let latestmonth = 12;
+
         if (month < latestmonth || month <= latestmonth && day < latestDay) {
 
             latestDay = day;
@@ -96,13 +97,13 @@ function daytimeGreeting() {
     let currentHour = date.getHours();
     let greetingDiv = document.getElementById('daytime-greeting');
 
-    if (currentHour > 5 && currentHour < 12) {
+    if (currentHour >= 5 && currentHour < 12) {
         greetingDiv.innerHTML = 'morning';
     }
-    if (currentHour > 12 && currentHour < 18) {
+    if (currentHour >= 12 && currentHour < 18) {
         greetingDiv.innerHTML = 'afternoon';
     }
-    if (currentHour > 18 && currentHour < 5) {
+    if (currentHour >= 18 || currentHour < 5) {
         greetingDiv.innerHTML = 'evening';
     }
 }
