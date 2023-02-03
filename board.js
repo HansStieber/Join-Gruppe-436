@@ -120,7 +120,7 @@ function generateTodoHTML(element, assignments) {
     return /*html*/ `
     <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id})" ondragstart="startDragging(${element.id})">
     <div class="detailView" id="detailView" style="display:none"></div>
-    <div  class="card-name" style="background-color:${element.category.color};">${element.category.title}</div>
+    <div  class="card-name ${element.category.color}">${element.category.title}</div>
                                 <div class="card-text">
                                     <span class="card-headline">${element.title}</span>
                                     <span class="card-info">${element.description}</span>
