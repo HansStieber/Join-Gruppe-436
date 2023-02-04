@@ -204,7 +204,6 @@ function showCards(idOfCard) {
 }
 
 function closeDetailView() {
-function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
