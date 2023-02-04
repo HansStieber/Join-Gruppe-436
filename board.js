@@ -206,9 +206,7 @@ function showCards(idOfCard) {
         <div>
             ${assignedContacts}
         </div>
-<<<<<<< HEAD
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
-=======
+        
 <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
         
         <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn" type="button">
@@ -217,7 +215,6 @@ function showCards(idOfCard) {
                             <img src="../assets/img/close.svg">
                         </div>
                     </button>
->>>>>>> 74b4188c5736a0de57e16597f4a48d62cd4cf8f9
 `;
 }
 
