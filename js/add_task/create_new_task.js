@@ -308,9 +308,9 @@ function removeAllSubtasks() {
     document.getElementById('subtasks').innerHTML = '';
 }
 
-function closeAllDropdowns() {
+function closeAllDropdowns(edit) {
     closeDropdownCategory();
-    closeDropdownAssignment();
+    closeDropdownAssignment(edit);
 }
 
 

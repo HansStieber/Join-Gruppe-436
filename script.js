@@ -66,7 +66,7 @@ function forgotPassword() {
 /**
  * function to show New Task template
  */
-function showNewTaskCard() {
+function showNewTaskCard(edit) {
     let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
     showClearButton();
@@ -74,14 +74,14 @@ function showNewTaskCard() {
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
     if (document.URL.includes('contacts.html')) {
-        selectCurrentContact(contactToEditId);
+        selectCurrentContact(contactToEditId, edit);
     } else {
         loadAllOptions();
     }
 }
 
 //Von Hans
-function selectCurrentContact(i) {
+function selectCurrentContact(i, edit) {
     if (assignments.some(a => a.firstName === contacts[i].firstName) && assignments.some(a => a.lastName === contacts[i].lastName)) {
         loadAllOptions();
         for (let k = 0; k < assignments.length; k++) {
@@ -90,7 +90,7 @@ function selectCurrentContact(i) {
                 index = k;
             }
         }
-        assignContact(index);
+        assignContact(index, edit);
         spliceCurrentContact = false;
     } else {
         assignments.push(contacts[i]);
@@ -99,7 +99,7 @@ function selectCurrentContact(i) {
             indexOfCurrentContact = assignments.indexOf(contacts[i]);
         }
         let index = assignments.length - 1;
-        assignContact(index);
+        assignContact(index, edit);
         spliceCurrentContact = true;
     }
 }
@@ -116,13 +116,13 @@ function removeCurrentContact() {
 /**
  * function to hide New Task template
  */
-function hideNewTaskCard() {
+function hideNewTaskCard(edit) {
     let newTaskCloseBtn = document.getElementById('content-new-task');
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
     removeCurrentContact();
-    closeAllDropdowns();
+    closeAllDropdowns(edit);
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
 }
 
