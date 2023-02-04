@@ -49,7 +49,7 @@ function sendMail() {
  */
 
 function guestLogin() {
-    window.location.href = './summary.html'
+    currentNavPoint = window.location.href = './summary.html';
 }
 
 
@@ -196,7 +196,6 @@ function checkWindowSize() {
 function showMobileMenu(headerMenu) {
     headerMenu.classList.remove('hide');
     headerMenu.classList.add('show');
-
 }
 
 
@@ -204,4 +203,3 @@ function hideMobileMenu(headerMenu) {
     headerMenu.classList.remove('show');
     headerMenu.classList.add('hide');
 }
-

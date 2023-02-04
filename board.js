@@ -5,9 +5,21 @@ let searchedTodos = [];
 let currentDraggedElements;
 
 
+
 async function initBoard() {
     await load();
     selectingArrayForBoardUpdate();
+}
+
+
+function highlightCurrentNavPoint() {
+    currentNavPoint = document.URL;
+    console.log(currentNavPoint);
+
+    // if (document.URL.includes(currentURL)) {
+    //     console.log(currentURL);
+    //     document.getElementById(currentURL).classList.add('bg-highlight');
+    // }
 }
 
 function clearBoard() {
@@ -91,9 +103,9 @@ function checkForSecondUser(assignments, id) {
 }
 
 
-function checkForMoreUsers(assignments, id){
-    if (assignments.length >2) {
-        let userlength = assignments.length -2;
+function checkForMoreUsers(assignments, id) {
+    if (assignments.length > 2) {
+        let userlength = assignments.length - 2;
         document.getElementById(`user-icons-${id}`).innerHTML += `
         <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>
         `;
@@ -119,7 +131,7 @@ function generateTodoHTML(element, assignments) {
 
     return /*html*/ `
     <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id})" ondragstart="startDragging(${element.id})">
-    <div class="detailView" id="detailView" style="display:none"></div>
+    <!-- <div class="detailView" id="detailView" style="display:none"></div> -->
     <div  class="card-name ${element.category.color}">${element.category.title}</div>
                                 <div class="card-text">
                                     <span class="card-headline">${element.title}</span>
@@ -131,7 +143,6 @@ function generateTodoHTML(element, assignments) {
                                 <div class="card-bottom">
                                     <div id="user-icons-${element.id}" class="user-icons">
                                         <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
-                                        <!-- <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+2</span></div> -->
                                     </div>
                                     <div><img src="img/priority-${element.priority}.svg"></div>
                                 </div>
@@ -162,25 +173,47 @@ function saveStatus() {
     backend.setItem('todo', todosAsText);
 }
 
-/**
- * created by sasha
- */
+
 
 function showCards(idOfCard) {
+    let detailContainer = document.getElementById('detailView');
+    detailContainer.classList.remove('d-none');
+    showShadowScreen('detail-view-shadow-screen');
     let todoArray = todos[idOfCard];
-    let detailContainer = document.getElementById("detailView");
-    let info = todoArray["info"];
-    let progressBar = todoArray["progress-bar"]
-    let status = todoArray["status"]
-    let titel = todoArray["titel"]
+    let categoryTitel = todoArray.category.title;
+    let categoryBg = todoArray.category.color;
+    let title = todoArray.title;
+    let description = todoArray.description;
+    let dueDate = todoArray.date;
+    let priority = todoArray.priority;
+    let assignedContacts = todoArray.assignments[0].firstName + todoArray.assignments[0].lastName;
 
-    detailContainer.innerHTML = `<div>
-        <span>${info}</span>
-        <span>${progressBar}</span>
-        <span>${status}</span>
-        <span>${titel}</span>
-    </div>`
-    detailContainer.removeAttribute("style");
+    detailContainer.innerHTML =/*html*/ `
+        <img src="assets/img/close.svg" alt="closing-icon" class="close-detail-view" onclick="closeDetailView()">
+        <div class="card-name ${categoryBg}">${categoryTitel}</div>
+        <div class="detail-view-title">${title}</div>
+        <div>${description}</div>
+        <div>
+            <span class="bold-styling">Due date: </span>
+            <div>${dueDate}</div>
+        </div>
+        <div>
+            <span class="bold-styling">Priority: </span>
+            <div>${priority}</div>
+        </div>
+            <span class="bold-styling">Assigned to: </span>
+        <div>
+            ${assignedContacts}
+        </div>
+        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="">
+`;  
+}
+
+function closeDetailView(){
+    let detailContainer = document.getElementById('detailView');
+    detailContainer.classList.add('d-none');
+    hideShadowScreen('detail-view-shadow-screen');
+    
 }
 
 /*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/

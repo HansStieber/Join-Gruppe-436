@@ -295,6 +295,38 @@
     transform: translateX(360px);
 }
 
+.detail-view {
+    display: flex;
+    flex-direction: column;
+    height: 824px;
+    width: 623px;
+    padding: 50px;
+    gap: 25px;
+    z-index: 4;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.close-detail-view {
+    height: 22px;
+    cursor: pointer;
+}
+
+.edit-task-btn {
+    height: 57px;
+    cursor: pointer;
+}
+
+.detail-view-title {
+    font-size: 61px;
+    font-weight: bold;
+}
+
+.bold-styling{
+    font-weight: bold;
+}
+
 @media(max-width:820px) {
     .kanban-mobile-span {
         display: block;

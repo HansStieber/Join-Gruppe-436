@@ -11,6 +11,11 @@
     background-color: #2A3647;
 }
 
+.bg-highlight {
+    background-color: black;
+ 
+}
+
 .navigation-container {
     width: 100%;
 }
