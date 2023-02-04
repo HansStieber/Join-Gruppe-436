@@ -223,7 +223,7 @@
     padding: 15px 25px;
 }
 
-.contact-card:hover {
+.contact-card-target {
     background: #2A3647;
     border-radius: 10px;
     color: white;

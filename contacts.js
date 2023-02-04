@@ -1,5 +1,6 @@
 let contacts = [];
 let contactToEditId;
+let actualCard;
 let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
     'X', 'Y', 'Z'];
@@ -126,7 +127,7 @@ function getBigCardElements() {
 function getCardInnerHTML(contact, i) {
     const { initials1, initials2, bgColor, firstName, lastName } = getContactInfo(contact);
     return /*html*/`
-    <div onclick="renderBigCard(${i})" class="contact-card">
+    <div onclick="renderBigCard(${i}),addHighlightContactCard(${i + 1})" id="contact-card-${i + 1}" class="contact-card">
         <div class="contact-initials-small" style="background-color:${bgColor}">
             <span>${initials1}</span>
             <span>${initials2}</span>
@@ -339,6 +340,22 @@ function addDnoneCardsDivMain() {
 function removeDnoneCardsDivMain(contact) {
     const { cardsMainLetter } = getCardElements(contact);
     cardsMainLetter.classList.remove('d-none');
+}
+
+
+function addHighlightContactCard(i) {
+    if (actualCard) {
+        removeHighlightContactCard();
+    }
+    let card = document.getElementById(`contact-card-${i}`);
+    card.classList.add('contact-card-target');
+    actualCard = i;
+}
+
+
+function removeHighlightContactCard() {
+    let card = document.getElementById(`contact-card-${actualCard}`);
+    card.classList.remove('contact-card-target');
 }
 
 
