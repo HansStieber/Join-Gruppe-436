@@ -92,7 +92,7 @@ function checkForSecondUser(assignments, id) {
 
 
 function checkForMoreUsers(assignments, id){
-    if (assignments.length >=2) {
+    if (assignments.length >2) {
         let userlength = assignments.length -2;
         document.getElementById(`user-icons-${id}`).innerHTML += `
         <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>
