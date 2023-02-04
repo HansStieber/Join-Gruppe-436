@@ -130,7 +130,7 @@ function generateTodoHTML(element, assignments) {
     let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
 
     return /*html*/ `
-    <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id})" ondragstart="startDragging(${element.id})">
+    <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id}), editTask()" ondragstart="startDragging(${element.id})">
     <!-- <div class="detailView" id="detailView" style="display:none"></div> -->
     <div  class="card-name ${element.category.color}">${element.category.title}</div>
                                 <div class="card-text">
