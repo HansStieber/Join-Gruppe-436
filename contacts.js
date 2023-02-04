@@ -159,30 +159,6 @@ function addContact() {
 }
 
 
-function confirmDelete() {
-    changeDeleteBtnOnclick('deleteContact()');
-    changeDeleteBtnSpan('Confirm');
-}
-
-
-function showDeleteBtn() {
-    changeDeleteBtnOnclick('confirmDelete()')
-    changeDeleteBtnSpan('Delete');
-}
-
-
-function changeDeleteBtnOnclick(functionName) {
-    let deleteBtn = document.getElementById('edit-delete-btn');
-    deleteBtn.setAttribute('onclick', `${functionName}`);
-}
-
-
-function changeDeleteBtnSpan(html) {
-    let deleteBtnSpan = document.getElementById('delete-btn-span');
-    deleteBtnSpan.innerHTML = html;
-}
-
-
 function deleteContact() {
     showDeleteBtn();
     contacts.splice(contactToEditId, 1);

@@ -6,9 +6,9 @@ let assignedContacts = [];
  * 
  * @param {number} i - index at assignments of the contact that is assigned
  */
-function assignContact(i) {
-    tickCheckboxOfContact(i);
-    setRemoveAssignmentOnclickFunction(i);
+function assignContact(i, edit) {
+    tickCheckboxOfContact(i, edit);
+    setRemoveAssignmentOnclickFunction(i, edit);
     setIndexOfCurrentContactVariable(i);
     assignedContacts.push(assignments[i]);
     loadContactIcon();
@@ -20,8 +20,8 @@ function assignContact(i) {
  * 
  * @param {number} i - index at assignments of the contact that is assigned 
  */
-function tickCheckboxOfContact(i) {
-    document.getElementById('checkbox' + i).classList.remove('d-none');
+function tickCheckboxOfContact(i, edit) {
+    document.getElementById('checkbox' + i + edit).classList.remove('d-none');
 }
 
 
@@ -31,10 +31,10 @@ function tickCheckboxOfContact(i) {
  * 
  * @param {number} i - index at assignments of the contact that is assigned
  */
-function setRemoveAssignmentOnclickFunction(i) {
+function setRemoveAssignmentOnclickFunction(i, edit) {
     let fN = assignments[i].firstName.toLowerCase();
     let lN = assignments[i].lastName.toLowerCase();
-    document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
+    document.getElementById('a-option' + edit + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}', '${edit}')`);
 }
 
 
@@ -78,8 +78,8 @@ function loadContactIcon() {
  * @param {string} fN - first name of the contact that is removed
  * @param {string} lN - last name of the contact that is removed
  */
-function removeAssignment(i, fN, lN) {
-    untickCheckboxOfContact(i);
+function removeAssignment(i, fN, lN, edit) {
+    untickCheckboxOfContact(i, edit);
     for (let i = 0; i < assignedContacts.length; i++) {
         const contact = assignedContacts[i];
         if (firstAndLastNameMatchParameters(contact, fN, lN)) {
@@ -96,9 +96,9 @@ function removeAssignment(i, fN, lN) {
  * 
  * @param {number} i - index at assignedContacts of the contact that is removed 
  */
-function untickCheckboxOfContact(i) {
-    document.getElementById('checkbox' + i).classList.add('d-none');
-    document.getElementById('a-option' + i).setAttribute('onclick', `assignContact(${i})`);
+function untickCheckboxOfContact(i, edit) {
+    document.getElementById('checkbox' + i + edit).classList.add('d-none');
+    document.getElementById('a-option' + edit + i).setAttribute('onclick', `assignContact(${i}, '${edit}')`);
 }
 
 

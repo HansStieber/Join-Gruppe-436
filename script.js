@@ -203,3 +203,29 @@ function hideMobileMenu(headerMenu) {
     headerMenu.classList.remove('show');
     headerMenu.classList.add('hide');
 }
+
+/**
+ * function to manipulate the Delete Button on Contacts and Board,.html.
+ */
+function confirmDelete(functionName) {
+    changeDeleteBtnOnclick(`${functionName}`);
+    changeDeleteBtnSpan('Confirm');
+}
+
+
+function showDeleteBtn() {
+    changeDeleteBtnOnclick('confirmDelete()')
+    changeDeleteBtnSpan('Delete');
+}
+
+
+function changeDeleteBtnOnclick(functionName) {
+    let deleteBtn = document.getElementById('edit-delete-btn');
+    deleteBtn.setAttribute('onclick', `${functionName}`);
+}
+
+
+function changeDeleteBtnSpan(html) {
+    let deleteBtnSpan = document.getElementById('delete-btn-span');
+    deleteBtnSpan.innerHTML = html;
+}

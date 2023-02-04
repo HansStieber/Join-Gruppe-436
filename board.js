@@ -3,7 +3,7 @@
 let tasks = [];
 let searchedTodos = [];
 let currentDraggedElements;
-
+let taskToEdit;
 
 
 async function initBoard() {
@@ -195,6 +195,7 @@ function saveStatus() {
 
 
 function showCards(idOfCard) {
+    taskToEdit = idOfCard;
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.remove('d-none');
     showShadowScreen('detail-view-shadow-screen');
@@ -202,6 +203,7 @@ function showCards(idOfCard) {
     howMuchUsersAreAssigned(idOfCard);
 }
 
+function closeDetailView() {
 function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
