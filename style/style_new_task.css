@@ -60,6 +60,8 @@ h1 {
     color: rgba(255, 0, 0, 0.44) !important;
 }
 
+/* === Category colors === */
+
 .orange {
     background-color: #ff7a00;
 }
@@ -94,6 +96,12 @@ h1 {
 
 .highlight {
     box-shadow: 1px 1px 6px 1px #000000;
+}
+
+/* === Scrollbar === */
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 /* === Animation classes === */
@@ -168,10 +176,6 @@ h1 {
     overflow: auto;
 }
 
-.content-new-task::-webkit-scrollbar {
-    display: none;
-}
-
 .new-task-form {
     display: flex;
     margin-top: 41px;
@@ -243,6 +247,7 @@ h1 {
 
 /* === Styling of scrollbars of textarea === */
 textarea::-webkit-scrollbar {
+    display: unset;
     width: 4px;
 }
 
@@ -289,6 +294,7 @@ textarea::-webkit-scrollbar-thumb {
 
 /* === Styling of scrollbars for dropdown selection input fields === */
 .options::-webkit-scrollbar {
+    display: unset;
     width: 4px;
 }
 
