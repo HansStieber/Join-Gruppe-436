@@ -83,13 +83,30 @@ function renderDoneColumn(todos) {
     let done = todos.filter(t => t.status == 'done');
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
-        console.log(element.assignments);
         const id = done[i].id;
         const assignments = done[i].assignments;
         document.getElementById('done').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
     }
+}
+
+/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
+
+
+function addTaskToStatusProgress() {
+    progressStatus = 'progress';
+    showNewTaskCard();
+}
+
+function addTaskToStatusFeedback() {
+    progressStatus = 'feedback';
+    showNewTaskCard();
+}
+
+function addTaskToStatusDone() {
+    progressStatus = 'done';
+    showNewTaskCard();
 }
 
 
@@ -150,6 +167,7 @@ function generateTodoHTML(element, assignments) {
     `;
 }
 
+/*----------- DRAG AND DROP -----------*/
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -173,48 +191,37 @@ function saveStatus() {
     backend.setItem('todo', todosAsText);
 }
 
+/*----------- DETAIL CARD-----------*/
 
 
 function showCards(idOfCard) {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.remove('d-none');
     showShadowScreen('detail-view-shadow-screen');
-    let todoArray = todos[idOfCard];
-    let categoryTitel = todoArray.category.title;
-    let categoryBg = todoArray.category.color;
-    let title = todoArray.title;
-    let description = todoArray.description;
-    let dueDate = todoArray.date;
-    let priority = todoArray.priority;
-    let assignedContacts = todoArray.assignments[0].firstName + todoArray.assignments[0].lastName;
-
-    detailContainer.innerHTML =/*html*/ `
-        <img src="assets/img/close.svg" alt="closing-icon" class="close-detail-view" onclick="closeDetailView()">
-        <div class="card-name ${categoryBg}">${categoryTitel}</div>
-        <div class="detail-view-title">${title}</div>
-        <div>${description}</div>
-        <div>
-            <span class="bold-styling">Due date: </span>
-            <div>${dueDate}</div>
-        </div>
-        <div>
-            <span class="bold-styling">Priority: </span>
-            <div>${priority}</div>
-        </div>
-            <span class="bold-styling">Assigned to: </span>
-        <div>
-            ${assignedContacts}
-        </div>
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="">
-`;  
+    detailContainer.innerHTML = generateHTMLDetailCard(idOfCard);
+    howMuchUsersAreAssigned(idOfCard);
 }
 
-function closeDetailView(){
+function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
-    
 }
+
+function howMuchUsersAreAssigned(idOfCard) {
+    let assignmentsArray = todos[idOfCard].assignments;
+    for (let i = 0; i < assignmentsArray.length; i++) {
+        const assignment = assignmentsArray[i];
+        let assignedContact = assignment.firstName + " " + assignment.lastName;
+        document.getElementById('assignedContacts').innerHTML += /*html*/`
+        <div class="assignedContacts">
+            <div class="initials-icon">##</div>
+            <div>${assignedContact}</div>
+        </div>
+        `;
+    }
+}
+
 
 /*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
 /**
@@ -236,20 +243,37 @@ function findTask() {
     }
 }
 
-/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 
+/*----------- HTML Templates -----------*/
 
-function addTaskToStatusProgress() {
-    progressStatus = 'progress';
-    showNewTaskCard();
-}
+function generateHTMLDetailCard(idOfCard) {
+    let todoArray = todos[idOfCard];
+    let categoryTitel = todoArray.category.title;
+    let categoryBg = todoArray.category.color;
+    let title = todoArray.title;
+    let description = todoArray.description;
+    let dueDate = todoArray.date;
+    let priority = todoArray.priority;
+    let assignedContacts = todoArray.assignments[0].firstName + todoArray.assignments[0].lastName;
 
-function addTaskToStatusFeedback() {
-    progressStatus = 'feedback';
-    showNewTaskCard();
-}
+    return /*html*/`
+        <img src="assets/img/close.svg" alt="closing-icon" class="icon-settings" onclick="closeDetailView()">
+        <img src="assets/img/left_arrow.svg" alt="left arrow" class="icon-settings d-none">
+        <div class="category-styling ${categoryBg}">${categoryTitel}</div>
+        <div class="detail-view-title">${title}</div>
+        <div>${description}</div>
+        <div class="flex-center">
+            <span class="subheading-styling">Due date: </span>
+            <div>${dueDate}</div>
+        </div>
+        <div class="flex-center">
+            <span class="subheading-styling">Priority: </span>
+            <img src="assets/img/${priority}_detailview.svg">
+        </div class="flex-center">
+            <span class="subheading-styling">Assigned to: </span>
+        <div id="assignedContacts">
+        </div>
+        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="">
+`;
 
-function addTaskToStatusDone() {
-    progressStatus = 'done';
-    showNewTaskCard();
 }
