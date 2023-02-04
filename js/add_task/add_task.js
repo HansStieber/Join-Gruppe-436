@@ -35,7 +35,7 @@ function leave(id, path) {
 function loadAllOptions() {
     loadCategoryColors();
     loadCategoryOptions();
-    loadAssignmentOptions();
+    loadAssignmentOptions('');
     loadAssignedContacts();
 }
 
@@ -67,11 +67,11 @@ function lastCategoryOption(i) {
 }
 
 
-function loadAssignmentOptions() {
-    document.getElementById('contacts-dropdown-container').innerHTML = '';
+function loadAssignmentOptions(edit) {
+    document.getElementById('contacts-dropdown-container' + edit).innerHTML = '';
     for (let i = 0; i < assignments.length; i++) {
         const option = assignments[i];
-        renderAssignmentOptions(option, i);
+        renderAssignmentOptions(option, i, edit);
     }
 }
 
@@ -134,8 +134,8 @@ function hideCategoryOptions() {
     }
 }
 
-function containerWithTargetedIdsExists(x, i) {
-    return typeof (document.getElementById(x + '-option' + i)) != 'undefined' && document.getElementById(x + '-option' + i) != null
+function containerWithTargetedIdsExists(x, i, edit) {
+    return typeof (document.getElementById(x + '-option' + edit + i)) != 'undefined' && document.getElementById(x + '-option' + edit + i) != null
 }
 
 function addOpenCategoriesFunction() {
@@ -150,46 +150,46 @@ function playCloseDropdownAnimation(id) {
 
 
 /*----------- OPEN DROPDOWN MENU FOR ASSIGNMENT -----------*/
-function openDropdownAssignment() {
+function openDropdownAssignment(edit) {
     closeDropdownCategory();
-    showAssignmentOptions();
-    addCloseContactsFunction();
+    showAssignmentOptions(edit);
+    addCloseContactsFunction(edit);
     contactsOpen = true;
 }
 
-function showAssignmentOptions() {
+function showAssignmentOptions(edit) {
     for (let i = 0; i < assignments.length; i++) {
-        document.getElementById('a-option' + i).classList.remove('d-none');
+        document.getElementById('a-option' + edit + i).classList.remove('d-none');
     }
-    document.getElementById('invite-new-contact').classList.remove('d-none');
-    playOpenDropdownAnimation('options-contact');
+    document.getElementById('invite-new-contact' + edit).classList.remove('d-none');
+    playOpenDropdownAnimation('options-contact' + edit);
 }
 
-function addCloseContactsFunction() {
-    document.getElementById('select-contact-container').setAttribute('onclick', 'closeDropdownAssignment()');
+function addCloseContactsFunction(edit) {
+    document.getElementById('select-contact-container' + edit).setAttribute('onclick', `closeDropdownAssignment('${edit}')`);
 }
 
 
 /*----------- CLOSE DROPDOWN MENU FOR ASSIGNMENT -----------*/
-function closeDropdownAssignment() {
-    hideAssignmentOptions();
-    addOpenContactsFunktion();
+function closeDropdownAssignment(edit) {
+    hideAssignmentOptions(edit);
+    addOpenContactsFunktion(edit);
     contactsOpen = false;
 }
 
 
-function hideAssignmentOptions() {
+function hideAssignmentOptions(edit) {
     for (let i = 0; i < assignments.length; i++) {
-        if (containerWithTargetedIdsExists('a', i)) {
-            document.getElementById('a-option' + i).classList.add('d-none');
+        if (containerWithTargetedIdsExists('a', i, edit)) {
+            document.getElementById('a-option' + edit + i).classList.add('d-none');
         }
     }
-    document.getElementById('invite-new-contact').classList.add('d-none');
+    document.getElementById('invite-new-contact' + edit).classList.add('d-none');
     if (contactsOpen == true) {
-        playCloseDropdownAnimation('options-contact');
+        playCloseDropdownAnimation('options-contact' + edit);
     }
 }
 
-function addOpenContactsFunktion() {
-    document.getElementById('select-contact-container').setAttribute('onclick', 'openDropdownAssignment()');
+function addOpenContactsFunktion(edit) {
+    document.getElementById('select-contact-container' + edit).setAttribute('onclick', `openDropdownAssignment('${edit}')`);
 }

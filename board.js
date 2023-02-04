@@ -341,15 +341,15 @@ function editTask(id) {
                 </div>
                 <div id="contact-options-container" class="options-container">
                     <div class="option">
-                        <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
+                        <div id="select-contact-container-at-edit" class="select-container" onclick="openDropdownAssignment('-at-edit')">
                             <span>Select contacts to assign</span><img class="dropdown-arrow"
                                 src="assets/img/arrow_select_dropdown.svg">
                         </div>
                     </div>
-                    <div id="options-contact" class="options">
-                        <div id="contacts-dropdown-container">
+                    <div id="options-contact-at-edit" class="options">
+                        <div id="contacts-dropdown-container-at-edit">
                         </div>
-                        <div id="invite-new-contact"
+                        <div id="invite-new-contact-at-edit"
                             class="option d-none selectable checkbox-container space-between last-option"
                             onclick="inviteNewContact()">
                             <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
@@ -367,7 +367,14 @@ function editTask(id) {
     if (priority == 'urgent') {
         taskIsUrgent('urgent', 'urgent_big', 'medium', 'low', 'edit-');
     }
-    loadAssignmentOptions();
+    if (priority == 'medium') {
+        taskIsMedium('medium', 'medium_big', 'low', 'urgent', 'edit-');
+    }
+    if (priority == 'low') {
+        taskIsLow('low', 'low_big', 'urgent', 'medium', 'edit-');
+    }
+    
+    loadAssignmentOptions('-at-edit');
 }
 
 function editTitle() {

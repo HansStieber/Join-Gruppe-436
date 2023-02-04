@@ -73,12 +73,12 @@ function renderCategoryColors(color, i) {
  * @param {object} option - contact option at position i at the contacts array
  * @param {number} i - index of the option at the contacts array
  */
-function renderAssignmentOptions(option, i) {
-    document.getElementById('contacts-dropdown-container').innerHTML += `
-    <div id="${'a-option' + i}" class="option d-none selectable checkbox-contacts" onclick="assignContact(${i})">
+function renderAssignmentOptions(option, i, edit) {
+    document.getElementById('contacts-dropdown-container' + edit).innerHTML += `
+    <div id="${'a-option' + edit + i}" class="option d-none selectable checkbox-contacts" onclick="assignContact(${i}, '${edit}')">
         <span>${option.firstName + ' ' + option.lastName}</span>
         <div class="checkbox-contacts-unchecked">
-            <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
+            <div id="${'checkbox' + i + edit}" class="checkbox-contacts-checked d-none"></div>
         </div>
     </div> 
     `;
