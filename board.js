@@ -363,11 +363,11 @@ function editTask(id) {
             </div>
             
     `;
-    console.log(title);
     let priority = todos[id].priority;
     if (priority == 'urgent') {
         taskIsUrgent('urgent', 'urgent_big', 'medium', 'low', 'edit-');
     }
+    loadAssignmentOptions();
 }
 
 function editTitle() {
@@ -421,6 +421,8 @@ function saveChanges(id) {
     if (newDate) {
         todos[id].date = newDate;
     }
+    getPriority();
+    todos[id].priority = priority;
     closeDetailView();
     saveTasks();
     selectingArrayForBoardUpdate();

@@ -343,7 +343,7 @@
 
 .title-to-edit {
     position: absolute;
-    top: 40px;
+    top: 41px;
     left: 21px;
     font-size: 21px;
     max-width: calc(100% - 42px);
@@ -352,7 +352,7 @@
 
 .description-to-edit {
     position: absolute;
-    top: 40px;
+    top: 41px;
     left: 21px;
     font-size: 21px;
     max-width: calc(100% - 42px);
@@ -362,7 +362,7 @@
 
 .date-to-edit {
     position: absolute;
-    top: 40px;
+    top: 41px;
     left: 21px;
     font-size: 21px;
 }
