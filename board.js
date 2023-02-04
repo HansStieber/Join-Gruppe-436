@@ -130,7 +130,7 @@ function generateTodoHTML(element, assignments) {
     let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
 
     return /*html*/ `
-    <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id}), editTask()" ondragstart="startDragging(${element.id})">
+    <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id})" ondragstart="startDragging(${element.id})">
     <!-- <div class="detailView" id="detailView" style="display:none"></div> -->
     <div  class="card-name ${element.category.color}">${element.category.title}</div>
                                 <div class="card-text">
@@ -205,7 +205,7 @@ function showCards(idOfCard) {
         <div>
             ${assignedContacts}
         </div>
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="">
+        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask()">
 `;  
 }
 
@@ -257,5 +257,70 @@ function addTaskToStatusDone() {
 
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 function editTask() {
-    
+    let detailContainer = document.getElementById('detailView');
+    let todoArray = todos[idOfCard];
+    let title = todoArray.title;
+    let description = todoArray.description;
+    let dueDate = todoArray.date;
+    let priority = todoArray.priority;
+    detailContainer.innerHTML = `
+            <div class="field-container">
+                <label class="label" for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter a title" required>
+            </div>
+            <div class="field-container">
+                <label class="label" for="description">Description</label>
+                <textarea type="text" id="description" name="description" placeholder="Enter a Description"
+                    required></textarea>
+            </div>
+            <div class="field-container">
+                <span class="label">Due date</span>
+                <input id="date" type="date">
+            </div>
+            <div class="field-container">
+                <span class="label">Prio</span>
+                <div class="prio-box">
+                    <img id="prio-urgent" class="prio-urgent" src="assets/img/urgent_big.svg"
+                        onclick="taskIsUrgent('urgent', 'urgent_big', 'medium', 'low')"
+                        onmouseover="hover('urgent', 'urgent_big')" onmouseout="leave('urgent', 'urgent_big')">
+                    <img id="prio-medium" class="prio-medium" src="assets/img/medium_big.svg"
+                        onclick="taskIsMedium('medium', 'medium_big', 'low', 'urgent')"
+                        onmouseover="hover('medium', 'medium_big')" onmouseout="leave('medium', 'medium_big')">
+                    <img id="prio-low" class="prio-low" src="assets/img/low_big.svg"
+                        onclick="taskIsLow('low', 'low_big', 'urgent', 'medium')" onmouseover="hover('low', 'low_big')"
+                        onmouseout="leave('low', 'low_big')">
+                </div>
+            </div>
+            <div class="field-container">
+                <span class="label">Assign to</span>
+                <div id="new-contact-container" class="field-container d-none">
+                    <input type="text" id="new-contact" name="new-contact" class="d-none" placeholder="Contact email">
+                    <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg"
+                        onclick="closeInviteContact()">
+                    <div class="border-small mid-pos"></div>
+                    <img id="invite-contact-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg"
+                        onclick="inviteContact()">
+                </div>
+                <div id="contact-options-container" class="options-container">
+                    <div class="option">
+                        <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
+                            <span>Select contacts to assign</span><img class="dropdown-arrow"
+                                src="assets/img/arrow_select_dropdown.svg">
+                        </div>
+                    </div>
+                    <div id="options-contact" class="options">
+                        <div id="contacts-dropdown-container">
+                        </div>
+                        <div id="invite-new-contact"
+                            class="option d-none selectable checkbox-container space-between last-option"
+                            onclick="inviteNewContact()">
+                            <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
+                        </div>
+                    </div>
+                </div>
+                <div id="assignments-icons-container" class="assignments-icons-container">
+                </div>
+            </div>
+        </div>
+    `;
 }
