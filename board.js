@@ -227,11 +227,18 @@ function closeDetailView() {
 function deleteTask() {
     showDeleteBtn();
     todos.splice(taskToEdit, 1);
+    setNewTodoIds();
     saveArrayToBackend('todo', todos);
     closeDetailView();
     renderBoard(todos);
 }
 
+function setNewTodoIds() {
+    for (let i = 0; i < todos.length; i++) {
+        const todo = todos[i];
+        todo.id = i;
+    }
+}
 
 /*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
 /**
