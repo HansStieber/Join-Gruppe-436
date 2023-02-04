@@ -48,6 +48,8 @@ header {
     top: 90px;
     right: 40px;
     gap: 5px;
+    opacity: 0;
+    transition: opacity 220ms ease;
 }
 
 .mobile-menu>a, .logout-btn>a {
@@ -57,65 +59,16 @@ header {
     cursor: pointer;
 }
 
-.hide {
-    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    right: -5px;
+.show{
+    opacity: 1;
+    transition: opacity 220ms ease;
 }
 
-@-webkit-keyframes slide-right {
-    0% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
+.hide{
+   opacity: 0;
+    transition: opacity 220ms ease;
 }
 
-@keyframes slide-right {
-    0% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-
-    100% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-}
-
-.show {
-    display: flex;
-    -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@-webkit-keyframes slide-left {
-    0% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-}
-
-@keyframes slide-left {
-    0% {
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%);
-    }
-}
 
 @media (max-width: 992px) {
     header {

@@ -1,5 +1,6 @@
 let spliceCurrentContact;
 let indexOfCurrentContact = -1;
+let headerMenu;
 
 async function load() {
     await loadBackend();
@@ -180,22 +181,27 @@ function hideNewTaskCloseBtn() {
     closeBtn.classList.add('d-none');
 }
 
+
 function toggleMobileMenu() {
     checkWindowSize();
-    id.classList.contains('hide') ? showMobileMenu(id) : hideMobileMenu(id);
+    headerMenu.classList.contains('hide') ? showMobileMenu(headerMenu) : hideMobileMenu(headerMenu);
 }
+
 
 function checkWindowSize() {
-    return window.innerWidth <= 992 ? id = document.getElementById('mobileMenu') : id = document.getElementById('logoutBtn')
+    return window.innerWidth <= 992 ? headerMenu = document.getElementById('mobileMenu') : headerMenu = document.getElementById('logoutBtn')
 }
 
-function showMobileMenu(id) {
-    id.classList.remove('hide');
-    id.classList.add('show');
+
+function showMobileMenu(headerMenu) {
+    headerMenu.classList.remove('hide');
+    headerMenu.classList.add('show');
+
 }
 
-function hideMobileMenu(id) {
-    id.classList.add('hide');
-    id.classList.remove('show');
+
+function hideMobileMenu(headerMenu) {
+    headerMenu.classList.remove('show');
+    headerMenu.classList.add('hide');
 }
 
