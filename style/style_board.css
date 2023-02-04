@@ -322,8 +322,29 @@
     font-weight: bold;
 }
 
-.bold-styling{
+.bold-styling {
     font-weight: bold;
+}
+
+/* === Styling of edit Card container === */
+.edit-todo-button {
+    position: absolute;
+    right: 0;
+    bottom: -110px;
+    width: 83px;
+    height: 61px;
+    background-image: url('../assets/img/edit_todo.svg');
+}
+
+.title-to-edit {
+    position: absolute;
+    top: 40px;
+    left: 21px;
+    font-size: 21px;
+}
+
+.title-to-edit:hover {
+    cursor: pointer;
 }
 
 @media(max-width:820px) {
