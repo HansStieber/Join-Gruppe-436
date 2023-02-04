@@ -336,6 +336,10 @@
     background-image: url('../assets/img/edit_todo.svg');
 }
 
+.edit-todo-button:hover {
+    cursor: pointer;
+}
+
 .title-to-edit {
     position: absolute;
     top: 40px;
