@@ -1,7 +1,6 @@
 .board-outer-div {
     max-width: 1260px;
     /*height: calc(100vh - 172px);*/
-    overflow: auto;
 }
 
 .cards-slide-div {
@@ -9,15 +8,15 @@
     height: calc(100vh - 335px);
 }
 
-.slide-bar-scroll::-webkit-scrollbar {
+.slide-board-scroll::-webkit-scrollbar {
     width: 6px;
 }
 
-.slide-bar-scroll::-webkit-scrollbar-track {
+.slide-board-scroll::-webkit-scrollbar-track {
     background: white;
 }
 
-.slide-bar-scroll::-webkit-scrollbar-thumb {
+.slide-board-scroll::-webkit-scrollbar-thumb {
     background-color: #A8A8A8;
     border-radius: 10px;
 }
@@ -30,7 +29,7 @@
 }
 
 /* Up */
-.slide-bar-scroll::-webkit-scrollbar-button:single-button:vertical:decrement {
+.slide-board-scroll::-webkit-scrollbar-button:single-button:vertical:decrement {
     cursor: pointer;
     height: 12px;
     width: 16px;
@@ -40,7 +39,7 @@
 }
 
 /* Down */
-.slide-bar-scroll::-webkit-scrollbar-button:single-button:vertical:increment {
+.slide-board-scroll::-webkit-scrollbar-button:single-button:vertical:increment {
     height: 12px;
     width: 16px;
     background-repeat: no-repeat;
