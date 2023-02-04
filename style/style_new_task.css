@@ -693,9 +693,6 @@ input[type='date']:hover {
     }
 
     .submit-button {
-        position: absolute;
-        right: 0;
-        bottom: -110px;
         background-image: url('../assets/img/create_task_mobile.svg');
         background-position: center;
         margin-left: 0;

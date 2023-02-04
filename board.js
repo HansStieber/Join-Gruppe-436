@@ -271,7 +271,7 @@ function editTask(id) {
             </div>
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="description">Description</label>
-                <textarea type="text" id="description" name="description" placeholder="Enter a Description"
+                <textarea type="text" id="new-description" name="description" placeholder="Enter a Description"
                     required></textarea>
             </div>
             <div class="field-container margin-bottom-zero">
