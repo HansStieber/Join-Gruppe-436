@@ -253,3 +253,9 @@ function addTaskToStatusDone() {
     progressStatus = 'done';
     showNewTaskCard();
 }
+
+
+/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
+function editTask() {
+    
+}
