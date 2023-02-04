@@ -206,8 +206,8 @@ function showCards(idOfCard) {
         <div>
             ${assignedContacts}
         </div>
-<<<<<<< HEAD
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask()">
+<img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
+        
         <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn" type="button">
                         <div>
                             <span id="delete-btn-span">Delete</span>
@@ -215,10 +215,6 @@ function showCards(idOfCard) {
                         </div>
                     </button>
 `;
-=======
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
-`;  
->>>>>>> ad38a0f33edaedf786b52b24e958f1a1930e98d2
 }
 
 function closeDetailView() {
@@ -279,21 +275,11 @@ function addTaskToStatusDone() {
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 function editTask(idOfCard) {
     let detailContainer = document.getElementById('detailView');
-<<<<<<< HEAD
-    let todoArray = todos[idOfCard];
-    let title = todoArray.title;
-    let description = todoArray.description;
-    let dueDate = todoArray.date;
-    let priority = todoArray.priority;
-    detailContainer.innerHTML = /*html*/`
-            <div class="field-container">
-=======
     //let description = todoArray.description;
     //let dueDate = todoArray.date;
     //let priority = todoArray.priority;
-    detailContainer.innerHTML = `
+    detailContainer.innerHTML = /*html*/`
             <div class="field-container margin-bottom-zero">
->>>>>>> ad38a0f33edaedf786b52b24e958f1a1930e98d2
                 <label class="label" for="title">Title</label>
                 <input type="text" id="title" name="title" required>
                 <span id="title-to-edit" class="title-to-edit" onclick=editTitle(${idOfCard})>${title}</span>
