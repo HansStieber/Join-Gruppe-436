@@ -94,8 +94,8 @@ function renderAssignmentOptions(option, i, edit) {
  * @param {string} firstLetterLasttName - first letter of the last name
  * @param {string} color - the color of the contact which defines the background color of the icon
  */
-function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color) {
-    document.getElementById('assignments-icons-container').innerHTML += `
+function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color, edit) {
+    document.getElementById('assignments-icons-container' + edit).innerHTML += `
     <div style="background-color: ${color}" class="contact-icon">
         <span>${firstLetterFirstName}</span>
         <span>${firstLetterLasttName}</span>

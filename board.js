@@ -293,7 +293,7 @@ function editTask(id) {
     let m2 = todos[id].date.charAt(6);
     let d1 = todos[id].date.charAt(8);
     let d2 = todos[id].date.charAt(9);
-    
+
     detailContainer.innerHTML = /*html*/`
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="title">Title</label>
@@ -356,7 +356,7 @@ function editTask(id) {
                         </div>
                     </div>
                 </div>
-                <div id="assignments-icons-container" class="assignments-icons-container">
+                <div id="assignments-icons-container-at-edit" class="assignments-icons-container">
                 </div>
                 <div class="edit-todo-button" onclick="saveChanges(${id})">
                 </div>
@@ -373,9 +373,22 @@ function editTask(id) {
     if (priority == 'low') {
         taskIsLow('low', 'low_big', 'urgent', 'medium', 'edit-');
     }
-    
+
+    for (let i = 0; i < todos[id].assignments.length; i++) {
+        const option = todos[id].assignments[i];
+        if (assignments.every(a => a.firstName !== option.firstName) && assignments.every(a => a.lastName !== option.lastName)) {
+            assignments.push(option);
+        }
+    }
     loadAssignmentOptions('-at-edit');
+    for (let i = 0; i < assignments.length; i++) {
+        const assignment = assignments[i];
+        if (todos[id].assignments.some(a => a.firstName == assignment.firstName) && todos[id].assignments.some(a => a.lastName == assignment.lastName)) {
+            assignContact(i, '-at-edit');
+        }
+    }
 }
+
 
 function editTitle() {
     document.getElementById('title-to-edit').classList.add('d-none');
@@ -416,6 +429,7 @@ function showOldDate() {
 }
 
 function saveChanges(id) {
+    assignedContacts = [];
     let newTitle = document.getElementById('new-title').value;
     if (newTitle) {
         todos[id].title = newTitle;

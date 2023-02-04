@@ -83,7 +83,7 @@ function showNewTaskCard(edit) {
 //Von Hans
 function selectCurrentContact(i, edit) {
     if (assignments.some(a => a.firstName === contacts[i].firstName) && assignments.some(a => a.lastName === contacts[i].lastName)) {
-        loadAllOptions();
+        loadAssignmentOptions(edit);
         for (let k = 0; k < assignments.length; k++) {
             const assignment = assignments[k];
             if (assignment.firstName === contacts[i].firstName) {
@@ -94,7 +94,7 @@ function selectCurrentContact(i, edit) {
         spliceCurrentContact = false;
     } else {
         assignments.push(contacts[i]);
-        loadAllOptions();
+        loadAssignmentOptions(edit);
         if (indexOfCurrentContact == -1 && assignments.some(a => a.email == contacts[i].email)) {
             indexOfCurrentContact = assignments.indexOf(contacts[i]);
         }

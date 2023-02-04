@@ -11,7 +11,7 @@ function assignContact(i, edit) {
     setRemoveAssignmentOnclickFunction(i, edit);
     setIndexOfCurrentContactVariable(i);
     assignedContacts.push(assignments[i]);
-    loadContactIcon();
+    loadContactIcon(edit);
 }
 
 
@@ -56,14 +56,14 @@ function setIndexOfCurrentContactVariable(i) {
  * assignedContacts. The first letter of first and last name is and the color ist taken from each contact and used as a parameter at the
  * renderContactIcon() function which finally renders the html of every icon.
  */
-function loadContactIcon() {
-    document.getElementById('assignments-icons-container').innerHTML = '';
+function loadContactIcon(edit) {
+    document.getElementById('assignments-icons-container' + edit).innerHTML = '';
     for (let i = 0; i < assignedContacts.length; i++) {
         const contact = assignedContacts[i];
         let firstLetterFirstName = contact.firstName.slice(0, 1);
         let firstLetterLasttName = contact.lastName.slice(0, 1);
         let bgColor = contact.color;
-        renderContactIcon(firstLetterFirstName, firstLetterLasttName, bgColor);
+        renderContactIcon(firstLetterFirstName, firstLetterLasttName, bgColor, edit);
     }
 }
 
@@ -84,7 +84,7 @@ function removeAssignment(i, fN, lN, edit) {
         const contact = assignedContacts[i];
         if (firstAndLastNameMatchParameters(contact, fN, lN)) {
             assignedContacts.splice(i, 1);
-            loadContactIcon();
+            loadContactIcon(edit);
         }
     }
 }
