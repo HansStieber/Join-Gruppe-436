@@ -206,14 +206,14 @@ function showCards(idOfCard) {
             ${assignedContacts}
         </div>
         <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
-`;  
+`;
 }
 
-function closeDetailView(){
+function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
-    
+
 }
 
 /*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
@@ -256,16 +256,18 @@ function addTaskToStatusDone() {
 
 
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
-function editTask(idOfCard) {
+function editTask(id) {
+    document.getElementById('detail-view-shadow-screen').setAttribute('onclick', 'unfocusInput()');
     let detailContainer = document.getElementById('detailView');
-    //let description = todoArray.description;
+    let title = todos[id].title;
+    let description = todos[id].description;
     //let dueDate = todoArray.date;
     //let priority = todoArray.priority;
     detailContainer.innerHTML = `
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="title">Title</label>
-                <input type="text" id="title" name="title" required>
-                <span id="title-to-edit" class="title-to-edit" onclick=editTitle(${idOfCard})>${title}</span>
+                <input type="text" id="new-title" name="title" onclick="editTitle()" required>
+                <span id="title-to-edit" class="title-to-edit">${title}</span>
             </div>
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="description">Description</label>
@@ -319,17 +321,29 @@ function editTask(idOfCard) {
                 </div>
                 <div id="assignments-icons-container" class="assignments-icons-container">
                 </div>
-                <div class="edit-todo-button">
+                <div class="edit-todo-button" onclick="saveChanges(${id})">
                 </div>
             </div>
             
     `;
+    console.log(title);
 }
 
-function editTitle(id) {
+function unfocusInput() {
+    //document.getElementById('title-to-edit').classList.remove('d-none');
 }
 
-function saveChanges() {
+function editTitle() {
+    document.getElementById('title-to-edit').classList.add('d-none');
+    document.getElementById('title').setAttribute('placeholder', "Enter a title");
+}
 
-    todos[i].title
+function saveChanges(id) {
+    let newTitle = document.getElementById('new-title').value;
+    if (newTitle) {
+        todos[id].title = newTitle;
+    }
+    closeDetailView();
+    saveTasks();
+    selectingArrayForBoardUpdate();
 }
