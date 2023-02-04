@@ -206,7 +206,8 @@ function showCards(idOfCard) {
         <div>
             ${assignedContacts}
         </div>
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
+        
+<img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
         
         <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn" type="button">
                         <div>
@@ -227,11 +228,18 @@ function closeDetailView() {
 function deleteTask() {
     showDeleteBtn();
     todos.splice(taskToEdit, 1);
+    setNewTodoIds();
     saveArrayToBackend('todo', todos);
     closeDetailView();
     renderBoard(todos);
 }
 
+function setNewTodoIds() {
+    for (let i = 0; i < todos.length; i++) {
+        const todo = todos[i];
+        todo.id = i;
+    }
+}
 
 /*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
 /**
