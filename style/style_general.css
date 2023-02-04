@@ -37,8 +37,37 @@ HELLGRAU (BACKGROUND): #F5F5F5
 */
 
 
-/* buttons */
+/* delete-button at Contacts.html and Board.html */
+.delete-btn {
+    width: 136px;
+    height: 61px;
+    margin-left: 15px;
+    background-color: white;
+    padding: 18px 10px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
 
+.delete-btn:hover {
+    border: 2px solid #f61919b8;
+    box-shadow: 0px 4px 4px #f61919a7;
+    transition: 100ms ease-in-out;
+}
+
+.delete-btn:active {
+    background-color: #fc50507f;
+    border: 1px solid #091931;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.delete-btn span {
+    color: #2A3647;
+    font-size: 21px;
+    font-weight: 400;
+    margin-right: 10px;
+}
 
 /* centers overlay */
 .general-overlay {

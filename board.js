@@ -3,7 +3,7 @@
 let tasks = [];
 let searchedTodos = [];
 let currentDraggedElements;
-
+let taskToEdit;
 
 
 async function initBoard() {
@@ -176,6 +176,7 @@ function saveStatus() {
 
 
 function showCards(idOfCard) {
+    taskToEdit = idOfCard;
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.remove('d-none');
     showShadowScreen('detail-view-shadow-screen');
@@ -206,15 +207,30 @@ function showCards(idOfCard) {
             ${assignedContacts}
         </div>
         <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask()">
-`;  
+        <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn" type="button">
+                        <div>
+                            <span id="delete-btn-span">Delete</span>
+                            <img src="../assets/img/close.svg">
+                        </div>
+                    </button>
+`;
 }
 
-function closeDetailView(){
+function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
-    
+
 }
+
+function deleteTask() {
+    showDeleteBtn();
+    todos.splice(taskToEdit, 1);
+    saveArrayToBackend('todo', todos);
+    closeDetailView();
+    renderBoard(todos);
+}
+
 
 /*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
 /**
@@ -263,7 +279,7 @@ function editTask() {
     let description = todoArray.description;
     let dueDate = todoArray.date;
     let priority = todoArray.priority;
-    detailContainer.innerHTML = `
+    detailContainer.innerHTML = /*html*/`
             <div class="field-container">
                 <label class="label" for="title">Title</label>
                 <input type="text" id="title" name="title" placeholder="Enter a title" required>
