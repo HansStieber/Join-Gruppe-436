@@ -206,10 +206,7 @@ function showCards(idOfCard) {
         <div>
             ${assignedContacts}
         </div>
-<<<<<<< HEAD
         <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
-=======
-<img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
         
         <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn" type="button">
                         <div>
@@ -217,7 +214,6 @@ function showCards(idOfCard) {
                             <img src="../assets/img/close.svg">
                         </div>
                     </button>
->>>>>>> 74b4188c5736a0de57e16597f4a48d62cd4cf8f9
 `;
 }
 
@@ -292,8 +288,9 @@ function editTask(id) {
             </div>
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="description">Description</label>
-                <textarea type="text" id="new-description" name="description" placeholder="Enter a Description"
+                <textarea type="text" id="new-description" name="description" onclick="editDescription()"
                     required></textarea>
+                <span id="description-to-edit" class="description-to-edit">${description}</span>
             </div>
             <div class="field-container margin-bottom-zero">
                 <span class="label">Due date</span>
@@ -359,10 +356,19 @@ function editTitle() {
     document.getElementById('title').setAttribute('placeholder', "Enter a title");
 }
 
+function editDescription() {
+    document.getElementById('description-to-edit').classList.add('d-none');
+    document.getElementById('description').setAttribute('placeholder', "Enter a description");
+}
+
 function saveChanges(id) {
     let newTitle = document.getElementById('new-title').value;
     if (newTitle) {
         todos[id].title = newTitle;
+    }
+    let newDescription = document.getElementById('new-description').value;
+    if (newDescription) {
+        todos[id].description = newDescription;
     }
     closeDetailView();
     saveTasks();

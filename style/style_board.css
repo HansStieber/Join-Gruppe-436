@@ -347,6 +347,13 @@
     font-size: 21px;
 }
 
+.description-to-edit {
+    position: absolute;
+    top: 40px;
+    left: 21px;
+    font-size: 21px;
+}
+
 .title-to-edit:hover {
     cursor: pointer;
 }
