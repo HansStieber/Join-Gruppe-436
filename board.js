@@ -280,44 +280,55 @@ function addTaskToStatusDone() {
 }
 
 
-/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
+/*----------- EDIT SELECTED TODO -----------*/
 function editTask(id) {
-    document.getElementById('detail-view-shadow-screen').setAttribute('onclick', 'unfocusInput()');
     let detailContainer = document.getElementById('detailView');
     let title = todos[id].title;
     let description = todos[id].description;
-    //let dueDate = todoArray.date;
-    //let priority = todoArray.priority;
+    let y1 = todos[id].date.charAt(0);
+    let y2 = todos[id].date.charAt(1);
+    let y3 = todos[id].date.charAt(2);
+    let y4 = todos[id].date.charAt(3);
+    let m1 = todos[id].date.charAt(5);
+    let m2 = todos[id].date.charAt(6);
+    let d1 = todos[id].date.charAt(8);
+    let d2 = todos[id].date.charAt(9);
+    
     detailContainer.innerHTML = /*html*/`
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="title">Title</label>
-                <input type="text" id="new-title" name="title" onclick="editTitle()" required>
-                <span id="title-to-edit" class="title-to-edit">${title}</span>
+                <input type="text" id="new-title" name="title" onclick="editTitle()" onfocusout="showOldTitle()" required>
+                <span id="title-to-edit" class="title-to-edit" onclick="editTitle()">${title}</span>
             </div>
+
             <div class="field-container margin-bottom-zero">
                 <label class="label" for="description">Description</label>
-                <textarea type="text" id="new-description" name="description" onclick="editDescription()"
+                <textarea type="text" id="new-description" name="description" onclick="editDescription()" onfocusout="showOldDescription()"
                     required></textarea>
-                <span id="description-to-edit" class="description-to-edit">${description}</span>
+                <span id="description-to-edit" class="description-to-edit" onclick="editDescription()">${description}</span>
             </div>
+
             <div class="field-container margin-bottom-zero">
                 <span class="label">Due date</span>
-                <input id="date" type="date">
+                <input class="color-transparent" id="new-date" type="date" onclick="editDate()" onfocusout="showOldDate()">
+                <span id="date-to-edit" class="date-to-edit" onclick="editDate()">${d1}${d2}/${m1}${m2}/${y1}${y2}${y3}${y4}</span>
             </div>
+
             <div class="field-container margin-bottom-zero">
                 <span class="label">Prio</span>
                 <div class="prio-box">
-                    <img id="prio-urgent" class="prio-urgent" src="assets/img/urgent_big.svg"
+                    <img id="edit-prio-urgent" class="prio-urgent" src="assets/img/urgent_big.svg"
                         onclick="taskIsUrgent('urgent', 'urgent_big', 'medium', 'low')"
                         onmouseover="hover('urgent', 'urgent_big')" onmouseout="leave('urgent', 'urgent_big')">
-                    <img id="prio-medium" class="prio-medium" src="assets/img/medium_big.svg"
+                    <img id="edit-prio-medium" class="prio-medium" src="assets/img/medium_big.svg"
                         onclick="taskIsMedium('medium', 'medium_big', 'low', 'urgent')"
                         onmouseover="hover('medium', 'medium_big')" onmouseout="leave('medium', 'medium_big')">
-                    <img id="prio-low" class="prio-low" src="assets/img/low_big.svg"
+                    <img id="edit-prio-low" class="prio-low" src="assets/img/low_big.svg"
                         onclick="taskIsLow('low', 'low_big', 'urgent', 'medium')" onmouseover="hover('low', 'low_big')"
                         onmouseout="leave('low', 'low_big')">
                 </div>
             </div>
+
             <div class="field-container margin-bottom-zero">
                 <span class="label">Assign to</span>
                 <div id="new-contact-container" class="field-container d-none">
@@ -353,20 +364,48 @@ function editTask(id) {
             
     `;
     console.log(title);
-}
-
-function unfocusInput() {
-    //document.getElementById('title-to-edit').classList.remove('d-none');
+    let priority = todos[id].priority;
+    if (priority == 'urgent') {
+        taskIsUrgent('urgent', 'urgent_big', 'medium', 'low', 'edit-');
+    }
 }
 
 function editTitle() {
     document.getElementById('title-to-edit').classList.add('d-none');
-    document.getElementById('title').setAttribute('placeholder', "Enter a title");
+    document.getElementById('new-title').focus();
+}
+
+function showOldTitle() {
+    let newTitle = document.getElementById('new-title').value;
+    if (!newTitle) {
+        document.getElementById('title-to-edit').classList.remove('d-none');
+    }
 }
 
 function editDescription() {
     document.getElementById('description-to-edit').classList.add('d-none');
-    document.getElementById('description').setAttribute('placeholder', "Enter a description");
+    document.getElementById('new-description').focus();
+}
+
+function showOldDescription() {
+    let newDescription = document.getElementById('new-description').value;
+    if (!newDescription) {
+        document.getElementById('description-to-edit').classList.remove('d-none');
+    }
+}
+
+function editDate() {
+    document.getElementById('date-to-edit').classList.add('d-none');
+    document.getElementById('new-date').classList.add('color-unset');
+    document.getElementById('new-date').focus();
+}
+
+function showOldDate() {
+    let newDate = document.getElementById('new-date').value;
+    if (!newDate) {
+        document.getElementById('date-to-edit').classList.remove('d-none');
+        document.getElementById('new-date').classList.remove('color-unset');
+    }
 }
 
 function saveChanges(id) {
@@ -377,6 +416,10 @@ function saveChanges(id) {
     let newDescription = document.getElementById('new-description').value;
     if (newDescription) {
         todos[id].description = newDescription;
+    }
+    let newDate = document.getElementById('new-date').value;
+    if (newDate) {
+        todos[id].date = newDate;
     }
     closeDetailView();
     saveTasks();

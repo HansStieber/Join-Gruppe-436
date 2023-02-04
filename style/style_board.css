@@ -346,6 +346,8 @@
     top: 40px;
     left: 21px;
     font-size: 21px;
+    max-width: calc(100% - 42px);
+    overflow: hidden;
 }
 
 .description-to-edit {
@@ -353,9 +355,27 @@
     top: 40px;
     left: 21px;
     font-size: 21px;
+    max-width: calc(100% - 42px);
+    max-height: 90px;
+    overflow: hidden;
 }
 
-.title-to-edit:hover {
+.date-to-edit {
+    position: absolute;
+    top: 40px;
+    left: 21px;
+    font-size: 21px;
+}
+
+.color-transparent {
+    color: transparent !important;
+}
+
+.color-unset {
+    color: unset !important;
+}
+
+.title-to-edit:hover, .description-to-edit:hover, .date-to-edit:hover {
     cursor: pointer;
 }
 
