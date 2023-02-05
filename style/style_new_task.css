@@ -7,7 +7,6 @@
     height: calc(100vh - 89px);
     padding: 17px 41px 0 41px;
     overflow: auto;
-    font-size: 21px;
 }
 
 /* === Styling for smaller screens/tablets === */
@@ -184,6 +183,7 @@ h1 {
     display: flex;
     margin-top: 41px;
     width: 100%;
+    font-size: 21px;
 }
 
 .border {
@@ -488,6 +488,10 @@ input[type='date']:hover {
     width: 100%;
 }
 
+.prio-urgent, .prio-medium, .prio-low {
+    width: 145px;
+}
+
 .prio-urgent:hover {
     cursor: pointer;
 }
@@ -653,10 +657,6 @@ input[type='date']:hover {
     ::-webkit-calendar-picker-indicator {
         background-size: 18px;
     }
-
-    .prio-box {
-        width: 510px;
-    }
 }
 
 /* === Styling for smaller screens/tablets === */
@@ -674,6 +674,9 @@ input[type='date']:hover {
         width: 100%;
         height: calc(100vh - 169px);
         bottom: 80px;
+    }
+
+    .new-task-form {
         font-size: 16px;
     }
 
@@ -681,7 +684,7 @@ input[type='date']:hover {
         padding: 30px;
     }
 
-    .field-container input, .field-container textarea {
+    .field-container input, .field-container textarea, .field-container span {
         font-size: 16px;
     }
 

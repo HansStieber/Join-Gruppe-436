@@ -429,7 +429,7 @@ function saveChanges(id) {
         todos[id].assignments.push(contact);
     }
     assignedContacts = [];
-    closeDetailView();
+    showCards(id);
     saveTasks();
     selectingArrayForBoardUpdate();
 }
