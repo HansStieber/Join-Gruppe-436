@@ -13,6 +13,7 @@ async function initAddTask() {
     await load();
     loadAllOptions();
     showClearButton();
+    checkURLandHighlight('add_task');
 }
 
 function showClearButton() {

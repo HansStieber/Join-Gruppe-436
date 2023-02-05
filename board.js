@@ -3,18 +3,15 @@ let tasks = [];
 let searchedTodos = [];
 let currentDraggedElements;
 let taskToEdit;
+
+
 async function initBoard() {
     await load();
     selectingArrayForBoardUpdate();
+    checkURLandHighlight('board');
 }
-function highlightCurrentNavPoint() {
-    currentNavPoint = document.URL;
-    console.log(currentNavPoint);
-    // if (document.URL.includes(currentURL)) {
-    //     console.log(currentURL);
-    //     document.getElementById(currentURL).classList.add('bg-highlight');
-    // }
-}
+
+
 function clearBoard() {
     document.getElementById('todo').innerHTML = '';
     document.getElementById('progress').innerHTML = '';

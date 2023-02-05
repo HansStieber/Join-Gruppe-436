@@ -9,6 +9,7 @@ let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 async function initContacts() {
     await load();
     renderContacts();
+    checkURLandHighlight('contacts')
 }
 
 
