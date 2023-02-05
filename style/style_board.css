@@ -189,7 +189,7 @@
     font-size: 16px;
     line-height: 120%;
     margin-bottom: 15px;
-    white-space: nowrap;
+    overflow: hidden;
 }
 
 .cards-column-main {
@@ -392,6 +392,7 @@
     height: 61px;
     background-image: url('../assets/img/edit_todo.svg');
 }
+
 .edit-todo-button:hover {
     cursor: pointer;
 }
@@ -421,12 +422,15 @@
     left: 21px;
     font-size: 21px;
 }
+
 .color-transparent {
     color: transparent !important;
 }
+
 .color-unset {
     color: unset !important;
 }
+
 .title-to-edit:hover, .description-to-edit:hover, .date-to-edit:hover {
     cursor: pointer;
 }
