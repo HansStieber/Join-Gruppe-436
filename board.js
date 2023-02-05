@@ -261,6 +261,8 @@ function generateHTMLDetailCard(idOfCard) {
 
 }
 
+/*----------- EDIT TASK FROM BOARD -----------*/
+
 function editTask(id) {
     let detailContainer = document.getElementById('detailView');
     let title = todos[id].title;
@@ -274,6 +276,7 @@ function editTask(id) {
     let d1 = todos[id].date.charAt(8);
     let d2 = todos[id].date.charAt(9);
 
+    renderEditCard();
     detailContainer.innerHTML = /*html*/`
         <div class="field-container margin-bottom-zero">
             <label class="label" for="title">Title</label>

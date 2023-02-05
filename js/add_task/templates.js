@@ -104,6 +104,7 @@ function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color) {
 }
 
 
+/*----------- TEMPLATES FOR SUBTASKS -----------*/
 /**
  * The function renders the title of the subtask at index i from the subtasks array into an element with the id subtasks. Also i is used to
  * generat unique id´s for different elements.
@@ -111,7 +112,6 @@ function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color) {
  * @param {object} subtask - subtask at index i at the subtasks array
  * @param {number} i - index of subtask at the subtasks array
  */
-/*----------- TEMPLATES FOR SUBTASKS -----------*/
 function renderSubtasks(subtask, i) {
     document.getElementById('subtasks').innerHTML += `
     <div id="${'st-option' + i}" class="subtask selectable checkbox-subtasks">
@@ -121,4 +121,92 @@ function renderSubtasks(subtask, i) {
         <span>${subtask.title}</span>
     </div>
     `;
+}
+
+
+/*----------- TEMPLATES FOR EDIT TASK -----------*/
+/**
+ * The function renders the edit task card into the detailView container at the board.html. 
+ * 
+ * @param {string} title - current title that might be edited
+ * @param {string} description - current description that might be edited
+ * @param {string} y1 - first date year number
+ * @param {string} y2 - second date year number
+ * @param {string} y3 - third date year number
+ * @param {string} y4 - fourth date year number
+ * @param {string} m1 - first date month number
+ * @param {string} m2 - second date month number
+ * @param {string} d1 - first date day number
+ * @param {string} d2 - second date day number
+ */
+function renderEditCard(title, description, y1, y2, y3, y4, m1, m2, d1, d2) {
+    document.getElementById('detailView').innerHTML = `
+        <div class="field-container margin-bottom-zero">
+            <label class="label" for="title">Title</label>
+            <input type="text" id="title" name="title" onclick="editTitle()" onfocusout="showOldTitle()" required>
+            <span id="title-to-edit" class="title-to-edit" onclick="editTitle()">${title}</span>
+        </div>
+
+        <div class="field-container margin-bottom-minus">
+            <label class="label" for="description">Description</label>
+            <textarea type="text" id="description" name="description" onclick="editDescription()" onfocusout="showOldDescription()"
+                required></textarea>
+            <span id="description-to-edit" class="description-to-edit" onclick="editDescription()">${description}</span>
+        </div>
+
+        <div class="field-container margin-bottom-minus">
+            <span class="label">Due date</span>
+            <input class="color-transparent" id="date" type="date" onclick="editDate()" onfocusout="showOldDate()">
+            <span id="date-to-edit" class="date-to-edit" onclick="editDate()">${d1}${d2}/${m1}${m2}/${y1}${y2}${y3}${y4}</span>
+        </div>
+
+        <div class="field-container margin-bottom-minus">
+            <span class="label">Prio</span>
+            <div class="prio-box">
+                <img id="prio-urgent" class="prio-urgent" src="assets/img/urgent_big.svg"
+                    onclick="taskIsUrgent('urgent', 'urgent_big', 'medium', 'low')"
+                    onmouseover="hover('urgent', 'urgent_big')" onmouseout="leave('urgent', 'urgent_big')">
+                <img id="prio-medium" class="prio-medium" src="assets/img/medium_big.svg"
+                    onclick="taskIsMedium('medium', 'medium_big', 'low', 'urgent')"
+                    onmouseover="hover('medium', 'medium_big')" onmouseout="leave('medium', 'medium_big')">
+                <img id="prio-low" class="prio-low" src="assets/img/low_big.svg"
+                    onclick="taskIsLow('low', 'low_big', 'urgent', 'medium')" onmouseover="hover('low', 'low_big')"
+                    onmouseout="leave('low', 'low_big')">
+            </div>
+        </div>
+
+        <div class="field-container margin-bottom-minus">
+            <span class="label">Assign to</span>
+            <div id="new-contact-container" class="field-container d-none">
+                <input type="text" id="new-contact" name="new-contact" class="d-none" placeholder="Contact email">
+                <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg"
+                    onclick="closeInviteContact()">
+                <div class="border-small mid-pos"></div>
+                <img id="invite-contact-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg"
+                    onclick="inviteContact()">
+            </div>
+            <div id="contact-options-container" class="options-container">
+                <div class="option">
+                    <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
+                        <span>Select contacts to assign</span><img class="dropdown-arrow"
+                            src="assets/img/arrow_select_dropdown.svg">
+                    </div>
+                </div>
+                <div id="options-contact" class="options">
+                    <div id="contacts-dropdown-container">
+                    </div>
+                    <div id="invite-new-contact"
+                        class="option d-none selectable checkbox-container space-between last-option"
+                        onclick="inviteNewContact()">
+                        <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
+                    </div>
+                </div>
+            </div>
+            <div id="assignments-icons-container" class="assignments-icons-container">
+            </div>
+        </div>
+        
+        <div class="edit-todo-button" onclick="saveChanges(${id})">
+            </div>
+`;
 }
