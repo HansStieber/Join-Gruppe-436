@@ -73,12 +73,12 @@ function renderCategoryColors(color, i) {
  * @param {object} option - contact option at position i at the contacts array
  * @param {number} i - index of the option at the contacts array
  */
-function renderAssignmentOptions(option, i, edit) {
-    document.getElementById('contacts-dropdown-container' + edit).innerHTML += `
-    <div id="${'a-option' + edit + i}" class="option d-none selectable checkbox-contacts" onclick="assignContact(${i}, '${edit}')">
+function renderAssignmentOptions(option, i) {
+    document.getElementById('contacts-dropdown-container').innerHTML += `
+    <div id="${'a-option' + i}" class="option d-none selectable checkbox-contacts" onclick="assignContact(${i})">
         <span>${option.firstName + ' ' + option.lastName}</span>
         <div class="checkbox-contacts-unchecked">
-            <div id="${'checkbox' + i + edit}" class="checkbox-contacts-checked d-none"></div>
+            <div id="${'checkbox' + i}" class="checkbox-contacts-checked d-none"></div>
         </div>
     </div> 
     `;
@@ -94,8 +94,8 @@ function renderAssignmentOptions(option, i, edit) {
  * @param {string} firstLetterLasttName - first letter of the last name
  * @param {string} color - the color of the contact which defines the background color of the icon
  */
-function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color, edit) {
-    document.getElementById('assignments-icons-container' + edit).innerHTML += `
+function renderContactIcon(firstLetterFirstName, firstLetterLasttName, color) {
+    document.getElementById('assignments-icons-container').innerHTML += `
     <div style="background-color: ${color}" class="contact-icon">
         <span>${firstLetterFirstName}</span>
         <span>${firstLetterLasttName}</span>

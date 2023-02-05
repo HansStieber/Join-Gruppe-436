@@ -376,6 +376,54 @@
     width: 125px;
 }
 
+/* === Styling of edit Card container === */
+.edit-todo-button {
+    position: absolute;
+    right: 0;
+    bottom: -110px;
+    width: 83px;
+    height: 61px;
+    background-image: url('../assets/img/edit_todo.svg');
+}
+.edit-todo-button:hover {
+    cursor: pointer;
+}
+
+.title-to-edit {
+    position: absolute;
+    top: 45px;
+    left: 21px;
+    font-size: 21px;
+    max-width: calc(100% - 42px);
+    overflow: hidden;
+}
+
+.description-to-edit {
+    position: absolute;
+    top: 45px;
+    left: 21px;
+    font-size: 21px;
+    max-width: calc(100% - 42px);
+    max-height: 90px;
+    overflow: hidden;
+}
+
+.date-to-edit {
+    position: absolute;
+    top: 45px;
+    left: 21px;
+    font-size: 21px;
+}
+.color-transparent {
+    color: transparent !important;
+}
+.color-unset {
+    color: unset !important;
+}
+.title-to-edit:hover, .description-to-edit:hover, .date-to-edit:hover {
+    cursor: pointer;
+}
+
 @media(max-width:820px) {
     .kanban-mobile-span {
         display: block;

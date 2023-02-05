@@ -66,7 +66,8 @@ function forgotPassword() {
 /**
  * function to show New Task template
  */
-function showNewTaskCard(edit) {
+async function showNewTaskCard(edit) {
+    await loadTemplateNewTask();
     let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
     showClearButton();
@@ -78,6 +79,13 @@ function showNewTaskCard(edit) {
     } else {
         loadAllOptions();
     }
+}
+
+async function loadTemplateNewTask() {
+    document.getElementById('new-task-overlay').innerHTML = `
+    <div w3-include-html="./templates/new_task.html"></div>
+    `;
+    await load();
 }
 
 //Von Hans

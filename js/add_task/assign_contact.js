@@ -6,12 +6,12 @@ let assignedContacts = [];
  * 
  * @param {number} i - index at assignments of the contact that is assigned
  */
-function assignContact(i, edit) {
-    tickCheckboxOfContact(i, edit);
-    setRemoveAssignmentOnclickFunction(i, edit);
+function assignContact(i) {
+    tickCheckboxOfContact(i);
+    setRemoveAssignmentOnclickFunction(i);
     setIndexOfCurrentContactVariable(i);
     assignedContacts.push(assignments[i]);
-    loadContactIcon(edit);
+    loadContactIcon();
 }
 
 
@@ -20,8 +20,8 @@ function assignContact(i, edit) {
  * 
  * @param {number} i - index at assignments of the contact that is assigned 
  */
-function tickCheckboxOfContact(i, edit) {
-    document.getElementById('checkbox' + i + edit).classList.remove('d-none');
+function tickCheckboxOfContact(i) {
+    document.getElementById('checkbox' + i).classList.remove('d-none');
 }
 
 
@@ -31,10 +31,10 @@ function tickCheckboxOfContact(i, edit) {
  * 
  * @param {number} i - index at assignments of the contact that is assigned
  */
-function setRemoveAssignmentOnclickFunction(i, edit) {
+function setRemoveAssignmentOnclickFunction(i) {
     let fN = assignments[i].firstName.toLowerCase();
     let lN = assignments[i].lastName.toLowerCase();
-    document.getElementById('a-option' + edit + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}', '${edit}')`);
+    document.getElementById('a-option' + i).setAttribute('onclick', `removeAssignment(${i}, '${fN}', '${lN}')`);
 }
 
 
@@ -56,14 +56,14 @@ function setIndexOfCurrentContactVariable(i) {
  * assignedContacts. The first letter of first and last name is and the color ist taken from each contact and used as a parameter at the
  * renderContactIcon() function which finally renders the html of every icon.
  */
-function loadContactIcon(edit) {
-    document.getElementById('assignments-icons-container' + edit).innerHTML = '';
+function loadContactIcon() {
+    document.getElementById('assignments-icons-container').innerHTML = '';
     for (let i = 0; i < assignedContacts.length; i++) {
         const contact = assignedContacts[i];
         let firstLetterFirstName = contact.firstName.slice(0, 1);
         let firstLetterLasttName = contact.lastName.slice(0, 1);
         let bgColor = contact.color;
-        renderContactIcon(firstLetterFirstName, firstLetterLasttName, bgColor, edit);
+        renderContactIcon(firstLetterFirstName, firstLetterLasttName, bgColor);
     }
 }
 
@@ -78,13 +78,13 @@ function loadContactIcon(edit) {
  * @param {string} fN - first name of the contact that is removed
  * @param {string} lN - last name of the contact that is removed
  */
-function removeAssignment(i, fN, lN, edit) {
-    untickCheckboxOfContact(i, edit);
+function removeAssignment(i, fN, lN) {
+    untickCheckboxOfContact(i);
     for (let i = 0; i < assignedContacts.length; i++) {
         const contact = assignedContacts[i];
         if (firstAndLastNameMatchParameters(contact, fN, lN)) {
             assignedContacts.splice(i, 1);
-            loadContactIcon(edit);
+            loadContactIcon();
         }
     }
 }
@@ -96,9 +96,9 @@ function removeAssignment(i, fN, lN, edit) {
  * 
  * @param {number} i - index at assignedContacts of the contact that is removed 
  */
-function untickCheckboxOfContact(i, edit) {
-    document.getElementById('checkbox' + i + edit).classList.add('d-none');
-    document.getElementById('a-option' + edit + i).setAttribute('onclick', `assignContact(${i}, '${edit}')`);
+function untickCheckboxOfContact(i) {
+    document.getElementById('checkbox' + i).classList.add('d-none');
+    document.getElementById('a-option' + i).setAttribute('onclick', `assignContact(${i})`);
 }
 
 

@@ -1,0 +1,32 @@
+<div class="field-container">
+    <span class="label">Assign to</span>
+    <div id="new-contact-container" class="field-container d-none">
+        <input type="text" id="new-contact" name="new-contact" class="d-none" placeholder="Contact email">
+        <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg"
+            onclick="closeInviteContact()">
+        <div class="border-small mid-pos"></div>
+        <img id="invite-contact-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg"
+            onclick="inviteContact()">
+    </div>
+    <div id="contact-options-container" class="options-container">
+        <div class="option">
+            <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment('')">
+                <span>Select contacts to assign</span><img class="dropdown-arrow"
+                    src="assets/img/arrow_select_dropdown.svg">
+            </div>
+        </div>
+        <div id="options-contact" class="options">
+            <div id="contacts-dropdown-container">
+            </div>
+            <div id="invite-new-contact"
+                class="option d-none selectable checkbox-container space-between last-option"
+                onclick="inviteNewContact()">
+                <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
+            </div>
+        </div>
+    </div>
+    <span class="alert-required" id="assignment-required">Please assign at least one contact</span>
+    <div id="assignments-icons-container" class="assignments-icons-container">
+    </div>
+</div>
+</div>

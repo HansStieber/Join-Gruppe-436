@@ -297,9 +297,9 @@ function unsetPriority() {
     urgent = false;
     medium = false;
     low = false;
-    unfocusPrio('urgent', 'medium', 'low');
-    unfocusPrio('low', 'urgent', 'medium');
-    unfocusPrio('medium', 'low', 'urgent');
+    unfocusPrio('urgent', 'medium', 'low', '');
+    unfocusPrio('low', 'urgent', 'medium', '');
+    unfocusPrio('medium', 'low', 'urgent', '');
 }
 
 function removeAllSubtasks() {
@@ -308,9 +308,9 @@ function removeAllSubtasks() {
     document.getElementById('subtasks').innerHTML = '';
 }
 
-function closeAllDropdowns(edit) {
+function closeAllDropdowns() {
     closeDropdownCategory();
-    closeDropdownAssignment(edit);
+    closeDropdownAssignment();
 }
 
 
