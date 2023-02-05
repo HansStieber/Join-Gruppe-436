@@ -139,7 +139,7 @@ function renderSubtasks(subtask, i) {
  * @param {string} d1 - first date day number
  * @param {string} d2 - second date day number
  */
-function renderEditCard(title, description, y1, y2, y3, y4, m1, m2, d1, d2) {
+function renderEditCard(id, title, description, y1, y2, y3, y4, m1, m2, d1, d2) {
     document.getElementById('detailView').innerHTML = `
         <div class="field-container margin-bottom-zero">
             <label class="label" for="title">Title</label>

@@ -264,7 +264,6 @@ function generateHTMLDetailCard(idOfCard) {
 /*----------- EDIT TASK FROM BOARD -----------*/
 
 function editTask(id) {
-    let detailContainer = document.getElementById('detailView');
     let title = todos[id].title;
     let description = todos[id].description;
     let y1 = todos[id].date.charAt(0);
@@ -276,76 +275,8 @@ function editTask(id) {
     let d1 = todos[id].date.charAt(8);
     let d2 = todos[id].date.charAt(9);
 
-    renderEditCard();
-    detailContainer.innerHTML = /*html*/`
-        <div class="field-container margin-bottom-zero">
-            <label class="label" for="title">Title</label>
-            <input type="text" id="title" name="title" onclick="editTitle()" onfocusout="showOldTitle()" required>
-            <span id="title-to-edit" class="title-to-edit" onclick="editTitle()">${title}</span>
-        </div>
-
-        <div class="field-container margin-bottom-minus">
-            <label class="label" for="description">Description</label>
-            <textarea type="text" id="description" name="description" onclick="editDescription()" onfocusout="showOldDescription()"
-                required></textarea>
-            <span id="description-to-edit" class="description-to-edit" onclick="editDescription()">${description}</span>
-        </div>
-
-        <div class="field-container margin-bottom-minus">
-            <span class="label">Due date</span>
-            <input class="color-transparent" id="date" type="date" onclick="editDate()" onfocusout="showOldDate()">
-            <span id="date-to-edit" class="date-to-edit" onclick="editDate()">${d1}${d2}/${m1}${m2}/${y1}${y2}${y3}${y4}</span>
-        </div>
-
-        <div class="field-container margin-bottom-minus">
-            <span class="label">Prio</span>
-            <div class="prio-box">
-                <img id="prio-urgent" class="prio-urgent" src="assets/img/urgent_big.svg"
-                    onclick="taskIsUrgent('urgent', 'urgent_big', 'medium', 'low')"
-                    onmouseover="hover('urgent', 'urgent_big')" onmouseout="leave('urgent', 'urgent_big')">
-                <img id="prio-medium" class="prio-medium" src="assets/img/medium_big.svg"
-                    onclick="taskIsMedium('medium', 'medium_big', 'low', 'urgent')"
-                    onmouseover="hover('medium', 'medium_big')" onmouseout="leave('medium', 'medium_big')">
-                <img id="prio-low" class="prio-low" src="assets/img/low_big.svg"
-                    onclick="taskIsLow('low', 'low_big', 'urgent', 'medium')" onmouseover="hover('low', 'low_big')"
-                    onmouseout="leave('low', 'low_big')">
-            </div>
-        </div>
-
-        <div class="field-container margin-bottom-minus">
-            <span class="label">Assign to</span>
-            <div id="new-contact-container" class="field-container d-none">
-                <input type="text" id="new-contact" name="new-contact" class="d-none" placeholder="Contact email">
-                <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg"
-                    onclick="closeInviteContact()">
-                <div class="border-small mid-pos"></div>
-                <img id="invite-contact-icon" class="new-category-icon right-pos" src="assets/img/confirm.svg"
-                    onclick="inviteContact()">
-            </div>
-            <div id="contact-options-container" class="options-container">
-                <div class="option">
-                    <div id="select-contact-container" class="select-container" onclick="openDropdownAssignment()">
-                        <span>Select contacts to assign</span><img class="dropdown-arrow"
-                            src="assets/img/arrow_select_dropdown.svg">
-                    </div>
-                </div>
-                <div id="options-contact" class="options">
-                    <div id="contacts-dropdown-container">
-                    </div>
-                    <div id="invite-new-contact"
-                        class="option d-none selectable checkbox-container space-between last-option"
-                        onclick="inviteNewContact()">
-                        <span>Invite new contact</span><img src="assets/img/invite_contact.svg">
-                    </div>
-                </div>
-            </div>
-            <div id="assignments-icons-container" class="assignments-icons-container">
-            </div>
-        </div>
-        
-        <div class="edit-todo-button" onclick="saveChanges(${id})">
-            </div>
-`;
+    renderEditCard(id, title, description, y1, y2, y3, y4, m1, m2, d1, d2);
+    
     let priority = todos[id].priority;
     if (priority == 'urgent') {
         taskIsUrgent('urgent', 'urgent_big', 'medium', 'low');
