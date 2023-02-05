@@ -10,6 +10,7 @@
 
 .slide-board-scroll::-webkit-scrollbar {
     width: 6px;
+    display: block;
 }
 
 .slide-board-scroll::-webkit-scrollbar-track {

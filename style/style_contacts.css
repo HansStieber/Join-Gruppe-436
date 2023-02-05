@@ -24,6 +24,7 @@
 
 .slide-bar-scroll::-webkit-scrollbar {
     width: 6px;
+    display: block;
 }
 
 .slide-bar-scroll::-webkit-scrollbar-track {
