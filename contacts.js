@@ -8,9 +8,9 @@ let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 
 async function initContacts() {
     await load();
-    //loadAllOptions();
     renderContacts();
 }
+
 
 /**
  * This function first clear all Card divs. 
@@ -36,6 +36,7 @@ function renderContacts() {
 
 }
 
+
 /**
  * 
  * @param {object} contact - the actual Contact object.
@@ -53,6 +54,7 @@ function getCardElements(contact) {
         cardsDivLetter: document.getElementById(`cards-div-${initials1}`)
     }
 }
+
 
 /**
  * This function returns all Info from given Contact,
@@ -221,6 +223,7 @@ function setEditContactInitials() {
     initialsSpan.innerHTML = initials1 + initials2;
 }
 
+
 function setEditContactValues() {
     let contact = contacts[contactToEditId];
     const { nameInput, emailInput, phoneInput } = getEditInputs();
@@ -230,6 +233,7 @@ function setEditContactValues() {
     emailInput.value = contact.email;
     phoneInput.value = contact.phone;
 }
+
 
 function showContactAddedMessage() {
     popInContactAddedMessage();
@@ -291,8 +295,9 @@ function clearCards() {
     }
 }
 
+
 /**
- * This function iterate thru the abc[] array, to add all Cards-main-${letter} divs the class 'd-none'.
+ * This function iterates thru the abc[] array, to add all Cards-main-${letter} divs the class 'd-none'.
  * 
  * @param {string} letter - This is the actual letter (one from A-Z), in the for-loop, we work with.
  * @param {element} cardsDivMain - This is the actual Element, who gets the 'd-none' class.
@@ -352,8 +357,8 @@ function generateRandomColor() {
     return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
 }
 
-/*----------- SHOW/CLOSE OVERLAY -----------*/
 
+/*----------- SHOW/CLOSE OVERLAY -----------*/
 function openEditOverlay() {
     document.getElementById('editContactOverlay').classList.remove('d-none');
     setEditContactInitials();
