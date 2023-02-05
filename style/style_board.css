@@ -295,6 +295,8 @@
     transform: translateX(360px);
 }
 
+/* DETAILVIEW OF TASKS */
+
 .detail-view {
     display: flex;
     flex-direction: column;
@@ -316,6 +318,7 @@
     width: fit-content;
     padding: 10px 36px;
     border-radius: 10px;
+    color: white;
 }
 
 .icon-settings {
@@ -359,13 +362,16 @@
 }
 
 .initials-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 45px;
     width: 45px;
     padding: 5px;
-
     border-radius: 100%;
     margin-right: 30px;
-    background-color: aquamarine;
+    color: white;
+    font-size: 16px;
 }
 
 .delete-btn-board {
