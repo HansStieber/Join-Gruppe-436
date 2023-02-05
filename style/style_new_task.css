@@ -485,6 +485,7 @@ input[type='date']:hover {
     display: flex;
     justify-content: space-between;
     height: 70px;
+    width: 100%;
 }
 
 .prio-urgent:hover {
@@ -652,6 +653,10 @@ input[type='date']:hover {
     ::-webkit-calendar-picker-indicator {
         background-size: 18px;
     }
+
+    .prio-box {
+        width: 510px;
+    }
 }
 
 /* === Styling for smaller screens/tablets === */
@@ -704,6 +709,10 @@ input[type='date']:hover {
 
     .cancel-form {
         display: none;
+    }
+
+    .prio-box {
+        width: 100%;
     }
 }
 
