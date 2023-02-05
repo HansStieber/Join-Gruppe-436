@@ -262,7 +262,13 @@ function generateHTMLDetailCard(idOfCard) {
 }
 
 /*----------- EDIT TASK FROM BOARD -----------*/
-
+/**
+ * The function loads the edit form for the task that is currently in detail view. The function sets a couple of variables which are given
+ * as parameters to the renderEditCard() function. The variables represent the current values of the selected task. It also sets the current
+ * priority and loads all contacts that are currently assigend to the task.
+ * 
+ * @param {number} id - id of current card
+ */
 function editTask(id) {
     let title = todos[id].title;
     let description = todos[id].description;
@@ -274,9 +280,19 @@ function editTask(id) {
     let m2 = todos[id].date.charAt(6);
     let d1 = todos[id].date.charAt(8);
     let d2 = todos[id].date.charAt(9);
-
     renderEditCard(id, title, description, y1, y2, y3, y4, m1, m2, d1, d2);
-    
+    setCurrentPriority(id);
+    loadAssignments(id);
+}
+
+
+/**
+ * The function sets the priority variable to the priority of the current task. It the runs the correct function to highlight the priority
+ * that is currently selected.
+ * 
+ * @param {number} id - id of current card
+ */
+function setCurrentPriority(id) {
     let priority = todos[id].priority;
     if (priority == 'urgent') {
         taskIsUrgent('urgent', 'urgent_big', 'medium', 'low');
@@ -287,14 +303,43 @@ function editTask(id) {
     if (priority == 'low') {
         taskIsLow('low', 'low_big', 'urgent', 'medium');
     }
+}
 
+
+/**
+ * The function loads all assignment options and current assignments. It also assigns the currently assigned contacts.
+ * 
+ * @param {number} id - id of current card 
+ */
+function loadAssignments(id) {
+    pushAssignedContactsToAssignments(id);
+    loadAssignmentOptions();
+    assignAssignedContacts(id);
+}
+
+
+/**
+ * The function loops through the assignments of the current task. If the current contact in the loop is not included at the assignments
+ * array, the contact is pushed to the assignments array.
+ * 
+ * @param {number} id - id of current card 
+ */
+function pushAssignedContactsToAssignments(id) {
     for (let i = 0; i < todos[id].assignments.length; i++) {
         const option = todos[id].assignments[i];
         if (assignments.every(a => a.firstName !== option.firstName) && assignments.every(a => a.lastName !== option.lastName)) {
             assignments.push(option);
         }
     }
-    loadAssignmentOptions();
+}
+
+
+/**
+ * The function assigns all contacts of the assignments array that match a contact from the assignments of the current task.
+ * 
+ * @param {number} id - id of current card 
+ */
+function assignAssignedContacts(id) {
     for (let i = 0; i < assignments.length; i++) {
         const assignment = assignments[i];
         if (todos[id].assignments.some(a => a.firstName == assignment.firstName) && todos[id].assignments.some(a => a.lastName == assignment.lastName)) {
@@ -304,11 +349,19 @@ function editTask(id) {
 }
 
 
+/**
+ * The function hides the current title and focuses on the title input-field.
+ */
 function editTitle() {
     document.getElementById('title-to-edit').classList.add('d-none');
     document.getElementById('title').focus();
 }
 
+
+/**
+ * The function runs when focus of the input field is out. The function defines a potential new title. If there is no new title set, the current
+ * title is shown again.
+ */
 function showOldTitle() {
     let newTitle = document.getElementById('title').value;
     if (!newTitle) {
@@ -316,11 +369,20 @@ function showOldTitle() {
     }
 }
 
+
+/**
+ * The function hides the current description and focuses on the description input-field.
+ */
 function editDescription() {
     document.getElementById('description-to-edit').classList.add('d-none');
     document.getElementById('description').focus();
 }
 
+
+/**
+ * The function runs when focus of the input field is out. The function defines a potential new description. If there is no new description
+ * set, the current description is shown again.
+ */
 function showOldDescription() {
     let newDescription = document.getElementById('description').value;
     if (!newDescription) {
@@ -328,12 +390,21 @@ function showOldDescription() {
     }
 }
 
+
+/**
+ * The function hides the current date and focuses on the date input-field.
+ */
 function editDate() {
     document.getElementById('date-to-edit').classList.add('d-none');
     document.getElementById('date').classList.add('color-unset');
     document.getElementById('date').focus();
 }
 
+
+/**
+ * The function runs when focus of the input field is out. The function defines a potential new date. If there is no new date
+ * set, the current date is shown again.
+ */
 function showOldDate() {
     let newDate = document.getElementById('new-date').value;
     if (!newDate) {
@@ -342,28 +413,53 @@ function showOldDate() {
     }
 }
 
+
+/**
+ * The function saves all changes to the backend.
+ * 
+ * @param {number} id - id of current card
+ */
 function saveChanges(id) {
+    getNewTitleValue(id);
+    getNewDescriptionValue(id);
+    getNewDateValue(id);
+    getPriority();
+    setNewPriority(id);
+    getNewAssignments(id);
+    showCards(id);
+    saveTasks();
+}
+
+function getNewTitleValue(id) {
     let newTitle = document.getElementById('title').value;
     if (newTitle) {
         todos[id].title = newTitle;
     }
+}
+
+function getNewDescriptionValue(id) {
     let newDescription = document.getElementById('description').value;
     if (newDescription) {
         todos[id].description = newDescription;
     }
+}
+
+function getNewDateValue(id) {
     let newDate = document.getElementById('date').value;
     if (newDate) {
         todos[id].date = newDate;
     }
-    getPriority();
+}
+
+function setNewPriority(id) {
     todos[id].priority = priority;
+}
+
+function getNewAssignments(id) {
     todos[id].assignments = [];
     for (let i = 0; i < assignedContacts.length; i++) {
         const contact = assignedContacts[i];
         todos[id].assignments.push(contact);
     }
     assignedContacts = [];
-    showCards(id);
-    saveTasks();
-    selectingArrayForBoardUpdate();
 }
