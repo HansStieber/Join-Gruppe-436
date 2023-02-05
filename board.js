@@ -184,6 +184,7 @@ function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
+    initBoard();
 }
 function howMuchUsersAreAssigned(idOfCard) {
     let assignmentsArray = todos[idOfCard].assignments;
@@ -424,7 +425,7 @@ function saveChanges(id) {
     getNewDescriptionValue(id);
     getNewDateValue(id);
     getPriority();
-    setNewPriority(id);
+    setPriority(id);
     getNewAssignments(id);
     showCards(id);
     saveTasks();
@@ -478,14 +479,14 @@ function getNewDateValue(id) {
  * 
  * @param {number} id - id of current todo
  */
-function setNewPriority(id) {
+function setPriority(id) {
     todos[id].priority = priority;
 }
 
 
 /**
  * The function empties the assignments array of the current todo. It then loops through the assignedContacts array and pushes the contacts
- * to the assignments array of the current todo. It finishes by emptying the assignedContacts array.
+ * to the assignments array of the current todo. It finishes by emptying the assignedContacts
  * 
  * @param {number} id - id of current todo
  */
