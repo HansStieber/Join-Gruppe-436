@@ -190,9 +190,13 @@ function howMuchUsersAreAssigned(idOfCard) {
     for (let i = 0; i < assignmentsArray.length; i++) {
         const assignment = assignmentsArray[i];
         let assignedContact = assignment.firstName + " " + assignment.lastName;
+        let initials = assignment.firstName.slice(0,1) + assignment.lastName.slice(0,1);
+        let initialsBg = assignment.color;
         document.getElementById('assignedContacts').innerHTML += /*html*/`
         <div class="assignedContacts">
-            <div class="initials-icon">##</div>
+            <div class="initials-icon" style="background: ${initialsBg}">
+                <span>${initials}</span>
+            </div>
             <div>${assignedContact}</div>
         </div>
         `;
