@@ -47,6 +47,10 @@
     margin-bottom: 0 !important;
 }
 
+.margin-bottom-minus {
+    margin-bottom: -15px !important;
+}
+
 .margin-to-sides {
     margin: 0 5px;
 }

@@ -378,9 +378,10 @@
 
 /* === Styling of edit Card container === */
 .edit-todo-button {
+    z-index: -1;
     position: absolute;
-    right: 0;
-    bottom: -110px;
+    right: 50px;
+    bottom: 45px;
     width: 83px;
     height: 61px;
     background-image: url('../assets/img/edit_todo.svg');

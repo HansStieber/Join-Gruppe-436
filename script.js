@@ -66,7 +66,7 @@ function forgotPassword() {
 /**
  * function to show New Task template
  */
-async function showNewTaskCard(edit) {
+async function showNewTaskCard() {
     await loadTemplateNewTask();
     let newTaskCloseBtn = document.getElementById('content-new-task');
     newTaskCloseBtn.classList.remove('d-none');
@@ -75,7 +75,7 @@ async function showNewTaskCard(edit) {
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
     if (document.URL.includes('contacts.html')) {
-        selectCurrentContact(contactToEditId, edit);
+        selectCurrentContact(contactToEditId);
     } else {
         loadAllOptions();
     }
@@ -89,25 +89,25 @@ async function loadTemplateNewTask() {
 }
 
 //Von Hans
-function selectCurrentContact(i, edit) {
+function selectCurrentContact(i) {
     if (assignments.some(a => a.firstName === contacts[i].firstName) && assignments.some(a => a.lastName === contacts[i].lastName)) {
-        loadAssignmentOptions(edit);
+        loadAssignmentOptions();
         for (let k = 0; k < assignments.length; k++) {
             const assignment = assignments[k];
             if (assignment.firstName === contacts[i].firstName) {
                 index = k;
             }
         }
-        assignContact(index, edit);
+        assignContact(index);
         spliceCurrentContact = false;
     } else {
         assignments.push(contacts[i]);
-        loadAssignmentOptions(edit);
+        loadAssignmentOptions();
         if (indexOfCurrentContact == -1 && assignments.some(a => a.email == contacts[i].email)) {
             indexOfCurrentContact = assignments.indexOf(contacts[i]);
         }
         let index = assignments.length - 1;
-        assignContact(index, edit);
+        assignContact(index);
         spliceCurrentContact = true;
     }
 }
@@ -124,14 +124,19 @@ function removeCurrentContact() {
 /**
  * function to hide New Task template
  */
-function hideNewTaskCard(edit) {
+function hideNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
     removeCurrentContact();
-    closeAllDropdowns(edit);
+    closeAllDropdowns();
     setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
+    setTimeout(removeTemplateNewTask, 450);
+}
+
+function removeTemplateNewTask() {
+    document.getElementById('new-task-overlay').innerHTML = '';
 }
 
 /**
