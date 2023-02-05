@@ -55,7 +55,6 @@ function sendMail() {
 /**
  * function for enterin summary.html as guest
  */
-
 function guestLogin() {
     currentNavPoint = window.location.href = './summary.html';
 }
@@ -182,9 +181,10 @@ function pushContactAndLoadAssignmentsOptionsAndAssignContact(i) {
 
 
 /**
- * The function sets the index of the current contact at the assignments array. This is achieved by looping through the assignments array and
- * checking if the firstName and lastName of current contact matches to current assignments conctact. If it matches the index is set. The index
- * is used to run the assignContact() function with the index of the current contact at the assignments array.
+ * The function sets the index of the current contact at the assignments array. This is achieved by substracting - 1 from the assignments.length
+ * because the current contact was pushed at the last position of the assignments array. It also checks if the indexOfCurrentContact
+ * variable is not set yet and some contacts email at the assignments array matches the email of the current contact. If both applies, the
+ * indexOfCurrentContact variable is set to index of the current contact at the assignments array.
  * 
  * @param {number} i - id of the current contact at the contacts array 
  */
@@ -195,16 +195,9 @@ function setOptionTwoIndex(i) {
     index = assignments.length - 1;
 }
 
-function removeCurrentContact() {
-    if (spliceCurrentContact == true) {
-        assignments.splice(indexOfCurrentContact, 10);
-    }
-    assignedContacts = [];
-    indexOfCurrentContact = -1;
-}
 
 /**
- * function to hide New Task template
+ * The function hides the new task template.
  */
 function hideNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
@@ -217,9 +210,28 @@ function hideNewTaskCard() {
     setTimeout(removeTemplateNewTask, 450);
 }
 
+
+/**
+ * The function removes the last 10 contacts from the assignments array if the spliceCurrentContact variable is true which means the contacts
+ * that were added were not included at the assignments array yet. It also empties the assignedContacts array and sets the indexOfCurrentContact
+ * variable back to -1.
+ */
+function removeCurrentContact() {
+    if (spliceCurrentContact == true) {
+        assignments.splice(indexOfCurrentContact, 10);
+    }
+    assignedContacts = [];
+    indexOfCurrentContact = -1;
+}
+
+
+/**
+ * The function removes the new task template by emptying its container.
+ */
 function removeTemplateNewTask() {
     document.getElementById('new-task-overlay').innerHTML = '';
 }
+
 
 /**
  * function to show shadowscreen, per Id 
@@ -231,6 +243,7 @@ function showShadowScreen(shadowDivId) {
     shadowScreen.classList.add('smooth-opacity-in');
 }
 
+
 /**
  * function to slide a card in, per Id
  */
@@ -239,6 +252,7 @@ function slideInCard(slideDivId) {
     newCard.classList.remove('slide-right');
     newCard.classList.add('slide-left');
 }
+
 
 /**
  * function to slide a card out, per Id
@@ -250,6 +264,7 @@ function slideOutCard(slideDivId) {
     newCard.classList.add('slide-right');
 }
 
+
 /**
  * function to hide shadowscreen, per Id
  */
@@ -260,6 +275,7 @@ function hideShadowScreen(shadowDivId) {
     setTimeout(function () { shadowScreen.classList.add('d-none'); }, 450);
 }
 
+
 /**
  * function to show the close Button on NewTask template
  */
@@ -267,6 +283,7 @@ function showNewTaskCloseBtn() {
     let closeBtn = document.getElementById('new-task-close-btn');
     closeBtn.classList.remove('d-none');
 }
+
 
 /**
  * function to hide the close Button on NewTask template
@@ -298,6 +315,7 @@ function hideMobileMenu(headerMenu) {
     headerMenu.classList.remove('show');
     headerMenu.classList.add('hide');
 }
+
 
 /**
  * function to manipulate the Delete Button on Contacts and Board,.html.
