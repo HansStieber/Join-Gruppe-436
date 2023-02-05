@@ -267,7 +267,7 @@ function generateHTMLDetailCard(idOfCard) {
  * as parameters to the renderEditCard() function. The variables represent the current values of the selected task. It also sets the current
  * priority and loads all contacts that are currently assigend to the task.
  * 
- * @param {number} id - id of current card
+ * @param {number} id - id of current todo
  */
 function editTask(id) {
     let title = todos[id].title;
@@ -290,7 +290,7 @@ function editTask(id) {
  * The function sets the priority variable to the priority of the current task. It the runs the correct function to highlight the priority
  * that is currently selected.
  * 
- * @param {number} id - id of current card
+ * @param {number} id - id of current todo
  */
 function setCurrentPriority(id) {
     let priority = todos[id].priority;
@@ -309,7 +309,7 @@ function setCurrentPriority(id) {
 /**
  * The function loads all assignment options and current assignments. It also assigns the currently assigned contacts.
  * 
- * @param {number} id - id of current card 
+ * @param {number} id - id of current todo
  */
 function loadAssignments(id) {
     pushAssignedContactsToAssignments(id);
@@ -322,7 +322,7 @@ function loadAssignments(id) {
  * The function loops through the assignments of the current task. If the current contact in the loop is not included at the assignments
  * array, the contact is pushed to the assignments array.
  * 
- * @param {number} id - id of current card 
+ * @param {number} id - id of current todo
  */
 function pushAssignedContactsToAssignments(id) {
     for (let i = 0; i < todos[id].assignments.length; i++) {
@@ -337,7 +337,7 @@ function pushAssignedContactsToAssignments(id) {
 /**
  * The function assigns all contacts of the assignments array that match a contact from the assignments of the current task.
  * 
- * @param {number} id - id of current card 
+ * @param {number} id - id of current todo
  */
 function assignAssignedContacts(id) {
     for (let i = 0; i < assignments.length; i++) {
@@ -417,7 +417,7 @@ function showOldDate() {
 /**
  * The function saves all changes to the backend.
  * 
- * @param {number} id - id of current card
+ * @param {number} id - id of current todo
  */
 function saveChanges(id) {
     getNewTitleValue(id);
@@ -430,6 +430,13 @@ function saveChanges(id) {
     saveTasks();
 }
 
+
+/**
+ * The function gets the value of the title input-field and sets the newTitle variable. If there is a new title it is set as the title of the
+ *  edited todo.
+ * 
+ * @param {number} id - id of current todo
+ */
 function getNewTitleValue(id) {
     let newTitle = document.getElementById('title').value;
     if (newTitle) {
@@ -437,6 +444,13 @@ function getNewTitleValue(id) {
     }
 }
 
+
+/**
+ * The function gets the value of the description input-field and sets the newDescription variable. If there is a new description it is set
+ * as the description of the edited todo.
+ * 
+ * @param {number} id - id of current todo
+ */
 function getNewDescriptionValue(id) {
     let newDescription = document.getElementById('description').value;
     if (newDescription) {
@@ -444,6 +458,13 @@ function getNewDescriptionValue(id) {
     }
 }
 
+
+/**
+ * The function gets the value of the date input-field and sets the newDate variable. If there is a new date it is set as the date of the
+ * edited todo.
+ * 
+ * @param {number} id - id of current todo
+ */
 function getNewDateValue(id) {
     let newDate = document.getElementById('date').value;
     if (newDate) {
@@ -451,10 +472,23 @@ function getNewDateValue(id) {
     }
 }
 
+
+/**
+ * The function sets the priority of the edited todo.
+ * 
+ * @param {number} id - id of current todo
+ */
 function setNewPriority(id) {
     todos[id].priority = priority;
 }
 
+
+/**
+ * The function empties the assignments array of the current todo. It then loops through the assignedContacts array and pushes the contacts
+ * to the assignments array of the current todo. It finishes by emptying the assignedContacts array.
+ * 
+ * @param {number} id - id of current todo
+ */
 function getNewAssignments(id) {
     todos[id].assignments = [];
     for (let i = 0; i < assignedContacts.length; i++) {
