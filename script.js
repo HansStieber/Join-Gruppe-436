@@ -59,7 +59,6 @@ function checkURLandHighlight(navPoint){
  * function for sending an Email for reset
  */
 function sendMail() {
-    
     let email_input = document.getElementById("resetEmailInput").value;
     let confirmSentMail = document.getElementById("resetPWackknowledge");
     confirmSentMail.classList.add("flighUp");
@@ -95,13 +94,15 @@ function resetPassword() {
     let new_passwordCONF = document.getElementById("resetPWInputConf").value;
     users = JSON.parse(localStorage.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
+    let resetPW = document.getElementById("resetPW");
+    
 
 
     if (new_password === new_passwordCONF){
         if (existingUser) {
             existingUser.password = new_password;
             localStorage.setItem("users", JSON.stringify(users));
-            console.log("Password reset successfully.");
+            resetPW.classList.add("flighUp");
             setTimeout(function() {
                 window.location.href = "./index.html";
             }, 2000);

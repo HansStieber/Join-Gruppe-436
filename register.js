@@ -13,13 +13,13 @@ function register() {
       password: password
     });
     localStorage.setItem("users", JSON.stringify(users));
-    console.log("User registered successfully.");
-    setTimeout(function () {
-      window.location.href = "./index.html";
+    alert("User registered successfully.");
+    setTimeout(function() {
+      window.location.href = "../templates/log_in.html";
     }, 2000);
   } else {
-    console.log("Email already in use. Registration failed.");
-    setTimeout(function () {
+    alert("Email already in use. Registration failed.");
+    setTimeout(function() {
       window.location.href = "../templates/log_in.html";
     }, 2000);
   }
