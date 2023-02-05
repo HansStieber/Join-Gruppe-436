@@ -1,6 +1,7 @@
 let spliceCurrentContact;
 let indexOfCurrentContact = -1;
 let headerMenu;
+let email;
 
 
 /*----------- GENERAL FUNCTIONS TO INITIALIZE PAGE -----------*/
@@ -58,10 +59,15 @@ function checkURLandHighlight(navPoint){
  * function for sending an Email for reset
  */
 function sendMail() {
+    
+    let email_input = document.getElementById("resetEmailInput").value;
     let confirmSentMail = document.getElementById("resetPWackknowledge");
     confirmSentMail.classList.add("flighUp");
+    email = email_input;
     setTimeout(function () {
-        window.location.href = "../templates/reset_password.html"
+        confirmSentMail.classList.remove("flighUp");
+        document.getElementById("forgotPassword").style.display = "none";
+        document.getElementById("mainContainer-reset").style.display = "";
     }, 2000)
 }
 
@@ -79,6 +85,34 @@ function forgotPassword() {
     let loginContainer = document.getElementById("login-container");
     forgotContainer.removeAttribute("style");
     loginContainer.style.display = "none";
+    
+     
+}
+
+function resetPassword() {
+    let current_email = email;
+    let new_password = document.getElementById("resetPWInput").value;
+    let new_passwordCONF = document.getElementById("resetPWInputConf").value;
+    users = JSON.parse(localStorage.getItem("users")) || [];
+    let existingUser = users.find(user => user.email === current_email);
+
+
+    if (new_password === new_passwordCONF){
+        if (existingUser) {
+            existingUser.password = new_password;
+            localStorage.setItem("users", JSON.stringify(users));
+            console.log("Password reset successfully.");
+            setTimeout(function() {
+                window.location.href = "./index.html";
+            }, 2000);
+        } else {
+            console.log("Email not found. Password reset failed.");
+            setTimeout(function() {
+                window.location.href = "../templates/log_in.html";
+            }, 2000);
+        }
+    }
+    
 }
 
 
