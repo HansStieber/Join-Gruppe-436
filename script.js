@@ -1,6 +1,7 @@
 let spliceCurrentContact;
 let indexOfCurrentContact = -1;
 let headerMenu;
+let email;
 
 
 /*----------- GENERAL FUNCTIONS TO INITIALIZE PAGE -----------*/
@@ -10,6 +11,7 @@ let headerMenu;
 async function load() {
     await loadBackend();
     await includeHTML();
+    checkURLandHighlight();
 }
 
 
@@ -38,16 +40,33 @@ function saveArrayToBackend(key, array) {
     backend.setItem(key, arrayAsText);
 }
 
+/**
+ * This function highlightes the active navigation point on the sidebar. At first the function checks if the current page is 'Legal notice' or 
+ * if it's an other page.
+ * 
+ * @param {string} navPoint - id of the current (active) navigation point
+ */
+function checkURLandHighlight(navPoint){
+    if (document.URL.includes('legal_notice')) {
+        document.getElementById('legal_notice').classList.add('nav-highlight');
+    } else if (document.getElementById(`${navPoint}`)){
+        document.getElementById(`${navPoint}`).classList.add('nav-highlight');
+    }
+}
+
 
 /**
  * function for sending an Email for reset
  */
-
 function sendMail() {
+    let email_input = document.getElementById("resetEmailInput").value;
     let confirmSentMail = document.getElementById("resetPWackknowledge");
     confirmSentMail.classList.add("flighUp");
+    email = email_input;
     setTimeout(function () {
-        window.location.href = "../templates/reset_password.html"
+        confirmSentMail.classList.remove("flighUp");
+        document.getElementById("forgotPassword").style.display = "none";
+        document.getElementById("mainContainer-reset").style.display = "";
     }, 2000)
 }
 
@@ -65,6 +84,36 @@ function forgotPassword() {
     let loginContainer = document.getElementById("login-container");
     forgotContainer.removeAttribute("style");
     loginContainer.style.display = "none";
+    
+     
+}
+
+function resetPassword() {
+    let current_email = email;
+    let new_password = document.getElementById("resetPWInput").value;
+    let new_passwordCONF = document.getElementById("resetPWInputConf").value;
+    users = JSON.parse(localStorage.getItem("users")) || [];
+    let existingUser = users.find(user => user.email === current_email);
+    let resetPW = document.getElementById("resetPW");
+    
+
+
+    if (new_password === new_passwordCONF){
+        if (existingUser) {
+            existingUser.password = new_password;
+            localStorage.setItem("users", JSON.stringify(users));
+            resetPW.classList.add("flighUp");
+            setTimeout(function() {
+                window.location.href = "./index.html";
+            }, 2000);
+        } else {
+            console.log("Email not found. Password reset failed.");
+            setTimeout(function() {
+                window.location.href = "../templates/log_in.html";
+            }, 2000);
+        }
+    }
+    
 }
 
 
@@ -294,23 +343,34 @@ function hideNewTaskCloseBtn() {
 }
 
 
+/**
+ * In the first place this function checks the width of the window. Either the mobile-menu or the logout-button shows or hide per click of
+ * the avatar-button.
+ */
 function toggleMobileMenu() {
     checkWindowSize();
     headerMenu.classList.contains('hide') ? showMobileMenu(headerMenu) : hideMobileMenu(headerMenu);
 }
 
 
+/**
+ * In the first place this function checks the width of the window. Depending on the width the user sees a mobile menu oder a logout-button.
+ */
 function checkWindowSize() {
     return window.innerWidth <= 992 ? headerMenu = document.getElementById('mobileMenu') : headerMenu = document.getElementById('logoutBtn')
 }
 
-
+/**
+ * Function to show mobile-menu or logout-button
+ */
 function showMobileMenu(headerMenu) {
     headerMenu.classList.remove('hide');
     headerMenu.classList.add('show');
 }
 
-
+/**
+ * Function to hide mobile-menu or logout-button
+ */
 function hideMobileMenu(headerMenu) {
     headerMenu.classList.remove('show');
     headerMenu.classList.add('hide');

@@ -9,6 +9,7 @@ let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 async function initContacts() {
     await load();
     renderContacts();
+    checkURLandHighlight('contacts')
 }
 
 
@@ -42,7 +43,8 @@ function renderContacts() {
  * @param {object} contact - the actual Contact object.
  * @returns two HTML Elements with the Id's from actual Contact's,
  * firstname-firstletter.
- * @example contact firstname = 'Andreas', initials1 = 'A',
+ * @example:
+ * contact firstname = 'Andreas', initials1 = 'A',
  * the return = 
  *      cardsMainLetter: document.getElementById(`cards-main-A`),
  *      cardsDivLetter: document.getElementById(`cards-div-A`)
@@ -63,7 +65,8 @@ function getCardElements(contact) {
  * 
  * @param {object} contact - the actual Contact object.
  * @returns all info from actual Contact.
- * @example return{ 
+ * @example:
+ *  return{ 
  *      email: contact@mail.com,
  *      phone: 015145546531,
  *      initials1: 'A',

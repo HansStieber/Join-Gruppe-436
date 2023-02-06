@@ -54,7 +54,7 @@
     margin: 0 5px;
 }
 
-h1 {
+.new-task-card h1 {
     font-size: 61px;
     margin: 0;
 }
@@ -614,7 +614,7 @@ input[type='date']:hover {
 
 /* === Styling for smaller Screens === */
 @media (max-width: 1450px) {
-    h1 {
+    .new-task-card h1 {
         margin-bottom: 41px;
     }
 
@@ -665,7 +665,7 @@ input[type='date']:hover {
         display: unset;
     }
 
-    h1 {
+    .new-task-card h1 {
         font-size: 47px;
         margin: 20px 0;
     }

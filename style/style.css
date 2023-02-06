@@ -234,6 +234,26 @@ input {
     align-items: center;
 }
 
+.resetPW {
+    background-color: #2A3647;
+    border: none;
+    color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resetMain-reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .resetMain {
     display: flex;
     justify-content: center;

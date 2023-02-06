@@ -3,7 +3,9 @@ async function initSummary() {
     updateSummary();
     daytimeGreeting();
     greetingUser();
+    checkURLandHighlight('summary');
 }
+
 
 
 function updateSummary() {

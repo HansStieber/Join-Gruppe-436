@@ -1,20 +1,17 @@
-/*Variablen Namen und Reihenfolge,für Tasks: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
+//*Variablen Namen und Reihenfolge,für Tasks: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
 let tasks = [];
 let searchedTodos = [];
 let currentDraggedElements;
 let taskToEdit;
+
+
 async function initBoard() {
     await load();
     selectingArrayForBoardUpdate();
+    checkURLandHighlight('board');
 }
-function highlightCurrentNavPoint() {
-    currentNavPoint = document.URL;
-    console.log(currentNavPoint);
-    // if (document.URL.includes(currentURL)) {
-    //     console.log(currentURL);
-    //     document.getElementById(currentURL).classList.add('bg-highlight');
-    // }
-}
+
+
 function clearBoard() {
     document.getElementById('todo').innerHTML = '';
     document.getElementById('progress').innerHTML = '';
@@ -129,7 +126,7 @@ function generateTodoHTML(element, assignments) {
                                     <div id="user-icons-${element.id}" class="user-icons">
                                         <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
                                     </div>
-                                    <div><img src="img/priority-${element.priority}.svg"></div>
+                                    <div><img src="../img/priority-${element.priority}.svg"></div>
                                 </div>
                             </div>
     `;
@@ -191,7 +188,7 @@ function howMuchUsersAreAssigned(idOfCard) {
     for (let i = 0; i < assignmentsArray.length; i++) {
         const assignment = assignmentsArray[i];
         let assignedContact = assignment.firstName + " " + assignment.lastName;
-        let initials = assignment.firstName.slice(0,1) + assignment.lastName.slice(0,1);
+        let initials = assignment.firstName.slice(0, 1) + assignment.lastName.slice(0, 1);
         let initialsBg = assignment.color;
         document.getElementById('assignedContacts').innerHTML += /*html*/`
         <div class="assignedContacts">
@@ -235,8 +232,8 @@ function generateHTMLDetailCard(idOfCard) {
     let priority = todoArray.priority;
     let assignedContacts = todoArray.assignments[0].firstName + todoArray.assignments[0].lastName;
     return /*html*/`
-        <img src="assets/img/close.svg" alt="closing-icon" class="icon-settings" onclick="closeDetailView()">
-        <img src="assets/img/left_arrow.svg" alt="left arrow" class="icon-settings d-none">
+        <img src="../assets/img/close.svg" alt="closing-icon" class="icon-settings" onclick="closeDetailView()">
+        <img src="../assets/img/left_arrow.svg" alt="left arrow" class="icon-settings d-none">
         <div class="category-styling ${categoryBg}">${categoryTitel}</div>
         <div class="detail-view-title">${title}</div>
         <div>${description}</div>
@@ -246,12 +243,12 @@ function generateHTMLDetailCard(idOfCard) {
         </div>
         <div class="flex-center">
             <span class="subheading-styling">Priority: </span>
-            <img src="assets/img/${priority}_detailview.svg">
+            <img src="../assets/img/${priority}_detailview.svg">
         </div class="flex-center">
             <span class="subheading-styling">Assigned to: </span>
         <div id="assignedContacts">
         </div>
-        <img src="assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
+        <img src="../assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
         <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn delete-btn-board" type="button">
                         <div>
                             <span id="delete-btn-span">Delete</span>
