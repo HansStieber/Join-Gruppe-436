@@ -11,7 +11,7 @@
             <!-- TITLE -->
             <div class="field-container">
                 <label class="label" for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Enter a title" required>
+                <input type="text" id="title" name="title" placeholder="Enter a title" maxlength="30" required>
                 <span class="alert-required" id="title-required">Please enter a title first</span>
             </div>
 
@@ -28,7 +28,7 @@
                 <span class="label">Category</span>
                 <div id="new-category-container" class="field-container d-none">
                     <input type="text" id="new-category" name="new-category" class="d-none"
-                        placeholder="New category name">
+                        placeholder="New category name" maxlength="25">
                     <img class="new-category-icon left-pos" src="assets/img/close_new_task_button.svg"
                         onclick="closeNewCategory()">
                     <div class="border-small mid-pos"></div>
