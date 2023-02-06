@@ -557,7 +557,11 @@
         overflow: auto;
     }
 
-    .header {
+    header {
+        z-index: 2;
+    }
+
+    .mobile-menu {
         z-index: 2;
     }
 
