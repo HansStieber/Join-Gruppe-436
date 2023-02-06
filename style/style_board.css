@@ -2,11 +2,6 @@
     overflow: hidden;
 }
 
-.board-outer-div {
-    /*max-width: 1260px;
-    height: calc(100vh - 172px);*/
-}
-
 .cards-slide-div {
     overflow: auto;
     height: calc(100vh - 440px);
