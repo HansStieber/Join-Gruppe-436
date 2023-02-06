@@ -1,0 +1,155 @@
+@media(max-width:1485px) {
+    .cards-div {
+        width: 815px;
+        padding-right: 0px;
+    }
+}
+
+@media(max-width:1185px) {
+    .main {
+        padding-left: 250px;
+    }
+}
+
+@media(max-width:1070px) {
+    .cards-div {
+        width: 750px;
+    }
+}
+
+@media(max-width:992px) {
+    .detail-view {
+        font-size: 16px !important;
+        padding: 30px;
+    }
+
+    .main {
+        padding-left: 116px;
+    }
+
+    .add-task-btn-mobile {
+        cursor: pointer;
+        background-image: url(../../img/add-task-btn-mobile.svg);
+        background-repeat: no-repeat;
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .add-task-btn-mobile:active {
+        background-image: url(../../img/add-task-btn-mobile-blue.svg);
+        background-repeat: no-repeat;
+
+    }
+
+    .add-task-btn {
+        background-image: none;
+        width: 0em;
+        height: 0em;
+    }
+
+    .board {
+        padding-right: 2em;
+        padding-left: 2em;
+    }
+
+    .board-head-div {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .board-head-div h1 {
+        font-size: 3em;
+    }
+
+    .mobile-headline-div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .board-input {
+        padding: 0.6em 1em;
+        width: 15em;
+    }
+
+    .cards-div {
+        padding: 0em;
+    }
+
+    .cards-category {
+        margin-bottom: 1em;
+    }
+
+    .card {
+        margin-bottom: 1.2em;
+    }
+}
+
+@media(max-height:985px) {
+    .center-new-task-card {
+        align-items: start;
+    }
+}
+
+@media(max-width:820px) {
+    .board {
+        padding-left: 0em;
+        padding-right: 0em;
+    }
+
+    .kanban-mobile-span {
+        display: block;
+        margin-top: 2em;
+    }
+
+    .main {
+        padding-left: 70px;
+    }
+}
+
+@media(max-width:700px) {
+    .main {
+        padding-left: 33px;
+    }
+}
+
+@media(max-width:610px) {
+    .content {
+        overflow: auto;
+    }
+
+    header {
+        z-index: 2;
+    }
+
+    .mobile-menu {
+        z-index: 2;
+    }
+
+    .cards-slide-div {
+        overflow: visible;
+    }
+
+    .board {
+        padding-bottom: 1em;
+        position: sticky;
+        top: 0em;
+        background-color: #f5f5f5;
+        z-index: 1;
+    }
+
+    .cards-div {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cards-slide-div {
+        height: calc(100vh - 425px)
+    }
+
+    .card-column {
+        min-height: 205px;
+    }
+}
