@@ -8,8 +8,11 @@
     <title>sign Up</title>
     <link rel="stylesheet" href="../style/signUp.css">
     <script src="../register.js"></script>
+    <script src="../script.js"></script>
+    <script src="../mini_backend.js"></script>
+    <script src="../include.js"></script>
 </head>
-<body>
+<body onload="load()">
     <div class="maincontainer-SignUp">
         <img id="joinLogo-SignUp" src="../img/join-logo.png" alt="">
         <div  id="signUp-container" class="signUp-container">
@@ -18,7 +21,7 @@
             </a>
             <h1>Sign up</h1>
             <img src="../img/blue_underline.png" id="blue_underline">
-            <form class="SignUpCredentials" onsubmit="register()">
+            <form class="SignUpCredentials" onsubmit="register();return false">
                 <input id="name" type="text" name="name" type="name" placeholder="Name" required>
                 <input id="email" type="text" name="email" type="email" placeholder="Email" required>
                 <input id="password" type="password" name="password" type="password" placeholder="Password" required>

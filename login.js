@@ -2,7 +2,6 @@ function login() {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
 
-  let users = JSON.parse(localStorage.getItem("users")) || [];
   let existingUser = users.find(user => user.email === email && user.password === password);
 
   if (existingUser) {
@@ -17,7 +16,4 @@ function login() {
     console.log("Invalid email or password. Login failed.");
     alert("failed")
   }
-
 }
-
-

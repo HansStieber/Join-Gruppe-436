@@ -25,6 +25,7 @@ async function loadBackend() {
     contacts = JSON.parse(backend.getItem('contact')) || [];
     assignments = JSON.parse(backend.getItem('assignments')) || [];
     existingUser = backend.getItem('currentUser') || [];
+    users = JSON.parse(backend.getItem("users")) || [];
 }
 
 
