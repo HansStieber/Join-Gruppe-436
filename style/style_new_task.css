@@ -457,20 +457,24 @@ textarea::-webkit-scrollbar-thumb {
     padding: 13px 0;
 }
 
+
 ::-webkit-calendar-picker-indicator {
-    background-image: url('../assets/img/calender.svg');
+    display: none;
+}
+
+/*    background-image: url('../assets/img/calender.svg');
     background-size: 24px;
 }
 
 ::-webkit-calendar-picker-indicator:hover {
     cursor: pointer;
-}
+}*/
 
 input[type='date'] {
     width: 100%;
     font-family: 'Inter', sans-serif;
     font-size: 21px;
-    color: #D1D1D1C2;
+    /*color: #D1D1D1C2;*/
     outline: none;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
@@ -478,6 +482,14 @@ input[type='date'] {
 
 input[type='date']:hover {
     cursor: pointer;
+}
+
+.calender-icon {
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    margin: auto 0;
+    width: 20px;
 }
 
 /* === Styling of priority container === */

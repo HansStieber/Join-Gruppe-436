@@ -404,10 +404,12 @@ function editDate() {
  * set, the current date is shown again.
  */
 function showOldDate() {
-    let newDate = document.getElementById('new-date').value;
+    let newDate = document.getElementById('date').value;
     if (!newDate) {
         document.getElementById('date-to-edit').classList.remove('d-none');
-        document.getElementById('new-date').classList.remove('color-unset');
+        document.getElementById('date').classList.remove('color-unset');
+    } else {
+        
     }
 }
 
