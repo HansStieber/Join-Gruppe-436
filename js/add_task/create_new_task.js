@@ -99,6 +99,7 @@ function inputFieldIsEmpty(id) {
  */
 function initiateAlert(id) {
     document.getElementById(id + '-required').classList.add('alert-color');
+    document.getElementById('category-required').innerHTML = `Please enter a category name first`;
 }
 
 
