@@ -130,14 +130,8 @@ function renderSubtasks(subtask, i) {
  * 
  * @param {string} title - current title that might be edited
  * @param {string} description - current description that might be edited
- * @param {string} y1 - first date year number
- * @param {string} y2 - second date year number
- * @param {string} y3 - third date year number
- * @param {string} y4 - fourth date year number
- * @param {string} m1 - first date month number
- * @param {string} m2 - second date month number
- * @param {string} d1 - first date day number
- * @param {string} d2 - second date day number
+ * @param {string} date - current date the might be edited
+ * @param {number} id - current index of the todo at the todos array
  */
 function renderEditCard(id, title, description, date) {
     document.getElementById('detailView').innerHTML = `
@@ -154,7 +148,7 @@ function renderEditCard(id, title, description, date) {
 
         <div class="field-container margin-bottom-minus">
             <span class="label">Due date</span>
-            <input class="color-transparent" id="date" type="date" value="${date}">
+            <input id="date" type="date" value="${date}">
         </div>
 
         <div class="field-container margin-bottom-minus">
@@ -202,8 +196,9 @@ function renderEditCard(id, title, description, date) {
             <div id="assignments-icons-container" class="assignments-icons-container">
             </div>
         </div>
-        
+        <div class="edit-button-container">
         <div class="edit-todo-button" onclick="saveChanges(${id})">
             </div>
+        </div>
 `;
 }

@@ -341,31 +341,6 @@ function assignAssignedContacts(id) {
 
 
 /**
- * The function hides the current date and focuses on the date input-field.
- */
-function editDate() {
-    document.getElementById('date-to-edit').classList.add('d-none');
-    document.getElementById('date').classList.add('color-unset');
-    document.getElementById('date').focus();
-}
-
-
-/**
- * The function runs when focus of the input field is out. The function defines a potential new date. If there is no new date
- * set, the current date is shown again.
- */
-function showOldDate() {
-    let newDate = document.getElementById('date').value;
-    if (!newDate) {
-        document.getElementById('date-to-edit').classList.remove('d-none');
-        document.getElementById('date').classList.remove('color-unset');
-    } else {
-        
-    }
-}
-
-
-/**
  * The function saves all changes to the backend.
  * 
  * @param {number} id - id of current todo
