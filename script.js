@@ -9,10 +9,10 @@ let existingUserName;
  * The function plays the loadBackend() and includeHTML() functions.
  */
 async function load() {
-    setFaviconColorTheme();
     await loadBackend();
     await includeHTML();
     checkURLandHighlight();
+    setFaviconColorTheme();
 }
 
 
@@ -260,7 +260,7 @@ function hideNewTaskCard() {
     hideNewTaskCloseBtn('new-task-overlay');
     removeCurrentContact();
     closeAllDropdowns();
-    setTimeout(function () { 
+    setTimeout(function () {
         newTaskCloseBtn.classList.add('d-none');
         mobileDescription.classList.remove('d-none');
     }, 450);

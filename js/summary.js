@@ -9,19 +9,24 @@ async function initSummary() {
 
 
 function updateSummary() {
-    const { tasksInBoardDiv, tasksInProgressDiv, tasksInFeedbackDiv,
-        urgentDiv, urgentDateDiv, tasksTodoDiv, tasksDoneDiv } = getSummaryElements();
 
-    const { tasksInBoard, tasksInProgress, tasksInFeedback,
-        tasksUrgent, urgentTaskDate, tasksTodo, tasksDone } = getSummaryInfo();
+    if (todos.length == 0) {
 
-    tasksInBoardDiv.innerHTML = tasksInBoard.length;
-    tasksInProgressDiv.innerHTML = tasksInProgress.length;
-    tasksInFeedbackDiv.innerHTML = tasksInFeedback.length;
-    urgentDiv.innerHTML = tasksUrgent.length;
-    urgentDateDiv.innerHTML = urgentTaskDate;
-    tasksTodoDiv.innerHTML = tasksTodo.length;
-    tasksDoneDiv.innerHTML = tasksDone.length;
+    } else {
+        const { tasksInBoardDiv, tasksInProgressDiv, tasksInFeedbackDiv,
+            urgentDiv, urgentDateDiv, tasksTodoDiv, tasksDoneDiv } = getSummaryElements();
+
+        const { tasksInBoard, tasksInProgress, tasksInFeedback,
+            tasksUrgent, urgentTaskDate, tasksTodo, tasksDone } = getSummaryInfo();
+
+        tasksInBoardDiv.innerHTML = tasksInBoard.length;
+        tasksInProgressDiv.innerHTML = tasksInProgress.length;
+        tasksInFeedbackDiv.innerHTML = tasksInFeedback.length;
+        urgentDiv.innerHTML = tasksUrgent.length;
+        urgentDateDiv.innerHTML = urgentTaskDate;
+        tasksTodoDiv.innerHTML = tasksTodo.length;
+        tasksDoneDiv.innerHTML = tasksDone.length;
+    }
 }
 
 
