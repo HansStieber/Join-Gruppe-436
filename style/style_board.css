@@ -4,7 +4,7 @@
 
 .cards-slide-div {
     overflow: auto;
-    height: calc(100vh - 356px);
+    height: calc(100vh - 265px);
 }
 
 .slide-board-scroll::-webkit-scrollbar {

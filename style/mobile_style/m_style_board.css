@@ -18,6 +18,10 @@
 }
 
 @media(max-width:992px) {
+    .board-outer-div {
+        padding-top: 20px;
+    }
+
     .detail-view {
         font-size: 16px !important;
         padding: 30px;
@@ -73,6 +77,10 @@
         width: 15em;
     }
 
+    .cards-slide-div {
+        height: calc(100vh - 345px)
+    }
+
     .cards-div {
         padding: 0em;
     }
@@ -93,6 +101,10 @@
 }
 
 @media(max-width:820px) {
+    .board-outer-div {
+        padding-top: 0px;
+    }
+
     .board {
         padding-left: 0em;
         padding-right: 0em;
@@ -105,6 +117,10 @@
 
     .main {
         padding-left: 70px;
+    }
+
+    .cards-slide-div {
+        height: calc(100vh - 375px)
     }
 }
 
@@ -146,7 +162,7 @@
     }
 
     .cards-slide-div {
-        height: calc(100vh - 425px)
+        height: calc(100vh - 360px)
     }
 
     .card-column {
