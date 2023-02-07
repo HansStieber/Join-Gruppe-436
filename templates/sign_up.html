@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,28 +12,28 @@
     <script src="../mini_backend.js"></script>
     <script src="../include.js"></script>
 </head>
+
 <body onload="load()">
     <div class="maincontainer-SignUp">
         <img id="joinLogo-SignUp" src="../img/join-logo.png" alt="">
-        <div  id="signUp-container" class="signUp-container">
+        <div id="signUp-container" class="signUp-container">
             <a href="../index.html">
                 <img id="backArrowSignUp" src="../img/back-arrow.svg">
             </a>
             <h1>Sign up</h1>
             <img src="../img/blue_underline.png" id="blue_underline">
             <form class="SignUpCredentials" onsubmit="register();return false">
-                <input id="name" type="text" name="name" type="name" placeholder="Name" required>
-                <input id="email" type="text" name="email" type="email" placeholder="Email" required>
-                <input id="password" type="password" name="password" type="password" placeholder="Password" required>
+                <input id="name" type="text" name="name" type="name" placeholder="Name" autocomplete="username"
+                    required>
+                <input id="email" type="text" name="email" type="email" placeholder="Email" autocomplete="email"
+                    required>
+                <input id="password" type="password" name="password" type="password" placeholder="Password"
+                    autocomplete="current-password" required>
                 <button class="signUp_button" id="signUp_button">Sign up</button>
             </form>
         </div>
     </div>
-    
+
 </body>
+
 </html>
-
-
-
-
-

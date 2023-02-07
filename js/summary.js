@@ -63,7 +63,6 @@ function getLatestUrgentTask(tasksUrgent) {
         let month = (dateLong.getMonth() + 1);
 
         if (month < latestmonth || month <= latestmonth && day < latestDay) {
-
             latestDay = day;
             latestmonth = month
             latestUrgentTask = tasksUrgent[i];
@@ -85,11 +84,11 @@ function getUrgentTasks(tasksUrgent) {
 
 function greetingUser() {
     let nameDiv = document.getElementById('user-greeting');
+    let existingUser = localStorage.getItem('currentUser');
     if (existingUser.length == 0) {
         nameDiv.innerHTML = 'guest';
     } else {
         nameDiv.innerHTML = existingUser;
-
     }
 }
 

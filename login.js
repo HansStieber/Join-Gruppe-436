@@ -11,7 +11,8 @@ function login() {
     }, 2000);
     //document.getElementById("user-greeting").innerHTML = `${existingUser["name"]}`;
     //von Pierre, um von Summary.js aus, auf den aktuellen Benutzer zuzugreifen//
-    backend.setItem('currentUser', existingUser.name);
+    //backend.setItem('currentUser', existingUser.name);
+    localStorage.setItem('currentUser', existingUser.name);
   } else {
     console.log("Invalid email or password. Login failed.");
     alert("failed")

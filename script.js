@@ -2,7 +2,7 @@ let spliceCurrentContact;
 let indexOfCurrentContact = -1;
 let headerMenu;
 let email;
-
+let existingUserName;
 
 /*----------- GENERAL FUNCTIONS TO INITIALIZE PAGE -----------*/
 /**
@@ -24,7 +24,7 @@ async function loadBackend() {
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
     assignments = JSON.parse(backend.getItem('assignments')) || [];
-    existingUser = backend.getItem('currentUser') || [];
+    //existingUser = backend.getItem('currentUser') || [];
     users = JSON.parse(backend.getItem("users")) || [];
 }
 
@@ -47,10 +47,10 @@ function saveArrayToBackend(key, array) {
  * 
  * @param {string} navPoint - id of the current (active) navigation point
  */
-function checkURLandHighlight(navPoint){
+function checkURLandHighlight(navPoint) {
     if (document.URL.includes('legal_notice')) {
         document.getElementById('legal_notice').classList.add('nav-highlight');
-    } else if (document.getElementById(`${navPoint}`)){
+    } else if (document.getElementById(`${navPoint}`)) {
         document.getElementById(`${navPoint}`).classList.add('nav-highlight');
     }
 }
@@ -85,8 +85,8 @@ function forgotPassword() {
     let loginContainer = document.getElementById("login-container");
     forgotContainer.removeAttribute("style");
     loginContainer.style.display = "none";
-    
-     
+
+
 }
 
 function resetPassword() {
@@ -96,25 +96,25 @@ function resetPassword() {
     users = JSON.parse(localStorage.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
     let resetPW = document.getElementById("resetPW");
-    
 
 
-    if (new_password === new_passwordCONF){
+
+    if (new_password === new_passwordCONF) {
         if (existingUser) {
             existingUser.password = new_password;
             localStorage.setItem("users", JSON.stringify(users));
             resetPW.classList.add("flighUp");
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = "./index.html";
             }, 2000);
         } else {
             console.log("Email not found. Password reset failed.");
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = "../templates/log_in.html";
             }, 2000);
         }
     }
-    
+
 }
 
 
@@ -223,10 +223,10 @@ function setOptionOneIndex(i) {
  */
 function pushContactAndLoadAssignmentsOptionsAndAssignContact(i) {
     assignments.push(contacts[i]);
-        loadAssignmentOptions();
-        setOptionTwoIndex(i);
-        assignContact(index);
-        spliceCurrentContact = true;
+    loadAssignmentOptions();
+    setOptionTwoIndex(i);
+    assignContact(index);
+    spliceCurrentContact = true;
 }
 
 
