@@ -167,6 +167,22 @@ function removeAlerts() {
 }
 
 
+/**
+ * This function selects a category. It also sets the categorySelected and currentColor variable. The selected category is rendered at the 
+ * position of the default value and the dropdown menu is closed.
+ * 
+ * @param {string} title - title of the selected category
+ * @param {string} color - color of the selected category
+ */
+function selectCategory(title, color) {
+    categorySelected = true;
+    currentColor = color;
+    renderSelectedCategory(title, color);
+    closeDropdownCategory();
+    removeAlerts();
+}
+
+
 /*----------- SETTING CURRENTCOLOR -----------*/
 /**
  * The function sets the parameter currentColor to the value of the color parameter. It also runs the highlightCurrentColor() function.
@@ -179,12 +195,25 @@ function setCurrentColor(color, i) {
     highlightCurrentColor(i);
 }
 
+
+/**
+ * This function shows the confirmation options when a category es deleted.
+ * 
+ * @param {number} i - index of the category that is deleted at the categories array
+ */
 function deleteCategory(i) {
     document.getElementById('c-delete-option' + i).innerHTML = `
     <span class="delete-category-text" onclick=confirmDeletion(${i})>Yes</span><span class="margin-to-sides"> </span><span class="delete-category-text" onclick=doNotDelete(${i})>No</span>
     `;
 }
 
+
+/**
+ * The function deletes a category. The category is removed from the categories array. After that the remaining categories are loaded and shown
+ * again. Also the categories array is saved to the backend database.
+ * 
+ * @param {number} i - index of the category that is deleted at the categories array
+ */
 function confirmDeletion(i) {
     categories.splice(i, 1);
     loadAllOptions();
@@ -194,6 +223,12 @@ function confirmDeletion(i) {
     openDropdownCategory();
 }
 
+
+/**
+ * The function renders the default delete button if the user decides to not delete the selected category.
+ * 
+ * @param {number} i - index of the category that is deleted at the categories array
+ */
 function doNotDelete(i) {
     document.getElementById('c-delete-option' + i).innerHTML = `
     <span class="delete-category-text" onclick=deleteCategory(${i})>delete</span>
@@ -201,20 +236,14 @@ function doNotDelete(i) {
 }
 
 
-
+/**
+ * This function loops through the colors array and highlights the color at index i.
+ * 
+ * @param {number} i - index of the color at the colors array
+ */
 function highlightCurrentColor(i) {
     for (let i = 0; i < colors.length; i++) {
         document.getElementById('color' + i).classList.remove('highlight');
     }
     document.getElementById('color' + i).classList.add('highlight');
-}
-
-
-/*----------- ADD NEW CATEGORY -----------*/
-function selectCategory(title, color) {
-    categorySelected = true;
-    currentColor = color;
-    renderSelectedCategory(title, color);
-    closeDropdownCategory();
-    removeAlerts();
 }
