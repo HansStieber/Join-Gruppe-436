@@ -168,7 +168,6 @@
     font-size: 21px;
 }
 
-
 .urgent-tasks {
     display: flex;
     justify-content: center;
@@ -204,27 +203,19 @@
 
 
 @media (max-width: 1320px) {
-    .user-greeting {
-        display: inline;
-    }
-
     .main-container {
         flex-direction: column;
         align-items: unset;
     }
 
     .side-container {
-        padding-left: unset;
-        padding-top: 30px;
+      display: none;
     }
 
 }
 
 @media (max-width: 992px) {
-    .side-container {
-        display: none;
-    }
-
+   
     .summary-outer-div {
         overflow: auto;
     }
@@ -241,7 +232,6 @@
         align-items: unset;
         gap: 20px;
     }
-
 
     .grafic-line {
         width: 90px;

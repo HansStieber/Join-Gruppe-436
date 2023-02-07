@@ -91,7 +91,7 @@ function selectSubtask(i) {
  * not selected. It further adds an onclick function for selecting the subtask again if needed. Also i is used to pick the right elements
  * by their unique id´s which identify every subtask.
  * 
- * @param {number} i 
+ * @param {number} i - index of the subtask in the subtasks array
  */
 function removeSelection(i) {
     subtasks[i].checked = false;

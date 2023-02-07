@@ -1,5 +1,5 @@
 <div id="content-new-task" class="content-new-task new-task-card">
-    <div class="mobile-description">Kanban Project Management Tool</div>
+    <div id="mobile-description" class="mobile-description">Kanban Project Management Tool</div>
     <h1>Add Task</h1>
     <img onclick="hideNewTaskCard('')" id="new-task-close-btn" class="close-new-task d-none"
         src="assets/img/close_new_task_button.svg" alt="close">
@@ -101,7 +101,7 @@
             <!-- DUE DATE -->
             <div class="field-container">
                 <span class="label">Due date</span>
-                <input id="date" type="date">
+                <input id="date" type="date" max="2999-12-31">
                 <img id="icon-plus" class="calender-icon right-pos-no-filter" src="assets/img/calender.svg">
                 <span class="alert-required" id="date-required">Please select date first</span>
             </div>

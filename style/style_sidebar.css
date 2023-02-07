@@ -75,7 +75,7 @@
 
     .navigation-point {
         flex-direction: column;
-        padding: 14px;
+        padding: 13px 0;
         gap: 5px;
     }
 
@@ -87,7 +87,10 @@
         width: 100%;
         display: flex;
         justify-content: center;
+    }
 
+    .icon-sidebar{
+        height: 25px;
     }
 
 

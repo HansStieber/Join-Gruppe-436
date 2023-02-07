@@ -75,7 +75,10 @@ header {
 @media (max-width: 992px) {
     header {
         padding: 20px 36px 20px 116px;
+    }
 
+    .mobile-menu, .logout-btn{
+        right: 10px;
     }
 }
 

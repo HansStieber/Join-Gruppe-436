@@ -126,7 +126,9 @@ function resetPassword() {
 async function showNewTaskCard() {
     await loadTemplateNewTask();
     let newTaskCloseBtn = document.getElementById('content-new-task');
+    let mobileDescription = document.getElementById('mobile-description');
     newTaskCloseBtn.classList.remove('d-none');
+    mobileDescription.classList.add('d-none');
     showClearButton();
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
@@ -252,12 +254,16 @@ function setOptionTwoIndex(i) {
  */
 function hideNewTaskCard() {
     let newTaskCloseBtn = document.getElementById('content-new-task');
+    let mobileDescription = document.getElementById('mobile-description');
     slideOutCard('new-task-overlay');
     hideShadowScreen('new-task-shadow-screen');
     hideNewTaskCloseBtn('new-task-overlay');
     removeCurrentContact();
     closeAllDropdowns();
-    setTimeout(function () { newTaskCloseBtn.classList.add('d-none'); }, 450);
+    setTimeout(function () { 
+        newTaskCloseBtn.classList.add('d-none');
+        mobileDescription.classList.remove('d-none');
+    }, 450);
     setTimeout(removeTemplateNewTask, 450);
 }
 
