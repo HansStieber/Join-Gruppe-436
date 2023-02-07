@@ -165,6 +165,10 @@
         height: calc(100vh - 360px)
     }
 
+    .cards-column-main {
+        margin-left: 0px;
+    }
+
     .card-column {
         min-height: 205px;
     }
