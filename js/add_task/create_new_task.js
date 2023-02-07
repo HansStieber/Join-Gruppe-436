@@ -206,9 +206,9 @@ function checkIfInputMissingAndPushNewTask() {
 /**
  * Runs functions essential for submitting the form and creating a new task
  */
-function pushNewTask() {
+async function pushNewTask() {
     pickSubtasks();
-    pushTask();
+    await pushTask();
     clearAllInputFields();
     showConfirmation();
 }
@@ -257,11 +257,6 @@ async function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
     todos.push(newTask);
-
-    for (let i = 0; i < assignedContacts.length; i++) {
-        const assignment = assignedContacts[i];
-        assignments.push(assignment);
-    }
 
     await saveTasks();
     await saveCategories(categoryTitle);
