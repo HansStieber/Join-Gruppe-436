@@ -257,6 +257,12 @@ async function pushTask() {
     let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
 
     todos.push(newTask);
+
+    for (let i = 0; i < assignedContacts.length; i++) {
+        const assignment = assignedContacts[i];
+        assignments.push(assignment);
+    }
+
     await saveTasks();
     await saveCategories(categoryTitle);
     await saveAssignmentOptions();
