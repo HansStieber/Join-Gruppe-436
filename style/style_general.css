@@ -192,7 +192,7 @@ HELLGRAU (BACKGROUND): #F5F5F5
 
 /* === General Setting for MAIN CONTENT === */
 .main {
-    padding: 172px 0px 0px 348px;
+    padding: 145px 0px 0px 325px;
     /*padding: 172px 116px 0 348px;*/
     display: flex;
     flex-direction: column;

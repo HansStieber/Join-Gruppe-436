@@ -236,6 +236,7 @@
 
 .contact-card-info {
     margin-left: 35px;
+    overflow: hidden;
 }
 
 .contact-card-info div {
