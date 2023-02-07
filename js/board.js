@@ -18,6 +18,8 @@ function clearBoard() {
     document.getElementById('feedback').innerHTML = '';
     document.getElementById('done').innerHTML = '';
 }
+
+
 function renderBoard(todos) {
     clearBoard();
     renderTodoColumn(todos);
@@ -25,63 +27,81 @@ function renderBoard(todos) {
     renderFeedbackColumn(todos);
     renderDoneColumn(todos);
 }
+
+
 function renderTodoColumn(todos) {
     let todo = todos.filter(t => t.status == 'todo');
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
         const id = todo[i].id;
         const assignments = todo[i].assignments;
-        document.getElementById('todo').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        document.getElementById('todo').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
     }
 }
+
+
 function renderProgressColumn(todos) {
     let progress = todos.filter(t => t.status == 'progress');
     for (let i = 0; i < progress.length; i++) {
         const element = progress[i];
         const id = progress[i].id;
         const assignments = progress[i].assignments;
-        document.getElementById('progress').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        document.getElementById('progress').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
     }
 }
+
+
 function renderFeedbackColumn(todos) {
     let feedback = todos.filter(t => t.status == 'feedback');
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
         const id = feedback[i].id;
         const assignments = feedback[i].assignments;
-        document.getElementById('feedback').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        document.getElementById('feedback').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
     }
 }
+
+
 function renderDoneColumn(todos) {
     let done = todos.filter(t => t.status == 'done');
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
         const id = done[i].id;
         const assignments = done[i].assignments;
-        document.getElementById('done').insertAdjacentHTML("beforeend", generateTodoHTML(element, assignments));
+        document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
     }
 }
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
+
+/**
+ * By pressing the plus button at the disired status (progress, feedback, done) this function opens the add task overlay.
+ */
 function addTaskToStatusProgress() {
     progressStatus = 'progress';
     showNewTaskCard();
 }
+
+
 function addTaskToStatusFeedback() {
     progressStatus = 'feedback';
     showNewTaskCard();
 }
+
+
 function addTaskToStatusDone() {
     progressStatus = 'done';
     showNewTaskCard();
 }
+
+
 function checkForSecondUser(assignments, id) {
     if (assignments.length > 1) {
         let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
@@ -90,6 +110,8 @@ function checkForSecondUser(assignments, id) {
         `;
     }
 }
+
+
 function checkForMoreUsers(assignments, id) {
     if (assignments.length > 2) {
         let userlength = assignments.length - 2;
@@ -108,28 +130,6 @@ function selectingArrayForBoardUpdate() {
     } else {
         renderBoard(searchedTodos);
     }
-}
-function generateTodoHTML(element, assignments) {
-    let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
-    return /*html*/ `
-    <div class="card" id="${element.id}" draggable="true" onclick="showCards(${element.id})" ondragstart="startDragging(${element.id})">
-    <!-- <div class="detailView" id="detailView" style="display:none"></div> -->
-    <div  class="card-name ${element.category.color}">${element.category.title}</div>
-                                <div class="card-text">
-                                    <span class="card-headline">${element.title}</span>
-                                    <span class="card-info">${element.description}</span>
-                                    <!-- <div class="progress-div">
-                                            <div class="progress-bar"></div>
-                                            <span>${element.progress}</span></div> -->
-                                    <!-- </div> -->
-                                <div class="card-bottom">
-                                    <div id="user-icons-${element.id}" class="user-icons">
-                                        <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
-                                    </div>
-                                    <div><img src="../img/priority-${element.priority}.svg"></div>
-                                </div>
-                            </div>
-    `;
 }
 
 
@@ -153,23 +153,43 @@ function setNewTodoIds() {
 
 /*----------- DRAG AND DROP -----------*/
 
+/**
+ * The global defined variable 'currentDraggedElement' is undefined in the first place. When moving a task to another status-column the global 
+ * variable gets the value of the id of the current task card.
+ * @param {number} id id of the current task card
+ */
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
+/**
+ * This functions overwirte the status when moving the task to a new status-column and saves it at the backend.
+ * @param {string} status - there are 4 different status option: to do, in progress, feedback and done
+ */
 function moveTo(status) {
     todos[currentDraggedElement]['status'] = status;
     renderBoard(todos);
     saveStatus();
 }
+
+
 function saveStatus() {
     let todosAsText = JSON.stringify(todos);
     backend.setItem('todo', todosAsText);
 }
-/*----------- DETAIL CARD-----------*/
-function showCards(idOfCard) {
+
+/*----------- DETAIL VIEW OF TASK CARD-----------*/
+
+/**
+ * This function shows the details of a task when clicking on it.  
+ * @param {number} idOfCard - id of the current task card
+ */
+function showTaskCard(idOfCard) {
     taskToEdit = idOfCard;
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.remove('d-none');
@@ -177,12 +197,24 @@ function showCards(idOfCard) {
     detailContainer.innerHTML = generateHTMLDetailCard(idOfCard);
     howMuchUsersAreAssigned(idOfCard);
 }
+
+
+/**
+ * This function closes the detail view of the card when pressing the x-mark. The shadow-screen is removed and the board update.
+ */
 function closeDetailView() {
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
     initBoard();
 }
+
+
+/**
+ * This function checks how much persons are assigned to one task. It generates the full name, the initials and the background color 
+ * of the initials-container of each person which is shown at the detail view of the task card.
+ * @param {number} idOfCard - id of the current task card
+ */
 function howMuchUsersAreAssigned(idOfCard) {
     let assignmentsArray = todos[idOfCard].assignments;
     for (let i = 0; i < assignmentsArray.length; i++) {
@@ -200,27 +232,36 @@ function howMuchUsersAreAssigned(idOfCard) {
         `;
     }
 }
-/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
-/**
- * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
- * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
- * board.
- */
-function findTask() {
-    searchedTodos = [];
-    let search = document.getElementById('find-task').value;
-    for (let i = 0; i < todos.length; i++) {
-        const title = todos[i].title;
-        const description = todos[i].description;
-        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
-            searchedTodos.push(todos[i]);
-            console.log(searchedTodos);
-        }
-        selectingArrayForBoardUpdate();
-    }
-}
-/*----------- HTML Templates -----------*/
 
+
+/*----------- HTML templates -----------*/
+
+// template for the task cards at the board
+function generateHTMLTaskCard(element, assignments) {
+    let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
+    return /*html*/ `
+    <div class="card" id="${element.id}" draggable="true" onclick="showTaskCard(${element.id})" ondragstart="startDragging(${element.id})">
+    <!-- <div class="detailView" id="detailView" style="display:none"></div> -->
+    <div  class="card-name ${element.category.color}">${element.category.title}</div>
+                                <div class="card-text">
+                                    <span class="card-headline">${element.title}</span>
+                                    <span class="card-info">${element.description}</span>
+                                    <!-- <div class="progress-div">
+                                            <div class="progress-bar"></div>
+                                            <span>${element.progress}</span></div> -->
+                                    <!-- </div> -->
+                                <div class="card-bottom">
+                                    <div id="user-icons-${element.id}" class="user-icons">
+                                        <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
+                                    </div>
+                                    <div><img src="../img/priority-${element.priority}.svg"></div>
+                                </div>
+                            </div>
+    `;
+}
+
+
+// template for detail cards when the task card is clicked
 function generateHTMLDetailCard(idOfCard) {
     taskToEdit = idOfCard;
     let todoArray = todos[idOfCard];
@@ -255,8 +296,29 @@ function generateHTMLDetailCard(idOfCard) {
                         </div>
                     </button>
 `;
-
 }
+
+
+/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
+/**
+ * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
+ * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
+ * board.
+ */
+function findTask() {
+    searchedTodos = [];
+    let search = document.getElementById('find-task').value;
+    for (let i = 0; i < todos.length; i++) {
+        const title = todos[i].title;
+        const description = todos[i].description;
+        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+            searchedTodos.push(todos[i]);
+            console.log(searchedTodos);
+        }
+        selectingArrayForBoardUpdate();
+    }
+}
+
 
 /*----------- EDIT TASK FROM BOARD -----------*/
 /**
@@ -351,7 +413,7 @@ function saveChanges(id) {
     getPriority();
     setPriority(id);
     getNewAssignments(id);
-    showCards(id);
+    showTaskCard(id);
     saveTasks();
 }
 
