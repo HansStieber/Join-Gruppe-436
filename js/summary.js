@@ -85,7 +85,7 @@ function getUrgentTasks(tasksUrgent) {
 function greetingUser() {
     let nameDiv = document.getElementById('user-greeting');
     let existingUser = localStorage.getItem('currentUser');
-    if (existingUser.length == 0) {
+    if (!existingUser) {
         nameDiv.innerHTML = 'guest';
     } else {
         nameDiv.innerHTML = existingUser;

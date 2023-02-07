@@ -9,6 +9,7 @@ let existingUserName;
  * The function plays the loadBackend() and includeHTML() functions.
  */
 async function load() {
+    setFaviconColorTheme();
     await loadBackend();
     await includeHTML();
     checkURLandHighlight();
@@ -402,4 +403,33 @@ function changeDeleteBtnOnclick(functionName) {
 function changeDeleteBtnSpan(html) {
     let deleteBtnSpan = document.getElementById('delete-btn-span');
     deleteBtnSpan.innerHTML = html;
+}
+
+
+function setFaviconIfColorThemeChanged() {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        setFaviconColorTheme();
+    });
+}
+
+
+function setFaviconColorTheme() {
+    let appleFav = document.getElementById('apple-fav');
+    let bigFav = document.getElementById('32-fav');
+    let smallFav = document.getElementById('16-fav');
+    let manifest = document.getElementById('manifest');
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        console.log('color-theme: Dark');
+        appleFav.href = 'assets/favicon/favicon_light/apple-touch-icon.png';
+        bigFav.href = 'assets/favicon/favicon_light/favicon-32x32.png';
+        smallFav.href = 'assets/favicon/favicon_light/favicon-16x16.png';
+        manifest.href = 'assets/favicon/favicon_light/site.webmanifest';
+    } else {
+        console.log('color-theme: Light');
+        appleFav.href = 'assets/favicon/favicon_dark/apple-touch-icon.png';
+        bigFav.href = 'assets/favicon/favicon_dark/favicon-32x32.png';
+        smallFav.href = 'assets/favicon/favicon_dark/favicon-16x16.png';
+        manifest.href = 'assets/favicon/favicon_dark/site.webmanifest';
+    }
+    setFaviconIfColorThemeChanged();
 }
