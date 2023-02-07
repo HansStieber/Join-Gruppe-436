@@ -270,15 +270,8 @@ function generateHTMLDetailCard(idOfCard) {
 function editTask(id) {
     let title = todos[id].title;
     let description = todos[id].description;
-    let y1 = todos[id].date.charAt(0);
-    let y2 = todos[id].date.charAt(1);
-    let y3 = todos[id].date.charAt(2);
-    let y4 = todos[id].date.charAt(3);
-    let m1 = todos[id].date.charAt(5);
-    let m2 = todos[id].date.charAt(6);
-    let d1 = todos[id].date.charAt(8);
-    let d2 = todos[id].date.charAt(9);
-    renderEditCard(id, title, description, y1, y2, y3, y4, m1, m2, d1, d2);
+    let date = todos[id].date;
+    renderEditCard(id, title, description, date);
     setCurrentPriority(id);
     loadAssignments(id);
 }
@@ -343,48 +336,6 @@ function assignAssignedContacts(id) {
         if (todos[id].assignments.some(a => a.firstName == assignment.firstName) && todos[id].assignments.some(a => a.lastName == assignment.lastName)) {
             assignContact(i);
         }
-    }
-}
-
-
-/**
- * The function hides the current title and focuses on the title input-field.
- */
-function editTitle() {
-    document.getElementById('title-to-edit').classList.add('d-none');
-    document.getElementById('title').focus();
-}
-
-
-/**
- * The function runs when focus of the input field is out. The function defines a potential new title. If there is no new title set, the current
- * title is shown again.
- */
-function showOldTitle() {
-    let newTitle = document.getElementById('title').value;
-    if (!newTitle) {
-        document.getElementById('title-to-edit').classList.remove('d-none');
-    }
-}
-
-
-/**
- * The function hides the current description and focuses on the description input-field.
- */
-function editDescription() {
-    document.getElementById('description-to-edit').classList.add('d-none');
-    document.getElementById('description').focus();
-}
-
-
-/**
- * The function runs when focus of the input field is out. The function defines a potential new description. If there is no new description
- * set, the current description is shown again.
- */
-function showOldDescription() {
-    let newDescription = document.getElementById('description').value;
-    if (!newDescription) {
-        document.getElementById('description-to-edit').classList.remove('d-none');
     }
 }
 

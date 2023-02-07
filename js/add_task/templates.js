@@ -139,25 +139,22 @@ function renderSubtasks(subtask, i) {
  * @param {string} d1 - first date day number
  * @param {string} d2 - second date day number
  */
-function renderEditCard(id, title, description, y1, y2, y3, y4, m1, m2, d1, d2) {
+function renderEditCard(id, title, description, date) {
     document.getElementById('detailView').innerHTML = `
         <div class="field-container margin-bottom-zero">
             <label class="label" for="title">Title</label>
-            <input type="text" id="title" name="title" onclick="editTitle()" onfocusout="showOldTitle()" required>
-            <span id="title-to-edit" class="title-to-edit" onclick="editTitle()">${title}</span>
+            <input type="text" id="title" name="title" value="${title}" maxlength="25" required>
         </div>
 
         <div class="field-container margin-bottom-minus">
             <label class="label" for="description">Description</label>
-            <textarea type="text" id="description" name="description" onclick="editDescription()" onfocusout="showOldDescription()"
-                required></textarea>
-            <span id="description-to-edit" class="description-to-edit" onclick="editDescription()">${description}</span>
+            <textarea type="text" id="description" name="description"
+                required>${description}</textarea>
         </div>
 
         <div class="field-container margin-bottom-minus">
             <span class="label">Due date</span>
-            <input class="color-transparent" id="date" type="date" onclick="editDate()" onfocusout="showOldDate()">
-            <span id="date-to-edit" class="date-to-edit" onclick="editDate()">${d1}${d2}/${m1}${m2}/${y1}${y2}${y3}${y4}</span>
+            <input class="color-transparent" id="date" type="date" value="${date}">
         </div>
 
         <div class="field-container margin-bottom-minus">

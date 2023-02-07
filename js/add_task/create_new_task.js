@@ -24,7 +24,7 @@ function checkIfEmptyField() {
     setInputMissingToFalse();
     checkIfEmpty('title');
     checkIfEmpty('description');
-    checkIfEmpty('date');
+    checkDate();
     checkIfCategoryEmpty();
     checkIfNotAssigned();
     checkIfNoPriority();
@@ -40,7 +40,7 @@ function setInputMissingToFalse() {
 
 
 /**
- *Checks if input-field title, date or description value is null
+ * Checks if input-field title, date or description value is undefined
  * 
  * @param {string} id - id of either input-field title, date or description
  */
@@ -50,6 +50,34 @@ function checkIfEmpty(id) {
         setInputMissingToTrue();
     } else {
         removeAlert(id);
+    }
+}
+
+
+/**
+ * The Function checks if the input-field date value is undefined or the date lies in the past. If that is the case, alerts are triggered.
+ */
+function checkDate() {
+    if (inputFieldIsEmpty('date')) {
+        setInputMissingToTrue();
+        initiateAlert('date');
+    } else {
+        checkIfDateLiesInPast();
+    }
+}
+
+
+/**
+ * The function checks if the date that was typed into the date input-field lies in the past or not. If yes, an alert is triggered.
+ */
+function checkIfDateLiesInPast() {
+    let date = document.getElementById('date').value;
+    let today = new Date();
+    if (new Date(date) <= today) {
+        setInputMissingToTrue();
+        alertWrongDate();
+    } else {
+        removeAlertWrongDate();
     }
 }
 
@@ -71,6 +99,24 @@ function inputFieldIsEmpty(id) {
  */
 function initiateAlert(id) {
     document.getElementById(id + '-required').classList.add('alert-color');
+}
+
+
+/**
+ * The function initiates an alert message for the date input-field that the date must lie in the future.
+ */
+function alertWrongDate() {
+    document.getElementById('date-required').classList.add('alert-color');
+    document.getElementById('date-required').innerHTML = 'Please don`t choose any past date';
+}
+
+
+/**
+ * The function removes the alert message for the date input-field that the date must lie in the future.
+ */
+function removeAlertWrongDate() {
+    document.getElementById('date-required').classList.remove('alert-color');
+    document.getElementById('date-required').innerHTML = 'Please select date first';
 }
 
 
