@@ -125,12 +125,20 @@ function resetPassword() {
  */
 async function showNewTaskCard() {
     if (window.innerWidth <= 992) {
-        document.getElementById('board-outer-div').classList.add('d-none');
-        document.getElementById('board-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+        if (location.href.includes('board.html')) {
+            document.getElementById('board-outer-div').classList.add('d-none');
+            document.getElementById('board-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+        }
+        if (location.href.includes('contacts.html')) {
+            document.getElementById('contacts-outer-div').classList.add('d-none');
+            document.getElementById('contacts-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+        }
         await load();
+        if (location.href.includes('board.html')) {
+            document.getElementById('main').classList.add('main-add-task');
+        }
         let newTaskCloseBtn = document.getElementById('new-task-close-btn');
         document.getElementById('content-new-task').classList.remove('new-task-card');
-        document.getElementById('main').classList.add('main-add-task');
         document.getElementById('mobile-d-none').classList.add('d-none');
         document.getElementById('icons-header').classList.add('d-none');
         document.getElementById('create-task').classList.remove('d-none');
@@ -267,12 +275,19 @@ function setOptionTwoIndex(i) {
  * The function hides the new task template.
  */
 function hideNewTaskCard() {
+    document.getElementById('mobile-d-none').classList.remove('d-none');
     if (window.innerWidth <= 992) {
-        document.getElementById('board-outer-div').classList.remove('d-none');
-        initBoard();
-        document.getElementById('mobile-d-none').classList.remove('d-none');
-        removeTemplateNewTaskMobile();
-    } else {
+        if (location.href.includes('board.html')) {
+            document.getElementById('board-outer-div').classList.remove('d-none');
+            initBoard();
+            removeTemplateNewTaskMobile('board');
+        }
+        if (location.href.includes('contacts.html')) {
+            document.getElementById('contacts-outer-div').classList.remove('d-none');
+            removeTemplateNewTaskMobile('contacts');
+        }
+    }
+    else {
         let newTaskCloseBtn = document.getElementById('content-new-task');
         let mobileDescription = document.getElementById('mobile-description');
         slideOutCard('new-task-overlay');
@@ -310,8 +325,8 @@ function removeTemplateNewTask() {
     document.getElementById('new-task-overlay').innerHTML = '';
 }
 
-function removeTemplateNewTaskMobile() {
-        document.getElementById('board-add-task').innerHTML = '';
+function removeTemplateNewTaskMobile(id) {
+    document.getElementById(id + '-add-task').innerHTML = '';
 }
 
 
