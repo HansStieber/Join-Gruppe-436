@@ -198,6 +198,7 @@ function addContact() {
     const inputName = document.getElementById('add-name-input');
     const inputEmail = document.getElementById('add-eMail-input');
     const inputPhone = document.getElementById('add-phonenumber-input');
+
     let names = inputName.value.split(" ");
     let lastName = names[names.length - 1];
     contacts.push(new Contact(names[0], lastName, inputPhone.value, inputEmail.value));
@@ -378,7 +379,11 @@ function hideMobileBigCard() {
     rightDiv.classList.add('right-div-mobile');
 }
 
-
+/**
+ * This function iterates thru the abc Array, and search for all cardsDiv elements,
+ * with given letter like `cards-div-A` till `cards-div-Z`.
+ * and  clear their innerHTMl. 
+ */
 function clearCards() {
     for (let i = 0; i < abc.length; i++) {
         const letter = abc[i];
@@ -415,7 +420,14 @@ function removeDnoneCardsDivMain(contact) {
     cardsMainLetter.classList.remove('d-none');
 }
 
-
+/**
+ * This function first checks if the param actualCard is filled, call a function if true.
+ * Then Highlight a Contact Card, thru the ID, given to the function.
+ * Then filled the param actualCard with the ID of the Highlighted Contact.
+ * 
+ * @param {number} i -ID of the contact to Highlighte.
+ * @param {number} actualCard -Globar var, filled with the ID of the current Higlited Contact.
+ */
 function addHighlightContactCard(i) {
     if (actualCard) {
         removeHighlightContactCard();
@@ -429,24 +441,6 @@ function addHighlightContactCard(i) {
 function removeHighlightContactCard() {
     let card = document.getElementById(`contact-card-${actualCard}`);
     card.classList.remove('contact-card-target');
-}
-
-
-function checkIfFirstname(firstName) {
-    if (firstName) {
-        let newFirstName = upperCaseFirstLetter(firstName);
-        return newFirstName;
-    }
-}
-
-
-function upperCaseFirstLetter(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-}
-
-
-function generateRandomColor() {
-    return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
 }
 
 
