@@ -60,7 +60,7 @@ function getSummaryInfo() {
 
 function getUrgentTasks(tasksUrgent) {
     if (!tasksUrgent.length > 0)
-        return 'No Urgent Task in Board';
+        return 'No urgent tasks';
     var country = "en-US";
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
     let latestUrgenTask = getLatestUrgentTask(tasksUrgent);

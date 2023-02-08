@@ -6,9 +6,9 @@
 }
 
 @media(max-width:1185px) {
-    .main {
+/*    .main {
         padding-left: 250px;
-    }
+    }*/
 }
 
 @media(max-width:1070px) {
@@ -18,9 +18,9 @@
 }
 
 @media(max-width:992px) {
-    .board-outer-div {
+    /*.board-outer-div {
         padding-top: 20px;
-    }
+    }*/
 
     .detail-view {
         font-size: 16px !important;
@@ -28,7 +28,12 @@
     }
 
     .main {
-        padding-left: 116px;
+        padding-left: 30px;
+    }
+
+    .main-add-task {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .add-task-btn-mobile {
@@ -51,17 +56,17 @@
         height: 0em;
     }
 
-    .board {
+    /*.board {
         padding-right: 2em;
         padding-left: 2em;
-    }
+    }*/
 
     .board-head-div {
         align-items: flex-start;
         flex-direction: column;
     }
 
-    .board-head-div h1 {
+    h1 {
         font-size: 3em;
     }
 
@@ -92,6 +97,15 @@
     .card {
         margin-bottom: 1.2em;
     }
+
+    .kanban-mobile-span {
+        display: block;
+        margin-top: 2em;
+    }
+
+    .board {
+        padding-right: 0;
+    }
 }
 
 @media(max-height:985px) {
@@ -110,25 +124,21 @@
         padding-right: 0em;
     }
 
-    .kanban-mobile-span {
-        display: block;
-        margin-top: 2em;
-    }
-
-    .main {
+    /*.main {
         padding-left: 70px;
-    }
+    }*/
 
     .cards-slide-div {
         height: calc(100vh - 375px)
     }
 }
 
-@media(max-width:700px) {
+/*@media(max-width:700px) {
     .main {
         padding-left: 33px;
+        padding-right: 33px;
     }
-}
+}*/
 
 @media(max-width:610px) {
     .content {

@@ -267,29 +267,33 @@ input {
 
 
 /* HELP-PAGE */
-.main-container{
+.help-container{
     margin-right: 60px;
     font-size: 18px;
 }
 
-.main-container li::marker{
+.help-container >h1 {
+    font-size: 61px;
+}
+
+.help-container li::marker{
     font-size: 25px;
     font-weight: bold;
 }
 
-.main-container li {
+.help-container li {
     margin-bottom: 8px;
 }
 
 @media (max-width: 800px) {
-    .main-container::before {
+    .help-container::before {
         content: "Kanban Project Management Tool";
         font-size: 21px;
     }
 }
 
 @media (max-width: 450px) {
-    .main-container{
+    .help-container{
         margin-right: 10px;
     }
 }

@@ -64,11 +64,13 @@ header {
 .show {
     opacity: 1;
     transition: opacity 220ms ease;
+    z-index: 2 !important;
 }
 
 .hide {
     opacity: 0;
     transition: opacity 220ms ease;
+    z-index: -1 !important;
 }
 
 
@@ -76,13 +78,7 @@ header {
     header {
         padding: 20px 36px 20px 116px;
     }
-
-    .mobile-menu, .logout-btn{
-        right: 10px;
-    }
-}
-
-@media (max-width: 820px) {
+    
     .header-heading>span {
         display: none;
     }
@@ -90,11 +86,14 @@ header {
     .header-mobile-logo {
         display: block;
     }
-
+    
     header {
         justify-content: space-between;
         padding: 20px 33px 20px 33px;
     }
+}
+
+@media (max-width: 820px) {
 
     .icons-header>a {
         display: none;

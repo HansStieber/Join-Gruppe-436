@@ -124,16 +124,39 @@ function resetPassword() {
  * the function shows the new Task Template.
  */
 async function showNewTaskCard() {
-    await loadTemplateNewTask();
-    let newTaskCloseBtn = document.getElementById('content-new-task');
-    let mobileDescription = document.getElementById('mobile-description');
-    newTaskCloseBtn.classList.remove('d-none');
-    mobileDescription.classList.add('d-none');
-    showClearButton();
-    showShadowScreen('new-task-shadow-screen');
-    slideInCard('new-task-overlay');
-    showNewTaskCloseBtn();
-    checkWhichIsCurrentPage();
+    if (window.innerWidth <= 992) {
+        if (location.href.includes('board.html')) {
+            document.getElementById('board-outer-div').classList.add('d-none');
+            document.getElementById('board-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+        }
+        if (location.href.includes('contacts.html')) {
+            document.getElementById('contacts-outer-div').classList.add('d-none');
+            document.getElementById('contacts-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+        }
+        await load();
+        if (location.href.includes('board.html')) {
+            document.getElementById('main').classList.add('main-add-task');
+        }
+        let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+        document.getElementById('content-new-task').classList.add('padding-bottom');
+        document.getElementById('content-new-task').classList.remove('new-task-card');
+        document.getElementById('mobile-d-none').classList.add('d-none');
+        document.getElementById('icons-header').classList.add('d-none');
+        document.getElementById('create-task').classList.remove('d-none');
+        newTaskCloseBtn.classList.remove('d-none');
+    } else {
+        await loadTemplateNewTask();
+        let newTaskCloseBtn = document.getElementById('content-new-task');
+        let mobileDescription = document.getElementById('mobile-description');
+        newTaskCloseBtn.classList.remove('d-none');
+        mobileDescription.classList.add('d-none');
+        showClearButton();
+        showShadowScreen('new-task-shadow-screen');
+        slideInCard('new-task-overlay');
+        showNewTaskCloseBtn();
+        checkWhichIsCurrentPage();
+    }
+
 }
 
 
@@ -253,18 +276,33 @@ function setOptionTwoIndex(i) {
  * The function hides the new task template.
  */
 function hideNewTaskCard() {
-    let newTaskCloseBtn = document.getElementById('content-new-task');
-    let mobileDescription = document.getElementById('mobile-description');
-    slideOutCard('new-task-overlay');
-    hideShadowScreen('new-task-shadow-screen');
-    hideNewTaskCloseBtn('new-task-overlay');
-    removeCurrentContact();
-    closeAllDropdowns();
-    setTimeout(function () {
-        newTaskCloseBtn.classList.add('d-none');
-        mobileDescription.classList.remove('d-none');
-    }, 450);
-    setTimeout(removeTemplateNewTask, 450);
+    document.getElementById('mobile-d-none').classList.remove('d-none');
+    if (window.innerWidth <= 992) {
+        if (location.href.includes('board.html')) {
+            document.getElementById('board-outer-div').classList.remove('d-none');
+            document.getElementById('main').classList.remove('main-add-task');
+            initBoard();
+            removeTemplateNewTaskMobile('board');
+        }
+        if (location.href.includes('contacts.html')) {
+            document.getElementById('contacts-outer-div').classList.remove('d-none');
+            removeTemplateNewTaskMobile('contacts');
+        }
+    }
+    else {
+        let newTaskCloseBtn = document.getElementById('content-new-task');
+        let mobileDescription = document.getElementById('mobile-description');
+        slideOutCard('new-task-overlay');
+        hideShadowScreen('new-task-shadow-screen');
+        hideNewTaskCloseBtn('new-task-overlay');
+        removeCurrentContact();
+        closeAllDropdowns();
+        setTimeout(function () {
+            newTaskCloseBtn.classList.add('d-none');
+            mobileDescription.classList.remove('d-none');
+        }, 450);
+        setTimeout(removeTemplateNewTask, 450);
+    }
 }
 
 
@@ -287,6 +325,10 @@ function removeCurrentContact() {
  */
 function removeTemplateNewTask() {
     document.getElementById('new-task-overlay').innerHTML = '';
+}
+
+function removeTemplateNewTaskMobile(id) {
+    document.getElementById(id + '-add-task').innerHTML = '';
 }
 
 

@@ -50,9 +50,9 @@
     <div class="body2 ovflow-hidden">
 
         <!-- NAVBAR -->
-        <div class="mobile-d-none" w3-include-html="./templates/sidebar.html"></div>
+        <div id="mobile-d-none" class="mobile-d-none" w3-include-html="./templates/sidebar.html"></div>
 
-        <div class="main">
+        <div id="main" class="main">
             <div class="content">
                 <div id="new-task-shadow-screen" class="shadow-screen d-none">
                     <div id="new-task-overlay" class="general-overlay">
@@ -62,7 +62,8 @@
                 <div w3-include-html="./templates/header.html"></div>
 
                 <!-- MAIN CONTENT -->
-                <div class="board-outer-div">
+                <div id="board-add-task"></div>
+                <div id="board-outer-div" class="board-outer-div">
                     <div class="board">
                         <div class="board-head-div">
                             <span class="kanban-mobile-span">Kanban Project Management Tool</span>

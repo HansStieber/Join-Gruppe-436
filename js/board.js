@@ -133,6 +133,13 @@ function selectingArrayForBoardUpdate() {
 }
 
 
+/**
+ * This function calls all functions needed for, to let the User delete a Task. First it shows the Delete Butto, then splice the 
+ * todos Array at a specific position, given by the Global var taskToEdit.
+ * Then calls function setNewTodoIds() wich giv all todos new Ids so they have still the same Ids like their position in todos Array.
+ * Then saves manipulated Array to Backend. On Next step it close the Detail View of the Todo.
+ * On Last it calls renderBoard() with new todos Array.
+ */
 function deleteTask() {
     showDeleteBtn();
     todos.splice(taskToEdit, 1);
@@ -143,6 +150,10 @@ function deleteTask() {
 }
 
 
+/**
+ * This function iterates thru the todos Array, and give each todo a new Id, from first todo wich became the Id: 0,
+ * till last todo wich then have the same Id like the todos Array length.
+ */
 function setNewTodoIds() {
     for (let i = 0; i < todos.length; i++) {
         const todo = todos[i];

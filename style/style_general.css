@@ -22,8 +22,16 @@ body {
     width: 100%;
 }
 
+.padding-bottom {
+    padding-bottom: 0 !important;
+}
+
 /* universal-classes */
 .screenreader {
+    display: none;
+}
+
+.d-none {
     display: none;
 }
 
@@ -117,12 +125,12 @@ HELLGRAU (BACKGROUND): #F5F5F5
     margin-right: 10px;
 }
 
-.delete-btn:hover span{
-    color: #f61919b8 ;
+.delete-btn:hover span {
+    color: #f61919b8;
     transition: 100ms ease-in-out;
 }
 
-.delete-btn:hover img{
+.delete-btn:hover img {
     filter: invert(12%) sepia(92%) saturate(7028%) hue-rotate(1deg) brightness(95%) contrast(114%);
     transition: 100ms ease-in-out;
 }
@@ -277,25 +285,25 @@ HELLGRAU (BACKGROUND): #F5F5F5
     }
 
     .main {
-        padding: 90px 0px 90px 70px;
+        padding: 90px 30px 90px 30px;
     }
 }
 
 @media (max-width: 700px) {
 
     .main {
-        padding: 90px 0px 90px 50px;
+        padding: 90px 30px 90px 30px;
     }
 }
 
 @media (max-width: 450px) {
     .main {
-        padding: 90px 0px 90px 10px;
+        padding: 90px 30px 90px 30px;
     }
 }
 
 @media (max-width: 345px) {
     .main {
-        padding: 90px 0px 90px 5px;
+        padding: 90px 30px 90px 5px;
     }
 }

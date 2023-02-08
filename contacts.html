@@ -51,13 +51,14 @@
             </div>
         </div> -->
         <!-- NAVBAR -->
-        <div w3-include-html="./templates/sidebar.html"></div>
+        <div id="mobile-d-none" w3-include-html="./templates/sidebar.html"></div>
 
         <div class="content">
             <!-- HEADER -->
             <div w3-include-html="./templates/header.html"></div>
 
             <!-- MAIN CONTENT -->
+            <div id="contacts-add-task"></div>
             <div id="contacts-outer-div" class="contacts-outer-div">
                 <div id="contact-created-message" class="contact-created-message  d-none">Contact succesfully
                     created</div>
@@ -243,7 +244,6 @@
         <!-- TEMPLATE ADD/EDIT CONTACT -->
         <div id="new-task-shadow-screen" class="d-none shadow-screen">
             <div id="new-task-overlay" class="general-overlay">
-                <div w3-include-html="./templates/new_task.html"></div>
             </div>
         </div>
 
