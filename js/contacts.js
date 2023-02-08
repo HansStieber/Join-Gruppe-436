@@ -383,13 +383,13 @@ function openAddOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
     showShadowScreen('add-contact-shadow-screen');
     slideInCard('add-contact-overlay');
-    showNewTaskCloseBtn();
+    // showNewTaskCloseBtn();
 }
 
 
 function closeAddOverlay() {
     slideOutCard('add-contact-overlay');
     hideShadowScreen('add-contact-shadow-screen');
-    hideNewTaskCloseBtn();
+    // hideNewTaskCloseBtn();
     setTimeout(function () { document.getElementById('addContactOverlay').classList.add('d-none'); }, 450);
 }

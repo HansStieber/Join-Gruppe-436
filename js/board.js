@@ -1,5 +1,5 @@
 //*Variablen Namen und Reihenfolge,für Tasks: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
-let tasks = [];
+// let tasks = [];
 let searchedTodos = [];
 let currentDraggedElements;
 let taskToEdit;
@@ -313,7 +313,7 @@ function findTask() {
         const description = todos[i].description;
         if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
             searchedTodos.push(todos[i]);
-            console.log(searchedTodos);
+            // console.log(searchedTodos);
         }
         selectingArrayForBoardUpdate();
     }

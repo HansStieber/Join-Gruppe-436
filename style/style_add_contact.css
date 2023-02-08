@@ -298,3 +298,11 @@
         left: 128px;
     }
 }
+
+@media (max-width: 440px) {
+    .contact-initials-big{
+        width: 6em;
+        height: 6em;
+    }
+   
+}
