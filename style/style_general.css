@@ -27,6 +27,10 @@ body {
     display: none;
 }
 
+.d-none {
+    display: none;
+}
+
 /*=== colors ===*/
 /* 
 DUNKELBLAU: #2A3647
@@ -117,12 +121,12 @@ HELLGRAU (BACKGROUND): #F5F5F5
     margin-right: 10px;
 }
 
-.delete-btn:hover span{
-    color: #f61919b8 ;
+.delete-btn:hover span {
+    color: #f61919b8;
     transition: 100ms ease-in-out;
 }
 
-.delete-btn:hover img{
+.delete-btn:hover img {
     filter: invert(12%) sepia(92%) saturate(7028%) hue-rotate(1deg) brightness(95%) contrast(114%);
     transition: 100ms ease-in-out;
 }
