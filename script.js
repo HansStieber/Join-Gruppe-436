@@ -3,6 +3,7 @@ let indexOfCurrentContact = -1;
 let headerMenu;
 let email;
 let existingUserName;
+let newTaskOpen;
 
 /*----------- GENERAL FUNCTIONS TO INITIALIZE PAGE -----------*/
 /**
@@ -124,17 +125,17 @@ function resetPassword() {
  * the function shows the new Task Template.
  */
 async function showNewTaskCard() {
+    newTaskOpen = true;
     if (window.innerWidth <= 992) {
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.add('d-none');
-            document.getElementById('board-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+            document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
         }
         if (location.href.includes('contacts.html')) {
             document.getElementById('contacts-outer-div').classList.add('d-none');
-            document.getElementById('contacts-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
+            document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
         }
         await load();
-        document.getElementById('content-new-task').classList.remove('new-task-card');
         if (location.href.includes('board.html')) {
             document.getElementById('main').classList.add('main-add-task');
         }
@@ -142,12 +143,15 @@ async function showNewTaskCard() {
             document.getElementById('content-new-task').classList.add('margin-top');
         }
         let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+        document.getElementById('template-container').classList.remove('d-none');
+        document.getElementById('content-new-task').classList.remove('new-task-card');
         document.getElementById('content-new-task').classList.add('padding-bottom');
         document.getElementById('mobile-d-none').classList.add('d-none');
         document.getElementById('icons-header').classList.add('d-none');
         document.getElementById('create-task').classList.remove('d-none');
         document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
         newTaskCloseBtn.classList.remove('d-none');
+        checkWhichIsCurrentPage();
     } else {
         await loadTemplateNewTask();
         let newTaskCloseBtn = document.getElementById('content-new-task');
@@ -160,7 +164,6 @@ async function showNewTaskCard() {
         showNewTaskCloseBtn();
         checkWhichIsCurrentPage();
     }
-
 }
 
 
@@ -206,12 +209,12 @@ function selectCurrentContact(i) {
 
 
 /**
- * The function checks if some contact at the assignments array has the same firstName and lastName as the current contact.
+ * The function checks if some contact at the assignments array has the same email as the current contact.
  *
  * @param {number} i - id of the current contact at the contacts array
  */
 function currentContactisAlreadyAtAssignments(i) {
-    assignments.some(a => a.firstName === contacts[i].firstName) && assignments.some(a => a.lastName === contacts[i].lastName)
+   return assignments.some(a => a.email === contacts[i].email)
 }
 
 
@@ -280,13 +283,15 @@ function setOptionTwoIndex(i) {
  * The function hides the new task template.
  */
 function hideNewTaskCard() {
+    newTaskOpen = false;
     document.getElementById('mobile-d-none').classList.remove('d-none');
-    document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
+    document.getElementById('icons-header').classList.remove('d-none');
+    document.getElementById('create-task').classList.add('d-none');
     if (window.innerWidth <= 992) {
+    document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.remove('d-none');
             document.getElementById('main').classList.remove('main-add-task');
-            initBoard();
             removeTemplateNewTaskMobile('board');
         }
         if (location.href.includes('contacts.html')) {
@@ -294,6 +299,7 @@ function hideNewTaskCard() {
             document.getElementById('content-new-task').classList.remove('margin-top');
             removeTemplateNewTaskMobile('contacts');
         }
+        removeCurrentContact();
     }
     else {
         let newTaskCloseBtn = document.getElementById('content-new-task');

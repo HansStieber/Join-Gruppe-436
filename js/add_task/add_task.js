@@ -11,15 +11,34 @@ let assignments = [];
 async function initAddTask() {
     await loadBackend();
     await load();
-    loadAllOptions(); 
+    loadAllOptions();
     showClearButton();
+    showCreateButtonMobile();
     checkURLandHighlight('add_task');
 }
+
+window.addEventListener('resize', function () {
+    if (location.href.includes('add_task.html')) {
+        showCreateButtonMobile();
+    }
+});
 
 function showClearButton() {
     let btn = document.getElementById('clear-form');
     btn.style = 'background-image: url("../assets/img/clear_new_task.svg")';
     btn.setAttribute('onclick', 'clearAllInputFields()');
+}
+
+function showCreateButtonMobile() {
+    if (window.innerWidth <= 992) {
+        if (document.getElementById('icons-header')) {
+            document.getElementById('icons-header').classList.add('d-none');
+            document.getElementById('create-task').classList.remove('d-none');
+        }
+    } else {
+        document.getElementById('icons-header').classList.remove('d-none');
+        document.getElementById('create-task').classList.add('d-none');
+    }
 }
 
 /*----------- HOVER EFFECTS PRIORITY BUTTONS -----------*/
