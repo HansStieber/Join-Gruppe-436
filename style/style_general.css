@@ -22,6 +22,10 @@ body {
     width: 100%;
 }
 
+.padding-bottom {
+    padding-bottom: 0 !important;
+}
+
 /* universal-classes */
 .screenreader {
     display: none;
@@ -277,20 +281,20 @@ HELLGRAU (BACKGROUND): #F5F5F5
     }
 
     .main {
-        padding: 90px 30px 90px 70px;
+        padding: 90px 30px 90px 30px;
     }
 }
 
 @media (max-width: 700px) {
 
     .main {
-        padding: 90px 30px 90px 50px;
+        padding: 90px 30px 90px 30px;
     }
 }
 
 @media (max-width: 450px) {
     .main {
-        padding: 90px 30px 90px 10px;
+        padding: 90px 30px 90px 30px;
     }
 }
 

@@ -219,7 +219,7 @@
 @media (max-width: 992px) {
 
     .heading-container{
-        margin-top: 20px;
+        margin-top: 30px;
         margin-bottom: 0;
     }
 
@@ -229,14 +229,13 @@
 
     .summary-outer-div {
         overflow: auto;
-        padding: 30px;
     }
 }
 
 @media (max-width: 820px) {
     .heading-container::before {
         content: "Kanban Project Management Tool";
-        margin-top: 20px;
+        margin-top: 30px;
         font-size: 21px;
     }
 
@@ -311,7 +310,7 @@
         content: "Kanban Project Management Tool";
         font-size: 16px;
         gap: 10px;
-        margin-top: 10px;
+        margin-top: 30px;
     }
 
     .heading-container>h1,

@@ -138,6 +138,7 @@ async function showNewTaskCard() {
             document.getElementById('main').classList.add('main-add-task');
         }
         let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+        document.getElementById('content-new-task').classList.add('padding-bottom');
         document.getElementById('content-new-task').classList.remove('new-task-card');
         document.getElementById('mobile-d-none').classList.add('d-none');
         document.getElementById('icons-header').classList.add('d-none');
@@ -279,6 +280,7 @@ function hideNewTaskCard() {
     if (window.innerWidth <= 992) {
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.remove('d-none');
+            document.getElementById('main').classList.remove('main-add-task');
             initBoard();
             removeTemplateNewTaskMobile('board');
         }
