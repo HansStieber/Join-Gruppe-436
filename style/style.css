@@ -273,6 +273,10 @@ input {
     font-size: 18px;
 }
 
+.help-container >h1 {
+    font-size: 61px;
+}
+
 .help-container li::marker{
     font-size: 25px;
     font-weight: bold;
