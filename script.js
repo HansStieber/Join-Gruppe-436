@@ -137,6 +137,9 @@ async function showNewTaskCard() {
         if (location.href.includes('board.html')) {
             document.getElementById('main').classList.add('main-add-task');
         }
+        if (location.href.includes('contact')) {
+            document.getElementById('content-new-task').classList.add('margin-top');
+        }
         let newTaskCloseBtn = document.getElementById('new-task-close-btn');
         document.getElementById('content-new-task').classList.add('padding-bottom');
         document.getElementById('content-new-task').classList.remove('new-task-card');
@@ -286,6 +289,7 @@ function hideNewTaskCard() {
         }
         if (location.href.includes('contacts.html')) {
             document.getElementById('contacts-outer-div').classList.remove('d-none');
+            document.getElementById('content-new-task').classList.remove('margin-top');
             removeTemplateNewTaskMobile('contacts');
         }
     }
