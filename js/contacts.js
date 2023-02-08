@@ -60,7 +60,7 @@ function getCardElements(contact) {
 
 /**
  * This function returns all Info from given Contact,
- * and cur the firsletter from firsname and lastname,
+ * and slices the firsletter from firsname and lastname,
  * to get the Initials.
  * 
  * @param {object} contact - the actual Contact object.
@@ -88,7 +88,15 @@ function getContactInfo(contact) {
     }
 }
 
-
+/**
+ * This function shows the BigCard wich is a Detail view form a Contact, out of the contacts Array.
+ * 
+ * @param {number} indexNum - given Number wich has each Contact in contacts Array to get the right Contac to render in BigCard.
+ * First getting the right contact from contacts Array, with indexNum.
+ * Then calls showBigCard() wich removes display: 'none', from BigCard Element.
+ * Then showMobileBigCard(), if the User is on Low screenSize, the BigCard renders above the contacts List.
+ * Last all HTML Elements from the BigCard get filled with the information, from contact found in the Array with given indexNum.
+ */
 function renderBigCard(indexNum) {
     let contact = contacts[indexNum];
     contactToEditId = indexNum;
@@ -97,7 +105,13 @@ function renderBigCard(indexNum) {
     setBigCardInnerHTML(contact);
 }
 
-
+/**
+ * 
+ * @param {object} contact --Object with all information needed to show detail View of choosen Contact
+ * First define const{all Information from given contact}, thru calling the function getContactInfo(contact).
+ * Then define const{all Elements from BigCard}, thru calling the function getBigCardElements().
+ * Then innerHTML all given contacts Information into HTML-Elements.
+ */
 function setBigCardInnerHTML(contact) {
     const { initials1, initials2, bgColor, email,
         phone, firstName, lastName } = getContactInfo(contact);
