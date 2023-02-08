@@ -6,7 +6,6 @@
     width: calc(100% - 232px);
     height: calc(100vh - 89px);
     padding: 17px 41px 0 41px;
-    overflow: auto;
 }
 
 /* === Styling for smaller screens/tablets === */
@@ -175,7 +174,7 @@
     width: 1116px;
     height: 914px;
     max-height: 100vh;
-    padding: 65px 75px 75px 75px;
+    padding: 65px 75px 0 75px;
     border-radius: 30px;
     overflow: auto;
 }
@@ -622,7 +621,6 @@ input[type='date']:hover {
     background-image: url('../assets/img/create_task_mobile.svg');
     background-repeat: no-repeat;
     background-position: center;
-    display: none;
 }
 
 .submit-button-header:hover {
@@ -666,7 +664,7 @@ input[type='date']:hover {
     }
 
     .button-container {
-        padding: 20px 0 0 0;
+        padding: 20px 0 40px 0;
     }
 
     .cancel-form, .submit-button {
@@ -707,7 +705,7 @@ input[type='date']:hover {
     }
 
     .content-new-task {
-        padding: 30px;
+        padding: 30px 30px 60px 30px;
     }
 
     .field-container input, .field-container textarea, .field-container span {
@@ -716,10 +714,6 @@ input[type='date']:hover {
 
     .alert-required {
         display: none;
-    }
-
-    .submit-button-header {
-        display: unset;
     }
 }
 
