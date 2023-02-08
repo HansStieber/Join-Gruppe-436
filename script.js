@@ -146,6 +146,7 @@ async function showNewTaskCard() {
         document.getElementById('mobile-d-none').classList.add('d-none');
         document.getElementById('icons-header').classList.add('d-none');
         document.getElementById('create-task').classList.remove('d-none');
+        document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
         newTaskCloseBtn.classList.remove('d-none');
     } else {
         await loadTemplateNewTask();
@@ -280,6 +281,7 @@ function setOptionTwoIndex(i) {
  */
 function hideNewTaskCard() {
     document.getElementById('mobile-d-none').classList.remove('d-none');
+    document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
     if (window.innerWidth <= 992) {
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.remove('d-none');

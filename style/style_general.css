@@ -289,25 +289,25 @@ HELLGRAU (BACKGROUND): #F5F5F5
     }
 
     .main {
-        padding: 90px 30px 90px 30px;
+        padding: 90px 30px 0px 30px;
     }
 }
 
 @media (max-width: 700px) {
 
     .main {
-        padding: 90px 30px 90px 30px;
+        padding: 90px 30px 0px 30px;
     }
 }
 
 @media (max-width: 450px) {
     .main {
-        padding: 90px 30px 90px 30px;
+        padding: 90px 30px 0px 30px;
     }
 }
 
 @media (max-width: 345px) {
     .main {
-        padding: 90px 30px 90px 5px;
+        padding: 90px 30px 0px 5px;
     }
 }
