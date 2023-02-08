@@ -134,6 +134,7 @@ async function showNewTaskCard() {
             document.getElementById('contacts-add-task').innerHTML = '<div w3-include-html="./templates/new_task.html"></div>';
         }
         await load();
+        document.getElementById('content-new-task').classList.remove('new-task-card');
         if (location.href.includes('board.html')) {
             document.getElementById('main').classList.add('main-add-task');
         }
@@ -142,7 +143,6 @@ async function showNewTaskCard() {
         }
         let newTaskCloseBtn = document.getElementById('new-task-close-btn');
         document.getElementById('content-new-task').classList.add('padding-bottom');
-        document.getElementById('content-new-task').classList.remove('new-task-card');
         document.getElementById('mobile-d-none').classList.add('d-none');
         document.getElementById('icons-header').classList.add('d-none');
         document.getElementById('create-task').classList.remove('d-none');
