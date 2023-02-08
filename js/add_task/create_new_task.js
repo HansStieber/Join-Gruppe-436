@@ -99,6 +99,7 @@ function inputFieldIsEmpty(id) {
  */
 function initiateAlert(id) {
     document.getElementById(id + '-required').classList.add('alert-color');
+    document.getElementById(id + '-required').classList.add('alert-height');
     document.getElementById('category-required').innerHTML = `Please enter a category name first`;
 }
 
@@ -108,6 +109,7 @@ function initiateAlert(id) {
  */
 function alertWrongDate() {
     document.getElementById('date-required').classList.add('alert-color');
+    document.getElementById('date-required').classList.add('alert-height');
     document.getElementById('date-required').innerHTML = 'Please don`t choose any past date';
 }
 
@@ -117,6 +119,7 @@ function alertWrongDate() {
  */
 function removeAlertWrongDate() {
     document.getElementById('date-required').classList.remove('alert-color');
+    document.getElementById('date-required').classList.remove('alert-height');
     document.getElementById('date-required').innerHTML = 'Please select date first';
 }
 
@@ -136,6 +139,7 @@ function setInputMissingToTrue() {
  */
 function removeAlert(id) {
     document.getElementById(id + '-required').classList.remove('alert-color');
+    document.getElementById(id + '-required').classList.remove('alert-height');
 }
 
 

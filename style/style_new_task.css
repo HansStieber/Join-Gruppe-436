@@ -62,6 +62,10 @@
     color: rgba(255, 0, 0, 0.44) !important;
 }
 
+.alert-height {
+    height: 16px !important;
+}
+
 /* === Category colors === */
 
 .orange {
@@ -718,7 +722,7 @@ input[type='date']:hover {
     }
 
     .alert-required {
-        display: none;
+        height: 0;
     }
 }
 
