@@ -211,10 +211,15 @@ function addContact() {
 /**
  * This functio delete a Contacs from the contacts Array.
  * 
- * @param {number} - contactToEditId global Id to get the right Contact to Edit out of the contacts Array.
+ * @param {number} contactToEditId - global Id to get the right Contact to Edit out of the contacts Array,
+ * (filled in renderBigCard() function).
  * 
  * First is shows the delete Button.
- * Then delete
+ * Then delete the current in BigCard shown Contact, from contacts Array.
+ * Then save manipulated Array to Backend.
+ * Then call hideBigCard(), wich gives the BigCard Element Display: 'none'.
+ * Then close Edit-overlay.
+ * Then render Contacts, to update the Site.
  */
 function deleteContact() {
     showDeleteBtn();
@@ -225,10 +230,18 @@ function deleteContact() {
     renderContacts();
 }
 
-
+/**
+ * This function saves the edited Contact information, if there are inputs.
+ * 
+ * @param {string} contacName - filled with the current Contact First-Lastname, and one Space between.
+ * @param {array} names - filled with all strings out of nameInput,splitet on Spaces.
+ * 
+ * @returns {nothing} -if conditons not fullfilled.
+ */
 function saveContactChanges() {
     const contact = contacts[contactToEditId]
     const { nameInput, emailInput, phoneInput } = getEditInputs();
+
     let contactName = contact.firstName + ' ' + contact.lastName;
     if (nameInput.value == '' && emailInput.value == '' && phoneInput.value == '')
         return;
@@ -243,7 +256,11 @@ function saveContactChanges() {
     renderBigCard(contactToEditId);
 }
 
-
+/**
+ * This function returns elements found via Id.
+ * 
+ * @returns {elements}
+ */
 function getEditInputs() {
     return {
         nameInput: document.getElementById('edit-name-input'),
@@ -252,7 +269,14 @@ function getEditInputs() {
     }
 }
 
-
+/**
+ * This function changes contact Data, If the input is valid.
+ * 
+ * @param {object} contact - current Contact DAta
+ * @param {array} names - array filled with the Names from User input, on editContact.
+ * @param {element} emailInput
+ * @param {element} phoneInput
+ */
 function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
     if (emailInput.value) {
         contact.email = emailInput.value;
@@ -268,17 +292,24 @@ function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
     }
 }
 
-
+/**
+ * This function sets the Contact initials at edit Contact HTMl-Element.
+ * 
+ */
 function setEditContactInitials() {
     let initialsDiv = document.getElementById('edit-initials-div');
     let initialsSpan = document.getElementById('edit-initials-span');
     let contact = contacts[contactToEditId];
+
     const { initials1, initials2, bgColor } = getContactInfo(contact);
     initialsDiv.style = `background-color:${bgColor}`;
     initialsSpan.innerHTML = initials1 + initials2;
 }
 
-
+/**
+ * This function fill the input values on edit Contact HTMl-Element,
+ * with current Contact information.
+ */
 function setEditContactValues() {
     let contact = contacts[contactToEditId];
     const { nameInput, emailInput, phoneInput } = getEditInputs();
@@ -289,13 +320,17 @@ function setEditContactValues() {
     phoneInput.value = contact.phone;
 }
 
-
+/**
+ * This function shows the Contact added Animation.
+ */
 function showContactAddedMessage() {
     popInContactAddedMessage();
     setTimeout(popOutContactAddedMessage, 1500);
 }
 
-
+/**
+ * This function manipulate the contact added message classes, to show the css Animation. 
+ */
 function popInContactAddedMessage() {
     let message = document.getElementById('contact-created-message');
     message.classList.remove('d-none');
@@ -303,7 +338,9 @@ function popInContactAddedMessage() {
     message.classList.add('slide-up');
 }
 
-
+/**
+ * This function manipulate the contact added message classes, to show the css Animation. 
+ */
 function popOutContactAddedMessage() {
     let message = document.getElementById('contact-created-message');
     message.classList.remove('slide-up')
