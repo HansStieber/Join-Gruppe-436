@@ -69,7 +69,6 @@ body {
 
 .login-container h1 {
     font-size: 60px;
-    padding-top: 30px;
 }
 
 .credentials {
@@ -93,7 +92,7 @@ body {
 .remember_me_forgotten {
     align-items: center;
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .remember_me {
@@ -109,8 +108,8 @@ input {
 
 
 .fade-in-login {
-    -webkit-animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
-    animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
+    -webkit-animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+    animation: fade-in-login 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
 }
 
 
