@@ -229,6 +229,7 @@
 
     .summary-outer-div {
         overflow: auto;
+        padding: 30px;
     }
 }
 

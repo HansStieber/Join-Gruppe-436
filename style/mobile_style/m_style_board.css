@@ -96,6 +96,15 @@
     .card {
         margin-bottom: 1.2em;
     }
+
+    .kanban-mobile-span {
+        display: block;
+        margin-top: 2em;
+    }
+
+    .board {
+        padding-right: 0;
+    }
 }
 
 @media(max-height:985px) {
@@ -112,11 +121,6 @@
     .board {
         padding-left: 0em;
         padding-right: 0em;
-    }
-
-    .kanban-mobile-span {
-        display: block;
-        margin-top: 2em;
     }
 
     /*.main {
