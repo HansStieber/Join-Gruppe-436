@@ -92,6 +92,14 @@
     .icon-sidebar{
         height: 25px;
     }
+}
 
+@media (max-width: 350px) {
+    .center-icons ~ div {
+        display: none;
+    }
 
+    .navigation-point {
+        padding: 26px 0;
+    }
 }
