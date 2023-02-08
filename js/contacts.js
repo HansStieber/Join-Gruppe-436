@@ -92,6 +92,9 @@ function getContactInfo(contact) {
  * This function shows the BigCard wich is a Detail view form a Contact, out of the contacts Array.
  * 
  * @param {number} indexNum - given Number wich has each Contact in contacts Array to get the right Contac to render in BigCard.
+ * @param {number} contactToEditId -var needed to find the right Contact in contacts Array, when the User want to Edit,
+ * the Contact wich is current shown in BigCard.
+ * 
  * First getting the right contact from contacts Array, with indexNum.
  * Then calls showBigCard() wich removes display: 'none', from BigCard Element.
  * Then showMobileBigCard(), if the User is on Low screenSize, the BigCard renders above the contacts List.
@@ -129,7 +132,18 @@ function setBigCardInnerHTML(contact) {
 
 }
 
-
+/**
+ * This function return HTML Elements found thru IDs and returns them in an Array
+ * @example
+ * return{
+ *      initialsSpan: HTML-Element,
+        firstNameSpan: HTML-Element,
+        lastNameSpan: HTML-Element,
+        emailLink: HTML-Element,
+        phoneSpan: HTML-Element,
+        bigCardDiv: HTML-Element,
+        initialsDiv: HTML-Element
+ */
 function getBigCardElements() {
     return {
         initialsSpan: document.getElementById('big-card-initials'),
@@ -142,7 +156,14 @@ function getBigCardElements() {
     }
 }
 
-
+/**
+ * This function defines vars and calls getContactInfo(with given contac Object), to fill the definend vars with found contact info,
+ * then generate and return Html-template with filled vars.
+ * 
+ * @param {object} contact -Object filled with all information needed to show detail View from given Contact. 
+ * @param {number} i -index Number: is the number that the current Contact, become to find and manipulate the Contac later.  
+ * @returns 
+ */
 function getCardInnerHTML(contact, i) {
     const { initials1, initials2, bgColor, firstName, lastName } = getContactInfo(contact);
     return /*html*/`
@@ -162,7 +183,17 @@ function getCardInnerHTML(contact, i) {
 `;
 }
 
-
+/**
+ * This function adds an Contact to the contacs Array.
+ * First defince const's and fill them, with the values from the user input.
+ * Then split the name Value on all empty Spaces, and give the created array into names var.
+ * Then let the lastName, be the last string in created names Array.
+ * Then create new Contact with created vars, and push existing contacts Array with the new Contact.
+ * Then save manipulated Array to Backend, thru the function saveArrayToBackend().
+ * Then calls the closeAddOverlay() function, to close Add Overlay.
+ * Then renderContacts(), to show all contacts, from manipulated contacts Array.
+ * Last it shows the User the contact sucessfully added message.
+ */
 function addContact() {
     const inputName = document.getElementById('add-name-input');
     const inputEmail = document.getElementById('add-eMail-input');
@@ -177,7 +208,14 @@ function addContact() {
     showContactAddedMessage();
 }
 
-
+/**
+ * This functio delete a Contacs from the contacts Array.
+ * 
+ * @param {number} - contactToEditId global Id to get the right Contact to Edit out of the contacts Array.
+ * 
+ * First is shows the delete Button.
+ * Then delete
+ */
 function deleteContact() {
     showDeleteBtn();
     contacts.splice(contactToEditId, 1);
