@@ -3,13 +3,15 @@
         <span>Kanban Project Management Tool</span>
         <img class="header-mobile-logo" src="./assets/img/mobile_logo.svg" alt="mobil main logo">
     </div>
-    <div class="icons-header">
+    <div id="icons-header" class="icons-header">
         <a href="help.html">
             <img src="./assets/img/help.svg" alt="button for help">
         </a>
         <img src="./assets/img/avatar.svg" alt="picture of the user" onclick="toggleMobileMenu()">
     </div>
-    <div id="submit-button" class="submit-button-header" onclick="createNewTask()">
+    <div id="create-task" class="d-none">
+        <div id="submit-button" class="submit-button-header" onclick="createNewTask()">
+        </div>
     </div>
 </header>
 

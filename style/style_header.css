@@ -95,13 +95,11 @@ header {
         justify-content: space-between;
         padding: 20px 33px 20px 33px;
     }
-    
-    .icons-header {
-        display: none;
-    }
 }
 
 @media (max-width: 820px) {
 
-    
+    .icons-header>a {
+        display: none;
+    }
 }

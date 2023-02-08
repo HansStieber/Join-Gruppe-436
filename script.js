@@ -132,6 +132,8 @@ async function showNewTaskCard() {
         document.getElementById('content-new-task').classList.remove('new-task-card');
         document.getElementById('main').classList.add('main-add-task');
         document.getElementById('mobile-d-none').classList.add('d-none');
+        document.getElementById('icons-header').classList.add('d-none');
+        document.getElementById('create-task').classList.remove('d-none');
         newTaskCloseBtn.classList.remove('d-none');
     } else {
         await loadTemplateNewTask();
