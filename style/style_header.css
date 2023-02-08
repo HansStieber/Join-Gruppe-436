@@ -64,13 +64,13 @@ header {
 .show {
     opacity: 1;
     transition: opacity 220ms ease;
-    z-index: 1;
+    z-index: 2 !important;
 }
 
 .hide {
     opacity: 0;
     transition: opacity 220ms ease;
-    z-index: -1;
+    z-index: -1 !important;
 }
 
 
@@ -81,10 +81,6 @@ header {
     
     .header-heading>span {
         display: none;
-    }
-
-    .mobile-menu, .logout-btn{
-        right: 10px;
     }
 
     .header-mobile-logo {
