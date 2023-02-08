@@ -616,6 +616,18 @@ input[type='date']:hover {
     background-repeat: no-repeat;
 }
 
+.submit-button-header {
+    width: 185px;
+    height: 69px;
+    background-image: url('../assets/img/create_task_mobile.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.submit-button-header:hover {
+    cursor: pointer;
+} 
+
 .submit-button:hover {
     cursor: pointer;
     background-image: url('../assets/img/create_task_hover.svg');
@@ -711,12 +723,6 @@ input[type='date']:hover {
 
     .prio-urgent, .prio-medium, .prio-low {
         width: 100px;
-    }
-
-    .submit-button {
-        background-image: url('../assets/img/create_task_mobile.svg');
-        background-position: center;
-        margin-left: 0;
     }
 
     .cancel-form {
