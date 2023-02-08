@@ -57,6 +57,20 @@ function getSummaryInfo() {
     }
 }
 
+
+function getUrgentTasks(tasksUrgent) {
+    if (!tasksUrgent.length > 0)
+        return 'No Urgent Task in Board';
+    var country = "en-US";
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    let latestUrgenTask = getLatestUrgentTask(tasksUrgent);
+    let date = latestUrgenTask.date;
+    let dateLong = new Date(date);
+    let formatedDate = dateLong.toLocaleDateString(country, options);
+    return formatedDate;
+}
+
+
 function getLatestUrgentTask(tasksUrgent) {
     let latestUrgentTask
     let latestDay = 31;
@@ -76,16 +90,6 @@ function getLatestUrgentTask(tasksUrgent) {
     return latestUrgentTask;
 }
 
-function getUrgentTasks(tasksUrgent) {
-    var country = "en-US";
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    let latestUrgenTask = getLatestUrgentTask(tasksUrgent);
-    let date = latestUrgenTask.date;
-    let dateLong = new Date(date);
-
-    let formatedDate = dateLong.toLocaleDateString(country, options);
-    return formatedDate;
-}
 
 function greetingUser() {
     let nameDiv = document.getElementById('user-greeting');

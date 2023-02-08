@@ -11,7 +11,7 @@ let assignments = [];
 async function initAddTask() {
     await loadBackend();
     await load();
-    loadAllOptions();
+    loadAllOptions(); 
     showClearButton();
     checkURLandHighlight('add_task');
 }
