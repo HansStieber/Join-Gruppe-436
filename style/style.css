@@ -267,5 +267,34 @@ input {
 }
 
 
+/* HELP-PAGE */
+.main-container{
+    margin-right: 60px;
+    font-size: 18px;
+}
+
+.main-container li::marker{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.main-container li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 800px) {
+    .main-container::before {
+        content: "Kanban Project Management Tool";
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 450px) {
+    .main-container{
+        margin-right: 10px;
+    }
+}
+
+
 
 
