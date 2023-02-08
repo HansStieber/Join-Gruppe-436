@@ -51,7 +51,7 @@
     height: 12px;
     width: 16px;
     background-position: center 0px;
-    background-image: url(../img/scroll-arrow-up.svg);
+    background-image: url(../assets/img/scroll-arrow-up.svg);
 }
 
 /* Down */
@@ -59,7 +59,7 @@
     height: 12px;
     width: 16px;
     background-position: center 2px;
-    background-image: url(../img/scroll-arrow-down.svg);
+    background-image: url(../assets/img/scroll-arrow-down.svg);
 }
 
 .contacts-right-div {
@@ -179,7 +179,7 @@
 .pencil-img {
     width: 30px;
     height: 30px;
-    background-image: url(../img/pencil.svg);
+    background-image: url(../assets/img/pencil.svg);
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;

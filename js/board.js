@@ -265,7 +265,7 @@ function generateHTMLTaskCard(element, assignments) {
                                     <div id="user-icons-${element.id}" class="user-icons">
                                         <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
                                     </div>
-                                    <div><img src="../img/priority-${element.priority}.svg"></div>
+                                    <div><img src="../assets/img/priority-${element.priority}.svg"></div>
                                 </div>
                             </div>
     `;
