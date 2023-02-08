@@ -117,6 +117,7 @@
 
     .main {
         padding-left: 70px;
+        padding-right: 70px;
     }
 
     .cards-slide-div {
@@ -127,6 +128,7 @@
 @media(max-width:700px) {
     .main {
         padding-left: 33px;
+        padding-right: 33px;
     }
 }
 
