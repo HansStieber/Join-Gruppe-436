@@ -26,7 +26,7 @@
                     <div class="contact-input-field">
                         <label for="name" class="screenreader">Name:</label>
                         <input id="add-name-input" class="input-styling" type="text" name="name"
-                            placeholder="Vor und Nachname" pattern="([a-zA-ZäöüÄÖÜß]+\s+){1,10}([a-zA-ZäöüÄÖÜß]+)"
+                            placeholder="Vor und Nachname" pattern="([a-zA-ZäöüÄÖÜß]+\s+){1,10}([a-zA-ZäöüÄÖÜß]+)" title="Vor- und Nachname sind einzugeben!"
                             required>
                         <img src="./assets/img/avatar-small.svg" alt="icon of a small avatar">
                     </div>
@@ -37,7 +37,7 @@
                         <label for="eMail" class="screenreader">E-Mail:</label>
                         <input id="add-eMail-input" class="input-styling" type="email" name="email" placeholder="E-Mail"
                             pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
-                            title="Gib eine gültige E-Mail-Adresse ein!">
+                            title="Gib eine gültige E-Mail-Adresse ein! Umlaute sind nicht erlaubt!">
                         <img src="./assets/img/email.svg" alt="icon of a small letter">
                     </div>
                     <div class="field-required">This field is required</div>
