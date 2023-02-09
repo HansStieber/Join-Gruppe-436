@@ -168,17 +168,14 @@
 
 @media(max-width:450px) {
     .main {
-        padding-left: 10px;
+        padding-left: 30px;
     }
 
     .board {
-        padding-right: 10px;
+        padding-right: 30px;
     }
-}
-
-@media(max-width:400px) {
     .cards-column-main {
         width: 100%;
-        padding-right: 10px;
+        padding-right: 30px;
     }
 }
