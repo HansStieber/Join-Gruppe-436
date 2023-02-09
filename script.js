@@ -142,7 +142,7 @@ async function showNewTaskCard() {
             document.getElementById('main').classList.add('padding-top');
         }
         if (location.href.includes('contact')) {
-            document.getElementById('content-new-task').classList.add('margin-top');
+            document.getElementById('content-new-task').classList.add('margin-auto');
         }
         let newTaskCloseBtn = document.getElementById('new-task-close-btn');
         document.getElementById('template-container').classList.remove('d-none');

@@ -164,6 +164,10 @@
     filter: unset;
 }
 
+.margin-auto {
+    margin: 89px auto 0 auto;
+}
+
 @media(max-width:1250px) {
     .add-contact-container {
         flex-direction: column;

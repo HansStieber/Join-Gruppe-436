@@ -463,16 +463,13 @@ textarea::-webkit-scrollbar-thumb {
 
 
 ::-webkit-calendar-picker-indicator {
-    display: none;
-}
-
-/*    background-image: url('../assets/img/calender.svg');
+    background-image: url('../assets/img/calender.svg');
     background-size: 24px;
 }
 
 ::-webkit-calendar-picker-indicator:hover {
     cursor: pointer;
-}*/
+}
 
 input[type='date'] {
     width: 100%;
