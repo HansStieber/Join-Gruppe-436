@@ -348,7 +348,6 @@ function findTask() {
         const description = todos[i].description;
         if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
             searchedTodos.push(todos[i]);
-            // console.log(searchedTodos);
         }
         selectingArrayForBoardUpdate();
     }

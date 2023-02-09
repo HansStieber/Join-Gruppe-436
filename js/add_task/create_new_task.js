@@ -206,7 +206,7 @@ function noPriorityIsSet() {
 function checkIfInputMissingAndPushNewTask() {
     if (inputMissing == false) {
         pushNewTask();
-    } console.log(todos);
+    }
 }
 
 /**
