@@ -58,7 +58,7 @@ function focusPrio(id, id2, id3) {
  * @param {string} id3 - passed as a parameter to unfocusPrio() function - is used to set new parameter value at the taskIs[newId]() function that is newly set
  */
 function unfocusPriority(id, id2, id3) {
-    setNewPriority();
+    setNewPriority(id);
     let firstLeter = id.charAt(0);
     let fLUppercase = firstLeter.toUpperCase();
     let newId = fLUppercase + id.substring(1);
@@ -70,7 +70,7 @@ function unfocusPriority(id, id2, id3) {
 /**
  * The function sets the priority variables urgent, medium and low.
  */
-function setNewPriority() {
+function setNewPriority(id) {
     if (id == 'urgent') {
         urgent = false;
     }

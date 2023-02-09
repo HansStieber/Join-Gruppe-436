@@ -138,17 +138,20 @@ function renderEditCard(id, title, description, date) {
         <div class="field-container margin-bottom-zero">
             <label class="label" for="title">Title</label>
             <input type="text" id="title" name="title" value="${title}" maxlength="25" required>
-        </div>
+            <span class="alert-required" id="title-required">Please enter a title first</span>
+        </div> 
 
         <div class="field-container margin-bottom-minus">
             <label class="label" for="description">Description</label>
             <textarea type="text" id="description" name="description"
                 required>${description}</textarea>
+            <span class="alert-required" id="description-required">Please describe the task</span>
         </div>
 
         <div class="field-container margin-bottom-minus">
             <span class="label">Due date</span>
             <input id="date" type="date" value="${date}">
+            <span class="alert-required" id="date-required">Please select date first</span>
         </div>
 
         <div class="field-container margin-bottom-minus">
@@ -164,6 +167,7 @@ function renderEditCard(id, title, description, date) {
                     onclick="taskIsLow('low', 'low_big', 'urgent', 'medium')" onmouseover="hover('low', 'low_big')"
                     onmouseout="leave('low', 'low_big')">
             </div>
+            <span class="alert-required" id="priority-required">Please select priority first</span>
         </div>
 
         <div class="field-container margin-bottom-minus">
@@ -193,6 +197,7 @@ function renderEditCard(id, title, description, date) {
                     </div>
                 </div>
             </div>
+            <span class="alert-required" id="assignment-required">Please assign at least one contact</span>
             <div id="assignments-icons-container" class="assignments-icons-container">
             </div>
         </div>

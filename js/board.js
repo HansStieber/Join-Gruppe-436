@@ -428,6 +428,26 @@ function assignAssignedContacts(id) {
  * @param {number} id - id of current todo
  */
 function saveChanges(id) {
+    checkIfWrongInput()
+    checkIfInputMissingAndPushEditedTask(id);
+}
+
+function checkIfWrongInput() {
+    setInputMissingToFalse();
+    checkIfEmpty('title');
+    checkIfEmpty('description');
+    checkDate();
+    checkIfNotAssigned();
+    checkIfNoPriority();
+}
+
+function checkIfInputMissingAndPushEditedTask(id) {
+    if (inputMissing == false) {
+        pushChanges(id);
+    }
+}
+
+function pushChanges(id) {
     getNewTitleValue(id);
     getNewDescriptionValue(id);
     getNewDateValue(id);
