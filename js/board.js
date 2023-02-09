@@ -12,6 +12,14 @@ async function initBoard() {
 }
 
 
+window.addEventListener('resize', function () {
+    if (location.href.includes('board.html') || location.href.includes('contacts.html')) {
+        hideNewTaskCard();
+    }
+});
+
+
+
 function clearBoard() {
     document.getElementById('todo').innerHTML = '';
     document.getElementById('progress').innerHTML = '';

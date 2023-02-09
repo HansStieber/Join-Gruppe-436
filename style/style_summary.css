@@ -7,7 +7,8 @@
 }
 
 .summary-outer-div {
-    height: calc(100vh - 172px);
+    height: calc(100vh - 146px);
+    overflow: auto;
 }
 
 .summary-container {

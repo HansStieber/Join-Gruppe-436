@@ -26,6 +26,10 @@ body {
     padding-bottom: 0 !important;
 }
 
+.padding-top {
+    padding-top: 90px !important;
+}
+
 .margin-top {
     margin-top: 91px;
 }
