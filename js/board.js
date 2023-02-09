@@ -14,7 +14,9 @@ async function initBoard() {
 
 window.addEventListener('resize', function () {
     if (location.href.includes('board.html') || location.href.includes('contacts.html')) {
-        hideNewTaskCard();
+        if (newTaskOpen == true) {
+            hideNewTaskCard();
+        }
     }
 });
 

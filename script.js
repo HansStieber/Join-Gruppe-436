@@ -136,6 +136,7 @@ async function showNewTaskCard() {
             document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
         }
         await load();
+
         if (location.href.includes('board.html')) {
             document.getElementById('main').classList.add('main-add-task');
             document.getElementById('main').classList.add('padding-top');
@@ -215,7 +216,7 @@ function selectCurrentContact(i) {
  * @param {number} i - id of the current contact at the contacts array
  */
 function currentContactisAlreadyAtAssignments(i) {
-   return assignments.some(a => a.email === contacts[i].email)
+    return assignments.some(a => a.email === contacts[i].email)
 }
 
 
@@ -289,7 +290,7 @@ function hideNewTaskCard() {
     document.getElementById('icons-header').classList.remove('d-none');
     document.getElementById('create-task').classList.add('d-none');
     if (window.innerWidth <= 1180) {
-    document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
+        document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.remove('d-none');
             document.getElementById('main').classList.remove('main-add-task');
@@ -403,7 +404,9 @@ function showNewTaskCloseBtn() {
  */
 function hideNewTaskCloseBtn() {
     let closeBtn = document.getElementById('new-task-close-btn');
-    closeBtn.classList.add('d-none');
+    if (closeBtn) {
+        closeBtn.classList.add('d-none');
+    }
 }
 
 
