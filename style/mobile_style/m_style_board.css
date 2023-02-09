@@ -1,9 +1,3 @@
-@media(max-width:1085px) {
-    .main {
-        padding-left: 260px;
-    }
-}
-
 @media(max-width:992px) {
     .main {
         padding-right: 0px;

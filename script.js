@@ -126,7 +126,7 @@ function resetPassword() {
  */
 async function showNewTaskCard() {
     newTaskOpen = true;
-    if (window.innerWidth <= 1180) {
+    if (window.innerWidth <= 992) {
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.add('d-none');
             document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
@@ -289,7 +289,7 @@ function hideNewTaskCard() {
     document.getElementById('mobile-d-none').classList.remove('d-none');
     document.getElementById('icons-header').classList.remove('d-none');
     document.getElementById('create-task').classList.add('d-none');
-    if (window.innerWidth <= 1180) {
+    if (window.innerWidth <= 992) {
         document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.remove('d-none');
