@@ -88,7 +88,7 @@
     }
 
     .cards-slide-div {
-        height: calc(100vh - 345px)
+        height: calc(100vh - 414px)
     }
 
     .cards-div {
@@ -132,10 +132,6 @@
     /*.main {
         padding-left: 70px;
     }*/
-
-    .cards-slide-div {
-        height: calc(100vh - 375px)
-    }
 }
 
 /*@media(max-width:700px) {
