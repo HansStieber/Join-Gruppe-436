@@ -163,7 +163,7 @@
 .cards-div {
     display: flex;
     flex-wrap: wrap;
-    padding-right: 65px;
+
     padding-top: 30px;
 }
 
