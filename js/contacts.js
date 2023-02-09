@@ -88,6 +88,7 @@ function getContactInfo(contact) {
     }
 }
 
+
 /**
  * This function shows the BigCard wich is a Detail view form a Contact, out of the contacts Array.
  * 
@@ -107,6 +108,7 @@ function renderBigCard(indexNum) {
     showMobileBigCard();
     setBigCardInnerHTML(contact);
 }
+
 
 /**
  * 
@@ -132,6 +134,7 @@ function setBigCardInnerHTML(contact) {
 
 }
 
+
 /**
  * This function return HTML Elements found thru IDs and returns them in an Array
  * @example
@@ -155,6 +158,7 @@ function getBigCardElements() {
         initialsDiv: document.getElementById('big-card-initials-bg')
     }
 }
+
 
 /**
  * This function defines vars and calls getContactInfo(with given contac Object), to fill the definend vars with found contact info,
@@ -183,6 +187,7 @@ function getCardInnerHTML(contact, i) {
 `;
 }
 
+
 /**
  * This function adds an Contact to the contacs Array.
  * First defince const's and fill them, with the values from the user input.
@@ -209,6 +214,7 @@ function addContact() {
     showContactAddedMessage();
 }
 
+
 /**
  * This functio delete a Contacs from the contacts Array.
  * 
@@ -230,6 +236,7 @@ function deleteContact() {
     closeEditOverlay();
     renderContacts();
 }
+
 
 /**
  * This function saves the edited Contact information, if there are inputs.
@@ -257,6 +264,7 @@ function saveContactChanges() {
     renderBigCard(contactToEditId);
 }
 
+
 /**
  * This function returns elements found via Id.
  * 
@@ -269,6 +277,7 @@ function getEditInputs() {
         phoneInput: document.getElementById('edit-phonenumber-input')
     }
 }
+
 
 /**
  * This function changes contact Data, If the input is valid.
@@ -293,6 +302,7 @@ function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
     }
 }
 
+
 /**
  * This function sets the Contact initials at edit Contact HTMl-Element.
  * 
@@ -306,6 +316,7 @@ function setEditContactInitials() {
     initialsDiv.style = `background-color:${bgColor}`;
     initialsSpan.innerHTML = initials1 + initials2;
 }
+
 
 /**
  * This function fill the input values on edit Contact HTMl-Element,
@@ -321,6 +332,7 @@ function setEditContactValues() {
     phoneInput.value = contact.phone;
 }
 
+
 /**
  * This function shows the Contact added Animation.
  */
@@ -328,6 +340,7 @@ function showContactAddedMessage() {
     popInContactAddedMessage();
     setTimeout(popOutContactAddedMessage, 1500);
 }
+
 
 /**
  * This function manipulate the contact added message classes, to show the css Animation. 
@@ -338,6 +351,7 @@ function popInContactAddedMessage() {
     message.classList.remove('slide-down');
     message.classList.add('slide-up');
 }
+
 
 /**
  * This function manipulate the contact added message classes, to show the css Animation. 
@@ -379,6 +393,7 @@ function hideMobileBigCard() {
     rightDiv.classList.add('right-div-mobile');
 }
 
+
 /**
  * This function iterates thru the abc Array, and search for all cardsDiv elements,
  * with given letter like `cards-div-A` till `cards-div-Z`.
@@ -419,6 +434,7 @@ function removeDnoneCardsDivMain(contact) {
     const { cardsMainLetter } = getCardElements(contact);
     cardsMainLetter.classList.remove('d-none');
 }
+
 
 /**
  * This function first checks if the param actualCard is filled, call a function if true.

@@ -1,10 +1,19 @@
-//*Variablen Namen und Reihenfolge,für Tasks: (title, description, categoryTitle, assignedContacts, color, date, priority, subtasks,status,id)*/
-// let tasks = [];
+/**
+ * The array includes all todos that match with input value of the search input-field at the top of board.html.
+ */
 let searchedTodos = [];
+/**
+ * Elements that are currently dragged.
+ */
 let currentDraggedElements;
+/**
+ * Id of the task that is currently edited.
+ */
 let taskToEdit;
 
-
+/**
+ * The function initiates the Board. The data from the backend is loaded and the board is rendered.
+ */
 async function initBoard() {
     await load();
     selectingArrayForBoardUpdate();
@@ -12,6 +21,10 @@ async function initBoard() {
 }
 
 
+/**
+ * The Eventlistener runs a function on resizing the window. If the location is currently contacts.html or board.html and the new task card is
+ * open, the new task card is closed.
+ */
 window.addEventListener('resize', function () {
     if (location.href.includes('board.html') || location.href.includes('contacts.html')) {
         if (newTaskOpen == true) {
@@ -89,8 +102,9 @@ function renderDoneColumn(todos) {
         checkForMoreUsers(assignments, id);
     }
 }
-/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 
+
+/*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 /**
  * By pressing the plus button at the disired status (progress, feedback, done) this function opens the add task overlay.
  */
@@ -144,7 +158,7 @@ function selectingArrayForBoardUpdate() {
 
 
 /**
- * This function calls all functions needed for, to let the User delete a Task. First it shows the Delete Butto, then splice the 
+ * This function calls all functions needed for, to let the User delete a Task. First it shows the Delete Button, then splices the 
  * todos Array at a specific position, given by the Global var taskToEdit.
  * Then calls function setNewTodoIds() wich giv all todos new Ids so they have still the same Ids like their position in todos Array.
  * Then saves manipulated Array to Backend. On Next step it close the Detail View of the Todo.
@@ -173,7 +187,6 @@ function setNewTodoIds() {
 
 
 /*----------- DRAG AND DROP -----------*/
-
 /**
  * The global defined variable 'currentDraggedElement' is undefined in the first place. When moving a task to another status-column the global 
  * variable gets the value of the id of the current task card.
@@ -187,6 +200,7 @@ function startDragging(id) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 
 /**
  * This functions overwirte the status when moving the task to a new status-column and saves it at the backend.
@@ -204,8 +218,8 @@ function saveStatus() {
     backend.setItem('todo', todosAsText);
 }
 
-/*----------- DETAIL VIEW OF TASK CARD-----------*/
 
+/*----------- DETAIL VIEW OF TASK CARD-----------*/
 /**
  * This function shows the details of a task when clicking on it.  
  * @param {number} idOfCard - id of the current task card
@@ -423,16 +437,22 @@ function assignAssignedContacts(id) {
 
 
 /**
- * The function saves all changes to the backend.
+ * The function saves all changes to the backend if all inputs are valid
  * 
- * @param {number} id - id of current todo
+ * @param {number} id - id of the todo which got edited
  */
 function saveChanges(id) {
-    checkIfWrongInput()
+    checkIfInvalidInput()
     checkIfInputMissingAndPushEditedTask(id);
 }
 
-function checkIfWrongInput() {
+
+/**
+ * The function checks if any input-field is empty or the selected date lies in the past. If any input field is empty it resolves in setting
+ * the inputMissing variable to true.
+ * 
+ */
+function checkIfInvalidInput() {
     setInputMissingToFalse();
     checkIfEmpty('title');
     checkIfEmpty('description');
@@ -441,12 +461,26 @@ function checkIfWrongInput() {
     checkIfNoPriority();
 }
 
+
+/**
+ * The function checks the inputMissing variable. If the variable is set to false, meaning no input is missing, the changes are saved to the
+ * backend database and the edit window is closed.
+ * 
+ * @param {number} id - id of the todo which got edited
+ */
 function checkIfInputMissingAndPushEditedTask(id) {
     if (inputMissing == false) {
         pushChanges(id);
     }
 }
 
+
+/**
+ * The function gets all the values present in the input-fields at the edit todo card and saves them to the backend database. Also the edit
+ * card window is closed and the detail card is shown again.d
+ * 
+ * @param {number} id - id of the todo which got edited
+ */
 function pushChanges(id) {
     getNewTitleValue(id);
     getNewDescriptionValue(id);

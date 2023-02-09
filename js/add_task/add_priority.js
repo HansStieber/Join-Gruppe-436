@@ -1,3 +1,6 @@
+/**
+ * The variables define if the task has any priority. Only one can be true at a time.
+ */
 let urgent = false;
 let medium = false;
 let low = false;
@@ -68,7 +71,9 @@ function unfocusPriority(id, id2, id3) {
 
 
 /**
- * The function sets the priority variables urgent, medium and low.
+ * The function sets the priority variables urgent, medium and low to false depending on the given id.
+ * 
+ * @param {string} id - defines the current priority that is to be unselected/set to false
  */
 function setNewPriority(id) {
     if (id == 'urgent') {
@@ -118,7 +123,7 @@ function taskIsMedium(id, path, id2, id3) {
  * The function sets the low variable to true. It also runs the setImgSelected() function.
  * 
  * @param {string} id - value: 'low' - is passed as parameter
- * @param {string} path - value: 'lowt_big' - is passed as parameter 
+ * @param {string} path - value: 'low_big' - is passed as parameter 
  * @param {string} id2 - value: 'urgent' - is passed as parameter 
  * @param {string} id3 - value: 'medium - is passed as parameter 
  */
