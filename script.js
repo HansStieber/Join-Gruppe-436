@@ -120,7 +120,7 @@ function resetPassword() {
 
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
 /**
- * the function shows the new Task Template.
+ * The function shows the new Task Template depending on the window width. It also sets the newTaskOpen variable to true.
  */
 async function showNewTaskCard() {
     newTaskOpen = true;
@@ -131,36 +131,100 @@ async function showNewTaskCard() {
     }
 }
 
+
+/**
+ * This function initiates functions to show the mobile add_task template. The functions depend on the current location on the website.
+ */
 async function showMobileTemplate() {
     if (location.href.includes('board.html')) {
-        document.getElementById('board-outer-div').classList.add('d-none');
-        document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+        renderTemplateAtBoard();
     }
     if (location.href.includes('contacts.html')) {
-        document.getElementById('contacts-outer-div').classList.add('d-none');
-        document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+        renderTemplateAtContacts();
     }
     await load();
-
     if (location.href.includes('board.html')) {
-        document.getElementById('main').classList.add('main-add-task');
-        document.getElementById('main').classList.add('padding-top');
+        adjustLayoutAtBoard();
     }
     if (location.href.includes('contact')) {
-        document.getElementById('content-new-task').classList.add('margin-auto');
+        adjustLayoutAtContacts();
     }
-    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
-    document.getElementById('template-container').classList.remove('d-none');
-    document.getElementById('content-new-task').classList.remove('new-task-card');
-    document.getElementById('content-new-task').classList.add('padding-bottom');
-    document.getElementById('mobile-d-none').classList.add('d-none');
-    document.getElementById('icons-header').classList.add('d-none');
-    document.getElementById('create-task').classList.remove('d-none');
-    document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
-    newTaskCloseBtn.classList.remove('d-none');
+    showNewTaskCloseBtn();
+    showTemplate();
+    changeHeaderIcons();
+    adjustLayout();
     checkWhichIsCurrentPage();
 }
 
+
+/**
+ * The function renders the the template container into the board-add-task container and hides the board-outer-div container which contains
+ * the previous content of the site.
+ */
+function renderTemplateAtBoard() {
+    document.getElementById('board-outer-div').classList.add('d-none');
+    document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+}
+
+
+/**
+ * The function renders the the template container into the contacts-add-task container and hides the contacts-outer-div container which contains
+ * the previous content of the site.
+ */
+function renderTemplateAtContacts() {
+    document.getElementById('contacts-outer-div').classList.add('d-none');
+    document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+}
+
+
+/**
+ * The function adjusts the layout of the board.html page to fit the mobile template.
+ */
+function adjustLayoutAtBoard() {
+    document.getElementById('main').classList.add('main-add-task');
+    document.getElementById('main').classList.add('padding-top');
+}
+
+
+/**
+ * The function adjusts the layout of the contacts.html page to fit the mobile template.
+ */
+function adjustLayoutAtContacts() {
+    document.getElementById('content-new-task').classList.add('margin-auto');
+}
+
+
+/**
+ * The function shows the add_task template-container by removing the d-none class. This happens after the template was loaded.
+ */
+function showTemplate() {
+    document.getElementById('template-container').classList.remove('d-none');
+}
+
+
+/**
+ * The changes the headers icons on the right side. It hides the previous icons and shows a create task button.
+ */
+function changeHeaderIcons() {
+    document.getElementById('mobile-d-none').classList.add('d-none');
+    document.getElementById('icons-header').classList.add('d-none');
+    document.getElementById('create-task').classList.remove('d-none');
+}
+
+
+/**
+ * The function adjusts the layout of the page to fit the mobile template.
+ */
+function adjustLayout() {
+    document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
+    document.getElementById('content-new-task').classList.remove('new-task-card');
+    document.getElementById('content-new-task').classList.add('padding-bottom');
+}
+
+
+/**
+ * The function loads the add_task template on normal screen sizes. 
+ */
 async function showNormalTemplate() {
     await loadTemplateNewTask();
     let newTaskCloseBtn = document.getElementById('content-new-task');
