@@ -162,6 +162,7 @@
 
     .slide-bar-scroll {
         width: 100vw;
+        height: calc(100vh - 170px);
     }
 
     .contacts-slide-bar {
@@ -190,25 +191,25 @@
 
     /* Buttons */
     .contacts-outer-div::-webkit-scrollbar-button:single-button {
+        background-position: center 0px;
         display: block;
         background-size: 10px;
         background-repeat: no-repeat;
+        background-position: center 0px;
     }
 
     /* Up */
     .slide-bar-scroll::-webkit-scrollbar-button:single-button:vertical:decrement {
         cursor: pointer;
-        height: 12px;
-        width: 16px;
-        background-position: center 7px;
+        height: 8px;
+        width: 8px;
         background-image: url(../../assets/img/scroll-arrow-up.svg);
     }
 
     /* Down */
     .slide-bar-scroll::-webkit-scrollbar-button:single-button:vertical:increment {
-        height: 12px;
-        width: 16px;
-        background-position: center 2px;
+        height: 8px;
+        width: 8px;
         background-image: url(../../assets/img/scroll-arrow-down.svg);
     }
 }

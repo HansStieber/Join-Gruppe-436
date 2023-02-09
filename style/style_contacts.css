@@ -10,12 +10,14 @@
 .slide-bar-scroll {
     overflow-y: auto;
     overflow-x: hidden;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    border-right: 10px solid white;
+
 }
 
 .contacts-slide-bar {
     padding-left: 65px;
     padding-right: 65px;
-    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     background-color: white;
     width: 490px;
     overflow-y: auto;
@@ -23,44 +25,43 @@
 }
 
 .slide-bar-scroll::-webkit-scrollbar {
-    width: 6px;
     display: block;
+    width: 7px;
 }
 
 .slide-bar-scroll::-webkit-scrollbar-track {
-    background: white;
-
+    background-color: white;
 }
 
 .slide-bar-scroll::-webkit-scrollbar-thumb {
     background-color: #A8A8A8;
     border-radius: 10px;
-
 }
 
 /* Buttons */
 .slide-bar-scroll::-webkit-scrollbar-button:single-button {
+    background-color: white;
     display: block;
-    background-size: 10px;
+
     background-repeat: no-repeat;
+    background-position: center 4px;
 }
 
 /* Up */
 .slide-bar-scroll::-webkit-scrollbar-button:single-button:vertical:decrement {
-    cursor: pointer;
-    height: 12px;
-    width: 16px;
-    background-position: center 0px;
+    height: 25px;
     background-image: url(../assets/img/scroll-arrow-up.svg);
+    background-position: center;
 }
 
 /* Down */
 .slide-bar-scroll::-webkit-scrollbar-button:single-button:vertical:increment {
-    height: 12px;
-    width: 16px;
-    background-position: center 2px;
+    height: 25px;
     background-image: url(../assets/img/scroll-arrow-down.svg);
+    background-position: center;
 }
+
+
 
 .contacts-right-div {
     overflow: auto;

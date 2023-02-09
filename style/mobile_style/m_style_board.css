@@ -118,6 +118,15 @@
         z-index: 2;
     }
 
+    .content {
+        overflow: auto;
+        height: calc(100vh - 173px);
+    }
+
+    .cards-slide-div {
+        overflow: visible;
+    }
+
     .board {
         padding-bottom: 1em;
         position: sticky;
