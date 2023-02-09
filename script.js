@@ -43,6 +43,7 @@ function saveArrayToBackend(key, array) {
     backend.setItem(key, arrayAsText);
 }
 
+
 /**
  * This function highlightes the active navigation point on the sidebar. At first the function checks if the current page is 'Legal notice' or 
  * if it's an other page.
@@ -87,9 +88,8 @@ function forgotPassword() {
     let loginContainer = document.getElementById("login-container");
     forgotContainer.removeAttribute("style");
     loginContainer.style.display = "none";
-
-
 }
+
 
 function resetPassword() {
     let current_email = email;
@@ -98,8 +98,6 @@ function resetPassword() {
     users = JSON.parse(localStorage.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
     let resetPW = document.getElementById("resetPW");
-
-
 
     if (new_password === new_passwordCONF) {
         if (existingUser) {
@@ -127,45 +125,53 @@ function resetPassword() {
 async function showNewTaskCard() {
     newTaskOpen = true;
     if (window.innerWidth <= 992) {
-        if (location.href.includes('board.html')) {
-            document.getElementById('board-outer-div').classList.add('d-none');
-            document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
-        }
-        if (location.href.includes('contacts.html')) {
-            document.getElementById('contacts-outer-div').classList.add('d-none');
-            document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
-        }
-        await load();
-
-        if (location.href.includes('board.html')) {
-            document.getElementById('main').classList.add('main-add-task');
-            document.getElementById('main').classList.add('padding-top');
-        }
-        if (location.href.includes('contact')) {
-            document.getElementById('content-new-task').classList.add('margin-auto');
-        }
-        let newTaskCloseBtn = document.getElementById('new-task-close-btn');
-        document.getElementById('template-container').classList.remove('d-none');
-        document.getElementById('content-new-task').classList.remove('new-task-card');
-        document.getElementById('content-new-task').classList.add('padding-bottom');
-        document.getElementById('mobile-d-none').classList.add('d-none');
-        document.getElementById('icons-header').classList.add('d-none');
-        document.getElementById('create-task').classList.remove('d-none');
-        document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
-        newTaskCloseBtn.classList.remove('d-none');
-        checkWhichIsCurrentPage();
+        await showMobileTemplate();
     } else {
-        await loadTemplateNewTask();
-        let newTaskCloseBtn = document.getElementById('content-new-task');
-        let mobileDescription = document.getElementById('mobile-description');
-        newTaskCloseBtn.classList.remove('d-none');
-        mobileDescription.classList.add('d-none');
-        showClearButton();
-        showShadowScreen('new-task-shadow-screen');
-        slideInCard('new-task-overlay');
-        showNewTaskCloseBtn();
-        checkWhichIsCurrentPage();
+        await showNormalTemplate();
     }
+}
+
+async function showMobileTemplate() {
+    if (location.href.includes('board.html')) {
+        document.getElementById('board-outer-div').classList.add('d-none');
+        document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+    }
+    if (location.href.includes('contacts.html')) {
+        document.getElementById('contacts-outer-div').classList.add('d-none');
+        document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+    }
+    await load();
+
+    if (location.href.includes('board.html')) {
+        document.getElementById('main').classList.add('main-add-task');
+        document.getElementById('main').classList.add('padding-top');
+    }
+    if (location.href.includes('contact')) {
+        document.getElementById('content-new-task').classList.add('margin-auto');
+    }
+    let newTaskCloseBtn = document.getElementById('new-task-close-btn');
+    document.getElementById('template-container').classList.remove('d-none');
+    document.getElementById('content-new-task').classList.remove('new-task-card');
+    document.getElementById('content-new-task').classList.add('padding-bottom');
+    document.getElementById('mobile-d-none').classList.add('d-none');
+    document.getElementById('icons-header').classList.add('d-none');
+    document.getElementById('create-task').classList.remove('d-none');
+    document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
+    newTaskCloseBtn.classList.remove('d-none');
+    checkWhichIsCurrentPage();
+}
+
+async function showNormalTemplate() {
+    await loadTemplateNewTask();
+    let newTaskCloseBtn = document.getElementById('content-new-task');
+    let mobileDescription = document.getElementById('mobile-description');
+    newTaskCloseBtn.classList.remove('d-none');
+    mobileDescription.classList.add('d-none');
+    showClearButton();
+    showShadowScreen('new-task-shadow-screen');
+    slideInCard('new-task-overlay');
+    showNewTaskCloseBtn();
+    checkWhichIsCurrentPage();
 }
 
 
@@ -296,11 +302,13 @@ function hideNewTaskCard() {
             document.getElementById('main').classList.remove('main-add-task');
             document.getElementById('main').classList.remove('padding-top');
             removeTemplateNewTaskMobile('board');
+            checkURLandHighlight('board');
         }
         if (location.href.includes('contacts.html')) {
             document.getElementById('contacts-outer-div').classList.remove('d-none');
             document.getElementById('content-new-task').classList.remove('margin-top');
             removeTemplateNewTaskMobile('contacts');
+            checkURLandHighlight('contacts');
         }
         removeCurrentContact();
     }
@@ -427,6 +435,7 @@ function checkWindowSize() {
     return window.innerWidth <= 992 ? headerMenu = document.getElementById('mobileMenu') : headerMenu = document.getElementById('logoutBtn')
 }
 
+
 /**
  * Function to show mobile-menu or logout-button
  */
@@ -434,6 +443,7 @@ function showMobileMenu(headerMenu) {
     headerMenu.classList.remove('hide');
     headerMenu.classList.add('show');
 }
+
 
 /**
  * Function to hide mobile-menu or logout-button
