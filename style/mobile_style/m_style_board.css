@@ -107,13 +107,23 @@
         padding-left: 0em;
 
     }
-}
 
-@media(max-width:610px) {
     header {
         z-index: 2;
     }
 
+    .shadow-screen {
+        z-index: 1;
+    }
+
+    .detail-view {
+        height: calc(100vh - 163px);
+        width: 100vw;
+        border-radius: 0px;
+    }
+}
+
+@media(max-width:610px) {
     .mobile-menu {
         z-index: 2;
     }
