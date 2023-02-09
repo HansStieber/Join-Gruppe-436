@@ -4,7 +4,7 @@
 
 .cards-slide-div {
     overflow: auto;
-    height: calc(100vh - 262px);
+    height: calc(100vh - 257px);
 }
 
 .slide-board-scroll::-webkit-scrollbar {
@@ -162,6 +162,7 @@
 
 .cards-div {
     display: flex;
+    flex-wrap: wrap;
     padding-right: 65px;
     padding-top: 30px;
 }

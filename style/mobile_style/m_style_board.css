@@ -1,9 +1,13 @@
-@media(max-width:1485px) {
+/*@media(max-width:1485px) {
+    .main {
+        width: 100%;
+    }
+
     .cards-div {
         width: 815px;
         padding-right: 0px;
     }
-}
+}*/
 
 @media(max-width:1185px) {
     /*    .main {
@@ -31,9 +35,7 @@
         font-size: 47px !important;
     }
 
-    .main {
-        padding-left: 30px;
-    }
+
 
     .main-add-task {
         padding-left: 0;
@@ -176,11 +178,21 @@
         height: calc(100vh - 360px)
     }
 
+
+}
+
+@media(max-width:450px) {
+    .main {
+        padding-left: 10px;
+    }
+
     .cards-column-main {
         margin-left: 0px;
+        width: 100%
     }
 
     .card-column {
         min-height: 205px;
+        width: 363px;
     }
 }
