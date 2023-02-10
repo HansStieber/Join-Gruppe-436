@@ -15,13 +15,6 @@ async function initContacts() {
 
 /**
  * This function first clear all Card divs. 
- * Then added 'd-none' class to all Card-main divs.
- * Then loop thru contacts Array.
- * For each Contact we:
- * get the cardsDivLetter Element,
- * remove 'd-none' from the Card-main div,
- * and render the current Contact into the
- * current cardsDivLetter Element.
  */
 function renderContacts() {
     clearCards();
@@ -138,14 +131,7 @@ function setBigCardInnerHTML(contact) {
 /**
  * This function return HTML Elements found thru IDs and returns them in an Array
  * @example
- * return{
- *      initialsSpan: HTML-Element,
-        firstNameSpan: HTML-Element,
-        lastNameSpan: HTML-Element,
-        emailLink: HTML-Element,
-        phoneSpan: HTML-Element,
-        bigCardDiv: HTML-Element,
-        initialsDiv: HTML-Element
+ * 
  */
 function getBigCardElements() {
     return {
@@ -190,14 +176,6 @@ function getCardInnerHTML(contact, i) {
 
 /**
  * This function adds an Contact to the contacs Array.
- * First defince const's and fill them, with the values from the user input.
- * Then split the name Value on all empty Spaces, and give the created array into names var.
- * Then let the lastName, be the last string in created names Array.
- * Then create new Contact with created vars, and push existing contacts Array with the new Contact.
- * Then save manipulated Array to Backend, thru the function saveArrayToBackend().
- * Then calls the closeAddOverlay() function, to close Add Overlay.
- * Then renderContacts(), to show all contacts, from manipulated contacts Array.
- * Last it shows the User the contact sucessfully added message.
  */
 function addContact() {
     const inputName = document.getElementById('add-name-input');

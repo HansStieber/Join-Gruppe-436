@@ -8,7 +8,7 @@ function login() {
     setTimeout(function () {
       window.location.href = "./summary.html";
     }, 2000);
-    localStorage.setItem('currentUser', existingUser.name);
+    backend.setItem('currentUser', existingUser.name);
   } else {
     console.log("Invalid email or password. Login failed.");
     alert("failed")
