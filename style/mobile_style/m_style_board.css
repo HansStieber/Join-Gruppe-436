@@ -84,6 +84,10 @@
     .board {
         padding-right: 30px;
     }
+
+    .slide-board-scroll::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @media(max-height:985px) {
@@ -182,6 +186,7 @@
     .board {
         padding-right: 30px;
     }
+
     .cards-column-main {
         width: 100%;
         padding-right: 30px;
