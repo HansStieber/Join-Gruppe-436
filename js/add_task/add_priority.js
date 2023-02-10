@@ -146,3 +146,20 @@ function unsetPriority() {
     unfocusPrio('low', 'urgent', 'medium', '');
     unfocusPrio('medium', 'low', 'urgent', '');
 }
+
+
+/**
+ * The function checks the value of the variables urgent, medium and low. If one of them is true it sets the priority variable to the
+ * correct value accordingly.
+ */
+function getPriority() {
+    if (urgent == true) {
+        priority = 'urgent';
+    }
+    if (medium == true) {
+        priority = 'medium';
+    }
+    if (low == true) {
+        priority = 'low';
+    }
+}

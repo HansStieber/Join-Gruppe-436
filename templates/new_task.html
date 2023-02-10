@@ -38,13 +38,13 @@
                 <div id="color-selection-container" class="color-selection-container d-none">
                 </div>
                 <div id="category-options-container" class="options-container">
-                    <div class="option">
+                    <div id="option-category" class="option">
                         <div id="select-category-container" class="select-container" onclick="openDropdownCategory()">
                             <div id="category" class="selected-category"><span>Select task category</span></div><img
                                 class="dropdown-arrow" src="assets/img/arrow_select_dropdown.svg">
                         </div>
                     </div>
-                    <div id="options-category" class="options">
+                    <div id="options-category" onclick="openDropdownCategory()" class="options">
                         <div id="create-new-category" class="option d-none selectable" onclick="createNewCategory()">
                             <span>New Category</span>
                         </div>
@@ -68,7 +68,7 @@
                         onclick="inviteContact()">
                 </div>
                 <div id="contact-options-container" class="options-container">
-                    <div class="option">
+                    <div id="option-assignments" class="option">
                         <div id="select-contact-container" class="select-container"
                             onclick="openDropdownAssignment('')">
                             <span>Select contacts to assign</span><img class="dropdown-arrow"
