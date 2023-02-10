@@ -227,10 +227,7 @@ function adjustLayout() {
  */
 async function showNormalTemplate() {
     await loadTemplateNewTask();
-    let newTaskCloseBtn = document.getElementById('content-new-task');
-    let mobileDescription = document.getElementById('mobile-description');
-    newTaskCloseBtn.classList.remove('d-none');
-    mobileDescription.classList.add('d-none');
+    hideMobileDescription();
     showClearButton();
     showShadowScreen('new-task-shadow-screen');
     slideInCard('new-task-overlay');
@@ -248,6 +245,14 @@ async function loadTemplateNewTask() {
     <div w3-include-html="./templates/new_task.html"></div>
     `;
     await load();
+}
+
+
+/**
+ * The function hides the mobile Description.
+ */
+function hideMobileDescription() {
+    document.getElementById('mobile-description').classList.add('d-none');
 }
 
 
@@ -356,40 +361,92 @@ function setOptionTwoIndex(i) {
  */
 function hideNewTaskCard() {
     newTaskOpen = false;
+    changeHeaderIconsBack();
+    if (window.innerWidth <= 992) {
+        hideMobileTemplate();
+    }
+    else {
+        hideNormalTemplate();
+    }
+}
+
+
+/**
+ * The function sets the header icons to default status. The create task button is hidden, and the help button and icon are shown again.
+ */
+function changeHeaderIconsBack() {
     document.getElementById('mobile-d-none').classList.remove('d-none');
     document.getElementById('icons-header').classList.remove('d-none');
     document.getElementById('create-task').classList.add('d-none');
-    if (window.innerWidth <= 992) {
-        document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
-        if (location.href.includes('board.html')) {
-            document.getElementById('board-outer-div').classList.remove('d-none');
-            document.getElementById('main').classList.remove('main-add-task');
-            document.getElementById('main').classList.remove('padding-top');
-            removeTemplateNewTaskMobile('board');
-            checkURLandHighlight('board');
-        }
-        if (location.href.includes('contacts.html')) {
-            document.getElementById('contacts-outer-div').classList.remove('d-none');
-            document.getElementById('content-new-task').classList.remove('margin-top');
-            removeTemplateNewTaskMobile('contacts');
-            checkURLandHighlight('contacts');
-        }
-        removeCurrentContact();
+}
+
+
+/**
+ * This function initiates functions to hide the mobile add_task template. The functions depend on the current location on the website.
+ */
+function hideMobileTemplate() {
+    removeLayoutAdjustment();
+    if (location.href.includes('board.html')) {
+        removeLayoutAdjustmentsAtBoard()
+        removeTemplateNewTaskMobile('board');
+        checkURLandHighlight('board');
     }
-    else {
-        let newTaskCloseBtn = document.getElementById('content-new-task');
-        let mobileDescription = document.getElementById('mobile-description');
-        slideOutCard('new-task-overlay');
-        hideShadowScreen('new-task-shadow-screen');
-        hideNewTaskCloseBtn('new-task-overlay');
-        removeCurrentContact();
-        closeAllDropdowns();
-        setTimeout(function () {
-            newTaskCloseBtn.classList.add('d-none');
-            mobileDescription.classList.remove('d-none');
-        }, 450);
-        setTimeout(removeTemplateNewTask, 450);
+    if (location.href.includes('contacts.html')) {
+        removeLayoutAdjustmentsAtContacts();
+        removeTemplateNewTaskMobile('contacts');
+        checkURLandHighlight('contacts');
     }
+    removeCurrentContact();
+}
+
+
+/**
+ * This function removes general layout adjustments that were implemented when the new_task template card gets opened.
+ */
+function removeLayoutAdjustment() {
+    document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
+}
+
+
+/**
+ * The function removes layout adjustments that were made when the new_task template card got opened at the board.
+ */
+function removeLayoutAdjustmentsAtBoard() {
+    document.getElementById('main').classList.remove('main-add-task');
+    document.getElementById('main').classList.remove('padding-top');
+}
+
+
+/**
+ * The function removes layout adjustments that were made when the new_task template card got opened at contacts.
+ */
+function removeLayoutAdjustmentsAtContacts() {
+    document.getElementById('content-new-task').classList.remove('margin-top');
+}
+
+
+/**
+ * The function initiates functions to hide the add_task template on screens > 992px.
+ */
+function hideNormalTemplate() {
+    slideOutCard('new-task-overlay');
+    hideShadowScreen('new-task-shadow-screen');
+    hideNewTaskCloseBtn('new-task-overlay');
+    removeCurrentContact();
+    closeAllDropdowns();
+    setTimeout(function () {
+        hideNewTaskCloseBtn();
+        showMobileDescription();
+    }, 450);
+    setTimeout(removeTemplateNewTask, 450);
+}
+
+
+/**
+ * The function shows the mobile description.
+ */
+function showMobileDescription() {
+    document.getElementById('mobile-description').classList.remove('d-none');
 }
 
 
@@ -416,6 +473,7 @@ function removeTemplateNewTask() {
 
 function removeTemplateNewTaskMobile(id) {
     document.getElementById(id + '-add-task').innerHTML = '';
+    document.getElementById(id + '-outer-div').classList.remove('d-none');
 }
 
 
