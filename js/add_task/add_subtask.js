@@ -1,5 +1,12 @@
+/**
+ * This array contains all subtasks created for the current task.
+ */
 let subtasks = [];
+/**
+ * This array contains all subtasks that are checked, meaning assigned to the current task.
+ */
 let subtasksChecked = [];
+
 
 /*----------- ADD NEW SUBTASK -----------*/
 /**

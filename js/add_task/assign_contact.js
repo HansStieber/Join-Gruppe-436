@@ -1,3 +1,7 @@
+/**
+ * The array includes all contacts that are assigned to the current task. When creating a new task the contacts are pushed into the tasks
+ * assignments array.
+ */
 let assignedContacts = [];
 
 /*----------- ASSIGN CONTACT FOR TASK -----------*/

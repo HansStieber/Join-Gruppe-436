@@ -43,6 +43,7 @@ function saveArrayToBackend(key, array) {
     backend.setItem(key, arrayAsText);
 }
 
+
 /**
  * This function highlightes the active navigation point on the sidebar. At first the function checks if the current page is 'Legal notice' or 
  * if it's an other page.
@@ -87,9 +88,8 @@ function forgotPassword() {
     let loginContainer = document.getElementById("login-container");
     forgotContainer.removeAttribute("style");
     loginContainer.style.display = "none";
-
-
 }
+
 
 function resetPassword() {
     let current_email = email;
@@ -98,8 +98,6 @@ function resetPassword() {
     users = JSON.parse(localStorage.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
     let resetPW = document.getElementById("resetPW");
-
-
 
     if (new_password === new_passwordCONF) {
         if (existingUser) {
@@ -122,49 +120,122 @@ function resetPassword() {
 
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
 /**
- * the function shows the new Task Template.
+ * The function shows the new Task Template depending on the window width. It also sets the newTaskOpen variable to true.
  */
 async function showNewTaskCard() {
     newTaskOpen = true;
-    if (window.innerWidth <= 1180) {
-        if (location.href.includes('board.html')) {
-            document.getElementById('board-outer-div').classList.add('d-none');
-            document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
-        }
-        if (location.href.includes('contacts.html')) {
-            document.getElementById('contacts-outer-div').classList.add('d-none');
-            document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
-        }
-        await load();
-        if (location.href.includes('board.html')) {
-            document.getElementById('main').classList.add('main-add-task');
-            document.getElementById('main').classList.add('padding-top');
-        }
-        if (location.href.includes('contact')) {
-            document.getElementById('content-new-task').classList.add('margin-top');
-        }
-        let newTaskCloseBtn = document.getElementById('new-task-close-btn');
-        document.getElementById('template-container').classList.remove('d-none');
-        document.getElementById('content-new-task').classList.remove('new-task-card');
-        document.getElementById('content-new-task').classList.add('padding-bottom');
-        document.getElementById('mobile-d-none').classList.add('d-none');
-        document.getElementById('icons-header').classList.add('d-none');
-        document.getElementById('create-task').classList.remove('d-none');
-        document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
-        newTaskCloseBtn.classList.remove('d-none');
-        checkWhichIsCurrentPage();
+    if (window.innerWidth <= 992) {
+        await showMobileTemplate();
     } else {
-        await loadTemplateNewTask();
-        let newTaskCloseBtn = document.getElementById('content-new-task');
-        let mobileDescription = document.getElementById('mobile-description');
-        newTaskCloseBtn.classList.remove('d-none');
-        mobileDescription.classList.add('d-none');
-        showClearButton();
-        showShadowScreen('new-task-shadow-screen');
-        slideInCard('new-task-overlay');
-        showNewTaskCloseBtn();
-        checkWhichIsCurrentPage();
+        await showNormalTemplate();
     }
+}
+
+
+/**
+ * This function initiates functions to show the mobile add_task template. The functions depend on the current location on the website.
+ */
+async function showMobileTemplate() {
+    if (location.href.includes('board.html')) {
+        renderTemplateAtBoard();
+    }
+    if (location.href.includes('contacts.html')) {
+        renderTemplateAtContacts();
+    }
+    await load();
+    if (location.href.includes('board.html')) {
+        adjustLayoutAtBoard();
+    }
+    if (location.href.includes('contact')) {
+        adjustLayoutAtContacts();
+    }
+    showNewTaskCloseBtn();
+    showTemplate();
+    changeHeaderIcons();
+    adjustLayout();
+    checkWhichIsCurrentPage();
+}
+
+
+/**
+ * The function renders the the template container into the board-add-task container and hides the board-outer-div container which contains
+ * the previous content of the site.
+ */
+function renderTemplateAtBoard() {
+    document.getElementById('board-outer-div').classList.add('d-none');
+    document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+}
+
+
+/**
+ * The function renders the the template container into the contacts-add-task container and hides the contacts-outer-div container which contains
+ * the previous content of the site.
+ */
+function renderTemplateAtContacts() {
+    document.getElementById('contacts-outer-div').classList.add('d-none');
+    document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+}
+
+
+/**
+ * The function adjusts the layout of the board.html page to fit the mobile template.
+ */
+function adjustLayoutAtBoard() {
+    document.getElementById('main').classList.add('main-add-task');
+    document.getElementById('main').classList.add('padding-top');
+}
+
+
+/**
+ * The function adjusts the layout of the contacts.html page to fit the mobile template.
+ */
+function adjustLayoutAtContacts() {
+    document.getElementById('content-new-task').classList.add('margin-auto');
+}
+
+
+/**
+ * The function shows the add_task template-container by removing the d-none class. This happens after the template was loaded.
+ */
+function showTemplate() {
+    document.getElementById('template-container').classList.remove('d-none');
+}
+
+
+/**
+ * The changes the headers icons on the right side. It hides the previous icons and shows a create task button.
+ */
+function changeHeaderIcons() {
+    document.getElementById('mobile-d-none').classList.add('d-none');
+    document.getElementById('icons-header').classList.add('d-none');
+    document.getElementById('create-task').classList.remove('d-none');
+}
+
+
+/**
+ * The function adjusts the layout of the page to fit the mobile template.
+ */
+function adjustLayout() {
+    document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
+    document.getElementById('content-new-task').classList.remove('new-task-card');
+    document.getElementById('content-new-task').classList.add('padding-bottom');
+}
+
+
+/**
+ * The function loads the add_task template on normal screen sizes. 
+ */
+async function showNormalTemplate() {
+    await loadTemplateNewTask();
+    let newTaskCloseBtn = document.getElementById('content-new-task');
+    let mobileDescription = document.getElementById('mobile-description');
+    newTaskCloseBtn.classList.remove('d-none');
+    mobileDescription.classList.add('d-none');
+    showClearButton();
+    showShadowScreen('new-task-shadow-screen');
+    slideInCard('new-task-overlay');
+    showNewTaskCloseBtn();
+    checkWhichIsCurrentPage();
 }
 
 
@@ -215,7 +286,7 @@ function selectCurrentContact(i) {
  * @param {number} i - id of the current contact at the contacts array
  */
 function currentContactisAlreadyAtAssignments(i) {
-   return assignments.some(a => a.email === contacts[i].email)
+    return assignments.some(a => a.email === contacts[i].email)
 }
 
 
@@ -288,18 +359,20 @@ function hideNewTaskCard() {
     document.getElementById('mobile-d-none').classList.remove('d-none');
     document.getElementById('icons-header').classList.remove('d-none');
     document.getElementById('create-task').classList.add('d-none');
-    if (window.innerWidth <= 1180) {
-    document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
+    if (window.innerWidth <= 992) {
+        document.getElementById('content-new-task').style.height = "calc(100vh - 169px)";
         if (location.href.includes('board.html')) {
             document.getElementById('board-outer-div').classList.remove('d-none');
             document.getElementById('main').classList.remove('main-add-task');
             document.getElementById('main').classList.remove('padding-top');
             removeTemplateNewTaskMobile('board');
+            checkURLandHighlight('board');
         }
         if (location.href.includes('contacts.html')) {
             document.getElementById('contacts-outer-div').classList.remove('d-none');
             document.getElementById('content-new-task').classList.remove('margin-top');
             removeTemplateNewTaskMobile('contacts');
+            checkURLandHighlight('contacts');
         }
         removeCurrentContact();
     }
@@ -403,7 +476,9 @@ function showNewTaskCloseBtn() {
  */
 function hideNewTaskCloseBtn() {
     let closeBtn = document.getElementById('new-task-close-btn');
-    closeBtn.classList.add('d-none');
+    if (closeBtn) {
+        closeBtn.classList.add('d-none');
+    }
 }
 
 
@@ -424,6 +499,7 @@ function checkWindowSize() {
     return window.innerWidth <= 992 ? headerMenu = document.getElementById('mobileMenu') : headerMenu = document.getElementById('logoutBtn')
 }
 
+
 /**
  * Function to show mobile-menu or logout-button
  */
@@ -431,6 +507,7 @@ function showMobileMenu(headerMenu) {
     headerMenu.classList.remove('hide');
     headerMenu.classList.add('show');
 }
+
 
 /**
  * Function to hide mobile-menu or logout-button

@@ -30,10 +30,6 @@ body {
     padding-top: 90px !important;
 }
 
-.margin-top {
-    margin-top: 91px;
-}
-
 /* universal-classes */
 .screenreader {
     display: none;
@@ -306,12 +302,6 @@ HELLGRAU (BACKGROUND): #F5F5F5
 
 @media (max-width: 450px) {
     .main {
-        padding: 90px 10px 0px 30px;
-    }
-}
-
-@media (max-width: 345px) {
-    .main {
-        padding: 90px 10px 0px 5px;
+        padding: 90px 20px 0px 20px;
     }
 }

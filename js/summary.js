@@ -7,7 +7,6 @@ async function initSummary() {
 }
 
 
-
 function updateSummary() {
 
     if (todos.length == 0) {
@@ -100,6 +99,7 @@ function greetingUser() {
         nameDiv.innerHTML = existingUser;
     }
 }
+
 
 function daytimeGreeting() {
     let date = new Date();

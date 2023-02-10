@@ -1,6 +1,14 @@
+/**
+ * The array contains all color names of the category colors that can be selected when creating a new category.
+ */
 let colors = ['orange', 'violet', 'cyan', 'gold', 'blue', 'light-blue', 'green', 'red'];
+/**
+ * The variable defines the color that is currently selected.
+ */
 let currentColor;
-let temporaryCategories = [];
+/**
+ * The variable is used to validate if a category is selected yet.
+ */
 let categorySelected = false;
 
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
