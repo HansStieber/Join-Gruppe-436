@@ -544,14 +544,18 @@ function changeDeleteBtnSpan(html) {
     deleteBtnSpan.innerHTML = html;
 }
 
-
+/**
+ * This function, runs if the user changes the color theme of his Browser to Dark.
+ */
 function setFaviconIfColorThemeChanged() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
         setFaviconColorTheme();
     });
 }
 
-
+/**
+ * This function, changes all hrefs from the favicons, to show right Favicon on Color theme Dark and Light.
+ */
 function setFaviconColorTheme() {
     let appleFav = document.getElementById('apple-fav');
     let bigFav = document.getElementById('32-fav');
