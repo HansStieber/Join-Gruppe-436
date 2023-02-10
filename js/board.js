@@ -312,8 +312,8 @@ function generateHTMLDetailCard(idOfCard) {
         <div class="detail-view-category">
         <div class="category-styling ${categoryBg}">
         ${categoryTitel}</div>
-        <img src="../assets/img/arrow-left-contacts.svg" alt="back-arrow" class="detail-view-arrow" onclick="closeDetailView()">
-</div>
+        <img src="assets/img/arrow-left-contacts.svg" alt="back-arrow" class="detail-view-arrow" onclick="closeDetailView()">
+        </div>
         <div class="detail-view-title">${title}</div>
         <div>${description}</div>
         <div class="flex-center">
