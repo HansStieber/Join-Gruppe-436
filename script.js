@@ -3,6 +3,9 @@ let indexOfCurrentContact = -1;
 let headerMenu;
 let email;
 let existingUserName;
+/**
+ * The variable is set to true or false, depending if the new_task template card is open or not.
+ */
 let newTaskOpen;
 
 /*----------- GENERAL FUNCTIONS TO INITIALIZE PAGE -----------*/

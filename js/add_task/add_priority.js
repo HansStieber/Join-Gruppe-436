@@ -133,3 +133,16 @@ function taskIsLow(id, path, id2, id3) {
     low = true;
     setImgSelected(id, path, id2, id3);
 }
+
+
+/**
+ * The function unsets all priorities and sets the default status.
+ */
+function unsetPriority() {
+    urgent = false;
+    medium = false;
+    low = false;
+    unfocusPrio('urgent', 'medium', 'low', '');
+    unfocusPrio('low', 'urgent', 'medium', '');
+    unfocusPrio('medium', 'low', 'urgent', '');
+}
