@@ -14,10 +14,13 @@ let subtasksChecked = [];
  * any value, a new subtask is created.
  */
 window.addEventListener('keydown', (e) => {
-    if (e.keyCode == 13 && document.getElementById('subtask').value) {
-        addNewSubtask();
+    if (document.getElementById('subtask')) {
+        if (e.keyCode == 13 && document.getElementById('subtask').value) {
+            addNewSubtask();
+        }
     }
 });
+
 
 /**
  * The function runs when a new subtask should be created. It adds and removes the d-none class to/from different elements to show the

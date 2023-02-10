@@ -23,11 +23,17 @@ let progressStatus = 'todo';
 /*----------- FUNCTION CREATE NEW TASK -----------*/
 /**
  * Adds an event listener that listens on the keydown event of the enter key. If the enter key is pressed and the subtask input-field contains
- * no value, a new Task is created.
+ * no value, a new Task is created. If the enter key is pressed, the current location is on board.html and there is no subtask input-field
+ * available, you are currently at edit contact at board.html and the saveChanges() function runs.
  */
 window.addEventListener('keydown', (e) => {
-    if (e.keyCode == 13 && !document.getElementById('subtask').value) {
-        createNewTask();
+    if (document.getElementById('subtask')) {
+        if (e.keyCode == 13 && !document.getElementById('subtask').value) {
+            createNewTask();
+        }
+    }
+    if (e.keyCode == 13 && location.href.includes('board') && !document.getElementById('subtask')) {
+        saveChanges(taskToEdit);
     }
 });
 
