@@ -468,6 +468,9 @@ function removeCurrentContact() {
 }
 
 
+/**
+ * The function checks on which page the user is located and highlights the sidebar accordingly.
+ */
 function highligthURL() {
     if (location.href.includes('contacts')) {
         checkURLandHighlight('contacts');
@@ -476,6 +479,7 @@ function highligthURL() {
         checkURLandHighlight('board');
     }
 }
+
 
 /**
  * The function removes the new task template by emptying its container.
