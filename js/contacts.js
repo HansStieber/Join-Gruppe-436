@@ -445,7 +445,7 @@ function removeDnoneCardsDivMain(contact) {
  * @param {number} actualCard -Globar var, filled with the ID of the current Higlited Contact.
  */
 function addHighlightContactCard(i) {
-    if (actualCard) {
+    if (actualCard >= 0) {
         removeHighlightContactCard();
     }
     let card = document.getElementById(`contact-card-${i}`);
