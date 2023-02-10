@@ -589,7 +589,7 @@ function confirmDelete(functionName) {
 
 
 function showDeleteBtn() {
-    changeDeleteBtnOnclick('confirmDelete()')
+    changeDeleteBtnOnclick('confirmDelete(`deleteContact()`)')
     changeDeleteBtnSpan('Delete');
 }
 
