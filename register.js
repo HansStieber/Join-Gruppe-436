@@ -14,16 +14,15 @@ function register() {
     });
     backend.setItem("users", JSON.stringify(users));
     alert("User registered successfully.");
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.href = "../index.html";
     }, 2000);
   } else {
     alert("Email already in use. Registration failed.");
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.href = "templates/log_in.html";
     }, 2000);
   }
-
 }
 
 

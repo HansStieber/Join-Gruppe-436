@@ -291,11 +291,9 @@ function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
     if (emailInput.value) {
         contact.email = emailInput.value;
     }
-
     if (phoneInput.value) {
         contact.phone = phoneInput.value;
     }
-
     if (names[0] && names[1]) {
         contact.firstName = names[0];
         contact.lastName = names[1];
