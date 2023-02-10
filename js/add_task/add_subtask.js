@@ -10,7 +10,7 @@ let subtasksChecked = [];
 
 /*----------- ADD NEW SUBTASK -----------*/
 /**
- * An event listener that listens on the keydown event of the enter key. If the enter key is pressed and the subtask input-field contains
+ * Adds an event listener that listens on the keydown event of the enter key. If the enter key is pressed and the subtask input-field contains
  * any value, a new subtask is created.
  */
 window.addEventListener('keydown', (e) => {

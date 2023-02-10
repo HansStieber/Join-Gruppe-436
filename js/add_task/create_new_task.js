@@ -1,4 +1,8 @@
 /**
+ * The variable is true or false and is checked to see if the subtasks input-field is on focus.
+ */
+subtaskFocus = false;
+/**
  * The variable is set to true or false and is checked to see if any required input is still missing.
  */
 let inputMissing;
@@ -17,6 +21,17 @@ let progressStatus = 'todo';
 
 
 /*----------- FUNCTION CREATE NEW TASK -----------*/
+/**
+ * Adds an event listener that listens on the keydown event of the enter key. If the enter key is pressed and the subtask input-field contains
+ * no value, a new Task is created.
+ */
+window.addEventListener('keydown', (e) => {
+    if (e.keyCode == 13 && !document.getElementById('subtask').value) {
+        createNewTask();
+    }
+});
+
+
 /**
  * The Function iniates a couple of functions to create a new task.
  */
