@@ -14,6 +14,7 @@ async function load() {
     await includeHTML();
     checkURLandHighlight();
     setFaviconColorTheme();
+    loadUserCredentials();
 }
 
 
@@ -95,14 +96,17 @@ function resetPassword() {
     let current_email = email;
     let new_password = document.getElementById("resetPWInput").value;
     let new_passwordCONF = document.getElementById("resetPWInputConf").value;
+    // let oldPassword = JSON.parse(localStorage.getItem("password"));
     users = JSON.parse(localStorage.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
+    let existingMail = localStorage.getItem("email");
     let resetPW = document.getElementById("resetPW");
 
     if (new_password === new_passwordCONF) {
-        if (existingUser) {
-            existingUser.password = new_password;
-            localStorage.setItem("users", JSON.stringify(users));
+        if (existingMail) {
+            localStorage.setItem("password", new_password);
+            
+            // localStorage.setItem("users", JSON.stringify(users));
             resetPW.classList.add("flighUp");
             setTimeout(function () {
                 window.location.href = "./index.html";
@@ -116,6 +120,8 @@ function resetPassword() {
     }
 
 }
+
+
 
 
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/

@@ -89,6 +89,16 @@ body {
     margin: 10px;
 }
 
+#email {
+    background: url("../assets/img/user-6-32.png") no-repeat 300px;
+}
+
+#password {
+    background: url("../assets/img/mail-32.png") no-repeat 300px;
+}
+
+
+
 .remember_me_forgotten {
     align-items: center;
     display: flex;
