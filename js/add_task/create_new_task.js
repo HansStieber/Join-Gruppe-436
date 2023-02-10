@@ -38,24 +38,27 @@ window.addEventListener('keydown', (e) => {
 });
 
 
-
-/**
- * Adds an event listener that listens on the click event on window. If the the user clicks on the window but not on the content of the category
- * dropdown menu, the dropdown closes
- *//*
+/* doesnt work properly yet
 window.addEventListener('click', (e) => {
-    if (!document.getElementById('category-options-container').contains(e.target) && !document.getElementById('option-category').contains(e.target)) {
+    if (!document.getElementById('category-options').contains(e.target) && !document.getElementById('option-category').contains(e.target)) {
         closeDropdownCategory();
     }
     
 });
+*/
 
+
+/**
+ * Adds an event listener that listens on the click event on window. If the the user clicks on the window but not on the content of the assignment
+ * dropdown menu, the dropdown closes
+ */
 window.addEventListener('click', (e) => {
     if (!document.getElementById('contacts-dropdown-container').contains(e.target) && !document.getElementById('option-assignments').contains(e.target)) {
         closeDropdownAssignment();
     }
     
 });
+
 
 /**
  * The Function iniates a couple of functions to create a new task.
