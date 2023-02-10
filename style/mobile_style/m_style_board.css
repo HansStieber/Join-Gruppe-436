@@ -120,6 +120,20 @@
         height: calc(100vh - 163px);
         width: 100vw;
         border-radius: 0px;
+        padding-top: 60px;
+    }
+
+    .detail-view-category {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .icon-settings {
+        display: none;
+    }
+
+    .detail-view-arrow {
+        display: block;
     }
 }
 

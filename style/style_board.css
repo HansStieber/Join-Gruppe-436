@@ -440,3 +440,7 @@
 .title-to-edit:hover, .description-to-edit:hover, .date-to-edit:hover {
     cursor: pointer;
 }
+
+.detail-view-arrow {
+    display: none;
+}
