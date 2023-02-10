@@ -15,13 +15,6 @@ async function initContacts() {
 
 /**
  * This function first clear all Card divs. 
- * Then added 'd-none' class to all Card-main divs.
- * Then loop thru contacts Array.
- * For each Contact we:
- * get the cardsDivLetter Element,
- * remove 'd-none' from the Card-main div,
- * and render the current Contact into the
- * current cardsDivLetter Element.
  */
 function renderContacts() {
     clearCards();
@@ -138,14 +131,7 @@ function setBigCardInnerHTML(contact) {
 /**
  * This function return HTML Elements found thru IDs and returns them in an Array
  * @example
- * return{
- *      initialsSpan: HTML-Element,
-        firstNameSpan: HTML-Element,
-        lastNameSpan: HTML-Element,
-        emailLink: HTML-Element,
-        phoneSpan: HTML-Element,
-        bigCardDiv: HTML-Element,
-        initialsDiv: HTML-Element
+ * 
  */
 function getBigCardElements() {
     return {
@@ -171,7 +157,7 @@ function getBigCardElements() {
 function getCardInnerHTML(contact, i) {
     const { initials1, initials2, bgColor, firstName, lastName } = getContactInfo(contact);
     return /*html*/`
-    <div onclick="renderBigCard(${i}),addHighlightContactCard(${i + 1})" id="contact-card-${i + 1}" class="contact-card">
+    <div onclick="renderBigCard(${i}),addHighlightContactCard(${i})" id="contact-card-${i}" class="contact-card">
         <div class="contact-initials-small" style="background-color:${bgColor}">
             <span>${initials1}</span>
             <span>${initials2}</span>
@@ -190,14 +176,6 @@ function getCardInnerHTML(contact, i) {
 
 /**
  * This function adds an Contact to the contacs Array.
- * First defince const's and fill them, with the values from the user input.
- * Then split the name Value on all empty Spaces, and give the created array into names var.
- * Then let the lastName, be the last string in created names Array.
- * Then create new Contact with created vars, and push existing contacts Array with the new Contact.
- * Then save manipulated Array to Backend, thru the function saveArrayToBackend().
- * Then calls the closeAddOverlay() function, to close Add Overlay.
- * Then renderContacts(), to show all contacts, from manipulated contacts Array.
- * Last it shows the User the contact sucessfully added message.
  */
 function addContact() {
     const inputName = document.getElementById('add-name-input');
@@ -211,7 +189,7 @@ function addContact() {
     saveArrayToBackend('contact', contacts);
     closeAddOverlay();
     renderContacts();
-    showContactAddedMessage();
+    showUserFeedbackMessage('Contact succesfully Created');
 }
 
 
@@ -234,6 +212,7 @@ function deleteContact() {
     saveArrayToBackend('contact', contacts);
     hideBigCard();
     closeEditOverlay();
+    showUserFeedbackMessage('Contact succesfully Deleted');
     renderContacts();
 }
 
@@ -291,11 +270,9 @@ function changeContactDataIfInput(contact, names, emailInput, phoneInput) {
     if (emailInput.value) {
         contact.email = emailInput.value;
     }
-
     if (phoneInput.value) {
         contact.phone = phoneInput.value;
     }
-
     if (names[0] && names[1]) {
         contact.firstName = names[0];
         contact.lastName = names[1];
@@ -336,8 +313,8 @@ function setEditContactValues() {
 /**
  * This function shows the Contact added Animation.
  */
-function showContactAddedMessage() {
-    popInContactAddedMessage();
+function showUserFeedbackMessage(text) {
+    popInContactAddedMessage(text);
     setTimeout(popOutContactAddedMessage, 1500);
 }
 
@@ -345,8 +322,9 @@ function showContactAddedMessage() {
 /**
  * This function manipulate the contact added message classes, to show the css Animation. 
  */
-function popInContactAddedMessage() {
+function popInContactAddedMessage(text) {
     let message = document.getElementById('contact-created-message');
+    message.innerHTML = text;
     message.classList.remove('d-none');
     message.classList.remove('slide-down');
     message.classList.add('slide-up');
@@ -445,7 +423,7 @@ function removeDnoneCardsDivMain(contact) {
  * @param {number} actualCard -Globar var, filled with the ID of the current Higlited Contact.
  */
 function addHighlightContactCard(i) {
-    if (actualCard) {
+    if (actualCard >= 0) {
         removeHighlightContactCard();
     }
     let card = document.getElementById(`contact-card-${i}`);
@@ -457,6 +435,7 @@ function addHighlightContactCard(i) {
 function removeHighlightContactCard() {
     let card = document.getElementById(`contact-card-${actualCard}`);
     card.classList.remove('contact-card-target');
+    actualCard = '';
 }
 
 

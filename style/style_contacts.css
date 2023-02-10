@@ -42,7 +42,6 @@
 .slide-bar-scroll::-webkit-scrollbar-button:single-button {
     background-color: white;
     display: block;
-
     background-repeat: no-repeat;
     background-position: center 4px;
 }
@@ -60,8 +59,6 @@
     background-image: url(../assets/img/scroll-arrow-down.svg);
     background-position: center;
 }
-
-
 
 .contacts-right-div {
     overflow: auto;
@@ -180,7 +177,7 @@
 .pencil-img {
     width: 30px;
     height: 30px;
-    background-image: url(../assets/img/pencil.svg);
+    background-image: url(../assets/img/pencil-edit-contact.svg);
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;

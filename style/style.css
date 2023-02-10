@@ -295,12 +295,12 @@ input {
     margin-bottom: 8px;
 }
 
-@media (max-width: 800px) {
+/*@media (max-width: 800px) {
     .help-container::before {
         content: "Kanban Project Management Tool";
         font-size: 21px;
     }
-}
+}*/
 
 @media (max-width: 450px) {
     .help-container{

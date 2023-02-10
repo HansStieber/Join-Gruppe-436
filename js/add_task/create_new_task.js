@@ -1,24 +1,77 @@
+/**
+ * The variable is true or false and is checked to see if the subtasks input-field is on focus.
+ */
+subtaskFocus = false;
+/**
+ * The variable is set to true or false and is checked to see if any required input is still missing.
+ */
 let inputMissing;
+/**
+ * The variable is set as the priority that is selected. It defines the priority of a new task.
+ */
 let priority;
+/**
+ * The variable is used to set an id for a task that gets created. The value equals the current length of the todos array.
+ */
 let id;
+/**
+ * Sets the progressStatus variable, which means that all tasks that are created are displayed at the todo column at the board.
+ */
 let progressStatus = 'todo';
 
 
 /*----------- FUNCTION CREATE NEW TASK -----------*/
+/**
+ * Adds an event listener that listens on the keydown event of the enter key. If the enter key is pressed and the subtask input-field contains
+ * no value, a new Task is created. If the enter key is pressed, the current location is on board.html and there is no subtask input-field
+ * available, you are currently at edit contact at board.html and the saveChanges() function runs.
+ */
+window.addEventListener('keydown', (e) => {
+    if (document.getElementById('subtask')) {
+        if (e.keyCode == 13 && !document.getElementById('subtask').value) {
+            createNewTask();
+        }
+    }
+    if (e.keyCode == 13 && location.href.includes('board') && !document.getElementById('subtask')) {
+        saveChanges(taskToEdit);
+    }
+});
+
+
+/* doesnt work properly yet
+window.addEventListener('click', (e) => {
+    if (!document.getElementById('category-options').contains(e.target) && !document.getElementById('option-category').contains(e.target)) {
+        closeDropdownCategory();
+    }
+    
+});
+*/
+
 
 /**
- * Creates a new task
+ * Adds an event listener that listens on the click event on window. If the the user clicks on the window but not on the content of the assignment
+ * dropdown menu, the dropdown closes
+ */
+window.addEventListener('click', (e) => {
+    if (!document.getElementById('contacts-dropdown-container').contains(e.target) && !document.getElementById('option-assignments').contains(e.target)) {
+        closeDropdownAssignment();
+    }
+    
+});
+
+
+/**
+ * The Function iniates a couple of functions to create a new task.
  */
 function createNewTask() {
     checkIfEmptyField();
     closeAllDropdowns();
     checkIfInputMissingAndPushNewTask();
-    //hideNewTaskCard()
 }
 
 
 /**
- * Checks if required inputs are still missing
+ * The function checks if required inputs are still missing.
  */
 function checkIfEmptyField() {
     setInputMissingToFalse();
@@ -32,7 +85,7 @@ function checkIfEmptyField() {
 
 
 /**
- * Sets variable inputMissing to false
+ * The function sets the variable inputMissing to false.
  */
 function setInputMissingToFalse() {
     inputMissing = false;
@@ -40,7 +93,8 @@ function setInputMissingToFalse() {
 
 
 /**
- * Checks if input-field title, date or description value is undefined
+ * The function cecks if input-field title, date or description input-fields are not filled yet. If not the function initiates an alert message.
+ * That is displayed under the input-field.
  * 
  * @param {string} id - id of either input-field title, date or description
  */
@@ -83,7 +137,7 @@ function checkIfDateLiesInPast() {
 
 
 /**
- * Returns if input-field title, date or description value is null
+ * The function returns if input-field title, date or description value is undefined, meaning the field has not been filled.
  * 
  * @param {string} id - id of either input-field title, date or description
  */
@@ -93,7 +147,7 @@ function inputFieldIsEmpty(id) {
 
 
 /**
- * Initiates Alert message for either input-field title, date or description that the field is not filled
+ * The function initiates an alert message for either input-field title, date or description that the field is not filled.
  * 
  * @param {string} id - id of either input-field title, date or description
  */
@@ -127,7 +181,7 @@ function removeAlertWrongDate() {
 
 
 /**
- * Sets variable inputMissing to true; stops form from being submitted
+ * Sets variable inputMissing to true and stops the form from being submitted.
  */
 function setInputMissingToTrue() {
     inputMissing = true;
@@ -135,7 +189,7 @@ function setInputMissingToTrue() {
 
 
 /**
- * Removes Alert message for either input-field title, date or description that the field is not filled
+ * Removes Alert message for either input-field title, date or description that the field is not filled.
  * 
  * @param {string} id - id of either input-field title, date or description
  */
@@ -146,7 +200,8 @@ function removeAlert(id) {
 
 
 /**
- * Checks if no category is selected at category dropdown selcetion menu; adds/removes alerts if needed; if category is empty sets inputMissing to true
+ * The function checks if no category is selected at the category dropdown selcetion menu. It also adds/removes alerts if needed. If a category
+ * is not selected yet it sets the inputMissing variable to true.
  */
 function checkIfCategoryEmpty() {
     if (categorySelected == false) {
@@ -159,7 +214,8 @@ function checkIfCategoryEmpty() {
 
 
 /**
- * Checks if no contact is assigned at assignment dropdown selcetion menu; adds/removes alerts if needed; if no contact is assigned, sets inputMissing to true
+ * The function checks if no contact is assigned at assignment dropdown selcetion menu. It also adds/removes alerts if needed. If no contact
+ * is assigned, it sets the inputMissing variable to true.
  */
 function checkIfNotAssigned() {
     if (noContactsAreAssigned()) {
@@ -172,7 +228,7 @@ function checkIfNotAssigned() {
 
 
 /**
- * Checking length of assignedContacts to see if any contacts are assigned yet
+ * The function checks the length of the assignedContacts array to see if any contacts are assigned yet.
  */
 function noContactsAreAssigned() {
     return assignedContacts.length == 0;
@@ -180,7 +236,8 @@ function noContactsAreAssigned() {
 
 
 /**
- * Checks if no priority is set; adds/removes alerts if needed; if priority is not set, sets inputMissing to true
+ * The function checks if no priority is set. It also adds/removes alerts if needed. If the priority is not set yet, it sets the inputMissing variable
+ * to true.
  */
 function checkIfNoPriority() {
     if (noPriorityIsSet()) {
@@ -193,7 +250,8 @@ function checkIfNoPriority() {
 
 
 /**
- * Checks variables urgent, medium and low are false; returns if all prioritys are false, meaning unset
+ * The function checks if the variables urgent, medium and low are false. It returns if all prioritys are false, which means no priority has
+ * been set.
  */
 function noPriorityIsSet() {
     return urgent == false && medium == false && low == false;
@@ -201,7 +259,7 @@ function noPriorityIsSet() {
 
 
 /**
- * Checks if any input is missing; if not, initiates pushing new Task into array tasks
+ * The function checks if any input is missing. If no input is missing, it initiates pushing a new Task into the array todos.
  */
 function checkIfInputMissingAndPushNewTask() {
     if (inputMissing == false) {
@@ -209,8 +267,9 @@ function checkIfInputMissingAndPushNewTask() {
     }
 }
 
+
 /**
- * Runs functions essential for submitting the form and creating a new task
+ * The function initiates functions essential for submitting the form and creating a new task.
  */
 async function pushNewTask() {
     pickSubtasks();
@@ -221,7 +280,7 @@ async function pushNewTask() {
 
 
 /**
- * Picks subtasks which are checked and pushes them into the array subtasksChecked
+ * The function loops through the subtasks array and picks all subtasks which are checked and pushes them into the array subtasksChecked. 
  */
 function pickSubtasks() {
     for (let i = 0; i < subtasks.length; i++) {
@@ -234,7 +293,7 @@ function pickSubtasks() {
 
 
 /**
- * Pushes checked subtasks into array subtasksChecked
+ * The function pushes checked subtasks into array subtasksChecked.
  * 
  * @param {object{}} subtask - object that gets pushed
  */
@@ -244,71 +303,7 @@ function pushCheckedSubtasksIntoArraySubtasksChecked(subtask) {
 
 
 /**
- * Sets variables of class Task(); sets a variable newTask and pushes it into array tasks; also initiates pushing newly created category
- * 
- * @param {string} title - title for class new Task
- * @param {string} description - description for class new Task
- * @param {string} categoryTitle - title for class new Category
- * @param {string} date - date for class new Task
- * @param {object} newTask - object that includes all information of a new task;
- */
-async function pushTask() {
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    let categoryTitle = document.getElementById('new-category-title').innerHTML;
-    let date = document.getElementById('date').value;
-    getPriority();
-    getId();
-
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
-
-    todos.push(newTask);
-
-    await saveTasks();
-    await saveCategories(categoryTitle);
-    await saveAssignmentOptions();
-}
-
-
-function getPriority() {
-    if (urgent == true) {
-        priority = 'urgent';
-    }
-    if (medium == true) {
-        priority = 'medium';
-    }
-    if (low == true) {
-        priority = 'low';
-    }
-}
-
-function getId() {
-    id = todos.length;
-}
-
-
-async function saveTasks() {
-    let todosAsText = JSON.stringify(todos);
-    await backend.setItem('todo', todosAsText);
-}
-
-
-async function saveCategories() {
-    let categoriesAsText = JSON.stringify(categories);
-    await backend.setItem('category', categoriesAsText);
-}
-
-
-async function saveAssignmentOptions() {
-    let assignmentsAsText = JSON.stringify(assignments);
-    await backend.setItem('assignments', assignmentsAsText);
-}
-
-
-/**
- * Sets values of all input-fields to default
- * 
- * @function 
+ * The function clears all input-fields by setting there value to default, meaning no values are set.
  */
 function clearAllInputFields() {
     document.getElementById('title').value = '';
@@ -322,9 +317,8 @@ function clearAllInputFields() {
 
 
 /**
- * Sets variable categorySelected to false, meaning no category is selected currently; clears array newCategories; initiates rendering default category
- * 
- * @type {object} newCategories - array for all categories created by creating the current task 
+ * The function sets the variable categorySelected to false, meaning no category is selected currently. It also clears the array newCategories
+ * and initiates rendering the default category.
  */
 function removeSelectedCategory() {
     categorySelected = false;
@@ -334,9 +328,8 @@ function removeSelectedCategory() {
 
 
 /**
- * Removes all assignments by clearing array assignedContacts; loads all assignment options again; closes dropdown menu
- * 
- * @parm 
+ * The function removes all assignments by clearing the array assignedContacts. It also loads all assignment options and closes the assignments
+ * dropdown menu.
  */
 function removeAllAssignments() {
     assignedContacts = [];
@@ -347,27 +340,29 @@ function removeAllAssignments() {
     loadContactIcon();
 }
 
-function unsetPriority() {
-    urgent = false;
-    medium = false;
-    low = false;
-    unfocusPrio('urgent', 'medium', 'low', '');
-    unfocusPrio('low', 'urgent', 'medium', '');
-    unfocusPrio('medium', 'low', 'urgent', '');
-}
 
+/**
+ * The function removes all subtasks from the subtasks and subtasksChecked arrays and also clears the value of the subtasks container.
+ */
 function removeAllSubtasks() {
     subtasks = [];
     subtasksChecked = [];
     document.getElementById('subtasks').innerHTML = '';
 }
 
+
+/**
+ * The function initiates closing all dropdown menus.
+ */
 function closeAllDropdowns() {
     closeDropdownCategory();
     closeDropdownAssignment();
 }
 
 
+/**
+ * The Function slides in the confirmation button and then loads the board.html page.
+ */
 function showConfirmation() {
     document.getElementById('task-added-to-board').classList.remove('d-none');
     document.getElementById('task-added-to-board').classList.add('slide-in');

@@ -211,7 +211,7 @@ function setCurrentColor(color, i) {
  */
 function deleteCategory(i) {
     document.getElementById('c-delete-option' + i).innerHTML = `
-    <span class="delete-category-text" onclick=confirmDeletion(${i})>Yes</span><span class="margin-to-sides"> </span><span class="delete-category-text" onclick=doNotDelete(${i})>No</span>
+    <span class="delete-category-text" onclick="confirmDeletion(${i})">Yes</span><span class="margin-to-sides"> </span><span class="delete-category-text" onclick="doNotDelete(${i})">No</span>
     `;
 }
 
