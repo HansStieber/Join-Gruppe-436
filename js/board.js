@@ -33,16 +33,10 @@ window.addEventListener('resize', function () {
     }
 });
 
-
-
-function clearBoard() {
-    document.getElementById('todo').innerHTML = '';
-    document.getElementById('progress').innerHTML = '';
-    document.getElementById('feedback').innerHTML = '';
-    document.getElementById('done').innerHTML = '';
-}
-
-
+/**
+ * This function initiate a function call.
+ * @param {array} todos - array of all todos, saved in the backend
+ */
 function renderBoard(todos) {
     clearBoard();
     renderTodoColumn(todos);
@@ -52,6 +46,24 @@ function renderBoard(todos) {
 }
 
 
+/**
+ * This function clears the board.
+ */
+function clearBoard() {
+    document.getElementById('todo').innerHTML = '';
+    document.getElementById('progress').innerHTML = '';
+    document.getElementById('feedback').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
+}
+
+/**
+ * In the first step this functions filters the array according to the status of the todos. the filtered todos are
+ * displayed in the corresponding container of the status on the board.
+ * In the last place this function checks, if the task is assigned for another team member or more. 
+ * 
+ * The following functions do the same thing, except the status is different.
+ * @param {array} todos - array of all todos, saved in the backend
+ */
 function renderTodoColumn(todos) {
     let todo = todos.filter(t => t.status == 'todo');
     for (let i = 0; i < todo.length; i++) {
@@ -103,10 +115,36 @@ function renderDoneColumn(todos) {
     }
 }
 
+/**
+ * This function checks, if a second user is intended for a task. If so an icon with initials is created.
+ * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
+ * @param {number} id - id of the current todo
+ */
+function checkForSecondUser(assignments, id) {
+    if (assignments.length > 1) {
+        let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
+        document.getElementById(`user-icons-${id}`).innerHTML += `
+            <div id="second-user-icon-${id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>`;
+    }
+}
+
+/**
+ * This function checks, if more users than 2 are assigned for a task. From the third assigned user, the icon contains the number of the assigned users. 
+ * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
+ * @param {number} id - id of the current todo
+ */
+function checkForMoreUsers(assignments, id) {
+    if (assignments.length >= 3) {
+        let userlength = assignments.length - 2;
+        document.getElementById(`user-icons-${id}`).innerHTML += `
+        <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>`;
+    }
+}
+
 
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 /**
- * By pressing the plus button at the disired status (progress, feedback, done) this function opens the add task overlay.
+ * This functions opens the add task overlay by pressing the add button at the disired status (progress, feedback, done).
  */
 function addTaskToStatusProgress() {
     progressStatus = 'progress';
@@ -126,24 +164,6 @@ function addTaskToStatusDone() {
 }
 
 
-function checkForSecondUser(assignments, id) {
-    if (assignments.length > 1) {
-        let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
-        document.getElementById(`user-icons-${id}`).innerHTML += `
-        <div id="second-user-icon-${id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>
-        `;
-    }
-}
-
-
-function checkForMoreUsers(assignments, id) {
-    if (assignments.length > 2) {
-        let userlength = assignments.length - 2;
-        document.getElementById(`user-icons-${id}`).innerHTML += `
-        <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>
-        `;
-    }
-}
 /**
  * Function checks if there is a specific search value at the search input-field. If not, the board is updated from the
  * array todos, which includes ALL tasks. If a search value exists the board is updated from the array searchedTodos.
@@ -190,15 +210,18 @@ function setNewTodoIds() {
 /**
  * The global defined variable 'currentDraggedElement' is undefined in the first place. When moving a task to another status-column the global 
  * variable gets the value of the id of the current task card.
- * @param {number} id id of the current task card
+ * @param {number} id id of the current task card.
  */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
-
-function allowDrop(ev) {
-    ev.preventDefault();
+/**
+ * This function allows to move a task to another status-column. To allow the drop, the default handling of the element must be prevented.
+ * @param {*} dragEvent - when the dragged data is dropped, a drop event occurs.
+ */
+function allowDrop(dragEvent) {
+    dragEvent.preventDefault();
 }
 
 
@@ -212,10 +235,32 @@ function moveTo(status) {
     saveStatus();
 }
 
-
+/**
+ * The function saves the new status of the task at the todos array at the backend database.
+ */
 function saveStatus() {
     let todosAsText = JSON.stringify(todos);
     backend.setItem('todo', todosAsText);
+}
+
+
+/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
+/**
+ * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
+ * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
+ * board.
+ */
+function findTask() {
+    searchedTodos = [];
+    let search = document.getElementById('find-task').value;
+    for (let i = 0; i < todos.length; i++) {
+        const title = todos[i].title;
+        const description = todos[i].description;
+        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+            searchedTodos.push(todos[i]);
+        }
+        selectingArrayForBoardUpdate();
+    }
 }
 
 
@@ -265,26 +310,6 @@ function howMuchUsersAreAssigned(idOfCard) {
             <div>${assignedContact}</div>
         </div>
         `;
-    }
-}
-
-
-/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
-/**
- * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
- * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
- * board.
- */
-function findTask() {
-    searchedTodos = [];
-    let search = document.getElementById('find-task').value;
-    for (let i = 0; i < todos.length; i++) {
-        const title = todos[i].title;
-        const description = todos[i].description;
-        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
-            searchedTodos.push(todos[i]);
-        }
-        selectingArrayForBoardUpdate();
     }
 }
 
