@@ -637,13 +637,11 @@ function setFaviconColorTheme() {
     let smallFav = document.getElementById('16-fav');
     let manifest = document.getElementById('manifest');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        console.log('color-theme: Dark');
         appleFav.href = 'assets/favicon/favicon_light/apple-touch-icon.png';
         bigFav.href = 'assets/favicon/favicon_light/favicon-32x32.png';
         smallFav.href = 'assets/favicon/favicon_light/favicon-16x16.png';
         manifest.href = 'assets/favicon/favicon_light/site.webmanifest';
     } else {
-        console.log('color-theme: Light');
         appleFav.href = 'assets/favicon/favicon_dark/apple-touch-icon.png';
         bigFav.href = 'assets/favicon/favicon_dark/favicon-32x32.png';
         smallFav.href = 'assets/favicon/favicon_dark/favicon-16x16.png';

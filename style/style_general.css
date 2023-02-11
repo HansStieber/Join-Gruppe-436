@@ -108,6 +108,8 @@ HELLGRAU (BACKGROUND): #F5F5F5
     border-radius: 10px;
     cursor: pointer;
     transition: 100ms ease-in-out;
+    display: flex;
+    align-items: center;
 }
 
 .delete-btn:hover {

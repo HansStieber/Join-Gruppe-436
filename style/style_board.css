@@ -316,7 +316,7 @@
     border-radius: 30px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     overflow: auto;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .category-styling {
@@ -333,13 +333,29 @@
     cursor: pointer;
 }
 
-.edit-task-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
+.detail-view-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.detail-view-btn-div {
+    display: flex;
+    justify-content: end;
+    align-items: end;
     height: 57px;
-    margin-left: auto;
+}
+
+.edit-task-btn {
+    height: 57px;
     cursor: pointer;
+}
+
+.delete-btn-board {
+    cursor: pointer;
+    height: 57px;
+    width: 125px;
 }
 
 .detail-view-title {
@@ -378,14 +394,6 @@
     margin-right: 30px;
     color: white;
     font-size: 16px;
-}
-
-.delete-btn-board {
-    position: absolute;
-    bottom: 50px;
-    right: 121px;
-    height: 57px;
-    width: 125px;
 }
 
 /* === Styling of edit Card container === */

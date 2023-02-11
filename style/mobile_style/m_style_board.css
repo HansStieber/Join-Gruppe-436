@@ -176,6 +176,28 @@
         min-height: 205px;
         width: 100%;
     }
+
+    .category-styling {
+        padding: 7px 37px;
+    }
+
+    .detail-view-title {
+        font-size: 36px;
+    }
+
+    .priority-detail-view {
+        width: 97px;
+        height: 40px;
+    }
+
+    .detail-view-edit-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .delete-btn-board {
+        height: 40px;
+    }
 }
 
 @media(max-width:450px) {

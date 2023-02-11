@@ -33,6 +33,7 @@ function generateHTMLDetailCard(idOfCard) {
     let date_DE = new Date(todoArray.date).toLocaleDateString('de-DE');;
     let priority = todoArray.priority;
     return /*html*/`
+        
         <img src="../assets/img/close.svg" alt="closing-icon" class="icon-settings" onclick="closeDetailView()">
         <img src="../assets/img/left_arrow.svg" alt="left arrow" class="icon-settings d-none">
         <div class="detail-view-category">
@@ -48,17 +49,23 @@ function generateHTMLDetailCard(idOfCard) {
         </div>
         <div class="flex-center">
             <span class="subheading-styling">Priority: </span>
-            <img src="../assets/img/${priority}_detailview.svg">
+            <img class="priority-detail-view" src="../assets/img/${priority}_detailview.svg">
         </div class="flex-center">
             <span class="subheading-styling">Assigned to: </span>
         <div id="assignedContacts">
         </div>
-        <img src="../assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn" onclick="editTask(${idOfCard})">
+
+        <div class="detail-view-bottom">
+<div class="detail-view-btn-div"> 
+           
         <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn delete-btn-board" type="button">
                         <div>
                             <span id="delete-btn-span">Delete</span>
                             <img src="../assets/img/close.svg">
                         </div>
                     </button>
+                    <img src="../assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn detail-view-edit-btn" onclick="editTask(${idOfCard})">
+</div>               
+</div>
 `;
 }
