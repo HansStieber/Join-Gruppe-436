@@ -33,6 +33,7 @@ window.addEventListener('resize', function () {
     }
 });
 
+
 /**
  * This function initiate a function call.
  * @param {array} todos - array of all todos, saved in the backend

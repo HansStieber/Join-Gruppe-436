@@ -392,13 +392,15 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .option-left-part {
-    width: calc(100% - 100px);
+    /*width: calc(100% - 100px);*/
+    width: 100%;
 }
 
-.option-right-part {
+
+/*.option-right-part {
     width: 100px;
     justify-content: center;
-}
+}*/
 
 .delete-category-text {
     color: #e65252;

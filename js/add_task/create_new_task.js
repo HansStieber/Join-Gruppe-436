@@ -53,9 +53,22 @@ window.addEventListener('click', (e) => {
  * dropdown menu, the dropdown closes
  */
 window.addEventListener('click', (e) => {
-    if (location.href.includes('add_task')) {
+    if (document.getElementById('contacts-dropdown-container') && document.getElementById('option-assignments')) {
         if (!document.getElementById('contacts-dropdown-container').contains(e.target) && !document.getElementById('option-assignments').contains(e.target)) {
             closeDropdownAssignment();
+        }
+    }
+});
+
+
+/**
+ * Adds an event listener that listens on the click event on window. If the the user clicks on the window but not on the content of the assignment
+ * dropdown menu, the dropdown closes
+ */
+window.addEventListener('click', (e) => {
+    if (document.getElementById('category-options-container')) {
+        if (!document.getElementById('category-options-container').contains(e.target)) {
+            closeDropdownCategory();
         }
     }
 });
@@ -176,7 +189,7 @@ function initiateAlert(id) {
 function alertWrongDate() {
     document.getElementById('date-required').classList.add('alert-color');
     document.getElementById('date-required').classList.add('alert-height');
-    document.getElementById('date-required').innerHTML = 'Please don`t choose any past date';
+    document.getElementById('date-required').innerHTML = 'Please choose an upcoming date';
 }
 
 

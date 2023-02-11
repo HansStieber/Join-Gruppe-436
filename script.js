@@ -7,6 +7,8 @@ let existingUserName;
  * The variable is set to true or false, depending if the new_task template card is open or not.
  */
 let newTaskOpen;
+let mobileTemplateOpen = false;
+let normalTemplateOpen = false;
 
 /*----------- GENERAL FUNCTIONS TO INITIALIZE PAGE -----------*/
 /**
@@ -129,8 +131,10 @@ async function showNewTaskCard() {
     newTaskOpen = true;
     if (window.innerWidth <= 992) {
         await showMobileTemplate();
+        mobileTemplateOpen = true;
     } else {
         await showNormalTemplate();
+        normalTemplateOpen = true;
     }
 }
 
@@ -374,16 +378,23 @@ function setOptionTwoIndex(i) {
 
 
 /**
- * The function hides the new task template.
+ * The function hides the new task template. The function checks the screen width and also which template is opened currently to decide which
+ * template to close. This is important for mobile devices where you can rotate your device.
  */
 function hideNewTaskCard() {
     newTaskOpen = false;
     changeHeaderIconsBack();
-    if (window.innerWidth <= 992) {
+    if (window.innerWidth <= 992 && normalTemplateOpen == false) {
         hideMobileTemplate();
     }
-    else {
+    if (window.innerWidth <= 992 && normalTemplateOpen == true) {
         hideNormalTemplate();
+    }
+    if (window.innerWidth > 992 && mobileTemplateOpen == false) {
+        hideNormalTemplate();
+    }
+    if (window.innerWidth > 992 && mobileTemplateOpen == true) {
+        hideMobileTemplate();
     }
 }
 
@@ -414,6 +425,7 @@ function hideMobileTemplate() {
         checkURLandHighlight('contacts');
     }
     removeCurrentContact();
+    mobileTemplateOpen = false;
 }
 
 
@@ -457,6 +469,7 @@ function hideNormalTemplate() {
     }, 450);
     setTimeout(removeTemplateNewTask, 450);
     highligthURL();
+    normalTemplateOpen = false;
 }
 
 
