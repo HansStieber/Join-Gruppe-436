@@ -56,7 +56,7 @@ window.addEventListener('click', (e) => {
     if (!document.getElementById('contacts-dropdown-container').contains(e.target) && !document.getElementById('option-assignments').contains(e.target)) {
         closeDropdownAssignment();
     }
-    
+
 });
 
 

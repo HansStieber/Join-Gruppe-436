@@ -157,7 +157,7 @@ function getBigCardElements() {
 function getCardInnerHTML(contact, i) {
     const { initials1, initials2, bgColor, firstName, lastName } = getContactInfo(contact);
     return /*html*/`
-    <div onclick="renderBigCard(${i}),addHighlightContactCard(${i})" id="contact-card-${i}" class="contact-card">
+    <div onclick="renderBigCard(${i}),addHighlightContactCard(${i + 1})" id="contact-card-${i + 1}" class="contact-card">
         <div class="contact-initials-small" style="background-color:${bgColor}">
             <span>${initials1}</span>
             <span>${initials2}</span>
@@ -210,6 +210,7 @@ function deleteContact() {
     showDeleteBtn();
     contacts.splice(contactToEditId, 1);
     saveArrayToBackend('contact', contacts);
+    removeHighlightContactCard();
     hideBigCard();
     closeEditOverlay();
     showUserFeedbackMessage('Contact succesfully Deleted');
@@ -425,7 +426,7 @@ function removeDnoneCardsDivMain(contact) {
  * @param {number} actualCard -Globar var, filled with the ID of the current Higlited Contact.
  */
 function addHighlightContactCard(i) {
-    if (actualCard >= 0) {
+    if (!actualCard == 0) {
         removeHighlightContactCard();
     }
     let card = document.getElementById(`contact-card-${i}`);
@@ -437,7 +438,7 @@ function addHighlightContactCard(i) {
 function removeHighlightContactCard() {
     let card = document.getElementById(`contact-card-${actualCard}`);
     card.classList.remove('contact-card-target');
-    actualCard = '';
+    actualCard = 0;
 }
 
 
