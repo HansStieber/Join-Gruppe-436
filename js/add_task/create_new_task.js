@@ -361,12 +361,18 @@ function closeAllDropdowns() {
 
 
 /**
- * The Function slides in the confirmation button and then loads the board.html page.
+ * The Function slides in the confirmation button and then loads the board.html page. If youre already on the board.html page, the new task card
+ * slides out and the board is updated.
  */
 function showConfirmation() {
     document.getElementById('task-added-to-board').classList.remove('d-none');
     document.getElementById('task-added-to-board').classList.add('slide-in');
-    setTimeout(() => {
-        window.location.href = 'board.html';
-    }, 2000);
+    if (location.href.includes('board')) {
+        hideNewTaskCard();
+        selectingArrayForBoardUpdate();
+    } else {
+        setTimeout(() => {
+            window.location.href = 'board.html';
+        }, 2000);
+    }
 }
