@@ -136,6 +136,20 @@ async function showNewTaskCard() {
 
 
 /**
+ * The eventlistener listens for clicks on the window. If the user clicks the window but not the new task card, a new task card is open and
+ * the width of the window is bigger than 992px, the task gets hidden. That means if you habe a new Task card opened and you click outside the
+ * card, the card closes.
+ */
+window.addEventListener('click', (e) => {
+    if (newTaskOpen == true && window.innerWidth > 992) {
+        if (document.getElementById('content-new-task') && !document.getElementById('content-new-task').contains(e.target)) {
+            hideNewTaskCard();
+        }
+    }
+});
+
+
+/**
  * This function initiates functions to show the mobile add_task template. The functions depend on the current location on the website.
  */
 async function showMobileTemplate() {
