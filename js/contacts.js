@@ -467,13 +467,13 @@ function checkIfMobileOpening(shadowscreen, overlay) {
 function closeEditOverlay() {
     showDeleteBtn();
     checkWindowSizeforClosing('edit-contact-shadow-screen', 'edit-contact-overlay')
-    setTimeout(function () { document.getElementById('editContactOverlay').classList.add('d-none'); }, 450);
+    setTimeout(() => { document.getElementById('editContactOverlay').classList.add('d-none'); }, 450);
 }
 
 
 function closeAddOverlay() {
     checkWindowSizeforClosing('add-contact-shadow-screen', 'add-contact-overlay')
-    setTimeout(function () { document.getElementById('addContactOverlay').classList.add('d-none'); }, 450);
+    setTimeout(() => { document.getElementById('addContactOverlay').classList.add('d-none'); }, 450);
 }
 
 
