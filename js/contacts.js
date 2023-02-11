@@ -314,15 +314,15 @@ function setEditContactValues() {
  * This function shows the Contact added Animation.
  */
 function showUserFeedbackMessage(text) {
-    popInContactAddedMessage(text);
-    setTimeout(popOutContactAddedMessage, 1500);
+    popInUserFeedbackMessage(text);
+    setTimeout(popOutUserFeedbackMessage, 1500);
 }
 
 
 /**
  * This function manipulate the contact added message classes, to show the css Animation. 
  */
-function popInContactAddedMessage(text) {
+function popInUserFeedbackMessage(text) {
     let message = document.getElementById('contact-created-message');
     message.innerHTML = text;
     message.classList.remove('d-none');
@@ -334,7 +334,7 @@ function popInContactAddedMessage(text) {
 /**
  * This function manipulate the contact added message classes, to show the css Animation. 
  */
-function popOutContactAddedMessage() {
+function popOutUserFeedbackMessage() {
     let message = document.getElementById('contact-created-message');
     message.classList.remove('slide-up')
     message.classList.add('slide-down')
@@ -347,12 +347,14 @@ function popOutContactAddedMessage() {
 function showBigCard() {
     const { bigCardDiv } = getBigCardElements();
     bigCardDiv.classList.remove('d-none');
+    //bigCardDiv.classList.add('contacts-big-card-slide');
 }
 
 
 function hideBigCard() {
     const { bigCardDiv } = getBigCardElements();
     bigCardDiv.classList.add('d-none');
+    //bigCardDiv.classList.remove('contacts-big-card-slide');
 }
 
 
