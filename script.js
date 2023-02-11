@@ -389,12 +389,12 @@ function changeHeaderIconsBack() {
  */
 function hideMobileTemplate() {
     removeLayoutAdjustment();
-    if (location.href.includes('board.html')) {
+    if (location.href.includes('board')) {
         removeLayoutAdjustmentsAtBoard()
         removeTemplateNewTaskMobile('board');
         checkURLandHighlight('board');
     }
-    if (location.href.includes('contacts.html')) {
+    if (location.href.includes('contacts')) {
         removeLayoutAdjustmentsAtContacts();
         removeTemplateNewTaskMobile('contacts');
         checkURLandHighlight('contacts');
@@ -442,6 +442,7 @@ function hideNormalTemplate() {
         showMobileDescription();
     }, 450);
     setTimeout(removeTemplateNewTask, 450);
+    highligthURL();
 }
 
 
@@ -464,6 +465,19 @@ function removeCurrentContact() {
     }
     assignedContacts = [];
     indexOfCurrentContact = -1;
+}
+
+
+/**
+ * The function checks on which page the user is located and highlights the sidebar accordingly.
+ */
+function highligthURL() {
+    if (location.href.includes('contacts')) {
+        checkURLandHighlight('contacts');
+    }
+    if (location.href.includes('board')) {
+        checkURLandHighlight('board');
+    }
 }
 
 

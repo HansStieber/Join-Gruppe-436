@@ -19,7 +19,7 @@ function renderCategoryOptions(option, i) {
         </div>
     </div>
     <div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
-        <span class="delete-category-text" onclick=deleteCategory(${i})>delete</span>
+        <span class="delete-category-text" onclick="deleteCategory(${i})">delete</span>
     </div>
     </div>
 `;
