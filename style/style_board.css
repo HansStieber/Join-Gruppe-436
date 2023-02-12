@@ -328,7 +328,8 @@
 }
 
 .icon-settings {
-    height: 22px;
+    height: 21px;
+    width: 21px;
     margin-left: auto;
     cursor: pointer;
 }

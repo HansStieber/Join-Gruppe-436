@@ -131,6 +131,7 @@
 
     .detail-view-arrow {
         display: block;
+        width: 33px;
     }
 }
 

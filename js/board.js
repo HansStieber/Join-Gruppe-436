@@ -71,6 +71,7 @@ function renderTodoColumn(todos) {
         const element = todo[i];
         const id = todo[i].id;
         const assignments = todo[i].assignments;
+
         document.getElementById('todo').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
@@ -84,6 +85,7 @@ function renderProgressColumn(todos) {
         const element = progress[i];
         const id = progress[i].id;
         const assignments = progress[i].assignments;
+
         document.getElementById('progress').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
@@ -97,6 +99,7 @@ function renderFeedbackColumn(todos) {
         const element = feedback[i];
         const id = feedback[i].id;
         const assignments = feedback[i].assignments;
+
         document.getElementById('feedback').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
@@ -111,6 +114,7 @@ function renderDoneColumn(todos) {
         const id = done[i].id;
         const assignments = done[i].assignments;
         document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
+
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
     }

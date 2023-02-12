@@ -111,7 +111,7 @@ function formatDate(dateToFormat) {
 
 function greetingUser() {
     let nameDiv = document.getElementById('user-greeting');
-    let existingUser = backend.getItem('currentUser');
+    let existingUser = localStorage.getItem('currentUser');
     if (!existingUser) {
         nameDiv.innerHTML = 'guest';
     } else {
