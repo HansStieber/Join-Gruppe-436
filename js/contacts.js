@@ -99,7 +99,7 @@ function renderBigCard(indexNum) {
     contactToEditId = indexNum;
     showBigCard();
     showMobileBigCard();
-    setBigCardInnerHTML(contact);
+    setBigCardInnerHTML(contact, indexNum);
 }
 
 
@@ -110,7 +110,7 @@ function renderBigCard(indexNum) {
  * Then define const{all Elements from BigCard}, thru calling the function getBigCardElements().
  * Then innerHTML all given contacts Information into HTML-Elements.
  */
-function setBigCardInnerHTML(contact) {
+function setBigCardInnerHTML(contact, indexNum) {
     const { initials1, initials2, bgColor, email,
         phone, firstName, lastName } = getContactInfo(contact);
 
@@ -124,7 +124,6 @@ function setBigCardInnerHTML(contact) {
     phoneSpan.innerHTML = phone;
 
     initialsDiv.style = `background-color:${bgColor}`;
-
 }
 
 
