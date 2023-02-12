@@ -140,7 +140,7 @@ function getBigCardElements() {
         lastNameSpan: document.getElementById('big-card-lastname'),
         emailLink: document.getElementById('big-card-email'),
         phoneSpan: document.getElementById('big-card-phone'),
-        bigCardDiv: document.getElementById('big-card'),
+        bigCardDiv: document.getElementById('big-card-0'),
         initialsDiv: document.getElementById('big-card-initials-bg')
     }
 }
@@ -344,18 +344,19 @@ function popOutUserFeedbackMessage() {
     }, 500);
 }
 
-
 function showBigCard() {
     const { bigCardDiv } = getBigCardElements();
-    bigCardDiv.classList.remove('d-none');
-    //bigCardDiv.classList.add('contacts-big-card-slide');
+    bigCardDiv.classList.add('d-none');
+    setTimeout(function () {
+        bigCardDiv.classList.remove('d-none')
+        slideInCard('big-card-0')
+    }, 125);
 }
 
 
 function hideBigCard() {
     const { bigCardDiv } = getBigCardElements();
     bigCardDiv.classList.add('d-none');
-    //bigCardDiv.classList.remove('contacts-big-card-slide');
 }
 
 
