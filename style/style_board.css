@@ -13,10 +13,6 @@
     display: block;
 }
 
-.slide-board-scroll::-webkit-scrollbar-track {
-    background: white;
-}
-
 .slide-board-scroll::-webkit-scrollbar-thumb {
     background-color: #A8A8A8;
     border-radius: 10px;
@@ -25,15 +21,15 @@
 /* Buttons */
 .contacts-outer-div::-webkit-scrollbar-button:single-button {
     display: block;
-    background-size: 10px;
+
     background-repeat: no-repeat;
 }
 
 /* Up */
 .slide-board-scroll::-webkit-scrollbar-button:single-button:vertical:decrement {
     cursor: pointer;
-    height: 12px;
-    width: 16px;
+    height: 15px;
+
     background-repeat: no-repeat;
     background-position: center 7px;
     background-image: url(../assets/img/scroll-arrow-up.svg);
@@ -41,8 +37,8 @@
 
 /* Down */
 .slide-board-scroll::-webkit-scrollbar-button:single-button:vertical:increment {
-    height: 12px;
-    width: 16px;
+    height: 15px;
+
     background-repeat: no-repeat;
     background-position: center 2px;
     background-image: url(../assets/img/scroll-arrow-down.svg);
@@ -54,6 +50,7 @@
     justify-content: space-between;
     padding-right: 65px;
     padding-bottom: 30px;
+    max-width: 1140px;
 }
 
 .transition-125 {
@@ -163,7 +160,7 @@
 .cards-div {
     display: flex;
     flex-wrap: wrap;
-
+    padding-right: 20px;
     padding-top: 30px;
 }
 
@@ -316,7 +313,7 @@
     border-radius: 30px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     overflow: auto;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .category-styling {
@@ -328,18 +325,35 @@
 }
 
 .icon-settings {
-    height: 22px;
+    height: 21px;
+    width: 21px;
     margin-left: auto;
     cursor: pointer;
 }
 
-.edit-task-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
+.detail-view-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.detail-view-btn-div {
+    display: flex;
+    justify-content: end;
+    align-items: end;
     height: 57px;
-    margin-left: auto;
+}
+
+.edit-task-btn {
+    height: 57px;
     cursor: pointer;
+}
+
+.delete-btn-board {
+    cursor: pointer;
+    height: 57px;
+    width: 125px;
 }
 
 .detail-view-title {
@@ -378,14 +392,6 @@
     margin-right: 30px;
     color: white;
     font-size: 16px;
-}
-
-.delete-btn-board {
-    position: absolute;
-    bottom: 50px;
-    right: 121px;
-    height: 57px;
-    width: 125px;
 }
 
 /* === Styling of edit Card container === */

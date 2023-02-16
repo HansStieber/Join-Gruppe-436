@@ -113,6 +113,8 @@
         position: absolute;
         right: 3em;
         top: 6em;
+        height: 2em;
+        width: 2em;
     }
 
     .right-div-mobile {

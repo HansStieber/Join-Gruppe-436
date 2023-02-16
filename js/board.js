@@ -34,15 +34,10 @@ window.addEventListener('resize', function () {
 });
 
 
-
-function clearBoard() {
-    document.getElementById('todo').innerHTML = '';
-    document.getElementById('progress').innerHTML = '';
-    document.getElementById('feedback').innerHTML = '';
-    document.getElementById('done').innerHTML = '';
-}
-
-
+/**
+ * This function initiate a function call.
+ * @param {array} todos - array of all todos, saved in the backend
+ */
 function renderBoard(todos) {
     clearBoard();
     renderTodoColumn(todos);
@@ -52,12 +47,31 @@ function renderBoard(todos) {
 }
 
 
+/**
+ * This function clears the board.
+ */
+function clearBoard() {
+    document.getElementById('todo').innerHTML = '';
+    document.getElementById('progress').innerHTML = '';
+    document.getElementById('feedback').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
+}
+
+/**
+ * In the first step this functions filters the array according to the status of the todos. the filtered todos are
+ * displayed in the corresponding container of the status on the board.
+ * In the last place this function checks, if the task is assigned for another team member or more. 
+ * 
+ * The following functions do the same thing, except the status is different.
+ * @param {array} todos - array of all todos, saved in the backend
+ */
 function renderTodoColumn(todos) {
     let todo = todos.filter(t => t.status == 'todo');
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
         const id = todo[i].id;
         const assignments = todo[i].assignments;
+
         document.getElementById('todo').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
@@ -71,6 +85,7 @@ function renderProgressColumn(todos) {
         const element = progress[i];
         const id = progress[i].id;
         const assignments = progress[i].assignments;
+
         document.getElementById('progress').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
@@ -84,6 +99,7 @@ function renderFeedbackColumn(todos) {
         const element = feedback[i];
         const id = feedback[i].id;
         const assignments = feedback[i].assignments;
+
         document.getElementById('feedback').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
@@ -98,15 +114,42 @@ function renderDoneColumn(todos) {
         const id = done[i].id;
         const assignments = done[i].assignments;
         document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
+
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+    }
+}
+
+/**
+ * This function checks, if a second user is intended for a task. If so an icon with initials is created.
+ * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
+ * @param {number} id - id of the current todo
+ */
+function checkForSecondUser(assignments, id) {
+    if (assignments.length > 1) {
+        let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
+        document.getElementById(`user-icons-${id}`).innerHTML += `
+            <div id="second-user-icon-${id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>`;
+    }
+}
+
+/**
+ * This function checks, if more users than 2 are assigned for a task. From the third assigned user, the icon contains the number of the assigned users. 
+ * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
+ * @param {number} id - id of the current todo
+ */
+function checkForMoreUsers(assignments, id) {
+    if (assignments.length >= 3) {
+        let userlength = assignments.length - 2;
+        document.getElementById(`user-icons-${id}`).innerHTML += `
+        <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>`;
     }
 }
 
 
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 /**
- * By pressing the plus button at the disired status (progress, feedback, done) this function opens the add task overlay.
+ * This functions opens the add task overlay by pressing the add button at the disired status (progress, feedback, done).
  */
 function addTaskToStatusProgress() {
     progressStatus = 'progress';
@@ -126,24 +169,6 @@ function addTaskToStatusDone() {
 }
 
 
-function checkForSecondUser(assignments, id) {
-    if (assignments.length > 1) {
-        let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
-        document.getElementById(`user-icons-${id}`).innerHTML += `
-        <div id="second-user-icon-${id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>
-        `;
-    }
-}
-
-
-function checkForMoreUsers(assignments, id) {
-    if (assignments.length > 2) {
-        let userlength = assignments.length - 2;
-        document.getElementById(`user-icons-${id}`).innerHTML += `
-        <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>
-        `;
-    }
-}
 /**
  * Function checks if there is a specific search value at the search input-field. If not, the board is updated from the
  * array todos, which includes ALL tasks. If a search value exists the board is updated from the array searchedTodos.
@@ -190,15 +215,18 @@ function setNewTodoIds() {
 /**
  * The global defined variable 'currentDraggedElement' is undefined in the first place. When moving a task to another status-column the global 
  * variable gets the value of the id of the current task card.
- * @param {number} id id of the current task card
+ * @param {number} id id of the current task card.
  */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
-
-function allowDrop(ev) {
-    ev.preventDefault();
+/**
+ * This function allows to move a task to another status-column. To allow the drop, the default handling of the element must be prevented.
+ * @param {*} dragEvent - when the dragged data is dropped, a drop event occurs.
+ */
+function allowDrop(dragEvent) {
+    dragEvent.preventDefault();
 }
 
 
@@ -212,10 +240,32 @@ function moveTo(status) {
     saveStatus();
 }
 
-
+/**
+ * The function saves the new status of the task at the todos array at the backend database.
+ */
 function saveStatus() {
     let todosAsText = JSON.stringify(todos);
     backend.setItem('todo', todosAsText);
+}
+
+
+/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
+/**
+ * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
+ * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
+ * board.
+ */
+function findTask() {
+    searchedTodos = [];
+    let search = document.getElementById('find-task').value;
+    for (let i = 0; i < todos.length; i++) {
+        const title = todos[i].title;
+        const description = todos[i].description;
+        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+            searchedTodos.push(todos[i]);
+        }
+        selectingArrayForBoardUpdate();
+    }
 }
 
 
@@ -266,230 +316,4 @@ function howMuchUsersAreAssigned(idOfCard) {
         </div>
         `;
     }
-}
-
-
-/*----------- SEARCH FUNKTION FOR FINDING SPECIFIC TASK -----------*/
-/**
- * Function that checks if the value of the search input-field matches with title or description values of the tasks in the todos array.
- * If a task title or description includes the search value it is pushed into the array searchedTodos before it finally gets updated to the
- * board.
- */
-function findTask() {
-    searchedTodos = [];
-    let search = document.getElementById('find-task').value;
-    for (let i = 0; i < todos.length; i++) {
-        const title = todos[i].title;
-        const description = todos[i].description;
-        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
-            searchedTodos.push(todos[i]);
-        }
-        selectingArrayForBoardUpdate();
-    }
-}
-
-
-/*----------- EDIT TASK FROM BOARD -----------*/
-/**
- * The function loads the edit form for the task that is currently in detail view. The function sets a couple of variables which are given
- * as parameters to the renderEditCard() function. The variables represent the current values of the selected task. It also sets the current
- * priority and loads all contacts that are currently assigend to the task.
- * 
- * @param {number} id - id of current todo
- */
-function editTask(id) {
-    let title = todos[id].title;
-    let description = todos[id].description;
-    let date = todos[id].date;
-    renderEditCard(id, title, description, date);
-    setCurrentPriority(id);
-    loadAssignments(id);
-}
-
-
-/**
- * The function sets the priority variable to the priority of the current task. It the runs the correct function to highlight the priority
- * that is currently selected.
- * 
- * @param {number} id - id of current todo
- */
-function setCurrentPriority(id) {
-    let priority = todos[id].priority;
-    if (priority == 'urgent') {
-        taskIsUrgent('urgent', 'urgent_big', 'medium', 'low');
-    }
-    if (priority == 'medium') {
-        taskIsMedium('medium', 'medium_big', 'low', 'urgent');
-    }
-    if (priority == 'low') {
-        taskIsLow('low', 'low_big', 'urgent', 'medium');
-    }
-}
-
-
-/**
- * The function loads all assignment options and current assignments. It also assigns the currently assigned contacts.
- * 
- * @param {number} id - id of current todo
- */
-function loadAssignments(id) {
-    pushAssignedContactsToAssignments(id);
-    loadAssignmentOptions();
-    assignAssignedContacts(id);
-}
-
-
-/**
- * The function loops through the assignments of the current task. If the current contact in the loop is not included at the assignments
- * array, the contact is pushed to the assignments array.
- * 
- * @param {number} id - id of current todo
- */
-function pushAssignedContactsToAssignments(id) {
-    for (let i = 0; i < todos[id].assignments.length; i++) {
-        const option = todos[id].assignments[i];
-        if (assignments.every(a => a.firstName !== option.firstName) && assignments.every(a => a.lastName !== option.lastName)) {
-            assignments.push(option);
-        }
-    }
-}
-
-
-/**
- * The function assigns all contacts of the assignments array that match a contact from the assignments of the current task.
- * 
- * @param {number} id - id of current todo
- */
-function assignAssignedContacts(id) {
-    for (let i = 0; i < assignments.length; i++) {
-        const assignment = assignments[i];
-        if (todos[id].assignments.some(a => a.firstName == assignment.firstName) && todos[id].assignments.some(a => a.lastName == assignment.lastName)) {
-            assignContact(i);
-        }
-    }
-}
-
-
-/**
- * The function saves all changes to the backend if all inputs are valid
- * 
- * @param {number} id - id of the todo which got edited
- */
-function saveChanges(id) {
-    checkIfInvalidInput()
-    checkIfInputMissingAndPushEditedTask(id);
-}
-
-
-/**
- * The function checks if any input-field is empty or the selected date lies in the past. If any input field is empty it resolves in setting
- * the inputMissing variable to true.
- * 
- */
-function checkIfInvalidInput() {
-    setInputMissingToFalse();
-    checkIfEmpty('title');
-    checkIfEmpty('description');
-    checkDate();
-    checkIfNotAssigned();
-    checkIfNoPriority();
-}
-
-
-/**
- * The function checks the inputMissing variable. If the variable is set to false, meaning no input is missing, the changes are saved to the
- * backend database and the edit window is closed.
- * 
- * @param {number} id - id of the todo which got edited
- */
-function checkIfInputMissingAndPushEditedTask(id) {
-    if (inputMissing == false) {
-        pushChanges(id);
-    }
-}
-
-
-/**
- * The function gets all the values present in the input-fields at the edit todo card and saves them to the backend database. Also the edit
- * card window is closed and the detail card is shown again.d
- * 
- * @param {number} id - id of the todo which got edited
- */
-function pushChanges(id) {
-    getNewTitleValue(id);
-    getNewDescriptionValue(id);
-    getNewDateValue(id);
-    getPriority();
-    setPriority(id);
-    getNewAssignments(id);
-    showTaskCard(id);
-    saveTasks();
-}
-
-
-/**
- * The function gets the value of the title input-field and sets the newTitle variable. If there is a new title it is set as the title of the
- *  edited todo.
- * 
- * @param {number} id - id of current todo
- */
-function getNewTitleValue(id) {
-    let newTitle = document.getElementById('title').value;
-    if (newTitle) {
-        todos[id].title = newTitle;
-    }
-}
-
-
-/**
- * The function gets the value of the description input-field and sets the newDescription variable. If there is a new description it is set
- * as the description of the edited todo.
- * 
- * @param {number} id - id of current todo
- */
-function getNewDescriptionValue(id) {
-    let newDescription = document.getElementById('description').value;
-    if (newDescription) {
-        todos[id].description = newDescription;
-    }
-}
-
-
-/**
- * The function gets the value of the date input-field and sets the newDate variable. If there is a new date it is set as the date of the
- * edited todo.
- * 
- * @param {number} id - id of current todo
- */
-function getNewDateValue(id) {
-    let newDate = document.getElementById('date').value;
-    if (newDate) {
-        todos[id].date = newDate;
-    }
-}
-
-
-/**
- * The function sets the priority of the edited todo.
- * 
- * @param {number} id - id of current todo
- */
-function setPriority(id) {
-    todos[id].priority = priority;
-}
-
-
-/**
- * The function empties the assignments array of the current todo. It then loops through the assignedContacts array and pushes the contacts
- * to the assignments array of the current todo. It finishes by emptying the assignedContacts
- * 
- * @param {number} id - id of current todo
- */
-function getNewAssignments(id) {
-    todos[id].assignments = [];
-    for (let i = 0; i < assignedContacts.length; i++) {
-        const contact = assignedContacts[i];
-        todos[id].assignments.push(contact);
-    }
-    assignedContacts = [];
 }

@@ -18,13 +18,16 @@ function renderCategoryOptions(option, i) {
             <div class="color ${option.color}"></div>
         </div>
     </div>
-    <div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
-        <span class="delete-category-text" onclick="deleteCategory(${i})">delete</span>
-    </div>
-    </div>
-`;
-} 
- 
+    `;
+}
+/*
+<div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
+    <span class="delete-category-text" onclick="deleteCategory(${i})">delete</span>
+</div>
+</div>
+*/
+
+
 
 /**
  * The function renders the html for selected category into element with id category. It appears as selected category in the form at the

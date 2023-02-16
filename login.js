@@ -16,7 +16,7 @@ function login() {
     setTimeout(function () {
       window.location.href = "./summary.html";
     }, 2000);
-    backend.setItem('currentUser', existingUser.name);
+    localStorage.setItem('currentUser', existingUser.name);
   } else {
     console.log("Invalid email or password. Login failed.");
     alert("failed")

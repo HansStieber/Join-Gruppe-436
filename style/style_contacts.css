@@ -89,6 +89,13 @@
 
 .contacts-big-card {
     margin-top: 80px;
+    /*transform: translateX(728px);
+    transition: 225ms all ease-in-out;*/
+}
+
+.contacts-big-card-slide {
+    transform: translateX(9px);
+    transition: 225ms all ease-in-out;
 }
 
 .contact-initials-big {

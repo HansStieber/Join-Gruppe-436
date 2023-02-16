@@ -53,11 +53,34 @@ window.addEventListener('click', (e) => {
  * dropdown menu, the dropdown closes
  */
 window.addEventListener('click', (e) => {
-    if (!document.getElementById('contacts-dropdown-container').contains(e.target) && !document.getElementById('option-assignments').contains(e.target)) {
-        closeDropdownAssignment();
+    if (document.getElementById('contacts-dropdown-container') && document.getElementById('option-assignments')) {
+        if (!document.getElementById('contacts-dropdown-container').contains(e.target) && !document.getElementById('option-assignments').contains(e.target)) {
+            closeDropdownAssignment();
+        }
     }
-    
 });
+
+
+/**
+ * Adds an event listener that listens on the click event on window. If the the user clicks on the window but not on the content of the assignment
+ * dropdown menu, the dropdown closes
+ */
+window.addEventListener('click', (e) => {
+    if (document.getElementById('category-options-container')) {
+        if (!document.getElementById('category-options-container').contains(e.target)) {
+            closeDropdownCategory();
+        }
+    }
+});
+
+
+/*window.addEventListener('click', (e) => {
+    if (location.href.includes('add_task')) {
+        if (!document.getElementById('category-options').contains(e.target) && !document.getElementById('option-category').contains(e.target)) {
+            closeDropdownCategory();
+        }
+    }
+});*/
 
 
 /**
@@ -166,7 +189,7 @@ function initiateAlert(id) {
 function alertWrongDate() {
     document.getElementById('date-required').classList.add('alert-color');
     document.getElementById('date-required').classList.add('alert-height');
-    document.getElementById('date-required').innerHTML = 'Please don`t choose any past date';
+    document.getElementById('date-required').innerHTML = 'Please choose an upcoming date';
 }
 
 
@@ -361,12 +384,18 @@ function closeAllDropdowns() {
 
 
 /**
- * The Function slides in the confirmation button and then loads the board.html page.
+ * The Function slides in the confirmation button and then loads the board.html page. If youre already on the board.html page, the new task card
+ * slides out and the board is updated.
  */
 function showConfirmation() {
     document.getElementById('task-added-to-board').classList.remove('d-none');
     document.getElementById('task-added-to-board').classList.add('slide-in');
-    setTimeout(() => {
-        window.location.href = 'board.html';
-    }, 2000);
+    if (location.href.includes('board')) {
+        hideNewTaskCard();
+        selectingArrayForBoardUpdate();
+    } else {
+        setTimeout(() => {
+            window.location.href = 'board.html';
+        }, 2000);
+    }
 }
