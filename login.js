@@ -11,6 +11,7 @@ function login() {
       backend.setItem("password", password);
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
+      localStorage.setItem("currentUser", existingUser.name)
     }
     setTimeout(function () {
       window.location.href = "./summary.html";
