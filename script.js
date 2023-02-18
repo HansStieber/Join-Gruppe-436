@@ -32,7 +32,7 @@ async function loadBackend() {
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
     assignments = JSON.parse(backend.getItem('assignments')) || [];
-    //existingUser = backend.getItem('currentUser') || [];
+    existingUser = backend.getItem('currentUser') || [];
     users = JSON.parse(backend.getItem("users")) || [];
 }
 
@@ -102,14 +102,19 @@ function resetPassword() {
     let new_password = document.getElementById("resetPWInput").value;
     let new_passwordCONF = document.getElementById("resetPWInputConf").value;
     // let oldPassword = JSON.parse(localStorage.getItem("password"));
-    users = JSON.parse(localStorage.getItem("users")) || [];
+    
+    users = JSON.parse(backend.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
     let existingMail = localStorage.getItem("email");
     let resetPW = document.getElementById("resetPW");
 
     if (new_password === new_passwordCONF) {
-        if (existingMail) {
+        if (existingUser) {
             localStorage.setItem("password", new_password);
+            existingUser.password = new_password
+            backend.setItem("users", JSON.stringify(users));
+            
+        }
             
             // localStorage.setItem("users", JSON.stringify(users));
             resetPW.classList.add("flighUp");
@@ -124,7 +129,7 @@ function resetPassword() {
         }
     }
 
-}
+
 
 
 
