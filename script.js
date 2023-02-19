@@ -110,7 +110,7 @@ function resetPassword() {
     if (new_password === new_passwordCONF) {
         if (existingMail) {
             localStorage.setItem("password", new_password);
-            
+
             // localStorage.setItem("users", JSON.stringify(users));
             resetPW.classList.add("flighUp");
             setTimeout(function () {
