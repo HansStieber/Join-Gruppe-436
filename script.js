@@ -32,7 +32,7 @@ async function loadBackend() {
     categories = JSON.parse(backend.getItem('category')) || [];
     contacts = JSON.parse(backend.getItem('contact')) || [];
     assignments = JSON.parse(backend.getItem('assignments')) || [];
-    //existingUser = backend.getItem('currentUser') || [];
+    existingUser = backend.getItem('currentUser') || [];
     users = JSON.parse(backend.getItem("users")) || [];
 }
 
@@ -108,23 +108,27 @@ function resetPassword() {
     let resetPW = document.getElementById("resetPW");
 
     if (new_password === new_passwordCONF) {
-        if (existingMail) {
+        if (existingUser) {
             localStorage.setItem("password", new_password);
+            existingUser.password = new_password
+            backend.setItem("users", JSON.stringify(users));
 
-            // localStorage.setItem("users", JSON.stringify(users));
-            resetPW.classList.add("flighUp");
-            setTimeout(function () {
-                window.location.href = "./index.html";
-            }, 2000);
-        } else {
-            console.log("Email not found. Password reset failed.");
-            setTimeout(function () {
-                window.location.href = "../templates/log_in.html";
-            }, 2000);
         }
-    }
 
+        // localStorage.setItem("users", JSON.stringify(users));
+        resetPW.classList.add("flighUp");
+        setTimeout(function () {
+            window.location.href = "./index.html";
+        }, 2000);
+    } else {
+        console.log("Email not found. Password reset failed.");
+        setTimeout(function () {
+            window.location.href = "../templates/log_in.html";
+        }, 2000);
+    }
 }
+
+
 
 
 
