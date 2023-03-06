@@ -19,7 +19,7 @@ async function load() {
     await includeHTML();
     checkURLandHighlight();
     setFaviconColorTheme();
-    loadUserCredentials();
+    //loadUserCredentials();
 }
 
 
