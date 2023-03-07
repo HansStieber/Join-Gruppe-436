@@ -339,6 +339,7 @@
 }
 
 .detail-view-btn-div {
+    position: relative;
     display: flex;
     justify-content: end;
     align-items: end;
@@ -453,7 +454,7 @@
     display: none;
 }
 
-/* Move to function for Mobile Device */
+/* Move button as an alternative to drag & drop for mobile device */
 .move-btn{
     display: none;
     margin-right: auto;
@@ -468,8 +469,8 @@
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    bottom: 80px;
-    left: 30px;
+    top: -125px;
+    left: 0px;
     gap: 5px;
     background-color: #2A3647;
     padding: 18px 18px;
