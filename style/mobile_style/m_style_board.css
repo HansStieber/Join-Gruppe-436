@@ -133,6 +133,10 @@
         display: block;
         width: 33px;
     }
+
+    .move-btn{
+        display: inline;
+    }
 }
 
 @media(max-width:610px) {

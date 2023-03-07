@@ -60,10 +60,10 @@ function generateHTMLDetailCard(idOfCard) {
 
             <button id="moveBtn" onclick="openMoveMenu()" class="btn-dark move-btn" > Move
                 <div id="mobileMove" class="mobile-move d-none">
-                    <div>To do</div>
-                    <div>In progress</div>
-                    <div>Feedback</div>
-                    <div>Done</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'todo')">To do</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'progress')">In progress</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'feedback')">Feedback</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'done')">Done</div>
                 </div>
             </button>
 
