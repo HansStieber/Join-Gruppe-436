@@ -317,3 +317,9 @@ function howMuchUsersAreAssigned(idOfCard) {
         `;
     }
 }
+
+// Drag and Drop alternative to move tasks
+
+function openMoveMenu(){
+    document.getElementById('mobileMove').classList.remove('d-none');
+}

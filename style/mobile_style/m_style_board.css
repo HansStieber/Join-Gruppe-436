@@ -196,8 +196,13 @@
         height: 40px;
     }
 
-    .delete-btn-board {
+    .delete-btn-board{
         height: 40px;
+    }
+
+    .move-btn {
+        height: 40px;
+        padding: 1px 16px;
     }
 }
 
