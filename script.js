@@ -19,7 +19,9 @@ async function load() {
     await includeHTML();
     checkURLandHighlight();
     setFaviconColorTheme();
-    //loadUserCredentials();
+    if (window.location.pathname == '/index.html') {
+        loadUserCredentials();
+    }
 }
 
 
