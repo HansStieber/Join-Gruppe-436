@@ -92,6 +92,15 @@ function guestLogin() {
 }
 
 
+function openLogin() {
+    let loginContainer = document.getElementById("login-container");
+    let signUpContainer = document.getElementById("signUp");
+    loginContainer.classList.remove("fade-in-login");
+    loginContainer.style.display = "flex";
+    signUpContainer.style.display = "none";
+}
+
+
 function signUp() {
     let loginContainer = document.getElementById("login-container");
     let signUpContainer = document.getElementById("signUp");

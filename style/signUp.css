@@ -38,6 +38,10 @@
     left: -280px;
 }
 
+#backArrowSignUp:hover {
+    cursor: pointer;
+}
+
 .signUp-container input {
     width: 350px;
     height: 45px;

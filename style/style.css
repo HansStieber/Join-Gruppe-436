@@ -89,11 +89,11 @@ body {
     margin: 10px;
 }
 
-#email {
+#login-email {
     background: url("../assets/img/user-6-32.png") no-repeat 300px;
 }
 
-#password {
+#login-password {
     background: url("../assets/img/mail-32.png") no-repeat 300px;
 }
 
@@ -115,6 +115,7 @@ body {
 input {
     margin-right: 20px;
 }
+
 
 
 .fade-in-login {

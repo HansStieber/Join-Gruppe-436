@@ -13,12 +13,12 @@
         <p>Not a Join user?</p>
         <button class="signup_button" onclick="signUp()">Sign up</button>
     </div>
-    <div id="login-container" class="login-container fade-in-login">
+    <form onsubmit="login(); return false" id="login-container" class="login-container fade-in-login">
         <h1>Log in</h1>
         <img src="../assets/img/blue_underline.png" id="blue_underline">
         <div class="credentials">
-            <input id="email" type="text" name="email" type="email" placeholder="Email" autocomplete="email" required>
-            <input id="password" type="password" name="password" type="password" placeholder="Password"
+            <input id="login-email" type="email" name="email" placeholder="Email" autocomplete="email" required>
+            <input id="login-password" type="password" name="password" placeholder="Password"
                 autocomplete="new-password" required>
         </div>
         <div class="remember_me_forgotten">
@@ -29,11 +29,11 @@
             <a class="password_forgotten" href="#" onclick="forgotPassword()">Forgot my password</a>
         </div>
         <div class="login_form_buttons">
-            <button type="submit" class="login_button" onclick="login()">Log in</button>
+            <button type="submit" class="login_button">Log in</button>
             <button class="guest_button" id="guest_button" onclick="guestLogin()">Guest Log in</button>
         </div>
         <div id="error-login" class="error-login"></div>
-    </div>
+    </form>
 </body>
 
 </html>
