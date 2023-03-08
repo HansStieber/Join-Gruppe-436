@@ -2,8 +2,8 @@ async function initSummary() {
     await load();
     updateSummary();
     daytimeGreeting();
-    greetingUser();
     checkURLandHighlight('summary');
+    greetingUser();
 }
 
 

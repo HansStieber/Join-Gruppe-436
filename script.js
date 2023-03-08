@@ -113,7 +113,6 @@ function resetPassword() {
             localStorage.setItem("password", new_password);
             existingUser.password = new_password
             backend.setItem("users", JSON.stringify(users));
-            
         }
             
             // localStorage.setItem("users", JSON.stringify(users));
