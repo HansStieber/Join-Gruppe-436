@@ -128,7 +128,7 @@ function setBigCardInnerHTML(contact, indexNum) {
 
 
 /**
- * This function return HTML Elements found thru IDs and returns them in an Array
+ * This function return HTML Elements found thru IDs and returns them in a JSON
  * @example
  * 
  */
@@ -146,7 +146,7 @@ function getBigCardElements() {
 
 
 /**
- * This function defines vars and calls getContactInfo(with given contac Object), to fill the definend vars with found contact info,
+ * This function defines vars and calls getContactInfo(with given contact Object), to fill the definend vars with found contact info,
  * then generate and return Html-template with filled vars.
  * 
  * @param {object} contact -Object filled with all information needed to show detail View from given Contact. 

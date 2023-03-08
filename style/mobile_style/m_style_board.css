@@ -133,6 +133,10 @@
         display: block;
         width: 33px;
     }
+
+    .move-btn{
+        display: inline;
+    }
 }
 
 @media(max-width:610px) {
@@ -196,8 +200,13 @@
         height: 40px;
     }
 
-    .delete-btn-board {
+    .delete-btn-board{
         height: 40px;
+    }
+
+    .move-btn {
+        height: 40px;
+        padding: 1px 16px;
     }
 }
 

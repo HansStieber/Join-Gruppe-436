@@ -56,16 +56,26 @@ function generateHTMLDetailCard(idOfCard) {
         </div>
 
         <div class="detail-view-bottom">
-<div class="detail-view-btn-div"> 
+            <div class="detail-view-btn-div"> 
+
+            <button id="moveBtn" onclick="openMoveMenu()" class="btn-dark move-btn" > Move
+                <div id="mobileMove" class="mobile-move d-none">
+                    <div onclick="mobileMoveTo(${idOfCard},'todo')">To do</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'progress')">In progress</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'feedback')">Feedback</div>
+                    <div onclick="mobileMoveTo(${idOfCard},'done')">Done</div>
+                </div>
+            </button>
+
            
-        <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn delete-btn-board" type="button">
+                <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn delete-btn-board" type="button">
                         <div>
                             <span id="delete-btn-span">Delete</span>
                             <img src="../assets/img/close.svg">
                         </div>
-                    </button>
+                </button>
                     <img src="../assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn detail-view-edit-btn" onclick="editTask(${idOfCard})">
-</div>               
-</div>
+            </div>               
+        </div>
 `;
 }

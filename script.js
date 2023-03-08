@@ -19,7 +19,9 @@ async function load() {
     await includeHTML();
     checkURLandHighlight();
     setFaviconColorTheme();
-    loadUserCredentials();
+    if (window.location.pathname == '/index.html') {
+        loadUserCredentials();
+    }
 }
 
 
@@ -102,8 +104,7 @@ function resetPassword() {
     let new_password = document.getElementById("resetPWInput").value;
     let new_passwordCONF = document.getElementById("resetPWInputConf").value;
     // let oldPassword = JSON.parse(localStorage.getItem("password"));
-    
-    users = JSON.parse(backend.getItem("users")) || [];
+    users = JSON.parse(localStorage.getItem("users")) || [];
     let existingUser = users.find(user => user.email === current_email);
     let existingMail = localStorage.getItem("email");
     let resetPW = document.getElementById("resetPW");
@@ -113,6 +114,7 @@ function resetPassword() {
             localStorage.setItem("password", new_password);
             existingUser.password = new_password
             backend.setItem("users", JSON.stringify(users));
+<<<<<<< HEAD
         }
             
             // localStorage.setItem("users", JSON.stringify(users));
@@ -125,8 +127,23 @@ function resetPassword() {
             setTimeout(function () {
                 window.location.href = "../templates/log_in.html";
             }, 2000);
+=======
+
+>>>>>>> d965a035e408b531221cd04d1bd4a5753825363f
         }
+
+        // localStorage.setItem("users", JSON.stringify(users));
+        resetPW.classList.add("flighUp");
+        setTimeout(function () {
+            window.location.href = "./index.html";
+        }, 2000);
+    } else {
+        console.log("Email not found. Password reset failed.");
+        setTimeout(function () {
+            window.location.href = "../templates/log_in.html";
+        }, 2000);
     }
+}
 
 
 

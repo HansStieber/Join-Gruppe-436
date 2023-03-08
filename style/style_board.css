@@ -339,6 +339,7 @@
 }
 
 .detail-view-btn-div {
+    position: relative;
     display: flex;
     justify-content: end;
     align-items: end;
@@ -354,6 +355,7 @@
     cursor: pointer;
     height: 57px;
     width: 125px;
+    font-family: 'Inter';
 }
 
 .detail-view-title {
@@ -451,3 +453,29 @@
 .detail-view-arrow {
     display: none;
 }
+
+/* Move button as an alternative to drag & drop for mobile device */
+.move-btn{
+    display: none;
+    margin-right: auto;
+    font-size: 21px;
+    padding: 15px 12px;
+    font-family: 'Inter';
+    font-weight: lighter;
+}
+
+.mobile-move{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: -125px;
+    left: 0px;
+    gap: 5px;
+    background-color: #2A3647;
+    padding: 18px 18px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px 20px 20px 0px;
+    font-size: 16px;
+}
+

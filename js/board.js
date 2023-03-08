@@ -240,6 +240,12 @@ function moveTo(status) {
     saveStatus();
 }
 
+function mobileMoveTo(index, status) {
+    todos[index]['status'] = status;
+    saveStatus();
+    closeDetailView();
+}
+
 /**
  * The function saves the new status of the task at the todos array at the backend database.
  */
@@ -316,4 +322,10 @@ function howMuchUsersAreAssigned(idOfCard) {
         </div>
         `;
     }
+}
+
+// Drag and Drop alternative to move tasks
+
+function openMoveMenu() {
+    document.getElementById('mobileMove').classList.toggle('d-none');
 }
