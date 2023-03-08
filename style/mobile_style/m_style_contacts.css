@@ -51,6 +51,10 @@
         left: 2em;
     }
 
+    .edit-contact {
+        display: none;
+    }
+
     .mobile-edit-contact-btn {
         background-image: url('../../assets/img/pencil-btn-default.svg');
         background-repeat: no-repeat;
@@ -155,9 +159,7 @@
         display: block;
     }
 
-    .edit-contact {
-        display: none;
-    }
+
 }
 
 @media(max-width:640px) {
