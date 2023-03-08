@@ -23,7 +23,7 @@
     font-family: 'Inter', sans-serif;
     background-color: #FFFFFF;
     width: 652px;
-    height: 559px;
+    /*height: 559px;*/
     display: flex;
     justify-content: center;
     align-items: center;

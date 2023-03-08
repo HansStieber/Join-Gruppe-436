@@ -13,7 +13,7 @@ function register() {
       password: password
     });
     backend.setItem("users", JSON.stringify(users));
-    alert("User registered successfully.");
+    document.getElementById("signUpSingle").classList.add("flighUp");
     setTimeout(function () {
       window.location.href = "../index.html";
     }, 2000);
