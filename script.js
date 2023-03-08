@@ -115,7 +115,22 @@ function resetPassword() {
             localStorage.setItem("password", new_password);
             existingUser.password = new_password
             backend.setItem("users", JSON.stringify(users));
+<<<<<<< HEAD
+        }
+            
+            // localStorage.setItem("users", JSON.stringify(users));
+            resetPW.classList.add("flighUp");
+            setTimeout(function () {
+                window.location.href = "./index.html";
+            }, 2000);
+        } else {
+            console.log("Email not found. Password reset failed.");
+            setTimeout(function () {
+                window.location.href = "../templates/log_in.html";
+            }, 2000);
+=======
 
+>>>>>>> d965a035e408b531221cd04d1bd4a5753825363f
         }
 
         // localStorage.setItem("users", JSON.stringify(users));
