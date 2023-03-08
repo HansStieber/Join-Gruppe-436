@@ -88,6 +88,7 @@ function sendMail() {
  */
 function guestLogin() {
     currentNavPoint = window.location.href = './summary.html';
+    localStorage.clear();
 }
 
 

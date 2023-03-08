@@ -15,11 +15,11 @@ function login() {
       backend.setItem("password", password);
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
-      localStorage.setItem("currentUser", existingUser.name)
       localStorage.setItem("rememberLogin", rememberMe)
     } else {
       localStorage.setItem("rememberLogin", rememberMe);
       console.log(rememberMe);
+      localStorage.clear();
     }
     setTimeout(function () {
       window.location.href = "./summary.html";
