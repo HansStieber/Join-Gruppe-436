@@ -310,5 +310,38 @@ input {
 }
 
 
+@media (max-width: 700px) {
+    .login-container {
+        width: 455px;
+        height: 374px;
+    }
+
+    .login-container h1 {
+        font-size: 38px;
+    }
+
+    .credentials input {
+        width: 285px;
+    }
+
+    .login_button {
+        font-size: 14px;
+    }
+
+    .guest_button {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .login-container {
+        width: 350px;
+    }
+
+    .remember_me_forgotten a {
+        font-size: 12px;
+    }
+}
 
 
