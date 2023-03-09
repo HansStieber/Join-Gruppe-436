@@ -136,6 +136,7 @@ function resetPassword() {
     if (new_password === new_passwordCONF) {
         if (existingUser) {
             localStorage.setItem("password", new_password);
+            backend.setItem("password", new_password);
             existingUser.password = new_password
             backend.setItem("users", JSON.stringify(users));
         }
