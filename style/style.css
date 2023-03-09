@@ -408,6 +408,27 @@ input {
     .guest_button {
         margin-top: 15px;
     }
+
+    @keyframes fade-in {
+
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+    
+        50% {
+            left: 49%;
+            top: 49%;
+        }
+    
+        100% {
+            left: 32px;
+            top: 14px;
+            ;
+        }
 }
 
 
