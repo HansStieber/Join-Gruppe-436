@@ -409,6 +409,18 @@ input {
         margin-top: 15px;
     }
 
+    .resetPWackknowledge {
+        margin-top: 80px;
+    }
+    .signup {
+        bottom: -3px;
+    }
+
+    .signup p {
+        font-size: 19px;
+        margin-left: 22px;
+    }
+
     @keyframes fade-in {
 
         0% {
@@ -429,6 +441,7 @@ input {
             top: 14px;
             ;
         }
+    }
+
+
 }
-
-
