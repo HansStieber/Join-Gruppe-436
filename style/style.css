@@ -42,7 +42,7 @@ body {
 
     100% {
         left: 80px;
-        top: 77px;
+        top: 53px;
         ;
     }
 
@@ -103,6 +103,7 @@ body {
     align-items: center;
     display: flex;
     margin-bottom: 25px;
+    align-items: flex-end;
 }
 
 .remember_me {
@@ -313,7 +314,7 @@ input {
 @media (max-width: 700px) {
     .login-container {
         width: 455px;
-        height: 374px;
+        height: 527px;
     }
 
     .login-container h1 {
@@ -331,6 +332,38 @@ input {
     .guest_button {
         font-size: 14px;
     }
+
+    .login_form_buttons {
+        margin-top: 18px;
+    }
+
+  
+
+    .remember_me_forgotten {
+        align-items: flex-end;
+        flex-direction: column;
+        margin-left: -120px;
+    }
+
+    .remember_me_forgotten a {
+        margin-top: 15px;
+    }
+
+    .remember_me {
+        margin-top: 15px;
+    }
+
+   .signup {
+        bottom: 67px;
+        top: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: unset;
+        margin-left: 71px;
+   }
+   
+        
 }
 
 
@@ -341,6 +374,39 @@ input {
 
     .remember_me_forgotten a {
         font-size: 12px;
+    }
+
+    .remember_me_forgotten {
+        display: flex;
+        margin-bottom: 25px;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        margin-left: -115px;
+        
+    }
+    .signup {
+        margin-left: 23px;
+    }
+
+    
+
+    .remember_me {
+        margin-top: 15px;
+    }
+
+    .password_forgotten {
+        margin-top: 13px;
+        font-size: 15px;
+    }
+
+    .login_form_buttons {
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: unset;
+    }
+
+    .guest_button {
+        margin-top: 15px;
     }
 }
 
