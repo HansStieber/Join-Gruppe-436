@@ -362,6 +362,14 @@ input {
         right: unset;
         margin-left: 71px;
    }
+
+   #login-email {
+        background: url(../assets/img/user-6-32.png) no-repeat 240px;
+    }
+
+    #login-password {
+        background: url(../assets/img/mail-32.png) no-repeat 240px;
+    }
    
         
 }
@@ -386,6 +394,7 @@ input {
     }
     .signup {
         margin-left: 23px;
+        bottom: -3px;
     }
 
     
@@ -411,9 +420,6 @@ input {
 
     .resetPWackknowledge {
         margin-top: 80px;
-    }
-    .signup {
-        bottom: -3px;
     }
 
     .signup p {

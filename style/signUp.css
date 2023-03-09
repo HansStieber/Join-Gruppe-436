@@ -124,6 +124,22 @@
 
     .signUp-container button {
         margin-bottom: 15px;
+        margin-top: unset;
+    }
+
+    
+}
+
+@media (max-width: 600px){
+    .signup {
+        bottom: 67px;
+        top: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: unset;
+        margin-left: 71px;
+        position: absolute;
     }
 }
 
@@ -143,5 +159,16 @@
         left: 50%;
         top: 30%;
         width: 35px;
+    }
+
+    .signup {
+        bottom: 67px;
+        top: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: unset;
+        margin-left: 71px;
+        position: absolute;
     }
 }
