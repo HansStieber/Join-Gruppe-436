@@ -104,6 +104,8 @@ function openLogin() {
 function signUp() {
     let loginContainer = document.getElementById("login-container");
     let signUpContainer = document.getElementById("signUp");
+    let forgotPasswordContainer = document.getElementById('forgotPw');
+    forgotPasswordContainer.style.display = "none";
     loginContainer.style.display = "none";
     signUpContainer.style.display = "flex";
 }
@@ -112,7 +114,7 @@ function signUp() {
 function forgotPassword() {
     let forgotContainer = document.getElementById("forgotPw");
     let loginContainer = document.getElementById("login-container");
-    forgotContainer.removeAttribute("style");
+    forgotContainer.style.display = "flex";
     loginContainer.style.display = "none";
 }
 
