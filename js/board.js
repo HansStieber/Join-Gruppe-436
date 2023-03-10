@@ -219,6 +219,7 @@ function setNewTodoIds() {
  */
 function startDragging(id) {
     currentDraggedElement = id;
+    showDropableSpace();
 }
 
 /**
@@ -235,6 +236,7 @@ function allowDrop(dragEvent) {
  * @param {string} status - there are 4 different status option: to do, in progress, feedback and done
  */
 function moveTo(status) {
+    hideDropableSpace();
     todos[currentDraggedElement]['status'] = status;
     renderBoard(todos);
     saveStatus();
@@ -328,4 +330,27 @@ function howMuchUsersAreAssigned(idOfCard) {
 
 function openMoveMenu() {
     document.getElementById('mobileMove').classList.toggle('d-none');
+}
+
+// show/hide Drag and Drop dotted divs 
+function showDropableSpace() {
+    let todoDropHelp = document.getElementById('todo-drop-help');
+    let progressDropHelp = document.getElementById('progress-drop-help');
+    let doneDropHelp = document.getElementById('feedback-drop-help');
+    let feedbackDropHelp = document.getElementById('done-drop-help');
+    todoDropHelp.classList.remove('d-none');
+    progressDropHelp.classList.remove('d-none');
+    doneDropHelp.classList.remove('d-none');
+    feedbackDropHelp.classList.remove('d-none');
+}
+
+function hideDropableSpace() {
+    let todoDropHelp = document.getElementById('todo-drop-help');
+    let progressDropHelp = document.getElementById('progress-drop-help');
+    let doneDropHelp = document.getElementById('feedback-drop-help');
+    let feedbackDropHelp = document.getElementById('done-drop-help');
+    todoDropHelp.classList.add('d-none');
+    progressDropHelp.classList.add('d-none');
+    doneDropHelp.classList.add('d-none');
+    feedbackDropHelp.classList.add('d-none');
 }
