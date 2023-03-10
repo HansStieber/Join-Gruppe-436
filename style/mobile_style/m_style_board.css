@@ -88,6 +88,10 @@
     .slide-board-scroll::-webkit-scrollbar {
         display: none;
     }
+
+    .move-btn{
+        display: inline;
+    }
 }
 
 @media(max-height:985px) {
@@ -134,9 +138,7 @@
         width: 33px;
     }
 
-    .move-btn{
-        display: inline;
-    }
+  
 }
 
 @media(max-width:610px) {
