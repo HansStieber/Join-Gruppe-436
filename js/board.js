@@ -236,7 +236,6 @@ function allowDrop(dragEvent) {
  * @param {string} status - there are 4 different status option: to do, in progress, feedback and done
  */
 function moveTo(status) {
-    hideDropableSpace();
     todos[currentDraggedElement]['status'] = status;
     renderBoard(todos);
     saveStatus();
