@@ -181,9 +181,17 @@ async function showNewTaskCard() {
  * card, the card closes.
  */
 window.addEventListener('click', (e) => {
-    if (newTaskOpen == true && window.innerWidth > 992) {
+    if (newTaskOpen && window.innerWidth > 992) {
         if (document.getElementById('content-new-task') && !document.getElementById('content-new-task').contains(e.target)) {
             hideNewTaskCard();
+        }
+    }
+});
+
+window.addEventListener('click', (e) => {
+    if (detailViewOpen && window.innerWidth > 992) {
+        if (document.getElementById('detailView') && !document.getElementById('detailView').contains(e.target)) {
+            closeDetailView();
         }
     }
 });

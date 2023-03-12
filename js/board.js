@@ -10,7 +10,7 @@ let currentDraggedElements;
  * Id of the task that is currently edited.
  */
 let taskToEdit;
-
+let detailViewOpen = false;
 let checkedSubtasks = 0;
 
 /**
@@ -315,6 +315,7 @@ function findTask() {
  * @param {number} idOfCard - id of the current task card
  */
 function showTaskCard(idOfCard) {
+    detailViewOpen = true;
     taskToEdit = idOfCard;
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.remove('d-none');
@@ -328,6 +329,7 @@ function showTaskCard(idOfCard) {
  * This function closes the detail view of the card when pressing the x-mark. The shadow-screen is removed and the board update.
  */
 function closeDetailView() {
+    detailViewOpen = false;
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
