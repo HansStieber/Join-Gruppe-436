@@ -375,11 +375,11 @@ input {
     }
 
     #login-email {
-        background: url(../assets/img/user-6-32.png) no-repeat 240px;
+        background: url(../assets/img/user-icon.svg) no-repeat 240px;
     }
 
     #login-password {
-        background: url(../assets/img/mail-32.png) no-repeat 240px;
+        background: url(../assets/img/mail-icon.svg) no-repeat 240px;
     }
 
 
