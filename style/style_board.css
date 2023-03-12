@@ -217,7 +217,7 @@
     flex-direction: column;
 }
 
-.card-text span:nth-of-type(2) {
+.card-info {
     color: #A8A8A8;
     max-height: 65px;
     margin-bottom: 20px;
@@ -239,13 +239,18 @@
 .progress-bar {
     background: rgba(93, 93, 93, 0.1);
     justify-content: flex-start;
-    border-radius: 100px;
+    border-radius: 20px;
     align-items: center;
     position: relative;
-    padding: 0 5px;
     display: flex;
     height: 10px;
     width: 140px;
+}
+
+.inner-progress-bar {
+    background-color: #29ABE3;
+    height: 10px;
+    border-radius: 20px;
 }
 
 .card-bottom {

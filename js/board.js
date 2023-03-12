@@ -11,6 +11,8 @@ let currentDraggedElements;
  */
 let taskToEdit;
 
+let checkedSubtasks = 0;
+
 /**
  * The function initiates the Board. The data from the backend is loaded and the board is rendered.
  */
@@ -72,9 +74,11 @@ function renderTodoColumn(todos) {
         const id = todo[i].id;
         const assignments = todo[i].assignments;
 
+        countCheckedSubtasks(element);
         document.getElementById('todo').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkedSubtasks = 0;
     }
 }
 
@@ -86,9 +90,11 @@ function renderProgressColumn(todos) {
         const id = progress[i].id;
         const assignments = progress[i].assignments;
 
+        countCheckedSubtasks(element);
         document.getElementById('progress').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkedSubtasks = 0;
     }
 }
 
@@ -100,9 +106,11 @@ function renderFeedbackColumn(todos) {
         const id = feedback[i].id;
         const assignments = feedback[i].assignments;
 
+        countCheckedSubtasks(element);
         document.getElementById('feedback').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkedSubtasks = 0;
     }
 }
 
@@ -113,12 +121,24 @@ function renderDoneColumn(todos) {
         const element = done[i];
         const id = done[i].id;
         const assignments = done[i].assignments;
-        document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
 
+        countCheckedSubtasks(element);
+        document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkedSubtasks = 0;
     }
 }
+
+
+function countCheckedSubtasks(element) {
+    for (let i = 0; i < element.subtasks.length; i++) {
+        if (element.subtasks[i].checked) {
+            checkedSubtasks++;
+        }
+    }
+}
+
 
 /**
  * This function checks, if a second user is intended for a task. If so an icon with initials is created.
