@@ -14,6 +14,11 @@ function editTask(id) {
     setCurrentPriority(id);
     loadAssignments(id);
     loadSubtasksAtEdit(id);
+    editTaskOpen = true;
+    window.removeEventListener('click', eventListenerDetailView);
+    setTimeout(() => {
+        window.addEventListener('click',  eventListenerEditTask);
+    }, 10);
 }
 
 
@@ -99,8 +104,14 @@ function assignAssignedContacts(id) {
  * @param {number} id - id of the todo which got edited
  */
 function saveChanges(id) {
+    detailViewOpen = true;
+    editTaskOpen = false;
     checkIfInvalidInput()
     checkIfInputMissingAndPushEditedTask(id);
+    window.removeEventListener('click', eventListenerEditTask);
+    setTimeout(() => {
+        window.addEventListener('click',  eventListenerDetailView);
+    }, 10);
 }
 
 

@@ -11,7 +11,14 @@ let currentDraggedElements;
  */
 let taskToEdit;
 let detailViewOpen = false;
+let editTaskOpen = false;
 let checkedSubtasks = 0;
+
+/*
+document.addEventListener('mousemove', (event) => {
+
+    console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`);
+});*/
 
 /**
  * The function initiates the Board. The data from the backend is loaded and the board is rendered.
@@ -322,6 +329,27 @@ function showTaskCard(idOfCard) {
     showShadowScreen('detail-view-shadow-screen');
     detailContainer.innerHTML = generateHTMLDetailCard(idOfCard);
     howMuchUsersAreAssigned(idOfCard);
+    setTimeout(() => {
+        window.addEventListener('click', eventListenerDetailView);
+    }, 10);
+}
+
+
+function eventListenerDetailView(e) {
+    if (detailViewOpen && window.innerWidth > 992) {
+        if (!document.getElementById('detailView').contains(e.target)) {
+            closeDetailView();
+        }
+    }
+}
+
+
+function eventListenerEditTask(e) {
+    if (editTaskOpen && window.innerWidth > 992) {
+        if (!document.getElementById('detailView').contains(e.target)) {
+            closeDetailView();
+        }
+    }
 }
 
 
@@ -329,11 +357,16 @@ function showTaskCard(idOfCard) {
  * This function closes the detail view of the card when pressing the x-mark. The shadow-screen is removed and the board update.
  */
 function closeDetailView() {
+    editTaskOpen = false;
     detailViewOpen = false;
+    subtasks = [];
+    assignedContacts = [];
     let detailContainer = document.getElementById('detailView');
     detailContainer.classList.add('d-none');
     hideShadowScreen('detail-view-shadow-screen');
     renderBoard(todos);
+    window.removeEventListener('click', eventListenerDetailView);
+    window.removeEventListener('click', eventListenerEditTask);
 }
 
 

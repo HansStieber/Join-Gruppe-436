@@ -188,13 +188,17 @@ window.addEventListener('click', (e) => {
     }
 });
 
-window.addEventListener('click', (e) => {
-    if (detailViewOpen && window.innerWidth > 992) {
-        if (document.getElementById('detailView') && !document.getElementById('detailView').contains(e.target)) {
-            closeDetailView();
+/*window.addEventListener('click', (a) => {
+    setTimeout(() => {
+        console.log(detailViewOpen)
+        if (detailViewOpen && window.innerWidth > 992) {
+            if (document.getElementById('detailView') && !document.getElementById('detailView').contains(a.target)) {
+                closeDetailView();
+            }
         }
-    }
-});
+
+    }, 1);
+});*/
 
 
 /**
