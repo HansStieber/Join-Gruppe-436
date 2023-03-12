@@ -95,24 +95,30 @@ function guestLogin() {
 function openLogin() {
     let loginContainer = document.getElementById("login-container");
     let signUpContainer = document.getElementById("signUp");
+    let signUpButton = document.getElementById("signup_button");
     loginContainer.classList.remove("fade-in-login");
     loginContainer.style.display = "flex";
     signUpContainer.style.display = "none";
+    signUpButton.style.display = "";
 }
 
 
 function signUp() {
     let loginContainer = document.getElementById("login-container");
     let signUpContainer = document.getElementById("signUp");
+    let forgotPasswordContainer = document.getElementById('forgotPw');
+    let signUpButton = document.getElementById("signup_button");
+    forgotPasswordContainer.style.display = "none";
     loginContainer.style.display = "none";
     signUpContainer.style.display = "flex";
+    signUpButton.style.display = "none";
 }
 
 
 function forgotPassword() {
     let forgotContainer = document.getElementById("forgotPw");
     let loginContainer = document.getElementById("login-container");
-    forgotContainer.removeAttribute("style");
+    forgotContainer.style.display = "flex";
     loginContainer.style.display = "none";
 }
 
@@ -130,6 +136,7 @@ function resetPassword() {
     if (new_password === new_passwordCONF) {
         if (existingUser) {
             localStorage.setItem("password", new_password);
+            backend.setItem("password", new_password);
             existingUser.password = new_password
             backend.setItem("users", JSON.stringify(users));
         }

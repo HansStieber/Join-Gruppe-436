@@ -402,8 +402,8 @@
     }
 
     .col-1 {
-        width: 6em;
-        height: 6em;
+        width: 93px;
+        height: 110px;
     }
 
     .col-1>span,
@@ -418,7 +418,7 @@
     }
 
     .col-3 {
-        width: 305px;
+        width: 295px;
         height: 110px;
     }
 

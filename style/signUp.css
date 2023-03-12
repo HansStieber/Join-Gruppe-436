@@ -10,7 +10,7 @@
 #joinLogo-SignUp {
     position: absolute;
     left: 80px;
-    top: 77px;
+    top: 53px;
     width: 100px;
 }
 
@@ -79,4 +79,96 @@
     flex-direction: column;
     margin-top: 30px;
 
+}
+
+
+@media (max-width: 1100px) {
+    .signUp-container {
+        width: 450px;
+    }
+    #backArrowSignUp {
+        position: relative;
+        left: -180px;
+    }
+    .maincontainer-SignUp h1 {
+        font-size: 40px;
+    }
+
+    #joinLogo-SignUp {
+        width: 60px;
+        top: 53px;
+    }
+    #join-logo {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width: 60px;
+    }
+}
+
+@media (max-width: 700px) {
+    #joinLogo-SignUp {
+        top: 53px;
+    }
+
+    .signUp-container {
+        width: 380px;
+        height: 500px;
+    }
+
+    #backArrowSignUp {
+        position: relative;
+        left: -144px;
+        top: 48px;
+    }
+
+    .signUp-container button {
+        margin-bottom: 15px;
+        margin-top: unset;
+    }
+
+    
+}
+
+@media (max-width: 600px){
+    .signup {
+        bottom: 67px;
+        top: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: unset;
+        margin-left: 71px;
+        position: absolute;
+    }
+}
+
+@media (max-width: 500px) {
+    .signUp-container button {
+        margin-top: unset;
+    }
+
+    #joinLogo-SignUp {
+        width: 35px;
+        top: 14px;
+        left: 32px;
+    }
+
+    #join-logo {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width: 35px;
+    }
+
+    .signup {
+        bottom: 67px;
+        top: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: unset;
+        margin-left: 71px;
+        position: absolute;
+    }
 }
