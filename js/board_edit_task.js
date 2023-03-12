@@ -108,6 +108,7 @@ function saveChanges(id) {
     editTaskOpen = false;
     checkIfInvalidInput()
     checkIfInputMissingAndPushEditedTask(id);
+    saveToBackend();
     window.removeEventListener('click', eventListenerEditTask);
     setTimeout(() => {
         window.addEventListener('click',  eventListenerDetailView);
