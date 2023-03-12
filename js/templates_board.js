@@ -9,7 +9,11 @@ function generateHTMLTaskCard(element, assignments) {
                                     <span class="card-info">${element.description}</span>
                                     <div class="progress-div">
                                             <div class="progress-bar"></div>
-                                            <span>${element.subtasks.length}</span></div> 
+                                            <!--<span>${element.subtasks.checked}</span>-->
+                                            <span>0/</span>
+                                            <span>${element.subtasks.length}</span>
+                                            <span>Done</span>
+                                        </div> 
                                     </div> 
                                 <div class="card-bottom">
                                     <div id="user-icons-${element.id}" class="user-icons">
