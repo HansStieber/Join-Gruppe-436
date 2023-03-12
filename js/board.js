@@ -252,7 +252,7 @@ function setNewTodoIds() {
  */
 function startDragging(id) {
     currentDraggedElement = id;
-    showDropableSpace();
+    setTimeout(showDropableSpace, 50); // Timout to avoid Bug
 }
 
 /**
