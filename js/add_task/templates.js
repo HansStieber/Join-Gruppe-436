@@ -204,6 +204,20 @@ function renderEditCard(id, title, description, date) {
             <div id="assignments-icons-container" class="assignments-icons-container">
             </div>
         </div>
+        <div class="field-container">
+                <label class="label" for="subtask">Subtasks</label>
+                <div class="new-subtask-container">
+                    <input type="text" id="subtask" name="subtask" placeholder="Add new subtask"
+                        onclick="createNewSubtask()">
+                    <img id="icon-plus" class="new-category-icon right-pos-no-filter" src="assets/img/icon_plus.svg">
+                    <img id="close-subtask-icon" class="new-category-icon left-pos d-none"
+                        src="assets/img/close_new_task_button.svg" onclick="closeNewSubtask()">
+                    <div id="border-small" class="border-small mid-pos d-none"></div>
+                    <img id="create-subtask-icon" class="new-category-icon right-pos d-none"
+                        src="assets/img/confirm.svg" onclick="addNewSubtask()">
+                </div>
+                <div id="subtasks"></div>
+            </div>
         <div class="edit-button-container">
         <div class="edit-todo-button" onclick="saveChanges(${id})">
             </div>

@@ -13,6 +13,7 @@ function editTask(id) {
     renderEditCard(id, title, description, date);
     setCurrentPriority(id);
     loadAssignments(id);
+    loadSubtasksAtEdit(id);
 }
 
 
@@ -45,6 +46,19 @@ function loadAssignments(id) {
     pushAssignedContactsToAssignments(id);
     loadAssignmentOptions();
     assignAssignedContacts(id);
+}
+
+
+function loadSubtasksAtEdit(id) {
+    pushSubtasksToSubtasks(id);
+    loadSubtasks();
+}
+
+function pushSubtasksToSubtasks(id) {
+    for (let i = 0; i < todos[id].subtasks.length; i++) {
+        const option = todos[id].subtasks[i];
+        subtasks.push(option);
+    }
 }
 
 
@@ -132,7 +146,7 @@ function pushChanges(id) {
     setPriority(id);
     getNewAssignments(id);
     showTaskCard(id);
-    saveTasks();
+    saveEditedSubtasks(id);
 }
 
 
@@ -201,4 +215,14 @@ function getNewAssignments(id) {
         todos[id].assignments.push(contact);
     }
     assignedContacts = [];
+}
+
+
+function saveEditedSubtasks(id) {
+    todos[id].subtasks = [];
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        todos[id].subtasks.push(subtask);
+    }
+    subtasks = [];
 }

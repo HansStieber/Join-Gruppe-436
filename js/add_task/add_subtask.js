@@ -86,6 +86,9 @@ function loadSubtasks() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         renderSubtasks(subtask, i);
+        if (subtask.checked) {
+            selectSubtask(i);
+        }
     }
 }
 
