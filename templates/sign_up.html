@@ -5,8 +5,12 @@
         <h1>Sign up</h1>
         <img src="../assets/img/blue_underline.png" id="blue_underline">
         <form class="SignUpCredentials" onsubmit="register(); return false">
-            <input id="name" type="text" name="name" placeholder="Name" pattern="([a-zA-ZäöüÄÖÜß]+\s+){1,10}([a-zA-ZäöüÄÖÜß]+)" title="Vor- und Nachname sind einzugeben!" required>
-            <input id="email" name="email" type="email" placeholder="Email" pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])" title="Gib eine gültige E-Mail-Adresse ein! Umlaute sind nicht erlaubt!" required>
+            <input id="name" type="text" name="name" placeholder="Name"
+                pattern="([a-zA-ZäöüÄÖÜß]+\s+){1,10}([a-zA-ZäöüÄÖÜß]+)" title="Vor- und Nachname sind einzugeben!"
+                required>
+            <input id="email" name="email" type="email" placeholder="Email"
+                pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
+                title="Gib eine gültige E-Mail-Adresse ein! Umlaute sind nicht erlaubt!" required>
             <input id="password" type="password" name="password" placeholder="Password" required>
             <button class="signUp_button" id="signUp_button">Sign up</button>
         </form>
