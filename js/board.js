@@ -29,7 +29,7 @@ function checkIfProgressBar(i) {
 }
 
 function calculateProgressBar(element) {
-    return (140 / element.subtasks.length) * checkedSubtasks;
+    return (100 / element.subtasks.length) * checkedSubtasks;
 }
 
 /**
@@ -252,7 +252,7 @@ function setNewTodoIds() {
  */
 function startDragging(id) {
     currentDraggedElement = id;
-    showDropableSpace();
+    setTimeout(showDropableSpace, 50); // Timout to avoid Bug
 }
 
 /**
