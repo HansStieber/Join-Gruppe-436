@@ -259,7 +259,21 @@ function setNewTodoIds() {
  */
 function startDragging(id) {
     currentDraggedElement = id;
-    setTimeout(showDropableSpace, 50); // Timout to avoid Bug
+    setTimeout(() => {
+        hideCardColumnDivs(id);
+        showDropableSpace();
+    }, 50);
+    //setTimeout(, 50); // Timout to avoid Bug
+}
+
+
+function hideCardColumnDivs(id) {
+    for (let i = 0; i < todos.length; i++) {
+        const divId = todos[i].id;
+        if (divId !== id) {
+            document.getElementById(divId).classList.add('d-none');
+        }
+    }
 }
 
 /**
@@ -412,6 +426,7 @@ function showDropableSpace() {
 }
 
 function hideDropableSpace() {
+    showCardColumnDivs();
     let todoDropHelp = document.getElementById('todo-drop-help');
     let progressDropHelp = document.getElementById('progress-drop-help');
     let doneDropHelp = document.getElementById('feedback-drop-help');
@@ -420,4 +435,11 @@ function hideDropableSpace() {
     progressDropHelp.classList.add('d-none');
     doneDropHelp.classList.add('d-none');
     feedbackDropHelp.classList.add('d-none');
+}
+
+function showCardColumnDivs() {
+    for (let i = 0; i < todos.length; i++) {
+        const divId = todos[i].id;
+        document.getElementById(divId).classList.remove('d-none');
+    }
 }
