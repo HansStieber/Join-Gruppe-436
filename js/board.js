@@ -29,7 +29,7 @@ function checkIfProgressBar(i) {
 }
 
 function calculateProgressBar(element) {
-    return (140 / element.subtasks.length) * checkedSubtasks;
+    return (100 / element.subtasks.length) * checkedSubtasks;
 }
 
 /**
