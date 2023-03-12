@@ -90,14 +90,25 @@ body {
 }
 
 #login-email {
-    background: url("../assets/img/user-6-32.png") no-repeat 300px;
+    background: url("../assets/img/mail-icon.svg") no-repeat 310px;
 }
 
 #login-password {
-    background: url("../assets/img/mail-32.png") no-repeat 300px;
+    background: url("../assets/img/lock-icon.svg") no-repeat 310px;
+
 }
 
+#name {
+    background: url("../assets/img/user-icon.svg") no-repeat 310px;
+}
 
+#email {
+    background: url("../assets/img/mail-icon.svg") no-repeat 310px;
+}
+
+#password {
+    background: url("../assets/img/lock-icon.svg") no-repeat 310px;
+}
 
 .remember_me_forgotten {
     align-items: center;
@@ -279,16 +290,16 @@ input {
 
 
 /* HELP-PAGE */
-.help-container{
+.help-container {
     margin-right: 60px;
     font-size: 18px;
 }
 
-.help-container >h1 {
+.help-container>h1 {
     font-size: 61px;
 }
 
-.help-container li::marker{
+.help-container li::marker {
     font-size: 25px;
     font-weight: bold;
 }
@@ -305,7 +316,7 @@ input {
 }*/
 
 @media (max-width: 450px) {
-    .help-container{
+    .help-container {
         margin-right: 10px;
     }
 }
@@ -337,7 +348,7 @@ input {
         margin-top: 18px;
     }
 
-  
+
 
     .remember_me_forgotten {
         align-items: flex-end;
@@ -353,7 +364,7 @@ input {
         margin-top: 15px;
     }
 
-   .signup {
+    .signup {
         bottom: 67px;
         top: unset;
         display: flex;
@@ -361,17 +372,17 @@ input {
         align-items: center;
         right: unset;
         margin-left: 71px;
-   }
+    }
 
-   #login-email {
+    #login-email {
         background: url(../assets/img/user-6-32.png) no-repeat 240px;
     }
 
     #login-password {
         background: url(../assets/img/mail-32.png) no-repeat 240px;
     }
-   
-        
+
+
 }
 
 
@@ -390,14 +401,15 @@ input {
         align-items: flex-start;
         flex-direction: column-reverse;
         margin-left: -115px;
-        
+
     }
+
     .signup {
         margin-left: 23px;
         bottom: -3px;
     }
 
-    
+
 
     .remember_me {
         margin-top: 15px;
@@ -432,16 +444,16 @@ input {
         0% {
             opacity: 0;
         }
-    
+
         100% {
             opacity: 1;
         }
-    
+
         50% {
             left: 49%;
             top: 49%;
         }
-    
+
         100% {
             left: 32px;
             top: 14px;
