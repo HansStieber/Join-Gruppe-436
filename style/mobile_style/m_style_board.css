@@ -146,7 +146,7 @@
 
     .content {
         overflow: auto;
-        height: calc(100vh - 173px);
+        /*height: calc(100vh - 173px);*/
     }
 
     .cards-slide-div {
