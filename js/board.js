@@ -22,6 +22,12 @@ async function initBoard() {
     checkURLandHighlight('board');
 }
 
+function checkIfProgressBar(i) {
+    let progressBar = document.getElementById(`progress-bar-${i}`);
+    if (checkedSubtasks > 0)
+        progressBar.classList.remove('d-none');
+}
+
 function calculateProgressBar(element) {
     return (140 / element.subtasks.length) * checkedSubtasks;
 }
@@ -81,6 +87,7 @@ function renderTodoColumn(todos) {
         document.getElementById('todo').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkIfProgressBar(id);
         checkedSubtasks = 0;
     }
 }
@@ -97,6 +104,7 @@ function renderProgressColumn(todos) {
         document.getElementById('progress').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkIfProgressBar(id);
         checkedSubtasks = 0;
     }
 }
@@ -113,6 +121,7 @@ function renderFeedbackColumn(todos) {
         document.getElementById('feedback').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkIfProgressBar(id);
         checkedSubtasks = 0;
     }
 }
@@ -129,6 +138,7 @@ function renderDoneColumn(todos) {
         document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
+        checkIfProgressBar(id);
         checkedSubtasks = 0;
     }
 }

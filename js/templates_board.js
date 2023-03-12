@@ -7,14 +7,14 @@ function generateHTMLTaskCard(element, assignments) {
                                 <div class="card-text">
                                     <span class="card-headline">${element.title}</span>
                                     <span class="card-info">${element.description}</span>
-                                    <div class="progress-div">
-                                            <div class="progress-bar">
+                                    <div id="progress-bar-${element.id}" class="progress-div d-none">
+                                            <div  class="progress-bar">
                                                 <div class="inner-progress-bar" style= "width:${calculateProgressBar(element)}px"></div>
                                             </div>
                                             <span>${checkedSubtasks}</span>
                                             <span>/</span>
                                             <span>${element.subtasks.length}</span>
-                                            <span>Done</span>
+                                            <span style="margin-left: 5px">Done</span>
                                         </div> 
                                     </div> 
                                 <div class="card-bottom">
@@ -36,7 +36,7 @@ function generateHTMLDetailCard(idOfCard) {
     let categoryBg = todoArray.category.color;
     let title = todoArray.title;
     let description = todoArray.description;
-    let date_DE = new Date(todoArray.date).toLocaleDateString('de-DE');;
+    let date_DE = new Date(todoArray.date).toLocaleDateString('de-DE');
     let priority = todoArray.priority;
     return /*html*/`
         
