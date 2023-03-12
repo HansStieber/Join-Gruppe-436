@@ -22,6 +22,9 @@ async function initBoard() {
     checkURLandHighlight('board');
 }
 
+function calculateProgressBar(element) {
+    return (140 / element.subtasks.length) * checkedSubtasks;
+}
 
 /**
  * The Eventlistener runs a function on resizing the window. If the location is currently contacts.html or board.html and the new task card is

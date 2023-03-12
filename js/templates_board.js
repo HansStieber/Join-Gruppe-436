@@ -9,7 +9,7 @@ function generateHTMLTaskCard(element, assignments) {
                                     <span class="card-info">${element.description}</span>
                                     <div class="progress-div">
                                             <div class="progress-bar">
-                                                <div class="inner-progress-bar" style=" width: 126px;"></div>
+                                                <div class="inner-progress-bar" style= "width:${calculateProgressBar(element)}px"></div>
                                             </div>
                                             <span>${checkedSubtasks}</span>
                                             <span>/</span>
