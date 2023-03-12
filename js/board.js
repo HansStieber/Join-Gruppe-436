@@ -262,11 +262,15 @@ function startDragging(id) {
     setTimeout(() => {
         hideCardColumnDivs(id);
         showDropableSpace();
-    }, 50);
-    //setTimeout(, 50); // Timout to avoid Bug
+    }, 50); // Timout to avoid Bug
 }
 
 
+/**
+ * The function hides all Cards that are not currently dragged.
+ * 
+ * @param {number} id - id of the current task card
+ */
 function hideCardColumnDivs(id) {
     for (let i = 0; i < todos.length; i++) {
         const divId = todos[i].id;
@@ -349,6 +353,9 @@ function showTaskCard(idOfCard) {
 }
 
 
+/**
+ * Support function for eventlistener, to listen for clicks outside the detailView container when detail view is open.
+ */
 function eventListenerDetailView(e) {
     if (detailViewOpen && window.innerWidth > 992) {
         if (!document.getElementById('detailView').contains(e.target)) {
@@ -358,6 +365,9 @@ function eventListenerDetailView(e) {
 }
 
 
+/**
+ * Support function for eventlistener, to listen for clicks outside the detailView container when edit task is open.
+ */
 function eventListenerEditTask(e) {
     if (editTaskOpen && window.innerWidth > 992) {
         if (!document.getElementById('detailView').contains(e.target)) {

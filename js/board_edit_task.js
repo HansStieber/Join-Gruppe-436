@@ -230,6 +230,12 @@ function getNewAssignments(id) {
 }
 
 
+/**
+ * The function empties the subtasks array of the current todo. It then loops through the subtasks array and pushes the subtasks
+ * to the subtasks array of the current todo. It finishes by emptying the subtasks array.
+ * 
+ * @param {number} id - id of current todo
+ */
 function saveEditedSubtasks(id) {
     todos[id].subtasks = [];
     for (let i = 0; i < subtasks.length; i++) {
