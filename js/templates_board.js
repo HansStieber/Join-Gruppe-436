@@ -7,10 +7,10 @@ function generateHTMLTaskCard(element, assignments) {
                                 <div class="card-text">
                                     <span class="card-headline">${element.title}</span>
                                     <span class="card-info">${element.description}</span>
-                                    <!-- <div class="progress-div">
+                                    <div class="progress-div">
                                             <div class="progress-bar"></div>
-                                            <span>${element.progress}</span></div> -->
-                                    <!-- </div> -->
+                                            <span>${element.progress}</span></div>
+                                    </div>
                                 <div class="card-bottom">
                                     <div id="user-icons-${element.id}" class="user-icons">
                                         <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>

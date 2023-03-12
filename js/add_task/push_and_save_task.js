@@ -17,7 +17,7 @@ async function pushTask() {
     let date = document.getElementById('date').value;
     getPriority();
     getId();
-    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasksChecked, progressStatus, id);
+    let newTask = new Task(title, description, categoryTitle, assignedContacts, currentColor, date, priority, subtasks, progressStatus, id);
     todos.push(newTask);
     await saveToBackend(categoryTitle);
 }

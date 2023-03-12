@@ -295,7 +295,7 @@ function checkIfInputMissingAndPushNewTask() {
  * The function initiates functions essential for submitting the form and creating a new task.
  */
 async function pushNewTask() {
-    pickSubtasks();
+    //pushSubtasks();
     await pushTask();
     clearAllInputFields();
     showConfirmation();
@@ -304,8 +304,8 @@ async function pushNewTask() {
 
 /**
  * The function loops through the subtasks array and picks all subtasks which are checked and pushes them into the array subtasksChecked. 
- */
-function pickSubtasks() {
+ *//*
+function pushSubtasks() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         if (subtask.checked == true) {
@@ -313,16 +313,16 @@ function pickSubtasks() {
         }
     }
 }
-
+*/
 
 /**
  * The function pushes checked subtasks into array subtasksChecked.
  * 
  * @param {object{}} subtask - object that gets pushed
- */
+ *//*
 function pushCheckedSubtasksIntoArraySubtasksChecked(subtask) {
     subtasksChecked.push(subtask.title);
-}
+}*/
 
 
 /**
