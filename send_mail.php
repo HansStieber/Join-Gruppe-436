@@ -43,7 +43,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $subject = "Password Reset Link";
         /*$subject = "Contact From " . $_POST['name'];*/
         $headers = "From:  noreply@developerakademie.com";
-        $msg = "Hello\n\nthis is your password reset link.\nPlease click on the link bellow and we will redirect you to the reset page.\n\ngruppe-436.developerakademie.net/index.html?resetPassword=$mailAdress";
+        $msg = "Hello\n\nthis is your password reset link.\nPlease click on the link bellow and we will redirect you to the reset page.\n\ngruppe-436.developerakademie.net/reset_password.html?resetPassword=$mailAdress";
 
         mail($_POST['mail'], $subject, $msg, $link, $headers);
         header("Location: " . $redirect); 

@@ -77,8 +77,8 @@ function sendMail() {
     email = email_input;
     setTimeout(function () {
         confirmSentMail.classList.remove("flighUp");
-        document.getElementById("forgotPassword").style.display = "none";
-        document.getElementById("mainContainer-reset").style.display = "";
+        //document.getElementById("forgotPassword").style.display = "none";
+        //document.getElementById("mainContainer-reset").style.display = "";
     }, 2000)
 }
 
