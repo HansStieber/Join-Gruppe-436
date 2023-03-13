@@ -3,7 +3,7 @@
 ########### CONFIG ###############
 
 /*$recipient = 'dom.grub789@gmail.com';*/
-$redirect = 'success.html';
+$redirect = 'https://gruppe-436.developerakademie.net/index.html';
 
 ########### CONFIG END ###########
 
