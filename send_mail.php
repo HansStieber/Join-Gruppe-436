@@ -2,7 +2,7 @@
 
 ########### CONFIG ###############
 
-$recipient = 'dom.grub789@gmail.com';
+/*$recipient = 'dom.grub789@gmail.com';*/
 $redirect = 'success.html';
 
 ########### CONFIG END ###########
@@ -39,10 +39,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case ("POST"): //Send the email;
         header("Access-Control-Allow-Origin: *");
 
-        $subject = "Contact From " . $_POST['name'];
+        $mailAdress = $_POST['mail'];
+        $subject = "Password Reset Link";
+        /*$subject = "Contact From " . $_POST['name'];*/
         $headers = "From:  noreply@developerakademie.com";
+        $msg = "Hello\n\nthis is your password reset link.\nPlease click on the link bellow and we will redirect you to the reset page.\n\ngruppe-436.developerakademie.net/index.html?resetPassword=$mailAdress";
 
-        mail($recipient, $subject, $_POST['message'], $headers);
+        mail($_POST['mail'], $subject, $msg, $link, $headers);
         header("Location: " . $redirect); 
 
         break;
