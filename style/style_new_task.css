@@ -176,7 +176,7 @@
 .content-new-task {
     position: relative;
     width: 1116px;
-    height: 914px;
+    /*height: 914px;*/
     max-height: calc(100vh - 89px);
     padding: 65px 75px 0 75px;
     border-radius: 30px;
@@ -628,7 +628,7 @@ input[type='date']:hover {
 
 .submit-button-header:hover {
     cursor: pointer;
-} 
+}
 
 .submit-button:hover {
     cursor: pointer;
