@@ -166,7 +166,7 @@ function getCardInnerHTML(contact, i) {
                 <span>${firstName}</span>
                 <span>${lastName}</span>
             </div>
-            <a href="#" style="text-decoration-line:none;">${contact.email}</a>
+            <a href="#">${contact.email}</a>
         </div>
     </div>
 `;

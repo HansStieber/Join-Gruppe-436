@@ -251,6 +251,8 @@
 
 .contact-card a {
     color: #007CEE;
+    text-decoration-line: none;
+    word-break: break-all;
 }
 
 .contact-created-message {
