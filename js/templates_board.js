@@ -58,22 +58,17 @@ function generateHTMLDetailCard(idOfCard) {
             <img class="priority-detail-view" src="../assets/img/${priority}_detailview.svg">
         </div class="flex-center">
             <span class="subheading-styling">Assigned to: </span>
-        <div id="assignedContacts">
-        </div>
+        <div id="assignedContacts"></div>
 
         <div class="detail-view-bottom">
             <div class="detail-view-btn-div"> 
-
-            <button id="moveBtn" onclick="openMoveMenu()" class="btn-dark move-btn" > Move
+                <button id="moveBtn" onclick="openMoveMenu()" class="btn-dark move-btn" > Move</button>
                 <div id="mobileMove" class="mobile-move d-none">
                     <div onclick="mobileMoveTo(${idOfCard},'todo')">To do</div>
                     <div onclick="mobileMoveTo(${idOfCard},'progress')">In progress</div>
                     <div onclick="mobileMoveTo(${idOfCard},'feedback')">Feedback</div>
                     <div onclick="mobileMoveTo(${idOfCard},'done')">Done</div>
                 </div>
-            </button>
-
-           
                 <button id="edit-delete-btn" onclick="confirmDelete('deleteTask()')" class="delete-btn delete-btn-board" type="button">
                         <div>
                             <span id="delete-btn-span">Delete</span>

@@ -417,11 +417,42 @@ function howMuchUsersAreAssigned(idOfCard) {
     }
 }
 
-// Drag and Drop alternative to move tasks
+/*----------- DRAG AND DROP ALTERNATIVE FOR MOBILE DEVICES-----------*/
 
+/**
+ * This function shows and removes the mobile-move-menu by pushing the MOVE-Button.
+ */
 function openMoveMenu() {
-    document.getElementById('mobileMove').classList.toggle('d-none');
+    let mobileMoveMenu = document.getElementById('mobileMove');
+    mobileMoveMenu.classList.toggle('d-none');
+    if (!mobileMoveMenu.classList.contains('d-none')) {
+        setTimeout(() => {
+            window.addEventListener('click', eventListenerMoveBtn)
+        }, 10);
+    }
 }
+
+
+/**
+ * This function closes the mobile-move-menu and removes the eventListener.
+ */
+function closeMoveMenu(){
+    document.getElementById('mobileMove').classList.add('d-none');
+    window.removeEventListener('click', eventListenerMoveBtn);
+}
+
+
+/**
+ * Support function for eventlistener, to listen for clicks outside the opend mobile-move-menu.
+ */
+function eventListenerMoveBtn(event){
+    if (window.innerWidth < 992) {
+        if (!document.getElementById('mobileMove').contains(event.target)) {
+            closeMoveMenu();
+        }
+    }
+}
+
 
 // show/hide Drag and Drop dotted divs 
 function showDropableSpace() {
