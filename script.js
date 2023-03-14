@@ -120,8 +120,21 @@ function signUp() {
 function forgotPassword() {
     let forgotContainer = document.getElementById("forgotPw");
     let loginContainer = document.getElementById("login-container");
-    forgotContainer.style.display = "flex";
+    let signUpButton = document.getElementById("signup_button");
+    signUpButton.style.display = "none";
     loginContainer.style.display = "none";
+    forgotContainer.style.display = "flex";
+}
+
+
+function openLoginFromForgotPasswort() {
+    let forgotContainer = document.getElementById("forgotPw");
+    let loginContainer = document.getElementById("login-container");
+    let signUpButton = document.getElementById("signup_button");
+    signUpButton.style.display = "";
+    loginContainer.classList.remove("fade-in-login");
+    forgotContainer.style.display = "none";
+    loginContainer.style.display = "flex";
 }
 
 
