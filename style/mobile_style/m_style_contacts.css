@@ -1,4 +1,4 @@
-@media(max-width:1250px) {
+@media only screen and (max-width:1250px) {
     .contacts-slide-bar {
         width: 24em;
         padding-left: 1em;
@@ -39,7 +39,7 @@
     }
 }
 
-@media(max-width:992px) {
+@media only screen and (max-width:992px) {
     .contacts-slide-bar {
         width: 30em;
         padding-left: 3em;
@@ -166,7 +166,7 @@
 
     .slide-bar-scroll {
         width: 100vw;
-        height: calc(100vh - 170px);
+        height: 100vh;
     }
 
     .contacts-slide-bar {
@@ -185,6 +185,24 @@
 }
 
 @media(max-width:440px) {
+    .mobile-button-div {
+        height: 3.4em;
+    }
+
+    .new-contact-mobile {
+        top: 0.5em;
+        height: 3em;
+        padding: 0.5em 0.5em !important;
+    }
+
+    .btn-settings {
+        gap: 5px;
+        font-size: 1.3em;
+    }
+
+    .btn-settings img {
+        width: 1.6em;
+    }
 
     .big-card-info {
         margin-top: 1.5em;
@@ -209,6 +227,14 @@
 
     .contact-initials-big span {
         font-size: 1.2em;
+    }
+
+    .cards-div-letter {
+        font-size: 1em;
+    }
+
+    .contact-card-info div {
+        font-size: 1em;
     }
 
     .mobile-edit-contact-btn {

@@ -10,7 +10,7 @@
     }
 
     h1 {
-        font-size: 47px !important;
+        font-size: 2em !important;
     }
 
     .main-add-task {
@@ -22,8 +22,9 @@
         cursor: pointer;
         background-image: url(../../assets/img/add-task-btn-mobile.svg);
         background-repeat: no-repeat;
-        width: 2.5em;
-        height: 2.5em;
+        background-size: 2em;
+        width: 2em;
+        height: 2em;
     }
 
     .add-task-btn-mobile:active {
@@ -55,9 +56,17 @@
         margin: 20px 0;
     }
 
+    .board-input-div {
+        height: 3em;
+    }
+
     .board-input {
         padding: 0.6em 1em;
         width: 15em;
+    }
+
+    .input-img {
+        top: 0.4em;
     }
 
     .cards-slide-div {
@@ -70,6 +79,16 @@
 
     .cards-category {
         margin-bottom: 1em;
+    }
+
+    .cards-category span {
+        font-size: 1em;
+    }
+
+    .plus-btn {
+        width: 1.5em;
+        height: 1.5em;
+        background-size: 1.5em;
     }
 
     .card {
@@ -89,7 +108,7 @@
         display: none;
     }
 
-    .move-btn{
+    .move-btn {
         display: inline;
     }
 }
@@ -138,7 +157,7 @@
         width: 33px;
     }
 
-  
+
 }
 
 @media(max-width:610px) {
@@ -202,7 +221,7 @@
         height: 40px;
     }
 
-    .delete-btn-board{
+    .delete-btn-board {
         height: 40px;
     }
 
@@ -211,7 +230,7 @@
         padding: 1px 16px;
     }
 
-    .mobile-move{
+    .mobile-move {
         top: -190px;
 
     }

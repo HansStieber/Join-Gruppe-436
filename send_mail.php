@@ -13,7 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $mailAdress = $_POST['mail'];
         $subject = "Password Reset Link";
-        $headers = "From:Join Team <noreply@developerakademie.com>". PHP_EOL .'X-Mailer: PHP/';
+        $headers .= "From: Join Team <noreply@developerakademie.com> \r\n";
         $msg = "Hello,\nthis is your password reset link.\nPlease click on the link bellow to set a new Password.\n\ngruppe-436.developerakademie.net/reset_password.html?($mailAdress)";
 
         mail($_POST['mail'], $subject, $msg, $link, $headers);
