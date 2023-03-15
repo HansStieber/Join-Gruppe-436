@@ -270,6 +270,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 .resetMain-reset {
@@ -287,8 +288,8 @@ input {
 
 
 .flighUp {
-    transform: translateY(-436px);
-    transition: transform 500ms ease-in-out;
+    transform: translateY(-350px);
+    transition: transform 300ms ease-in-out;
 }
 
 

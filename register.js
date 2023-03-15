@@ -1,27 +1,21 @@
-let users = [];
-
-function register() {
+async function register() {
   let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
+  let email = document.getElementById("email");
   let password = document.getElementById("password").value;
-  let existingUser = users.find(user => user.email === email);
+  let existingUser = users.find(user => user.email === email.value);
 
   if (!existingUser) {
     users.push({
       name: name,
-      email: email,
+      email: email.value,
       password: password
     });
-    backend.setItem("users", JSON.stringify(users));
+    await backend.setItem("users", JSON.stringify(users));
     document.getElementById("signUpSingle").classList.add("flighUp");
-    setTimeout(function () {
-      window.location.href = "../index.html";
-    }, 2000);
+    setTimeout(() => { window.location.href = "./index.html"; }, 900);
+
   } else {
-    alert("Email already in use. Registration failed.");
-    setTimeout(function () {
-      window.location.href = "templates/log_in.html";
-    }, 2000);
+    email.value = 'Email already in use!';
   }
 }
 

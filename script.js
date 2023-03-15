@@ -3,6 +3,7 @@ let indexOfCurrentContact = -1;
 let headerMenu;
 let email;
 let existingUserName;
+let users = [];
 
 /**
  * The variable is set to true or false, depending if the new_task template card is open or not.
@@ -136,42 +137,6 @@ function openLoginFromForgotPasswort() {
     forgotContainer.style.display = "none";
     loginContainer.style.display = "flex";
 }
-
-
-function resetPassword() {
-    let current_email = email;
-    let new_password = document.getElementById("resetPWInput").value;
-    let new_passwordCONF = document.getElementById("resetPWInputConf").value;
-    // let oldPassword = JSON.parse(localStorage.getItem("password"));
-    users = JSON.parse(localStorage.getItem("users")) || [];
-    let existingUser = users.find(user => user.email === current_email);
-    let existingMail = localStorage.getItem("email");
-    let resetPW = document.getElementById("resetPW");
-
-    if (new_password === new_passwordCONF) {
-        if (existingUser) {
-            localStorage.setItem("password", new_password);
-            backend.setItem("password", new_password);
-            existingUser.password = new_password
-            backend.setItem("users", JSON.stringify(users));
-        }
-
-        // localStorage.setItem("users", JSON.stringify(users));
-        resetPW.classList.add("flighUp");
-        setTimeout(function () {
-            window.location.href = "./index.html";
-        }, 2000);
-    } else {
-        console.log("Email not found. Password reset failed.");
-        setTimeout(function () {
-            window.location.href = "../templates/log_in.html";
-        }, 2000);
-    }
-}
-
-
-
-
 
 
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/

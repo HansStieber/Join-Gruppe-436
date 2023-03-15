@@ -88,11 +88,6 @@ function getContactInfo(contact) {
  * @param {number} indexNum - given Number wich has each Contact in contacts Array to get the right Contac to render in BigCard.
  * @param {number} contactToEditId -var needed to find the right Contact in contacts Array, when the User want to Edit,
  * the Contact wich is current shown in BigCard.
- * 
- * First getting the right contact from contacts Array, with indexNum.
- * Then calls showBigCard() wich removes display: 'none', from BigCard Element.
- * Then showMobileBigCard(), if the User is on Low screenSize, the BigCard renders above the contacts List.
- * Last all HTML Elements from the BigCard get filled with the information, from contact found in the Array with given indexNum.
  */
 function renderBigCard(indexNum) {
     let contact = contacts[indexNum];
@@ -106,9 +101,6 @@ function renderBigCard(indexNum) {
 /**
  * 
  * @param {object} contact --Object with all information needed to show detail View of choosen Contact
- * First define const{all Information from given contact}, thru calling the function getContactInfo(contact).
- * Then define const{all Elements from BigCard}, thru calling the function getBigCardElements().
- * Then innerHTML all given contacts Information into HTML-Elements.
  */
 function setBigCardInnerHTML(contact, indexNum) {
     const { initials1, initials2, bgColor, email,
@@ -197,13 +189,6 @@ function addContact() {
  * 
  * @param {number} contactToEditId - global Id to get the right Contact to Edit out of the contacts Array,
  * (filled in renderBigCard() function).
- * 
- * First is shows the delete Button.
- * Then delete the current in BigCard shown Contact, from contacts Array.
- * Then save manipulated Array to Backend.
- * Then call hideBigCard(), wich gives the BigCard Element Display: 'none'.
- * Then close Edit-overlay.
- * Then render Contacts, to update the Site.
  */
 function deleteContact() {
     showDeleteBtn();
