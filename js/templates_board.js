@@ -78,5 +78,6 @@ function generateHTMLDetailCard(idOfCard) {
                     <img id="edit-icon" src="../assets/img/pencil-btn-default.svg" alt="icon of a pencil" class="edit-task-btn detail-view-edit-btn" onclick="editTask(${idOfCard})">
             </div>               
         </div>
+
 `;
 }

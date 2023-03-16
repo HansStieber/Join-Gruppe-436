@@ -306,6 +306,7 @@
 .detail-view {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: relative;
     height: 824px;
     max-height: 100vh;
@@ -487,7 +488,7 @@
     color: white;
 }
 
-.mobile-move >div {
+.mobile-move>div {
     cursor: pointer;
 }
 
