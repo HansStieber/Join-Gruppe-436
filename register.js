@@ -1,3 +1,8 @@
+
+/**
+ * This function Creates a new User and add them to Backend, If Email
+ * not already in Use.
+ */
 async function register() {
   let name = document.getElementById("name").value;
   let email = document.getElementById("email");

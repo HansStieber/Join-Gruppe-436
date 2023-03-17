@@ -213,7 +213,9 @@ function removeHighlightContactCard() {
 }
 
 
-/*----------- SHOW/CLOSE OVERLAY -----------*/
+/**
+ * This function opens the Edit Contact Overlay.
+ */
 function openEditOverlay() {
     document.getElementById('editContactOverlay').classList.remove('d-none');
     setEditContactInitials();
@@ -222,12 +224,22 @@ function openEditOverlay() {
 }
 
 
+/**
+ * This function opens the Add Contact Overlay.
+ */
 function openAddOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
     checkIfMobileOpening('add-contact-shadow-screen', 'add-contact-overlay');
 }
 
 
+/**
+ * This function Check the Window size, and shows the right Overlay
+ * reltaive to Window size.
+ * 
+ * @param {string} shadowscreen -text with ID of Screen to show.
+ * @param {string} overlay -text with ID of Screen to show.
+ */
 function checkIfMobileOpening(shadowscreen, overlay) {
     if (window.innerWidth > 992) {
         showShadowScreen(`${shadowscreen}`)
@@ -237,7 +249,9 @@ function checkIfMobileOpening(shadowscreen, overlay) {
     }
 }
 
-
+/**
+ * This Function close the Edit Contact Overlay.
+ */
 function closeEditOverlay() {
     showDeleteBtn();
     checkWindowSizeforClosing('edit-contact-shadow-screen', 'edit-contact-overlay')

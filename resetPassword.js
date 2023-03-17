@@ -1,3 +1,9 @@
+
+/**
+ * This function Reset the Password of a User.
+ * 
+ * @returns If requirements not true.
+ */
 function resetPassword() {
     let extractedEmail = window.location.href.substr(window.location.href.indexOf('(') + 1).slice(0, -1);
     let newPassword = document.getElementById("resetPWInput");
@@ -5,16 +11,11 @@ function resetPassword() {
     let existingUser = users.find(user => user.email == extractedEmail);
 
     if (!(newPassword.value === newPasswordCONF.value)) {
-        setResetPasswordInputType('text');
-        newPassword.value = 'Passwords do not match!';
-        newPasswordCONF.value = 'Passwords do not match!';
-        resetPasswordTypeTimeout('password');
+        showPasswordsNotEqualMsg(newPassword, newPasswordCONF);
         return;
     }
     if (!existingUser) {
-        setResetPasswordInputType('text');
-        newPassword.value = 'Could not find User!';
-        resetPasswordTypeTimeout('password');
+        showUserNotFindMsg(newPassword, newPasswordCONF);
         return;
     }
 
@@ -27,6 +28,42 @@ function resetPassword() {
 }
 
 
+/**
+ * This function changes the value of given input Field to show
+ * the User Validation.
+ * 
+ * @param {element} newPassword -input Element.
+ * @param {element} newPasswordCONF -input Element.
+ */
+function showPasswordsNotEqualMsg(newPassword, newPasswordCONF) {
+    setResetPasswordInputType('text');
+    newPassword.value = 'Passwords do not match!';
+    newPasswordCONF.value = 'Passwords do not match!';
+    resetPasswordTypeTimeout('password');
+}
+
+
+/**
+ * This function changes the value of given input Field to show
+ * the User Validation.
+ * 
+ * @param {element} newPassword -input Element.
+ * @param {element} newPasswordCONF -input Element.
+ */
+function showUserNotFindMsg(newPassword, newPasswordCONF) {
+    setResetPasswordInputType('text');
+    newPassword.value = 'Could not find User!';
+    newPasswordCONF.value = 'Could not find User!';
+    resetPasswordTypeTimeout('password');
+}
+
+
+/**
+ * This function changes the Type of input fields. Wich Type to set
+ * is defined in Var type.
+ * 
+ * @param {string} type -text with name of Type.
+ */
 function setResetPasswordInputType(type) {
     let newPassword = document.getElementById("resetPWInput");
     let newPasswordCONF = document.getElementById("resetPWInputConf");
@@ -35,6 +72,11 @@ function setResetPasswordInputType(type) {
 }
 
 
+/**
+ * This function changes after Timout the type and value of input field.
+ * 
+ * @param {string} type -text with name of Type.
+ */
 function resetPasswordTypeTimeout(type) {
     let newPassword = document.getElementById("resetPWInput");
     let newPasswordCONF = document.getElementById("resetPWInputConf");

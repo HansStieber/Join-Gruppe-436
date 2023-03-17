@@ -42,6 +42,12 @@ async function loadBackend() {
 }
 
 
+/**
+ * This function deletes Item from Array and Saves manipulated Array to Backend. 
+ * 
+ * @param {array} array -array to splice an save.
+ * @param {number} deleteId -Id of the Item to delete.
+ */
 function deleteItemFromBackend(array, deleteId) {
     let newArray = array.splice(deleteId, 1);
     backend.deleteItem(array);
@@ -49,6 +55,12 @@ function deleteItemFromBackend(array, deleteId) {
 }
 
 
+/**
+ * This function saves given Array with given Key to Backend.
+ * 
+ * @param {string} key -key to find saved Array.
+ * @param {array} array -array to get saved.
+ */
 function saveArrayToBackend(key, array) {
     let arrayAsText = JSON.stringify(array);
     backend.setItem(key, arrayAsText);
@@ -98,6 +110,9 @@ function guestLogin() {
 }
 
 
+/**
+ * This function manipulate HTML Elements to show Login.
+ */
 function openLogin() {
     let loginContainer = document.getElementById("login-container");
     let signUpContainer = document.getElementById("signUp");
@@ -109,6 +124,9 @@ function openLogin() {
 }
 
 
+/**
+ * This function manipulate HTML Elements to show SignUp.
+ */
 function signUp() {
     let loginContainer = document.getElementById("login-container");
     let signUpContainer = document.getElementById("signUp");
@@ -121,6 +139,9 @@ function signUp() {
 }
 
 
+/**
+ * This function manipulate HTML Elements to show forgotPassword.
+ */
 function forgotPassword() {
     let forgotContainer = document.getElementById("forgotPw");
     let loginContainer = document.getElementById("login-container");
@@ -131,6 +152,10 @@ function forgotPassword() {
 }
 
 
+/**
+ * This function manipulate HTML Elements to show Login when came from
+ * forgot Password.
+ */
 function openLoginFromForgotPasswort() {
     let forgotContainer = document.getElementById("forgotPw");
     let loginContainer = document.getElementById("login-container");
@@ -170,18 +195,6 @@ window.addEventListener('click', (e) => {
         }
     }
 });
-
-/*window.addEventListener('click', (a) => {
-    setTimeout(() => {
-        console.log(detailViewOpen)
-        if (detailViewOpen && window.innerWidth > 992) {
-            if (document.getElementById('detailView') && !document.getElementById('detailView').contains(a.target)) {
-                closeDetailView();
-            }
-        }
-
-    }, 1);
-});*/
 
 
 /**
@@ -266,7 +279,7 @@ function checkWindowSize() {
 
 
 /**
- * Function to show mobile-menu or logout-button
+ * This Function to show mobile-menu or logout-button
  */
 function showMobileMenu(headerMenu) {
     headerMenu.classList.remove('hide');
@@ -275,7 +288,7 @@ function showMobileMenu(headerMenu) {
 
 
 /**
- * Function to hide mobile-menu or logout-button
+ * This Function to hide mobile-menu or logout-button
  */
 function hideMobileMenu(headerMenu) {
     headerMenu.classList.remove('show');
@@ -284,7 +297,7 @@ function hideMobileMenu(headerMenu) {
 
 
 /**
- * function to manipulate the Delete Button on Contacts and Board,.html.
+ * This Function to manipulate the Delete Button on Contacts and Board,.html.
  */
 function confirmDelete(functionName) {
     changeDeleteBtnOnclick(`${functionName}`);
@@ -292,18 +305,27 @@ function confirmDelete(functionName) {
 }
 
 
+/**
+ * This Function calls functions to manipulate the Delete Button.
+ */
 function showDeleteBtn() {
     changeDeleteBtnOnclick('confirmDelete(`deleteContact()`)')
     changeDeleteBtnSpan('Delete');
 }
 
 
+/**
+ * This Function changes onclick of the Delete Button.
+ */
 function changeDeleteBtnOnclick(functionName) {
     let deleteBtn = document.getElementById('edit-delete-btn');
     deleteBtn.setAttribute('onclick', `${functionName}`);
 }
 
 
+/**
+ * This Function changes the Text of the Delete Button.
+ */
 function changeDeleteBtnSpan(html) {
     let deleteBtnSpan = document.getElementById('delete-btn-span');
     deleteBtnSpan.innerHTML = html;

@@ -1,3 +1,8 @@
+
+/**
+ * This function get all HTML-Element, with Name '[w3-include-html]'.
+ * Fetch them and add them to HTML.
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
