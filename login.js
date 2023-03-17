@@ -1,15 +1,15 @@
 let rememberMe = false;
 
 function login() {
-  let email = document.getElementById("login-email").value;
-  let password = document.getElementById("login-password").value;
+  let email = document.getElementById("login-email");
+  let password = document.getElementById("login-password");
   rememberMe = document.getElementById("remember-me").checked;
-  let existingUser = users.find(user => user.email === email && user.password === password);
+  let existingUser = users.find(user => user.email === email.value && user.password === password.value);
 
   if (existingUser) {
     if (rememberMe) {
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
+      localStorage.setItem("email", email.value);
+      localStorage.setItem("password", password.value);
       localStorage.setItem("rememberLogin", rememberMe)
     } else {
       localStorage.setItem("rememberLogin", rememberMe);
@@ -19,6 +19,12 @@ function login() {
       window.location.href = "./summary.html";
     }, 1000);
     localStorage.setItem('currentUser', existingUser.name);
+  } else {
+    email.value ='Email oder Passwort inkorrekt';
+    setTimeout(() => {
+      email.value = '';
+      password.value = '';
+    }, 2000);
   }
 }
 

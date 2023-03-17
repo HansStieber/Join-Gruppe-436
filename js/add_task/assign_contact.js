@@ -4,6 +4,7 @@
  */
 let assignedContacts = [];
 
+
 /*----------- ASSIGN CONTACT FOR TASK -----------*/
 /**
  * The Function assigns a certain contact for a certain task.
