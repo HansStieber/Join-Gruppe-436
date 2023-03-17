@@ -58,10 +58,10 @@ window.addEventListener('resize', function () {
  */
 function renderBoard(todos) {
     clearBoard();
-    renderTodoColumn(todos);
-    renderProgressColumn(todos);
-    renderFeedbackColumn(todos);
-    renderDoneColumn(todos);
+    renderCardColumn(todos, 'todo');
+    renderCardColumn(todos, 'progress');
+    renderCardColumn(todos, 'feedback');
+    renderCardColumn(todos, 'done');
 }
 
 
@@ -83,66 +83,15 @@ function clearBoard() {
  * The following functions do the same thing, except the status is different.
  * @param {array} todos - array of all todos, saved in the backend
  */
-function renderTodoColumn(todos) {
-    let todo = todos.filter(t => t.status == 'todo');
+function renderCardColumn(todos, column) {
+    let todo = todos.filter(t => t.status == column);
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
         const id = todo[i].id;
         const assignments = todo[i].assignments;
 
         countCheckedSubtasks(element);
-        document.getElementById('todo').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
-        checkForSecondUser(assignments, id);
-        checkForMoreUsers(assignments, id);
-        checkIfProgressBar(element);
-        checkedSubtasks = 0;
-    }
-}
-
-
-function renderProgressColumn(todos) {
-    let progress = todos.filter(t => t.status == 'progress');
-    for (let i = 0; i < progress.length; i++) {
-        const element = progress[i];
-        const id = progress[i].id;
-        const assignments = progress[i].assignments;
-
-        countCheckedSubtasks(element);
-        document.getElementById('progress').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
-        checkForSecondUser(assignments, id);
-        checkForMoreUsers(assignments, id);
-        checkIfProgressBar(element);
-        checkedSubtasks = 0;
-    }
-}
-
-
-function renderFeedbackColumn(todos) {
-    let feedback = todos.filter(t => t.status == 'feedback');
-    for (let i = 0; i < feedback.length; i++) {
-        const element = feedback[i];
-        const id = feedback[i].id;
-        const assignments = feedback[i].assignments;
-
-        countCheckedSubtasks(element);
-        document.getElementById('feedback').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
-        checkForSecondUser(assignments, id);
-        checkForMoreUsers(assignments, id);
-        checkIfProgressBar(element);
-        checkedSubtasks = 0;
-    }
-}
-
-
-function renderDoneColumn(todos) {
-    let done = todos.filter(t => t.status == 'done');
-    for (let i = 0; i < done.length; i++) {
-        const element = done[i];
-        const id = done[i].id;
-        const assignments = done[i].assignments;
-
-        countCheckedSubtasks(element);
-        document.getElementById('done').insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
+        document.getElementById(column).insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
         checkForSecondUser(assignments, id);
         checkForMoreUsers(assignments, id);
         checkIfProgressBar(element);
@@ -323,10 +272,11 @@ function saveStatus() {
 function findTask() {
     searchedTodos = [];
     let search = document.getElementById('find-task').value;
+    let searchedLC = search.toLowerCase();
     for (let i = 0; i < todos.length; i++) {
         const title = todos[i].title;
         const description = todos[i].description;
-        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+        if (title.toLowerCase().includes(searchedLC) || description.toLowerCase().includes(search)) {
             searchedTodos.push(todos[i]);
         }
         selectingArrayForBoardUpdate();

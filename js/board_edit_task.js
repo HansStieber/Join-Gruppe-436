@@ -17,7 +17,7 @@ function editTask(id) {
     editTaskOpen = true;
     window.removeEventListener('click', eventListenerDetailView);
     setTimeout(() => {
-        window.addEventListener('click',  eventListenerEditTask);
+        window.addEventListener('click', eventListenerEditTask);
     }, 10);
 }
 
@@ -111,7 +111,7 @@ function saveChanges(id) {
     saveToBackend();
     window.removeEventListener('click', eventListenerEditTask);
     setTimeout(() => {
-        window.addEventListener('click',  eventListenerDetailView);
+        window.addEventListener('click', eventListenerDetailView);
     }, 10);
 }
 
@@ -140,7 +140,17 @@ function checkIfInvalidInput() {
 function checkIfInputMissingAndPushEditedTask(id) {
     if (inputMissing == false) {
         pushChanges(id);
+        setTimeout(() => {
+            unsetPriorityOnly();
+        }, 100);
     }
+}
+
+
+function unsetPriorityOnly() {
+    urgent = false;
+    medium = false;
+    low = false;
 }
 
 

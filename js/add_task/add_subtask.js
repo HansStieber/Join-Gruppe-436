@@ -51,10 +51,15 @@ function closeNewSubtask() {
  * input-field and finally loads all subtasks so they are visible for the user.
  */
 function addNewSubtask() {
-    pushNewSubtask();
-    removeValues();
-    closeNewSubtask();
-    loadSubtasks();
+    if (inputFieldIsEmpty('subtask')) {
+        initiateAlert('subtask');
+    } else {
+        pushNewSubtask();
+        removeValues();
+        closeNewSubtask();
+        loadSubtasks();
+        removeAlert('subtask');
+    }
 }
 
 

@@ -8,8 +8,6 @@ function login() {
 
   if (existingUser) {
     if (rememberMe) {
-      backend.setItem("email", email);
-      backend.setItem("password", password);
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
       localStorage.setItem("rememberLogin", rememberMe)
@@ -21,10 +19,7 @@ function login() {
       window.location.href = "./summary.html";
     }, 1000);
     localStorage.setItem('currentUser', existingUser.name);
-  } else {
-    alert("Invalid email or password. Login failed.");
   }
-
 }
 
 function loadUserCredentials() {
