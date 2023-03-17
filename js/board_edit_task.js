@@ -54,10 +54,16 @@ function loadAssignments(id) {
 }
 
 
+/**
+ * The function loads the Subtasks at the edit window at the board.
+ * 
+ * @param {number} id - Number of the todo that is edited
+ */
 function loadSubtasksAtEdit(id) {
     pushSubtasksToSubtasks(id);
     loadSubtasks();
 }
+
 
 function pushSubtasksToSubtasks(id) {
     for (let i = 0; i < todos[id].subtasks.length; i++) {
@@ -147,6 +153,9 @@ function checkIfInputMissingAndPushEditedTask(id) {
 }
 
 
+/**
+ * The function unsets all priorities when the edit todo window is closed.
+ */
 function unsetPriorityOnly() {
     urgent = false;
     medium = false;

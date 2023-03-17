@@ -14,11 +14,6 @@ let detailViewOpen = false;
 let editTaskOpen = false;
 let checkedSubtasks = 0;
 
-/*
-document.addEventListener('mousemove', (event) => {
-
-    console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`);
-});*/
 
 /**
  * The function initiates the Board. The data from the backend is loaded and the board is rendered.
@@ -29,12 +24,24 @@ async function initBoard() {
     checkURLandHighlight('board');
 }
 
+
+/**
+ * The function checks if a progressbar is needed at a task card at the board. If there are subtasks, a progressbar is shown.
+ * 
+ * @param {number} element - The todo which is checked
+ */
 function checkIfProgressBar(element) {
     let progressBar = document.getElementById(`progress-bar-${element.id}`);
     if (element.subtasks.length > 0)
         progressBar.classList.remove('d-none');
 }
 
+
+/**
+ * 
+ * @param {*} element 
+ * @returns 
+ */
 function calculateProgressBar(element) {
     return (100 / element.subtasks.length) * checkedSubtasks;
 }

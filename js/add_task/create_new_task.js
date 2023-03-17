@@ -38,16 +38,6 @@ window.addEventListener('keydown', (e) => {
 });
 
 
-/* doesnt work properly yet
-window.addEventListener('click', (e) => {
-    if (!document.getElementById('category-options').contains(e.target) && !document.getElementById('option-category').contains(e.target)) {
-        closeDropdownCategory();
-    }
-    
-});
-*/
-
-
 /**
  * Adds an event listener that listens on the click event on window. If the the user clicks on the window but not on the content of the assignment
  * dropdown menu, the dropdown closes
@@ -72,15 +62,6 @@ window.addEventListener('click', (e) => {
         }
     }
 });
-
-
-/*window.addEventListener('click', (e) => {
-    if (location.href.includes('add_task')) {
-        if (!document.getElementById('category-options').contains(e.target) && !document.getElementById('option-category').contains(e.target)) {
-            closeDropdownCategory();
-        }
-    }
-});*/
 
 
 /**
@@ -295,34 +276,10 @@ function checkIfInputMissingAndPushNewTask() {
  * The function initiates functions essential for submitting the form and creating a new task.
  */
 async function pushNewTask() {
-    //pushSubtasks();
     await pushTask();
     clearAllInputFields();
     showConfirmation();
 }
-
-
-/**
- * The function loops through the subtasks array and picks all subtasks which are checked and pushes them into the array subtasksChecked. 
- *//*
-function pushSubtasks() {
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
-        if (subtask.checked == true) {
-            pushCheckedSubtasksIntoArraySubtasksChecked(subtask);
-        }
-    }
-}
-*/
-
-/**
- * The function pushes checked subtasks into array subtasksChecked.
- * 
- * @param {object{}} subtask - object that gets pushed
- *//*
-function pushCheckedSubtasksIntoArraySubtasksChecked(subtask) {
-    subtasksChecked.push(subtask.title);
-}*/
 
 
 /**
