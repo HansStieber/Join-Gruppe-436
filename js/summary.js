@@ -163,8 +163,10 @@ function mobileGreetUser() {
 
 
 function checkIfAlreadyGreetMobile() {
-    let alreadyGreet = localStorage.getItem('alreadyGreetMobile');
-    if (!(alreadyGreet == 'true')) {
+    alreadyGreetMobile = localStorage.getItem('alreadyGreetMobile');
+    if (!(alreadyGreetMobile == 'true')) {
         mobileGreetUser();
+        alreadyGreetMobile = 'true';
+        localStorage.setItem('alreadyGreetMobile', alreadyGreetMobile);
     }
 }

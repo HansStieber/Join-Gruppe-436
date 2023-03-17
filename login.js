@@ -6,7 +6,6 @@ function login() {
   let password = document.getElementById("login-password");
   rememberMe = document.getElementById("remember-me").checked;
   let existingUser = users.find(user => user.email === email.value && user.password === password.value);
-  areadyGreetMobile = true;
   localStorage.setItem('alreadyGreetMobile', alreadyGreetMobile);
 
   if (existingUser) {
