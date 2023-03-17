@@ -100,9 +100,14 @@ function renderCardColumn(todos, column) {
 }
 
 
-function countCheckedSubtasks(element) {
-    for (let i = 0; i < element.subtasks.length; i++) {
-        if (element.subtasks[i].checked) {
+/**
+ * This function Counts the checked Subtasks, to render the Progress-bar.
+ * 
+ * @param {object} object -Class Task object.
+ */
+function countCheckedSubtasks(object) {
+    for (let i = 0; i < object.subtasks.length; i++) {
+        if (object.subtasks[i].checked) {
             checkedSubtasks++;
         }
     }
@@ -386,7 +391,7 @@ function openMoveMenu() {
 /**
  * This function closes the mobile-move-menu and removes the eventListener.
  */
-function closeMoveMenu(){
+function closeMoveMenu() {
     document.getElementById('mobileMove').classList.add('d-none');
     window.removeEventListener('click', eventListenerMoveBtn);
 }
@@ -395,7 +400,7 @@ function closeMoveMenu(){
 /**
  * Support function for eventlistener, to listen for clicks outside the opend mobile-move-menu.
  */
-function eventListenerMoveBtn(event){
+function eventListenerMoveBtn(event) {
     if (window.innerWidth < 992) {
         if (!document.getElementById('mobileMove').contains(event.target)) {
             closeMoveMenu();
@@ -404,7 +409,9 @@ function eventListenerMoveBtn(event){
 }
 
 
-// show/hide Drag and Drop dotted divs 
+/**
+ * This function removes d-none Class from all Droppable-Space divs.
+ */
 function showDropableSpace() {
     let todoDropHelp = document.getElementById('todo-drop-help');
     let progressDropHelp = document.getElementById('progress-drop-help');
@@ -416,6 +423,10 @@ function showDropableSpace() {
     feedbackDropHelp.classList.remove('d-none');
 }
 
+
+/**
+ * This function add d-none Class from all Droppable-Space divs.
+ */
 function hideDropableSpace() {
     showCardColumnDivs();
     let todoDropHelp = document.getElementById('todo-drop-help');
@@ -428,6 +439,10 @@ function hideDropableSpace() {
     feedbackDropHelp.classList.add('d-none');
 }
 
+
+/**
+ * This function remove Class d-none from all Card-Column divs.
+ */
 function showCardColumnDivs() {
     for (let i = 0; i < todos.length; i++) {
         const divId = todos[i].id;

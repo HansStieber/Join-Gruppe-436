@@ -97,6 +97,10 @@ function popOutUserFeedbackMessage() {
     }, 500);
 }
 
+
+/**
+ * This function removes d-none Class from Big-Card div.
+ */
 function showBigCard() {
     const { bigCardDiv } = getBigCardElements();
     bigCardDiv.classList.add('d-none');
@@ -107,12 +111,18 @@ function showBigCard() {
 }
 
 
+/**
+ * This function add the Class d-none to Big-Card div.
+ */
 function hideBigCard() {
     const { bigCardDiv } = getBigCardElements();
     bigCardDiv.classList.add('d-none');
 }
 
 
+/**
+ * This function manipulate the Classes from outerDiv and rightDiv to show Mobile Big-Card.
+ */
 function showMobileBigCard() {
     let outerDiv = document.getElementById('contacts-outer-div');
     let rightDiv = document.getElementById('contacts-right-div');
@@ -121,6 +131,9 @@ function showMobileBigCard() {
 }
 
 
+/**
+ * This function manipulate the Classes from outerDiv and rightDiv to close Mobile Big-Card.
+ */
 function hideMobileBigCard() {
     let outerDiv = document.getElementById('contacts-outer-div');
     let rightDiv = document.getElementById('contacts-right-div');
@@ -189,6 +202,10 @@ function addHighlightContactCard(i) {
 }
 
 
+/**
+ * This function get a Element per Id with Var inside, to get the
+ * right card to remove Class 'contact-card-target'.
+ */
 function removeHighlightContactCard() {
     let card = document.getElementById(`contact-card-${actualCard}`);
     card.classList.remove('contact-card-target');
