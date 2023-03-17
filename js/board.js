@@ -1,4 +1,8 @@
 /**
+ * Define JSON
+ * @typedef {string} JSON
+ */
+/**
  * The array includes all todos that match with input value of the search input-field at the top of board.html.
  */
 let searchedTodos = [];
@@ -28,7 +32,7 @@ async function initBoard() {
 /**
  * The function checks if a progressbar is needed at a task card at the board. If there are subtasks, a progressbar is shown.
  * 
- * @param {number} element - The todo which is checked
+ * @param {JSON} element - The task which is checked
  */
 function checkIfProgressBar(element) {
     let progressBar = document.getElementById(`progress-bar-${element.id}`);
@@ -38,13 +42,15 @@ function checkIfProgressBar(element) {
 
 
 /**
+ * The function calculates the length of the progressbar of a specific task.
  * 
- * @param {*} element 
- * @returns 
+ * @param {JSON} element - The task of which the progressbar gets calculated
+ * @returns {number} - Progress that has been made made
  */
 function calculateProgressBar(element) {
     return (100 / element.subtasks.length) * checkedSubtasks;
 }
+
 
 /**
  * The Eventlistener runs a function on resizing the window. If the location is currently contacts.html or board.html and the new task card is
@@ -134,6 +140,7 @@ function checkForSecondUser(assignments, id) {
     }
 }
 
+
 /**
  * This function checks, if more users than 2 are assigned for a task. From the third assigned user, the icon contains the number of the assigned users. 
  * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
@@ -150,7 +157,7 @@ function checkForMoreUsers(assignments, id) {
 
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/
 /**
- * This functions opens the add task overlay by pressing the add button at the disired status (progress, feedback, done).
+ * This function opens the add task overlay by pressing the add button at status progress.
  */
 function addTaskToStatusProgress() {
     progressStatus = 'progress';
@@ -158,12 +165,18 @@ function addTaskToStatusProgress() {
 }
 
 
+/**
+ * This function opens the add task overlay by pressing the add button at status feedback.
+ */
 function addTaskToStatusFeedback() {
     progressStatus = 'feedback';
     showNewTaskCard();
 }
 
 
+/**
+ * This function opens the add task overlay by pressing the add button at status done.
+ */
 function addTaskToStatusDone() {
     progressStatus = 'done';
     showNewTaskCard();
@@ -241,6 +254,7 @@ function hideCardColumnDivs(id) {
     }
 }
 
+
 /**
  * This function allows to move a task to another status-column. To allow the drop, the default handling of the element must be prevented.
  * @param {*} dragEvent - when the dragged data is dropped, a drop event occurs.
@@ -260,6 +274,13 @@ function moveTo(status) {
     saveStatus();
 }
 
+
+/**
+ * The function sets the status of a given task to a given status. It also saves the status and closes the detail view window at the board.
+ * 
+ * @param {number} index - Index of the task at the todos array
+ * @param {string} status - Status of the task
+ */
 function mobileMoveTo(index, status) {
     todos[index]['status'] = status;
     saveStatus();
@@ -379,8 +400,8 @@ function howMuchUsersAreAssigned(idOfCard) {
     }
 }
 
-/*----------- DRAG AND DROP ALTERNATIVE FOR MOBILE DEVICES-----------*/
 
+/*----------- DRAG AND DROP ALTERNATIVE FOR MOBILE DEVICES-----------*/
 /**
  * This function shows and removes the mobile-move-menu by pushing the MOVE-Button.
  */

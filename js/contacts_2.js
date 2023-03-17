@@ -245,12 +245,21 @@ function closeEditOverlay() {
 }
 
 
+/**
+ * The function closes the add Contact overlay.
+ */
 function closeAddOverlay() {
     checkWindowSizeforClosing('add-contact-shadow-screen', 'add-contact-overlay')
     setTimeout(() => { document.getElementById('addContactOverlay').classList.add('d-none'); }, 450);
 }
 
 
+/**
+ * The function checks the window width to check if the user is in mobile view. It runs functions accordingly.
+ * 
+ * @param {string} shadowscreen - Id of the shadowscreen
+ * @param {string} overlay - Id of the overlay
+ */
 function checkWindowSizeforClosing(shadowscreen, overlay) {
     if (window.innerWidth > 992) {
         slideOutCard(`${overlay}`);

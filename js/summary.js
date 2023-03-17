@@ -1,3 +1,6 @@
+/**
+ * The function initiates the summary.html page.
+ */
 async function initSummary() {
     await load();
     checkIfAlreadyGreetMobile()
@@ -30,7 +33,6 @@ function updateSummary() {
     urgentDateDiv.innerHTML = urgentTaskDate;
     tasksTodoDiv.innerHTML = tasksTodo.length;
     tasksDoneDiv.innerHTML = tasksDone.length;
-
 }
 
 /**
@@ -50,6 +52,7 @@ function getSummaryElements() {
     }
 }
 
+
 /**
  * This function filters the todos Array, to get all info needed.
  * 
@@ -67,6 +70,7 @@ function getSummaryInfo() {
         tasksDone: todos.filter(t => t.status == 'done')
     }
 }
+
 
 /**
  * This function loops thru the tasksUrgent Array, to find the Tasks wich time runs out next.
@@ -94,6 +98,7 @@ function getLatestUrgentTask(tasksUrgent) {
     }
     return latestUrgentTask;
 }
+
 
 /**
  * This function generates Dateformat defined in var='country' and var='options'.
@@ -154,6 +159,9 @@ function daytimeGreeting() {
 }
 
 
+/**
+ * This function initiates the greeting of a user when the site is opened in mobile view. After a timeout the greeting fades out.
+ */
 function mobileGreetUser() {
     let greetDiv = document.getElementById('greet-div');
     greetDiv.classList.remove('d-none-imp');
@@ -162,6 +170,9 @@ function mobileGreetUser() {
 }
 
 
+/**
+ * The function checks if alreadyGreetMobile variable is set to false. If the varibale is false, the user is greeted.
+ */
 function checkIfAlreadyGreetMobile() {
     alreadyGreetMobile = localStorage.getItem('alreadyGreetMobile');
     if (!(alreadyGreetMobile == 'true')) {

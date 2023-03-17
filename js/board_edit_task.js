@@ -65,6 +65,11 @@ function loadSubtasksAtEdit(id) {
 }
 
 
+/**
+ * The function pushes all subtasks from a specific task to the subtasks array.
+ * 
+ * @param {number} id - id of the specific task
+ */
 function pushSubtasksToSubtasks(id) {
     for (let i = 0; i < todos[id].subtasks.length; i++) {
         const option = todos[id].subtasks[i];

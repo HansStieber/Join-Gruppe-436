@@ -6,6 +6,9 @@ let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'X', 'Y', 'Z'];
 
 
+/**
+ * The function initiates contacts.html page. It renders all Contacts and highlights the page at the navigation.
+ */    
 async function initContacts() {
     await load();
     renderContacts();
