@@ -1,10 +1,13 @@
 let rememberMe = false;
 
+
 function login() {
   let email = document.getElementById("login-email").value;
   let password = document.getElementById("login-password").value;
   rememberMe = document.getElementById("remember-me").checked;
   let existingUser = users.find(user => user.email === email && user.password === password);
+  areadyGreetMobile = true;
+  localStorage.setItem('alreadyGreetMobile', alreadyGreetMobile);
 
   if (existingUser) {
     if (rememberMe) {
@@ -26,6 +29,7 @@ function login() {
   }
 
 }
+
 
 function loadUserCredentials() {
   let storedEmail = localStorage.getItem("email");

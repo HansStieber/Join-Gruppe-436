@@ -5,6 +5,7 @@ let email;
 let existingUserName;
 let users = [];
 
+let alreadyGreetMobile = false;
 /**
  * The variable is set to true or false, depending if the new_task template card is open or not.
  */
@@ -91,6 +92,8 @@ function sendMail() {
 function guestLogin() {
     currentNavPoint = window.location.href = './summary.html';
     localStorage.clear();
+    areadyGreetMobile = true;
+    localStorage.setItem('alreadyGreetMobile', alreadyGreetMobile);
 
 }
 

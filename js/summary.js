@@ -1,9 +1,11 @@
 async function initSummary() {
     await load();
+    checkIfAlreadyGreetMobile()
     updateSummary();
     daytimeGreeting();
     checkURLandHighlight('summary');
     greetingUser();
+
 }
 
 
@@ -109,31 +111,60 @@ function formatDate(dateToFormat) {
 }
 
 
+/**
+ *This function greets the User by his Name, if he is Logged in.
+ */
 function greetingUser() {
     let nameDiv = document.getElementById('user-greeting');
+    let nameDivMobile = document.getElementById('user-greeting-mobile');
     let existingUser = localStorage.getItem('currentUser');
     let existingUser_local = localStorage.getItem("currentUser")
 
     if (!existingUser) {
         nameDiv.innerHTML = 'guest';
+        nameDivMobile.innerHTML = 'guest';
     } else {
         nameDiv.innerHTML = existingUser_local;
+        nameDivMobile.innerHTML = existingUser_local;
     }
 }
 
 
+/**
+ * This function greets the User, with the right greeting for actual Daytime.
+ */
 function daytimeGreeting() {
     let date = new Date();
     let currentHour = date.getHours();
     let greetingDiv = document.getElementById('daytime-greeting');
+    let greetingDivMobile = document.getElementById('daytime-greeting-mobile');
 
     if (currentHour >= 5 && currentHour < 12) {
         greetingDiv.innerHTML = 'morning';
+        greetingDivMobile.innerHTML = 'morning';
     }
     if (currentHour >= 12 && currentHour < 18) {
         greetingDiv.innerHTML = 'afternoon';
+        greetingDivMobile.innerHTML = 'afternoon';
     }
     if (currentHour >= 18 || currentHour < 5) {
         greetingDiv.innerHTML = 'evening';
+        greetingDivMobile.innerHTML = 'evening';
+    }
+}
+
+
+function mobileGreetUser() {
+    let greetDiv = document.getElementById('greet-div');
+    greetDiv.classList.remove('d-none-imp');
+    greetDiv.classList.add('fade-out');
+    setTimeout(() => { greetDiv.classList.add('d-none-imp') }, 2000);
+}
+
+
+function checkIfAlreadyGreetMobile() {
+    let alreadyGreet = localStorage.getItem('alreadyGreetMobile');
+    if (!(alreadyGreet == 'true')) {
+        mobileGreetUser();
     }
 }

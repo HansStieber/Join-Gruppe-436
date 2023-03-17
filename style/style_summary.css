@@ -52,6 +52,34 @@
     font-size: 27px;
 }
 
+.side-container-mobile {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    margin: 0px !important;
+}
+
+.greet-text {
+    display: inline;
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.greet-text div {
+    display: inline;
+    font-size: 47px;
+    font-weight: 500;
+}
+
 .side-container {
     margin-left: 60px;
 }
@@ -72,6 +100,10 @@
     display: flex;
     justify-content: space-between;
     color: black;
+}
+
+.d-none-imp {
+    display: none !important;
 }
 
 [class*="col-"] {
@@ -212,7 +244,7 @@
 }
 
 
-@media (max-width: 1320px) {
+@media (max-width: 1200px) {
     .main-container {
         flex-direction: column;
         align-items: unset;
@@ -220,6 +252,10 @@
 
     .side-container {
         display: none;
+    }
+
+    .side-container-mobile {
+        display: flex;
     }
 }
 
@@ -265,6 +301,10 @@
     .side-container {
         display: none;
     }
+
+    .side-container-mobile {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 700px) {
@@ -306,7 +346,7 @@
 }
 
 @media (max-width: 600px) {
-    
+
     .heading-container::before {
         content: "Kanban Project Management Tool";
         font-size: 16px;
@@ -384,6 +424,18 @@
     .urgent-icon {
         background-image: url(../assets/img/urgentmobil.svg);
     }
+
+    .greet-text {
+        font-size: 2em;
+    }
+
+    .user-greeting {
+        font-size: 2.5em;
+    }
+
+    .greet-text div {
+        font-size: 1em;
+    }
 }
 
 @media(max-width:400px) {
@@ -426,5 +478,17 @@
     .pencil-image,
     .urgent-icon {
         margin-right: 5px;
+    }
+
+    .greet-text {
+        font-size: 1.5em;
+    }
+
+    .user-greeting {
+        font-size: 2em;
+    }
+
+    .greet-text div {
+        font-size: 1em;
     }
 }
