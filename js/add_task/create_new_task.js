@@ -116,7 +116,7 @@ function setInputMissingToFalse() {
 
 
 /**
- * The function cecks if input-field title, date or description input-fields are not filled yet. If not the function initiates an alert message.
+ * The function checks if input-field title, date or description input-fields are not filled yet. If not the function initiates an alert message.
  * That is displayed under the input-field.
  * 
  * @param {string} id - id of either input-field title, date or description
@@ -144,7 +144,7 @@ function checkDate() {
 }
 
 
-/**
+/** 
  * The function checks if the date that was typed into the date input-field lies in the past or not. If yes, an alert is triggered.
  */
 function checkIfDateLiesInPast() {
