@@ -11,6 +11,7 @@ let currentColor;
  */
 let categorySelected = false;
 
+
 /*----------- CREATE NEW CATEGORY FOR SELECTION -----------*/
 /**
  * This function lets the user create a new category by showing the category name input-field and color selection. It also closes the
@@ -22,6 +23,7 @@ function createNewCategory() {
     hideDefaultInput('category');
     closeDropdownCategory();
 }
+
 
 /**
  * The function shows the inputfield of the selection dropdown menu with the parameters id.

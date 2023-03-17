@@ -360,6 +360,10 @@ function removeTemplateNewTask() {
     document.getElementById('new-task-overlay').innerHTML = '';
 }
 
+
+/**
+ * The function removes the new task template at mobiles by emptying its container.
+ */
 function removeTemplateNewTaskMobile(id) {
     document.getElementById(id + '-add-task').innerHTML = '';
     document.getElementById(id + '-outer-div').classList.remove('d-none');

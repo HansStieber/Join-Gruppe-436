@@ -1,4 +1,15 @@
-// template for the task cards at the board
+/**
+ * Define JSON
+ * @typedef {string} JSON
+ */
+
+/**
+ * This function generates the html of the task cards at the board.
+ * 
+ * @param {JSON} element - Task of which html is generated
+ * @param {Array} assignments - Assignments of the selected task
+ * @returns 
+ */
 function generateHTMLTaskCard(element, assignments) {
     let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
     return /*html*/ `
@@ -27,8 +38,12 @@ function generateHTMLTaskCard(element, assignments) {
     `;
 }
 
-
-// template for detail cards when the task card is clicked
+/**
+ * This function generates the html for the detail card when a task card is clicked at the board.
+ * 
+ * @param {number} idOfCard - Id of the selected card
+ * @returns - html of the detail card
+ */
 function generateHTMLDetailCard(idOfCard) {
     taskToEdit = idOfCard;
     let todoArray = todos[idOfCard];
