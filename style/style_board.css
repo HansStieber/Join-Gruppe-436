@@ -257,6 +257,8 @@
 .card-bottom {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    min-height: 31px;
 }
 
 .user-icons {
@@ -277,6 +279,11 @@
 .user-icon span {
     font-size: 12px;
     color: white;
+}
+
+.priority-div {
+    position: absolute;
+    right: 0px;
 }
 
 .d-flex {

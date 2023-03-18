@@ -137,7 +137,7 @@ function checkIfInvalidInput() {
     checkIfEmpty('title');
     checkIfEmpty('description');
     checkDate();
-    checkIfNotAssigned();
+    //checkIfNotAssigned();
     checkIfNoPriority();
 }
 

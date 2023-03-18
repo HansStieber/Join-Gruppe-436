@@ -10,32 +10,40 @@
  * @param {Array} assignments - Assignments of the selected task
  * @returns 
  */
-function generateHTMLTaskCard(element, assignments) {
-    let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
+function generateHTMLTaskCard(element) {
+
     return /*html*/ `
-    <div class="card" id="${element.id}" draggable="true" onclick="showTaskCard(${element.id})" ondragstart="startDragging(${element.id})" ondragend="hideDropableSpace()">
-    <div  class="card-name ${element.category.color}">${element.category.title}</div>
-                                <div class="card-text">
-                                    <span class="card-headline">${element.title}</span>
-                                    <span class="card-info">${element.description}</span>
-                                    <div id="progress-bar-${element.id}" class="progress-div d-none">
-                                            <div  class="progress-bar">
-                                                <div class="inner-progress-bar" style= "width:${calculateProgressBar(element)}%"></div>
-                                            </div>
-                                            <span>${checkedSubtasks}</span>
-                                            <span>/</span>
-                                            <span>${element.subtasks.length}</span>
-                                            <span style="margin-left: 5px">Done</span>
-                                        </div> 
-                                    </div> 
-                                <div class="card-bottom">
-                                    <div id="user-icons-${element.id}" class="user-icons">
-                                        <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}"><span>${firstUserIcon}</span></div>
-                                    </div>
-                                    <div><img src="assets/img/priority-${element.priority}.svg"></div>
-                                </div>
-                            </div>
+    <div class="card" id="${element.id}" draggable="true" onclick="showTaskCard(${element.id})"
+    ondragstart="startDragging(${element.id})" ondragend="hideDropableSpace()">
+    <div class="card-name ${element.category.color}">${element.category.title}</div>
+    <div class="card-text">
+        <span class="card-headline">${element.title}</span>
+        <span class="card-info">${element.description}</span>
+        <div id="progress-bar-${element.id}" class="progress-div d-none">
+            <div class="progress-bar">
+                <div class="inner-progress-bar" style="width:${calculateProgressBar(element)}%"></div>
+            </div>
+            <span>${checkedSubtasks}</span>
+            <span>/</span>
+            <span>${element.subtasks.length}</span>
+            <span style="margin-left: 5px">Done</span>
+        </div>
+    </div>
+    <div id="card-bottom-${element.id}" class="card-bottom">
+        
+        <div class="priority-div"><img src="assets/img/priority-${element.priority}.svg"></div>
+    </div>
+    </div>
     `;
+}
+
+function generateHTMLTaskCardAssignments(assignments, element, firstUserIcon) {
+    return /*html*/`
+<div id="user-icons-${element.id}" class="user-icons">
+            <div id="first-user-icon-${element.id}" class="user-icon" style="background:${assignments[0].color}">
+                <span>${firstUserIcon}</span></div>
+        </div>
+        `;
 }
 
 /**

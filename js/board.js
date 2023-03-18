@@ -104,10 +104,11 @@ function renderCardColumn(todos, column) {
         const assignments = todo[i].assignments;
 
         countCheckedSubtasks(element);
-        document.getElementById(column).insertAdjacentHTML("beforeend", generateHTMLTaskCard(element, assignments));
-        checkForSecondUser(assignments, id);
-        checkForMoreUsers(assignments, id);
+        document.getElementById(column).insertAdjacentHTML("beforeend", generateHTMLTaskCard(element));
+
+        checkIfAssignments(assignments, element);
         checkIfProgressBar(element);
+
         checkedSubtasks = 0;
     }
 }
@@ -127,16 +128,32 @@ function countCheckedSubtasks(object) {
 }
 
 
+function checkIfAssignments(assignments, element) {
+    if (assignments.length > 0) {
+
+        renderAssignments(assignments, element);
+        checkForSecondUser(assignments, element);
+        checkForMoreUsers(assignments, element);
+    }
+}
+
+
+function renderAssignments(assignments, element) {
+    let firstUserIcon = assignments[0].firstName.slice(0, 1) + assignments[0].lastName.slice(0, 1);
+    document.getElementById(`card-bottom-${element.id}`).innerHTML += generateHTMLTaskCardAssignments(assignments, element, firstUserIcon);
+}
+
+
 /**
  * This function checks, if a second user is intended for a task. If so an icon with initials is created.
  * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
  * @param {number} id - id of the current todo
  */
-function checkForSecondUser(assignments, id) {
+function checkForSecondUser(assignments, element) {
     if (assignments.length > 1) {
         let secondUserIcon = assignments[1].firstName.slice(0, 1) + assignments[1].lastName.slice(0, 1);
-        document.getElementById(`user-icons-${id}`).innerHTML += `
-            <div id="second-user-icon-${id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>`;
+        document.getElementById(`user-icons-${element.id}`).innerHTML += `
+            <div id="second-user-icon-${element.id}" class="user-icon" style="background:${assignments[1].color}; left:30px;"><span>${secondUserIcon}</span></div>`;
     }
 }
 
@@ -146,13 +163,14 @@ function checkForSecondUser(assignments, id) {
  * @param {array} assignments - array of the assigned persons to a todo. This array is subdivided as follows: color, email, first name and last name.
  * @param {number} id - id of the current todo
  */
-function checkForMoreUsers(assignments, id) {
+function checkForMoreUsers(assignments, element) {
     if (assignments.length >= 3) {
         let userlength = assignments.length - 2;
-        document.getElementById(`user-icons-${id}`).innerHTML += `
+        document.getElementById(`user-icons-${element.id}`).innerHTML += `
         <div id="more-than-two-users" class="user-icon" style="background:#000000; left:60px"><span>+${userlength}</span></div>`;
     }
 }
+
 
 
 /*----------- ADDS NEW TASK TO SELECTED STATUS -----------*/

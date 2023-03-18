@@ -83,7 +83,7 @@ function checkIfEmptyField() {
     checkIfEmpty('description');
     checkDate();
     checkIfCategoryEmpty();
-    checkIfNotAssigned();
+    //checkIfNotAssigned();
     checkIfNoPriority();
 }
 
@@ -221,14 +221,14 @@ function checkIfCategoryEmpty() {
  * The function checks if no contact is assigned at assignment dropdown selcetion menu. It also adds/removes alerts if needed. If no contact
  * is assigned, it sets the inputMissing variable to true.
  */
-function checkIfNotAssigned() {
+/*function checkIfNotAssigned() {
     if (noContactsAreAssigned()) {
         initiateAlert('assignment');
-        setInputMissingToTrue();
+        //setInputMissingToTrue();
     } else {
         removeAlert('assignment');
     }
-}
+}*/
 
 
 /**
