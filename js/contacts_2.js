@@ -254,8 +254,10 @@ function checkIfMobileOpening(shadowscreen, overlay) {
  */
 function closeEditOverlay() {
     showDeleteBtn();
-    checkWindowSizeforClosing('edit-contact-shadow-screen', 'edit-contact-overlay')
-    setTimeout(() => { document.getElementById('editContactOverlay').classList.add('d-none'); }, 450);
+    checkWindowSizeforClosing('edit-contact-shadow-screen', 'edit-contact-overlay');
+    setTimeout(() => {
+        document.getElementById('editContactOverlay').classList.add('d-none');
+    }, 450);
 }
 
 
@@ -264,7 +266,10 @@ function closeEditOverlay() {
  */
 function closeAddOverlay() {
     checkWindowSizeforClosing('add-contact-shadow-screen', 'add-contact-overlay')
-    setTimeout(() => { document.getElementById('addContactOverlay').classList.add('d-none'); }, 450);
+    setTimeout(() => {
+        document.getElementById('addContactOverlay').classList.add('d-none');
+        clearEditContactValues();
+    }, 450);
 }
 
 
@@ -281,4 +286,14 @@ function checkWindowSizeforClosing(shadowscreen, overlay) {
     } else {
         hideShadowScreen(`${shadowscreen}`);
     }
+}
+
+
+/**
+ * This function clears the values from Edit Contact Overlay.
+ */
+function clearEditContactValues() {
+    document.getElementById('add-name-input').value = '';
+    document.getElementById('add-eMail-input').value = '';
+    document.getElementById('add-phonenumber-input').value = '';
 }
