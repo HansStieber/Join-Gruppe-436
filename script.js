@@ -82,91 +82,6 @@ function checkURLandHighlight(navPoint) {
 }
 
 
-/**
- * function for sending an Email for reset
- */
-function sendMail() {
-    let email_input = document.getElementById("resetEmailInput").value;
-    let confirmSentMail = document.getElementById("resetPWackknowledge");
-    confirmSentMail.classList.add("flighUp");
-    email = email_input;
-    setTimeout(function () {
-        confirmSentMail.classList.remove("flighUp");
-        //document.getElementById("forgotPassword").style.display = "none";
-        //document.getElementById("mainContainer-reset").style.display = "";
-    }, 2000)
-}
-
-
-/**
- * function for enterin summary.html as guest
- */
-function guestLogin() {
-    currentNavPoint = window.location.href = './summary.html';
-    localStorage.clear();
-    areadyGreetMobile = true;
-    localStorage.setItem('alreadyGreetMobile', alreadyGreetMobile);
-
-}
-
-
-/**
- * This function manipulate HTML Elements to show Login.
- */
-function openLogin() {
-    let loginContainer = document.getElementById("login-container");
-    let signUpContainer = document.getElementById("signUp");
-    let signUpButton = document.getElementById("signup_button");
-    loginContainer.classList.remove("fade-in-login");
-    loginContainer.style.display = "flex";
-    signUpContainer.style.display = "none";
-    signUpButton.style.display = "";
-}
-
-
-/**
- * This function manipulate HTML Elements to show SignUp.
- */
-function signUp() {
-    let loginContainer = document.getElementById("login-container");
-    let signUpContainer = document.getElementById("signUp");
-    let forgotPasswordContainer = document.getElementById('forgotPw');
-    let signUpButton = document.getElementById("signup_button");
-    forgotPasswordContainer.style.display = "none";
-    loginContainer.style.display = "none";
-    signUpContainer.style.display = "flex";
-    signUpButton.style.display = "none";
-}
-
-
-/**
- * This function manipulate HTML Elements to show forgotPassword.
- */
-function forgotPassword() {
-    let forgotContainer = document.getElementById("forgotPw");
-    let loginContainer = document.getElementById("login-container");
-    let signUpButton = document.getElementById("signup_button");
-    signUpButton.style.display = "none";
-    loginContainer.style.display = "none";
-    forgotContainer.style.display = "flex";
-}
-
-
-/**
- * This function manipulate HTML Elements to show Login when came from
- * forgot Password.
- */
-function openLoginFromForgotPasswort() {
-    let forgotContainer = document.getElementById("forgotPw");
-    let loginContainer = document.getElementById("login-container");
-    let signUpButton = document.getElementById("signup_button");
-    signUpButton.style.display = "";
-    loginContainer.classList.remove("fade-in-login");
-    forgotContainer.style.display = "none";
-    loginContainer.style.display = "flex";
-}
-
-
 /*----------- GENERAL SHOW AND HIDE FUNCTIONS -----------*/
 /**
  * The function shows the new Task Template depending on the window width. It also sets the newTaskOpen variable to true.
@@ -331,6 +246,7 @@ function changeDeleteBtnSpan(html) {
     deleteBtnSpan.innerHTML = html;
 }
 
+
 /**
  * This function, runs if the user changes the color theme of his Browser to Dark.
  */
@@ -339,6 +255,7 @@ function setFaviconIfColorThemeChanged() {
         setFaviconColorTheme();
     });
 }
+
 
 /**
  * This function, changes all hrefs from the favicons, to show right Favicon on Color theme Dark and Light.
