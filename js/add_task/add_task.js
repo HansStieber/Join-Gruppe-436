@@ -58,7 +58,7 @@ window.addEventListener('resize', function () {
  */
 function showClearButton() {
     let btn = document.getElementById('clear-form');
-    btn.style = 'background-image: url("../assets/img/clear_new_task.svg")';
+    btn.style = 'background-image: url("assets/img/clear_new_task.svg")';
     btn.setAttribute('onclick', 'clearAllInputFields()');
 }
 
