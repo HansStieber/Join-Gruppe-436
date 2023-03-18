@@ -123,7 +123,7 @@ function addNewCategory() {
  * already in use
  */
 function ifChosenTitleAndColorAreFree(title) {
-    return !title == '' && !currentColor == '' && categories.every(t => t.title !== title) && categories.every(c => c.color !== currentColor);
+    return !title == '' && !currentColor == '' && categories.every(t => t.title !== title) /*&& categories.every(c => c.color !== currentColor)*/;
 }
 
 
