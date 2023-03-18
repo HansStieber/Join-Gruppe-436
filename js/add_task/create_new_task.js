@@ -125,6 +125,7 @@ function checkDate() {
 }
 
 
+
 /** 
  * The function checks if the date that was typed into the date input-field lies in the past or not. If yes, an alert is triggered.
  */

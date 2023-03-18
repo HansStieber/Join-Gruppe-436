@@ -24,6 +24,22 @@ async function initAddTask() {
     showClearButton();
     showCreateButtonMobile();
     checkURLandHighlight('add_task');
+    setDateMinToCalender();
+}
+
+
+function setDateMinToCalender() {
+    let date = document.getElementById('date');
+
+    if (!Date.prototype.toUTCDate) {
+        Date.prototype.toUTCDate = function () {
+            return this.getUTCFullYear() + '-' +
+                ('0' + (this.getUTCMonth() + 1)).slice(-2) + '-' +
+                ('0' + this.getUTCDate()).slice(-2);
+        }
+    }
+    let today = new Date().toUTCDate();
+    date.min = `${today}`;
 }
 
 

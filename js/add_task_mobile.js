@@ -20,6 +20,7 @@ async function showMobileTemplate() {
     changeHeaderIcons();
     adjustLayout();
     checkWhichIsCurrentPage();
+    setDateMinToCalender();
 }
 
 
@@ -99,6 +100,7 @@ async function showNormalTemplate() {
     slideInCard('new-task-overlay');
     showNewTaskCloseBtn();
     checkWhichIsCurrentPage();
+    setDateMinToCalender();
 }
 
 
