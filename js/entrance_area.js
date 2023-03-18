@@ -254,9 +254,9 @@ function showForgotPwCloseOther() {
 
 
 function closeForgotPwOpenLogin() {
+    closeForgotPassword();
     showSignUpBtn();
     showLogin();
-    closeForgotPassword()
 }
 
 
