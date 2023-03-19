@@ -8,7 +8,7 @@ let abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 
 /**
  * The function initiates contacts.html page. It renders all Contacts and highlights the page at the navigation.
- */    
+ */
 async function initContacts() {
     await load();
     renderContacts();
@@ -97,7 +97,7 @@ function renderBigCard(indexNum) {
     contactToEditId = indexNum;
     showBigCard();
     showMobileBigCard();
-    setBigCardInnerHTML(contact, indexNum);
+    setBigCardInnerHTML(contact);
 }
 
 
@@ -105,7 +105,7 @@ function renderBigCard(indexNum) {
  * 
  * @param {object} contact --Object with all information needed to show detail View of choosen Contact
  */
-function setBigCardInnerHTML(contact, indexNum) {
+function setBigCardInnerHTML(contact) {
     const { initials1, initials2, bgColor, email,
         phone, firstName, lastName } = getContactInfo(contact);
 
