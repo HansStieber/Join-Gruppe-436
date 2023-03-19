@@ -64,8 +64,16 @@ function addNewSubtask() {
 
 
 function deleteSubtask(subtaskId) {
-    subtasks.splice(subtaskId, 1);
-    loadSubtasks();
+    setTimeout(() => {
+        subtasks.splice(subtaskId, 1);
+        loadSubtasks();
+    }, 50);
+
+}
+
+
+function clearSubtaskArray() {
+    subtasks.length = 0;
 }
 
 

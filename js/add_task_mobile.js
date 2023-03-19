@@ -230,6 +230,7 @@ function setOptionTwoIndex(i) {
  */
 function hideNewTaskCard() {
     newTaskOpen = false;
+    clearSubtaskArray();
     changeHeaderIconsBack();
     if (window.innerWidth <= 992 && normalTemplateOpen == false) {
         hideMobileTemplate();
