@@ -5,10 +5,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     height: 100vh;
     width: 232px;
     background-color: #2A3647;
+}
+
+.join-icon {
+    margin-top: clamp(66px, 110px, 199px);
 }
 
 .nav-highlight {
@@ -17,6 +20,7 @@
 
 .navigation-container {
     width: 100%;
+    margin-top: 115px;
 }
 
 .navigation-point {
@@ -40,6 +44,11 @@
 
 .navigation-point:hover {
     background-color: #091931;
+}
+
+.legal-notice {
+    margin-top: auto;
+    margin-bottom: 126px;
 }
 
 .main-logo {
@@ -89,13 +98,13 @@
         justify-content: center;
     }
 
-    .icon-sidebar{
+    .icon-sidebar {
         height: 25px;
     }
 }
 
 @media (max-width: 350px) {
-    .center-icons ~ div {
+    .center-icons~div {
         display: none;
     }
 
