@@ -63,6 +63,11 @@ function addNewSubtask() {
 }
 
 
+/**
+ * This function deletes a Subtask, with given Position (subtaskId) from Array.
+ * 
+ * @param {number} subtaskId -Id of the subtask to delete from Array.
+ */
 function deleteSubtask(subtaskId) {
     setTimeout(() => {
         subtasks.splice(subtaskId, 1);
@@ -72,6 +77,9 @@ function deleteSubtask(subtaskId) {
 }
 
 
+/**
+ * This function deletes all objects from subtask Array.
+ */
 function clearSubtaskArray() {
     subtasks.length = 0;
 }

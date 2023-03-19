@@ -28,21 +28,6 @@ async function initAddTask() {
 }
 
 
-function setDateMinToCalender() {
-    let date = document.getElementById('date');
-
-    if (!Date.prototype.toUTCDate) {
-        Date.prototype.toUTCDate = function () {
-            return this.getUTCFullYear() + '-' +
-                ('0' + (this.getUTCMonth() + 1)).slice(-2) + '-' +
-                ('0' + this.getUTCDate()).slice(-2);
-        }
-    }
-    let today = new Date().toUTCDate();
-    date.min = `${today}`;
-}
-
-
 /**
  * The event listener triggers when the size of the window changes and runs the showCreateButtonMobile() function.
  */
@@ -378,4 +363,22 @@ function hideAssignmentOptions() {
  */
 function addOpenContactsFunktion() {
     document.getElementById('select-contact-container').setAttribute('onclick', 'openDropdownAssignment()');
+}
+
+
+/**
+ * This function set the min="" attribute Calender of newTask, to the actual Date.
+ */
+function setDateMinToCalender() {
+    let date = document.getElementById('date');
+
+    if (!Date.prototype.toUTCDate) {
+        Date.prototype.toUTCDate = function () {
+            return this.getUTCFullYear() + '-' +
+                ('0' + (this.getUTCMonth() + 1)).slice(-2) + '-' +
+                ('0' + this.getUTCDate()).slice(-2);
+        }
+    }
+    let today = new Date().toUTCDate();
+    date.min = `${today}`;
 }

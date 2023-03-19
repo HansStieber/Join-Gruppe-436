@@ -176,7 +176,6 @@
 .content-new-task {
     position: relative;
     width: 1116px;
-    /*height: 914px;*/
     max-height: calc(100vh - 89px);
     padding: 65px 75px 0 75px;
     border-radius: 30px;
@@ -477,7 +476,6 @@ input[type='date'] {
     width: 100%;
     font-family: 'Inter', sans-serif;
     font-size: 21px;
-    /*color: #D1D1D1C2;*/
     outline: none;
     border: 1px solid #D1D1D1;
     border-radius: 10px;

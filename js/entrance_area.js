@@ -1,7 +1,7 @@
 let rememberMe = false;
 
 /**
- * This function
+ * This function gets the input of Login and search with the Values, in the users Array.
  */
 function login() {
     let email = document.getElementById("login-email");
@@ -218,6 +218,9 @@ function guestLogin() {
 }
 
 
+/**
+ * @returns JSON with HTMl Elements.
+ */
 function getLobbyHTMlElementsPerId() {
     return {
         loginDiv: document.getElementById("login-container"),
@@ -238,6 +241,9 @@ function closeSignUpOpenLogin() {
 }
 
 
+/**
+ * This function opens Signup and close other Overlays.
+ */
 function showSignUpCloseOther() {
     openSignUp();
     closeForgotPassword();
@@ -246,6 +252,9 @@ function showSignUpCloseOther() {
 }
 
 
+/**
+ * This function open ForgotPassword and close other Overlays.
+ */
 function showForgotPwCloseOther() {
     showFogotPassword();
     closeLogin();
@@ -253,6 +262,9 @@ function showForgotPwCloseOther() {
 }
 
 
+/**
+ * This function close ForgotPassword and open Login.
+ */
 function closeForgotPwOpenLogin() {
     closeForgotPassword();
     showSignUpBtn();
@@ -260,6 +272,10 @@ function closeForgotPwOpenLogin() {
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function openSignUp() {
     const { signUpDiv } = getLobbyHTMlElementsPerId();
     signUpDiv.style.display = "flex";
@@ -267,6 +283,10 @@ function openSignUp() {
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function closeSignUp() {
     const { signUpDiv } = getLobbyHTMlElementsPerId();
     signUpDiv.style.display = "none";
@@ -274,18 +294,30 @@ function closeSignUp() {
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function showSignUpBtn() {
     const { signUpButton } = getLobbyHTMlElementsPerId();
     signUpButton.style.display = "";
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function hideSignUpBtn() {
     const { signUpButton } = getLobbyHTMlElementsPerId();
     signUpButton.style.display = "none";
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function showLogin() {
     const { loginDiv } = getLobbyHTMlElementsPerId();
     loginDiv.classList.remove("fade-in-login");
@@ -293,18 +325,30 @@ function showLogin() {
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function closeLogin() {
     const { loginDiv } = getLobbyHTMlElementsPerId();
     loginDiv.style.display = "none";
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function showFogotPassword() {
     const { forgotPwDiv } = getLobbyHTMlElementsPerId();
     forgotPwDiv.style.display = "flex";
 }
 
 
+/**
+ * This function manipulate the style of defined HTMlElement,
+ * to show of hide Overlays.
+ */
 function closeForgotPassword() {
     const { forgotPwDiv } = getLobbyHTMlElementsPerId();
     forgotPwDiv.style.display = "none";
