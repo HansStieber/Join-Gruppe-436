@@ -104,7 +104,7 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
     .center-icons~div {
         display: none;
     }

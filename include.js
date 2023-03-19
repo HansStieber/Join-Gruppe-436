@@ -48,5 +48,4 @@ async function includeHTML() {
     }
 
     await Promise.all(promises);
-    console.log('All HTML files have been included!');
 }
