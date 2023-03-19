@@ -78,7 +78,7 @@ header {
     header {
         padding: 20px 36px 20px 116px;
     }
-    
+
     .header-heading>span {
         display: none;
     }
@@ -86,7 +86,7 @@ header {
     .header-mobile-logo {
         display: block;
     }
-    
+
     header {
         justify-content: space-between;
         padding: 20px 33px 20px 33px;
@@ -98,4 +98,20 @@ header {
     .icons-header>a {
         display: none;
     }
+}
+
+@media (max-width:350px) {
+    header {
+        height: 3em;
+        padding: 10px 33px 10px 33px;
+    }
+
+    .header-mobile-logo {
+        width: 1em;
+    }
+
+    .icons-header img {
+        height: 2em;
+    }
+
 }
