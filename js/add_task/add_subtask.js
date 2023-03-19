@@ -63,6 +63,12 @@ function addNewSubtask() {
 }
 
 
+function deleteSubtask(subtaskId) {
+    subtasks.splice(subtaskId, 1);
+    loadSubtasks();
+}
+
+
 /**
  * The function sets the title of the subtask and sets the checked variable to false. It then creates a new subtask with the Subtask class
  * and pushes the task into the subtasks array.

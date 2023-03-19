@@ -122,6 +122,7 @@ function renderSubtasks(subtask, i) {
             <img id="${'checkbox-subtask' + i}" class="d-none confirm-subtask" src="assets/img/confirm.svg">
         </div>
         <span>${subtask.title}</span>
+        <img src="assets/img/close_new_task_button.svg" class="delete-subtask-btn" onclick="deleteSubtask(${i})">
     </div>
     `;
 }

@@ -570,6 +570,12 @@ input[type='date']:hover {
     filter: invert(1);
 }
 
+.delete-subtask-btn {
+    cursor: pointer;
+    width: 20px;
+    margin-left: auto;
+}
+
 /* === Styling of submit/clear button === */
 .button-container {
     display: flex;
