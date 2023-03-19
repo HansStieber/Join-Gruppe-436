@@ -30,7 +30,7 @@ async function showMobileTemplate() {
  */
 function renderTemplateAtBoard() {
     document.getElementById('board-outer-div').classList.add('d-none');
-    document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+    document.getElementById('board-add-task').innerHTML = '<div id="template-container" class="d-none"><div include-html="./templates/new_task.html"></div></div>';
 }
 
 
@@ -40,7 +40,7 @@ function renderTemplateAtBoard() {
  */
 function renderTemplateAtContacts() {
     document.getElementById('contacts-outer-div').classList.add('d-none');
-    document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div w3-include-html="./templates/new_task.html"></div></div>';
+    document.getElementById('contacts-add-task').innerHTML = '<div id="template-container" class="d-none"><div include-html="./templates/new_task.html"></div></div>';
 }
 
 
@@ -110,7 +110,7 @@ async function showNormalTemplate() {
  */
 async function loadTemplateNewTask() {
     document.getElementById('new-task-overlay').innerHTML = `
-    <div w3-include-html="./templates/new_task.html"></div>
+    <div include-html="./templates/new_task.html"></div>
     `;
     await load();
 }
