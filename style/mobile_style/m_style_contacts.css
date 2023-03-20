@@ -253,4 +253,13 @@
     .contacts-slide-bar {
         margin-bottom: 0em;
     }
+
+    .contacts-right-div {
+        bottom: 0em;
+    }
+
+    .mobile-arrow-left {
+        top: 2em;
+        right: 2em;
+    }
 }

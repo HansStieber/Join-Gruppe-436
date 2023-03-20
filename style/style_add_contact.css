@@ -58,7 +58,7 @@
     left: 20px;
 }
 
-.edit-initials{
+.edit-initials {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +69,7 @@
     box-shadow: 0px 0px 2px 2px rgb(188 188 188 / 50%);
 }
 
-.edit-initials >span{
+.edit-initials>span {
     font-size: 35px;
     color: white;
 }
@@ -268,12 +268,12 @@
 }
 
 @media (max-width: 440px) {
-    .edit-initials{
+    .edit-initials {
         width: 90px;
         height: 90px;
     }
 
-    .edit-initials > span {
+    .edit-initials>span {
         font-size: 25px;
     }
 
@@ -281,13 +281,13 @@
         width: 280px;
     }
 
-    .add-contact-container{
+    .add-contact-container {
         height: 100vh;
     }
 
-    .contact-input-container >img {
+    .contact-input-container>img {
         height: 90px;
         left: 142px;
     }
-   
+
 }
