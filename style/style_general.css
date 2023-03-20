@@ -303,4 +303,11 @@ HELLGRAU (BACKGROUND): #F5F5F5
     .main {
         padding: 90px 20px 0px 20px;
     }
+
+}
+
+@media (max-width:400px) {
+    .main {
+        padding-top: 3em !important;
+    }
 }

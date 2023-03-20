@@ -199,7 +199,7 @@
     }
 
     .card-column {
-        min-height: 205px;
+        min-height: 20px;
         width: 100%;
     }
 
@@ -238,16 +238,34 @@
 }
 
 @media(max-width:450px) {
-    .main {
-        padding-left: 30px;
-    }
-
     .board {
         padding-right: 30px;
+    }
+
+    .main {
+        padding-left: 30px;
     }
 
     .cards-column-main {
         width: 100%;
         padding-right: 30px;
+    }
+}
+
+@media (max-width:400px) {
+    .container-new-task {
+        height: calc(100vh - 128px);
+    }
+
+    .content-new-task {
+        max-height: unset;
+        height: calc(100vh - 48px);
+        padding-left: 0em;
+        padding-top: 3em;
+        border-radius: 0em;
+    }
+
+    .cards-slide-div {
+        height: calc(100vh - 18.1em);
     }
 }

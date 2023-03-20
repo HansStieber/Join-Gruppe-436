@@ -83,7 +83,7 @@ function changeHeaderIcons() {
  * The function adjusts the layout of the page to fit the mobile template.
  */
 function adjustLayout() {
-    document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
+    //document.getElementById('content-new-task').style.height = "calc(100vh - 89px)";
     document.getElementById('content-new-task').classList.remove('new-task-card');
     document.getElementById('content-new-task').classList.add('padding-bottom');
 }

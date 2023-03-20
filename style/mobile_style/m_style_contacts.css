@@ -244,3 +244,13 @@
         cursor: pointer;
     }
 }
+
+@media (max-width:400px) {
+    .contacts-outer-div {
+        margin-top: 0.7em;
+    }
+
+    .contacts-slide-bar {
+        margin-bottom: 0em;
+    }
+}

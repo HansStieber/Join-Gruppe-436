@@ -745,6 +745,27 @@ input[type='date']:hover {
     }
 }
 
+@media (max-width:400px) {
+    .submit-button-header {
+        background-size: contain;
+        height: 2.4em;
+    }
+
+    .container-new-task {
+        height: calc(100vh - 128px);
+    }
+
+    .content-new-task {
+        height: calc(100vh - 96px);
+        padding-top: 3em;
+    }
+
+    .close-new-task {
+        top: 12px;
+        right: 17px;
+    }
+}
+
 @media (max-width: 390px) {
     .color {
         margin-left: 5px;
