@@ -69,11 +69,9 @@ function addNewSubtask() {
  * @param {number} subtaskId -Id of the subtask to delete from Array.
  */
 function deleteSubtask(subtaskId) {
-    setTimeout(() => {
-        subtasks.splice(subtaskId, 1);
-        loadSubtasks();
-    }, 50);
-
+    preventPropagation();
+    subtasks.splice(subtaskId, 1);
+    loadSubtasks();
 }
 
 

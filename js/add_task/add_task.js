@@ -204,7 +204,7 @@ function openDropdownCategory() {
 function showCategoryOptions() {
     for (let i = 0; i < categories.length; i++) {
         document.getElementById('c-option' + i).classList.remove('d-none');
-        //document.getElementById('c-delete-option' + i).classList.remove('d-none');
+        document.getElementById('c-delete-option' + i).classList.remove('d-none');
     }
     document.getElementById('create-new-category').classList.remove('d-none');
     playOpenDropdownAnimation('options-category');
@@ -250,7 +250,7 @@ function hideCategoryOptions() {
     for (let i = 0; i < categories.length; i++) {
         if (containerWithTargetedIdsExists('c', i)) {
             document.getElementById('c-option' + i).classList.add('d-none');
-            //document.getElementById('c-delete-option' + i).classList.add('d-none');
+            document.getElementById('c-delete-option' + i).classList.add('d-none');
         }
     }
     document.getElementById('create-new-category').classList.add('d-none');

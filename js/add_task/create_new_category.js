@@ -211,11 +211,15 @@ function setCurrentColor(color, i) {
  * 
  * @param {number} i - index of the category that is deleted at the categories array
  */
-/*function deleteCategory(i) {
+function deleteCategory(i) {
+    preventPropagation();
+
     document.getElementById('c-delete-option' + i).innerHTML = `
     <span class="delete-category-text" onclick="confirmDeletion(${i})">Yes</span><span class="margin-to-sides"> </span><span class="delete-category-text" onclick="doNotDelete(${i})">No</span>
     `;
-}*/
+
+
+}
 
 
 /**
@@ -224,14 +228,15 @@ function setCurrentColor(color, i) {
  * 
  * @param {number} i - index of the category that is deleted at the categories array
  */
-/*function confirmDeletion(i) {
+function confirmDeletion(i) {
+    preventPropagation();
     categories.splice(i, 1);
     loadAllOptions();
     showCategoryOptions();
     saveCategories();
     closeDropdownCategory();
     openDropdownCategory();
-}*/
+}
 
 
 /**
@@ -239,11 +244,12 @@ function setCurrentColor(color, i) {
  * 
  * @param {number} i - index of the category that is deleted at the categories array
  */
-/*function doNotDelete(i) {
+function doNotDelete(i) {
+    preventPropagation();
     document.getElementById('c-delete-option' + i).innerHTML = `
     <span class="delete-category-text" onclick=deleteCategory(${i})>delete</span>
     `;
-}*/
+}
 
 
 /**

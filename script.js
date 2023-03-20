@@ -278,3 +278,13 @@ function setFaviconColorTheme() {
     }
     setFaviconIfColorThemeChanged();
 }
+
+
+/**
+ * This function stops events from Propagation.
+ */
+function preventPropagation() {
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+}

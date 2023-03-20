@@ -16,16 +16,17 @@ function renderCategoryOptions(option, i) {
         <div class="option-container">
             <span>${option.title}</span>
             <div class="color ${option.color}"></div>
+            <div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
+    <span class="delete-category-text" onclick="deleteCategory(${i})">delete</span>
+</div>
+</div >
         </div>
     </div>
     `;
 }
-/*
-<div id="${'c-delete-option' + i}" class="option d-none selectable option-right-part">
-    <span class="delete-category-text" onclick="deleteCategory(${i})">delete</span>
-</div>
-</div>
-*/
+
+
+
 
 
 
